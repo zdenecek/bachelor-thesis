@@ -155,6 +155,8 @@ lobortis auctor sit amet, mollis et nunc. Suspendisse ligula augue, gravida
 vitae venenatis id, sollicitudin quis neque.
 
 Klíèová slova:
+lorem ipsum
+
 \vss}\nobreak\vbox to 0.49\vsize{
 \setlength\parindent{0mm}
 \setlength\parskip{5mm}
@@ -180,6 +182,7 @@ lobortis auctor sit amet, mollis et nunc. Suspendisse ligula augue, gravida
 vitae venenatis id, sollicitudin quis neque.
 
 Keywords:
+lorem ipsum
 
 \vss}
 \end{titlepage}
@@ -187,7 +190,7 @@ Keywords:
 \tableofcontents
 
 \chapter*{Úvod}
-\addcontentsline{toc}{chapter}{\protect\numberline{}Úvod}
+\addcontentsline{toc}{chapter}{Úvod}
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla imperdiet tempor
 mi ut ullamcorper. Vestibulum fermentum mauris a massa accumsan volutpat rutrum
@@ -236,12 +239,6 @@ fermentum molestie tincidunt. Mauris tincidunt nibh non leo mattis vel euismod
 tortor tempor. Integer id elementum ante. Pellentesque tincidunt tincidunt
 dapibus.
 
-\begin{itemize}
-\item Primo
-\item Secundo
-\item Tertio
-\end{itemize}
-
 Vivamus non turpis ut velit pretium accumsan id at risus. Nulla facilisi.
 Pellentesque augue ipsum, malesuada eu luctus vitae, interdum vel neque.
 Vivamus magna libero, vestibulum nec viverra id, fringilla eu dui. Aliquam erat
@@ -254,6 +251,15 @@ gravida. Nam mattis arcu ac massa lobortis sodales. Praesent at tortor in augue
 porttitor dapibus nec vitae libero. Aenean a commodo nunc.
 
 \subsection{Nam aliquam}
+\label{ssec:namaliquam}
+
+Ukázka odkazù:
+
+\begin{itemize}
+\item Logo Matfyzu vidíme na obrázku~\ref{fig:mff}.
+\item Tato subsekce má èíslo~\ref{ssec:namaliquam}.
+\item Odkaz na literaturu~\cite{lamport94}.
+\end{itemize}
 
 \newtheorem{theorem}{Vìta}
 
@@ -282,6 +288,13 @@ pellentesque mi eu dui facilisis interdum. Integer feugiat ante et massa luctus
 accumsan. Donec leo urna, egestas eu malesuada ut, vehicula quis eros. Nunc
 vitae pretium mauris. Ut tempus lacinia dolor et luctus.
 \end{proof}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=30mm]{logo.eps}
+	\caption{Logo MFF UK}
+	\label{fig:mff}
+\end{figure}
 
 Vestibulum nec ante vitae velit aliquet tincidunt at vitae sem. Lorem ipsum
 dolor sit amet, consectetur adipiscing elit. Aliquam sit amet nisi eget nisi
@@ -429,7 +442,7 @@ Suspendisse potenti. Proin nec placerat lectus. Aliquam erat volutpat. Fusce
 rhoncus lacus id lorem viverra sodales.
 
 \chapter*{Závìr}
-\addcontentsline{toc}{chapter}{\protect\numberline{}Závìr}
+\addcontentsline{toc}{chapter}{Závìr}
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla imperdiet tempor
 mi ut ullamcorper. Vestibulum fermentum mauris a massa accumsan volutpat rutrum
@@ -437,5 +450,17 @@ risus fermentum. Nam quis purus vel augue mollis ullamcorper non eu est.
 Integer ac lobortis metus. Nam nec dui turpis. Mauris odio mauris, tempor
 lobortis auctor sit amet, mollis et nunc. Suspendisse ligula augue, gravida
 vitae venenatis id, sollicitudin quis neque. Finis.
+
+\begin{thebibliography}{99}
+\addcontentsline{toc}{chapter}{Literatura}
+
+\bibitem{lamport94}
+  Leslie Lamport,
+  \emph{\LaTeX: A Document Preparation System}.
+  Addison Wesley, Massachusetts,
+  2nd Edition,
+  1994.
+
+\end{thebibliography}
 
 \end{document}
