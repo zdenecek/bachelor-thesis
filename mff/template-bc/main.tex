@@ -1,0 +1,441 @@
+% TODO:
+% - úvodní komentáø, ¾ádost o feedback
+% - makefile: run latex twice, PDF mode
+% - ukázat \uv
+% - double-sided mód
+% - rozdìlit do více souborù
+% - bibliografie
+% http://en.wikibooks.org/wiki/LaTeX
+
+%% Pokud tiskneme oboustrannì:
+% \documentclass[12pt,a4paper,twoside,openright]{report}
+% % Okraje: levý 40mm, pravý 25mm, horní a dolní 25mm
+% % (ale pozor, LaTeX si sám pøidává 1in)
+% \setlength\textwidth{145mm}
+% \setlength\textheight{247mm}
+% \setlength\oddsidemargin{15mm}
+% \setlength\evensidemargin{0mm}
+% \setlength\topmargin{0mm}
+
+%% Verze pro jednostranný tisk:
+\documentclass[12pt,a4paper]{report}
+\setlength\textwidth{145mm}
+\setlength\textheight{247mm}
+\setlength\oddsidemargin{15mm}
+\setlength\evensidemargin{15mm}
+\setlength\topmargin{0mm}
+\setlength\headsep{0mm}
+\setlength\headheight{0mm}
+
+\usepackage[czech]{babel}
+\usepackage[latin2]{inputenc}	% pøípadnì cp1250 nebo utf8
+\usepackage{graphicx}
+\usepackage{amsthm}
+
+\makeatletter
+\def\@makechapterhead#1{
+  {\parindent \z@ \raggedright \normalfont
+   \Huge\bfseries \thechapter. #1
+   \par\nobreak
+   \vskip 20\p@
+  }}
+\def\@makeschapterhead#1{
+  {\parindent \z@ \raggedright \normalfont
+   \Huge\bfseries #1
+   \par\nobreak
+   \vskip 20\p@
+  }}
+
+\makeatother
+
+\begin{document}
+
+\begin{titlepage}
+\begin{center}
+
+\large
+
+Univerzita Karlova v Praze
+
+\medskip
+
+Matematicko-fyzikální fakulta
+
+\vfill
+
+{\bf\Large BAKALÁØSKÁ PRÁCE}
+
+\vfill
+
+\centerline{\mbox{\includegraphics[width=60mm]{logo.eps}}}
+
+\vfill
+\vspace{5mm}
+
+{\LARGE Jméno Autora}
+
+\vspace{15mm}
+
+{\LARGE\bfseries Název práce}
+
+\vfill
+
+Jméno katedry nebo ústavu
+
+\vfill
+
+\begin{tabular}{rl}
+Vedoucí bakaláøské práce: & RNDr. Xaverius Yorktown, Ph.D. \\
+\noalign{\vspace{2mm}}
+Studijní program: & yyy \\
+\noalign{\vspace{2mm}}
+Studijní obor: & xxx \\
+\end{tabular}
+
+\vfill
+
+Praha 2999
+
+\end{center}
+\end{titlepage}
+
+\begin{titlepage}
+
+\noindent
+Podìkování.
+
+\end{titlepage}
+
+\begin{titlepage}
+\vglue 0pt plus 1fill
+
+\noindent
+Prohla¹uji, ¾e jsem tuto bakaláøskou práci vypracoval(a) samostatnì a výhradnì
+s~pou¾itím citovaných pramenù, literatury a dal¹ích odborných zdrojù.
+Beru na~vìdomí, ¾e se na moji práci vztahují práva a povinnosti vyplývající
+ze zákona è. 121/2000 Sb., autorského zákona v~platném znìní, zejména skuteènost,
+¾e Univerzita Karlova v Praze má právo na~uzavøení licenèní smlouvy o~u¾ití této
+práce jako ¹kolního díla podle §60 odst. 1 autorského zákona.
+
+\vspace{10mm}
+
+\hbox{\hbox to 0.5\hsize{%
+V ........ dne ............
+\hss}\hbox to 0.5\hsize{%
+Podpis Autora
+\hss}}
+
+\vspace{20mm}
+\eject
+\end{titlepage}
+
+\begin{titlepage}
+\vbox to 0.5\vsize{
+\setlength\parindent{0mm}
+\setlength\parskip{5mm}
+
+Název práce:
+Název práce
+
+Autor:
+Jméno a pøíjmení autora
+
+Katedra:
+Název katedry èi ústavu, kde byla práce oficiálnì zadána
+
+Vedoucí bakaláøské práce:
+Jméno a pøíjmení s tituly, pracovi¹tì
+
+Abstrakt:
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla imperdiet tempor
+mi ut ullamcorper. Vestibulum fermentum mauris a massa accumsan volutpat rutrum
+risus fermentum. Nam quis purus vel augue mollis ullamcorper non eu est.
+Integer ac lobortis metus. Nam nec dui turpis. Mauris odio mauris, tempor
+lobortis auctor sit amet, mollis et nunc. Suspendisse ligula augue, gravida
+vitae venenatis id, sollicitudin quis neque.
+
+Klíèová slova:
+\vss}\nobreak\vbox to 0.49\vsize{
+\setlength\parindent{0mm}
+\setlength\parskip{5mm}
+
+Title:
+Název práce
+
+Author:
+Jméno a pøíjmení autora
+
+Department:
+Název katedry èi ústavu, kde byla práce oficiálnì zadána
+
+Supervisor:
+Jméno a pøíjmení s tituly, pracovi¹tì
+
+Abstract:
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla imperdiet tempor
+mi ut ullamcorper. Vestibulum fermentum mauris a massa accumsan volutpat rutrum
+risus fermentum. Nam quis purus vel augue mollis ullamcorper non eu est.
+Integer ac lobortis metus. Nam nec dui turpis. Mauris odio mauris, tempor
+lobortis auctor sit amet, mollis et nunc. Suspendisse ligula augue, gravida
+vitae venenatis id, sollicitudin quis neque.
+
+Keywords:
+
+\vss}
+\end{titlepage}
+
+\tableofcontents
+
+\chapter*{Úvod}
+\addcontentsline{toc}{chapter}{\protect\numberline{}Úvod}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla imperdiet tempor
+mi ut ullamcorper. Vestibulum fermentum mauris a massa accumsan volutpat rutrum
+risus fermentum. Nam quis purus vel augue mollis ullamcorper non eu est.
+Integer ac lobortis metus. Nam nec dui turpis. Mauris odio mauris, tempor
+lobortis auctor sit amet, mollis et nunc. Suspendisse ligula augue, gravida
+vitae venenatis id, sollicitudin quis neque.
+
+\chapter{Lorem ipsum}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla imperdiet tempor
+mi ut ullamcorper. Vestibulum fermentum mauris a massa accumsan volutpat rutrum
+risus fermentum. Nam quis purus vel augue mollis ullamcorper non eu est.
+Integer ac lobortis metus. Nam nec dui turpis. Mauris odio mauris, tempor
+lobortis auctor sit amet, mollis et nunc. Suspendisse ligula augue, gravida
+vitae venenatis id, sollicitudin quis neque.\footnote{Sed vel ipsum a metus ullamcorper
+tincidunt. Maecenas non nisi blandit nunc tempus posuere eget rutrum diam.
+Maecenas laoreet, nibh eget egestas blandit, nunc justo dapibus quam, et rutrum
+nisl erat a sem. Pellentesque sit amet diam tellus, et adipiscing enim.} In
+viverra diam a eros dignissim sagittis. Fusce quis nibh et dui pharetra
+elementum. Nulla sagittis eros venenatis dolor interdum tempus. Suspendisse
+suscipit ante at est rhoncus laoreet eleifend ante luctus. In dolor libero,
+dapibus id rhoncus et, placerat eu leo. Nunc tincidunt feugiat tincidunt. Proin
+lobortis lorem in diam pharetra quis dapibus lorem vestibulum. Vivamus dolor
+tellus, ornare nec rhoncus vitae, rhoncus non elit. Nulla porta mauris
+tincidunt tellus convallis malesuada.
+
+\section{Mauris vitae}
+
+Mauris vitae elit enim, quis blandit mauris. Pellentesque habitant morbi
+tristique senectus et netus et malesuada fames ac turpis egestas. In dignissim
+cursus aliquet. Nulla ac condimentum magna. In ullamcorper aliquam mi, et
+porttitor mi tristique et. Nulla facilisi. Donec porta sem non tellus dapibus
+ultrices. Proin eleifend ultrices lectus eget interdum. Nulla commodo urna ut
+justo laoreet mattis. Donec sit amet justo est. Proin lacus nulla, dignissim
+sit amet tempor quis, porta ac orci. Aliquam eu tortor sem, a fermentum nisi.
+Curabitur id velit purus, eu interdum diam.
+
+\section{Donac dapibus}
+
+Donec dapibus massa eget velit eleifend ac molestie est iaculis. Ut sem mauris,
+eleifend vel gravida in, ornare ac nulla. Nunc posuere quam quis libero rhoncus
+malesuada. Proin porta dolor a velit fringilla tempus. Ut quam turpis,
+convallis vel consequat et, iaculis eu turpis. Nullam at tellus sem. Sed
+fermentum molestie tincidunt. Mauris tincidunt nibh non leo mattis vel euismod
+tortor tempor. Integer id elementum ante. Pellentesque tincidunt tincidunt
+dapibus.
+
+\begin{itemize}
+\item Primo
+\item Secundo
+\item Tertio
+\end{itemize}
+
+Vivamus non turpis ut velit pretium accumsan id at risus. Nulla facilisi.
+Pellentesque augue ipsum, malesuada eu luctus vitae, interdum vel neque.
+Vivamus magna libero, vestibulum nec viverra id, fringilla eu dui. Aliquam erat
+volutpat. Morbi eleifend adipiscing suscipit. Cum sociis natoque penatibus et
+magnis dis parturient montes, nascetur ridiculus mus. Maecenas accumsan
+vehicula leo, nec posuere dolor volutpat ac. Aenean vitae auctor tellus. Nulla
+facilisi. In sem enim, sodales at sagittis feugiat, mollis nec nulla. Quisque
+dictum sem vel mi vehicula ultrices. Morbi ullamcorper ullamcorper nibh in
+gravida. Nam mattis arcu ac massa lobortis sodales. Praesent at tortor in augue
+porttitor dapibus nec vitae libero. Aenean a commodo nunc.
+
+\subsection{Nam aliquam}
+
+\newtheorem{theorem}{Vìta}
+
+\begin{theorem}
+Nam aliquam eros non turpis condimentum et sodales augue fermentum. Fusce et
+odio dui, sed egestas tortor. Phasellus dignissim metus nec libero rutrum vitae
+accumsan justo gravida. Lorem ipsum dolor sit amet, consectetur adipiscing
+elit. Phasellus posuere, enim et convallis vestibulum, massa dolor adipiscing
+tellus, id congue lectus odio ut augue. Sed porta semper metus. Phasellus
+turpis dui, tempus non tristique et, pellentesque ut ipsum. Morbi quis purus
+tortor. Mauris eget dolor sapien. Nulla adipiscing ligula ac libero aliquet ut
+viverra odio euismod. Ut scelerisque vestibulum interdum. Integer molestie
+tempus nulla, et varius nunc facilisis at. Cum sociis natoque penatibus et
+magnis dis parturient montes, nascetur ridiculus mus.
+\end{theorem}
+
+\begin{proof}
+Aliquam semper felis eget est viverra blandit. Integer ullamcorper tempus velit
+hendrerit ullamcorper. In elit turpis, consequat a eleifend dignissim, vehicula
+vitae ipsum. Nullam eget risus viverra libero imperdiet condimentum. Mauris
+neque tellus, cursus ac luctus at, interdum blandit risus. Suspendisse potenti.
+Quisque ut felis eu nulla molestie sollicitudin. Integer at ante lacinia sapien
+condimentum egestas sit amet et orci. Donec mollis, enim at cursus sodales,
+libero neque vestibulum enim, sed interdum diam leo nec elit. Fusce
+pellentesque mi eu dui facilisis interdum. Integer feugiat ante et massa luctus
+accumsan. Donec leo urna, egestas eu malesuada ut, vehicula quis eros. Nunc
+vitae pretium mauris. Ut tempus lacinia dolor et luctus.
+\end{proof}
+
+Vestibulum nec ante vitae velit aliquet tincidunt at vitae sem. Lorem ipsum
+dolor sit amet, consectetur adipiscing elit. Aliquam sit amet nisi eget nisi
+aliquam faucibus ac id erat. Suspendisse dictum mi at elit imperdiet sed varius
+arcu sollicitudin. Vestibulum ante ipsum primis in faucibus orci luctus et
+ultrices posuere cubilia Curae; Curabitur est nisi, posuere sodales pretium
+eget, porttitor id ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing
+elit. Phasellus nec dolor ac augue dapibus dignissim at at lectus. Ut cursus,
+eros interdum venenatis condimentum, neque diam fringilla mauris, eu eleifend
+nunc nisi eu mi. Sed venenatis dignissim rhoncus. Cras quis iaculis dui. Nunc
+suscipit enim eleifend diam mattis eget congue risus adipiscing. Cras at risus
+lectus. Nunc eu velit nibh. Morbi non purus quis augue fermentum vulputate.
+Aenean malesuada condimentum cursus. Nulla non est est. Suspendisse neque
+magna, elementum aliquet porttitor a, scelerisque eu risus.
+
+Etiam quam leo, porttitor nec luctus eu, vulputate at arcu. Etiam nisi neque,
+lobortis quis egestas at, aliquet id lectus. Mauris ultricies venenatis cursus.
+Ut et nibh pretium nunc ullamcorper porta a vel leo. Curabitur aliquam posuere
+felis, et rhoncus lacus venenatis a. Phasellus lobortis elit diam. In dictum
+nisl quis risus varius mollis. Ut ut dolor eu ligula ornare cursus dignissim id
+ipsum. Vivamus eget urna et tortor accumsan molestie. Etiam sit amet odio quis
+nibh pulvinar accumsan. Donec cursus elit vitae nulla tristique sagittis. Class
+aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos
+himenaeos. Nulla aliquet mattis adipiscing. Praesent nec condimentum lorem.
+Aliquam sapien massa, rhoncus laoreet placerat eleifend, mollis eget orci.
+Phasellus elit lacus, luctus id tincidunt sit amet, tempor ac urna. Aenean nisl
+sapien, vehicula eu hendrerit eu, convallis eu magna.
+
+Suspendisse arcu nulla, bibendum in cursus quis, venenatis a ipsum. Proin
+pellentesque imperdiet volutpat. Nunc turpis orci, sodales ultricies viverra
+eu, tincidunt ac tortor. Pellentesque blandit, eros ac suscipit ullamcorper,
+ipsum magna fermentum tellus, eu porttitor enim massa et quam. Sed sit amet
+nunc diam. Proin sagittis, diam ac egestas commodo, sem neque cursus est, vel
+ultrices lorem turpis nec metus. Vivamus bibendum neque vitae sem vestibulum
+adipiscing. Donec vitae lorem dolor, vel dapibus felis. Nulla arcu justo,
+condimentum quis volutpat pellentesque, ultrices at nunc. Nunc id magna sed
+sapien gravida dignissim eget vel urna. Nulla facilisi. Etiam pellentesque
+dapibus gravida. Nam leo turpis, ultrices nec eleifend sed, convallis vel leo.
+
+Aenean facilisis purus quis libero tristique luctus. Phasellus ac diam a eros
+scelerisque consectetur mattis non ligula. Nunc posuere iaculis aliquam. Sed
+molestie lorem eu ligula porttitor non imperdiet turpis tempor. Nunc purus
+turpis, venenatis ac euismod sit amet, scelerisque ut massa. Nam at urna ipsum.
+Pellentesque quis tellus nec magna egestas consectetur eget vel nisl. In
+egestas aliquet adipiscing. Nullam ut orci dui, ac sodales felis. Phasellus
+faucibus convallis felis id fringilla. In ultrices lorem ullamcorper dolor
+condimentum non laoreet orci pretium. Mauris semper libero a ligula vehicula
+interdum. Mauris non mauris erat. Morbi tempus bibendum consectetur. Proin
+semper arcu ac massa blandit gravida. Quisque placerat, dui eget malesuada
+faucibus, ipsum sapien posuere nisi, nec interdum velit nunc non turpis.
+Integer vulputate enim vulputate risus hendrerit ultrices. Aenean et urna
+augue. Vestibulum feugiat hendrerit nibh sed porta. Fusce nec leo id sapien
+dapibus feugiat vel ac dui.
+
+Nulla facilisi. Maecenas arcu ipsum, imperdiet et tincidunt cursus, luctus in
+metus. Vestibulum cursus lobortis molestie. Aliquam erat volutpat. Sed iaculis
+placerat est, non faucibus dui venenatis eu. Duis at sem neque. Morbi faucibus
+fringilla interdum. Maecenas pretium rutrum lorem, id vulputate massa laoreet
+quis. In hac habitasse platea dictumst. Suspendisse ac ultricies arcu. Aliquam
+erat volutpat. Praesent placerat ultrices est, nec sagittis metus rhoncus nec.
+Nulla facilisi. Morbi tincidunt lectus varius risus sodales vel blandit tortor
+euismod. Curabitur at lorem est. Lorem ipsum dolor sit amet, consectetur
+adipiscing elit. In hac habitasse platea dictumst. Ut lobortis, erat vitae
+hendrerit interdum, lorem diam mattis lacus, ac luctus massa urna a libero.
+
+Maecenas nisl nisl, ornare a ultricies sed, ultricies ac magna. Quisque lacus
+velit, porta tincidunt varius at, pulvinar in arcu. Fusce sodales ultrices leo
+id feugiat. Pellentesque gravida augue id nisl placerat pharetra. Aenean
+ullamcorper dignissim vulputate. Sed ut odio mollis quam varius commodo. Nullam
+tempor ligula vitae nulla placerat eget scelerisque nisl consectetur. Donec
+suscipit nibh sit amet purus viverra bibendum. Vivamus dapibus cursus orci vel
+pretium. Aliquam molestie lorem id ipsum malesuada id ullamcorper nisi blandit.
+Donec libero sem, commodo ut rhoncus hendrerit, ultricies nec nisi. In vitae
+lectus dolor, eget suscipit lacus. Aenean augue mi, tristique nec rhoncus eu,
+aliquam nec mauris. Phasellus magna tellus, auctor vitae tincidunt quis,
+imperdiet et lorem. Pellentesque habitant morbi tristique senectus et netus et
+malesuada fames ac turpis egestas. Integer faucibus nulla vitae justo euismod
+in mollis tortor commodo. Vestibulum ante ipsum primis in faucibus orci luctus
+et ultrices posuere cubilia Curae;
+
+Duis ut velit tellus. Donec tempor, metus ac fermentum tincidunt, nibh libero
+rhoncus felis, in ullamcorper nibh sapien vel arcu. Praesent et lectus justo,
+id aliquam nunc. Quisque scelerisque lobortis commodo. Nam rutrum est id lacus
+dignissim et sodales ante tincidunt. Donec sed lacus ipsum. Vivamus sed arcu at
+ante aliquet bibendum ut iaculis mi. Aliquam interdum scelerisque quam,
+elementum sollicitudin tortor scelerisque vitae. In sed metus elit, in mattis
+lorem. Nulla ac nisi in nisl lacinia tempus. Ut volutpat fermentum magna, sed
+varius lacus tincidunt non. Pellentesque condimentum risus nec nibh
+sollicitudin gravida. Fusce augue lacus, iaculis sit amet mollis ut, tincidunt
+a odio. Duis eu diam vitae massa mollis pretium. Nunc ullamcorper tincidunt
+bibendum. Nulla ultrices interdum sollicitudin. Mauris placerat dignissim
+malesuada.
+
+Fusce consectetur tortor ac est euismod ut iaculis purus scelerisque. Duis
+dolor magna, sodales vitae ultricies non, convallis eu felis. Suspendisse dolor
+velit, suscipit eget tristique sit amet, dignissim et magna. Sed imperdiet
+posuere commodo. Vestibulum ante ipsum primis in faucibus orci luctus et
+ultrices posuere cubilia Curae; Cras non neque neque, a varius neque. Quisque
+massa augue, auctor eu feugiat ac, malesuada non lacus. Curabitur viverra
+dignissim nunc, eu scelerisque purus vestibulum sed. Pellentesque at tempor
+purus. Mauris vel urna sem, in ultrices odio. Morbi lorem turpis, aliquam vel
+adipiscing a, tincidunt sit amet mi. Duis dolor eros, bibendum quis sodales ac,
+varius ut dolor. Aenean sit amet eros et quam tristique tincidunt. Proin
+rhoncus fringilla bibendum. Nullam rhoncus vestibulum sapien, at tincidunt
+mauris tincidunt vel. Proin sed iaculis mi. Suspendisse metus neque, posuere ut
+imperdiet ut, iaculis et sapien. Mauris iaculis condimentum mauris, a pharetra
+mi egestas sit amet.
+
+Sed vehicula dictum nisl, ut aliquet diam tempus at. Duis vel tellus sed justo
+imperdiet auctor et sit amet magna. Phasellus ac turpis dui. Integer vestibulum
+mauris eu ante auctor at commodo lectus laoreet. Pellentesque quis neque ipsum.
+Integer sed augue eu risus egestas pharetra. Nulla libero magna, condimentum
+imperdiet tempor at, faucibus in metus. Nullam sapien odio, dictum et suscipit
+ac, varius id lorem. Ut eu nibh sit amet mi lacinia elementum sed sit amet
+justo. Donec in magna ante, a pellentesque dui. Aenean ipsum nibh, sagittis in
+molestie sed, ornare sit amet enim. Etiam ornare fermentum mi ac iaculis. Proin
+fermentum massa non ante facilisis iaculis. Phasellus id purus at mauris
+molestie adipiscing. Maecenas vel laoreet lorem. Curabitur tincidunt fringilla
+tortor vel scelerisque. Ut mi ipsum, egestas in varius nec, elementum ut
+lectus.
+
+\chapter{Suspendisse potenti}
+
+Suspendisse potenti. Nullam neque lectus, facilisis in laoreet ac, porttitor et
+leo. Aliquam sed dolor et neque euismod ultrices ut eget odio. Pellentesque
+accumsan commodo ante ut ornare. Nunc ligula augue, dignissim ultrices
+tristique vitae, pulvinar at nisi. Maecenas nunc magna, condimentum eleifend
+tempus quis, iaculis ac dui. Aenean ac volutpat nisl. Praesent nisl justo,
+ultrices in feugiat non, tincidunt vel sapien. Mauris facilisis dolor faucibus
+metus tincidunt vitae porttitor ligula vulputate. Nulla eget dui ac odio
+malesuada tincidunt tempus a ipsum. Vestibulum imperdiet leo odio, a tristique
+nibh. Fusce vitae augue lorem. Etiam ac velit lorem, id scelerisque urna.
+Aliquam erat volutpat. Praesent non tortor vel mi molestie ultrices. Nam sed
+ultrices tellus.
+
+\chapter{Etiam commodo}
+
+Etiam commodo facilisis nibh non blandit. In hac habitasse platea dictumst. Nam
+rutrum, quam sed viverra tempor, mauris augue lobortis velit, vitae vehicula
+neque ante in nisl. Curabitur nibh augue, consequat sit amet varius et, egestas
+non lorem. Class aptent taciti sociosqu ad litora torquent per conubia nostra,
+per inceptos himenaeos. Vestibulum in ligula ut tellus rutrum tempor vitae et
+sem. Vestibulum egestas risus sed orci viverra ut viverra mi condimentum.
+Suspendisse potenti. Proin nec placerat lectus. Aliquam erat volutpat. Fusce
+rhoncus lacus id lorem viverra sodales.
+
+\chapter*{Závìr}
+\addcontentsline{toc}{chapter}{\protect\numberline{}Závìr}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla imperdiet tempor
+mi ut ullamcorper. Vestibulum fermentum mauris a massa accumsan volutpat rutrum
+risus fermentum. Nam quis purus vel augue mollis ullamcorper non eu est.
+Integer ac lobortis metus. Nam nec dui turpis. Mauris odio mauris, tempor
+lobortis auctor sit amet, mollis et nunc. Suspendisse ligula augue, gravida
+vitae venenatis id, sollicitudin quis neque. Finis.
+
+\end{document}
