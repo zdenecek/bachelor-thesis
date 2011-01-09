@@ -1,10 +1,9 @@
 % TODO:
 % - úvodní komentáø, ¾ádost o feedback
 % - makefile: run latex twice, PDF mode
-% - ukázat \uv
 % - double-sided mód
 % - rozdìlit do více souborù
-% - bibliografie
+% - formát bibliografie
 % http://en.wikibooks.org/wiki/LaTeX
 
 %% Pokud tiskneme oboustrannì:
@@ -50,6 +49,9 @@
 
 \begin{document}
 
+\lefthyphenmin=2
+\righthyphenmin=2
+
 \begin{titlepage}
 \begin{center}
 
@@ -94,7 +96,7 @@ Studijní obor: & xxx \\
 
 \vfill
 
-Praha 2999
+Praha 2048
 
 \end{center}
 \end{titlepage}
@@ -250,18 +252,36 @@ dictum sem vel mi vehicula ultrices. Morbi ullamcorper ullamcorper nibh in
 gravida. Nam mattis arcu ac massa lobortis sodales. Praesent at tortor in augue
 porttitor dapibus nec vitae libero. Aenean a commodo nunc.
 
-\subsection{Nam aliquam}
-\label{ssec:namaliquam}
+\subsection{Ukázka \LaTeX{}u}
+\label{ssec:ukazka}
 
-Ukázka odkazù:
+V~této krátké èásti uká¾eme pou¾ití nìkolika základních konstrukcí \LaTeX{}u,
+které by se vám mohly pøi psaní práce hodit.
+
+Tøeba odrá¾ky:
 
 \begin{itemize}
 \item Logo Matfyzu vidíme na obrázku~\ref{fig:mff}.
-\item Tato subsekce má èíslo~\ref{ssec:namaliquam}.
+\item Tato subsekce má èíslo~\ref{ssec:ukazka}.
 \item Odkaz na literaturu~\cite{lamport94}.
 \end{itemize}
 
+Nebo \uv{èeské uvozovky}.
+
+Druhy pomlèek:
+èerveno-èerný (krátká),
+strana 16--22 (støední),
+$45-44$ (minus),
+a~toto je --- jak se asi dalo èekat --- vlo¾ená vìta ohranièená dlouhými pomlèkami.
+(V¹imnìte si, ¾e jsme za \verb|a| napsali vlnovku místo mezery: to aby se
+tam nemohl rozdìlit øádek.)
+
 \newtheorem{theorem}{Vìta}
+\newtheorem*{define}{Definice}	% Definice neèíslujeme, proto "*"
+
+\begin{define}
+{\sl Strom} je souvislý graf bez kru¾nic.
+\end{define}
 
 \begin{theorem}
 Nam aliquam eros non turpis condimentum et sodales augue fermentum. Fusce et
@@ -295,6 +315,8 @@ vitae pretium mauris. Ut tempus lacinia dolor et luctus.
 	\caption{Logo MFF UK}
 	\label{fig:mff}
 \end{figure}
+
+\subsection{Vestibulum nec ante}
 
 Vestibulum nec ante vitae velit aliquet tincidunt at vitae sem. Lorem ipsum
 dolor sit amet, consectetur adipiscing elit. Aliquam sit amet nisi eget nisi
