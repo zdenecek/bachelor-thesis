@@ -5,6 +5,8 @@
 % - rozdìlit do více souborù
 % - formát bibliografie
 % http://en.wikibooks.org/wiki/LaTeX
+% http://www.citeulike.org/
+% http://scholar.google.com/
 
 %% Pokud tiskneme oboustrannì:
 % \documentclass[12pt,a4paper,twoside,openright]{report}
@@ -37,13 +39,18 @@
    \Huge\bfseries \thechapter. #1
    \par\nobreak
    \vskip 20\p@
-  }}
+}}
 \def\@makeschapterhead#1{
   {\parindent \z@ \raggedright \normalfont
    \Huge\bfseries #1
    \par\nobreak
    \vskip 20\p@
-  }}
+}}
+
+\def\chapwithtoc#1{
+\chapter*{#1}
+\addcontentsline{toc}{chapter}{#1}
+}
 
 \makeatother
 
@@ -114,6 +121,8 @@ Podìkování.
 \noindent
 Prohla¹uji, ¾e jsem tuto bakaláøskou práci vypracoval(a) samostatnì a výhradnì
 s~pou¾itím citovaných pramenù, literatury a dal¹ích odborných zdrojù.
+
+\medskip\noindent
 Beru na~vìdomí, ¾e se na moji práci vztahují práva a povinnosti vyplývající
 ze zákona è. 121/2000 Sb., autorského zákona v~platném znìní, zejména skuteènost,
 ¾e Univerzita Karlova v Praze má právo na~uzavøení licenèní smlouvy o~u¾ití této
@@ -473,8 +482,9 @@ Integer ac lobortis metus. Nam nec dui turpis. Mauris odio mauris, tempor
 lobortis auctor sit amet, mollis et nunc. Suspendisse ligula augue, gravida
 vitae venenatis id, sollicitudin quis neque. Finis.
 
+\def\bibname{Seznam pou¾ité literatury}
 \begin{thebibliography}{99}
-\addcontentsline{toc}{chapter}{Literatura}
+\addcontentsline{toc}{chapter}{\bibname}
 
 \bibitem{lamport94}
   Leslie Lamport,
@@ -484,5 +494,11 @@ vitae venenatis id, sollicitudin quis neque. Finis.
   1994.
 
 \end{thebibliography}
+
+\chapwithtoc{Seznam tabulek}
+
+\chapwithtoc{Seznam pou¾itých zkratek}
+
+\chapwithtoc{Pøílohy}
 
 \end{document}
