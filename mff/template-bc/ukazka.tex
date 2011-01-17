@@ -22,6 +22,10 @@ a~toto je --- jak se asi dalo èekat --- vlo¾ená vìta ohranièená dlouhými pomlèka
 (V¹imnìte si, ¾e jsme za \verb|a| napsali vlnovku místo mezery: to aby se
 tam nemohl rozdìlit øádek.)
 
+% Makro na èeské uvozovky (novìj¹í verze LaTeXu ho u¾ mají zabudované)
+\newcommand{\uv}[1]{\quotedblbase #1\textquotedblleft}
+\uv{Èeské uvozovky.}
+
 \newtheorem{theorem}{Vìta}
 \newtheorem*{define}{Definice}	% Definice neèíslujeme, proto "*"
 
