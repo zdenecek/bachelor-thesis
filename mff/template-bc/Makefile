@@ -1,9 +1,9 @@
-all: main.ps
+all: prace.ps
 
-main.ps: main.dvi
+prace.ps: prace.dvi
 	dvips -o $@ -D600 -t a4 $<
 
-main.dvi: main.tex
+prace.dvi: prace.tex
 	latex $<
 	latex $<
 

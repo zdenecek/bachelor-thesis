@@ -1,0 +1,29 @@
+©ablona pro sazbu bakaláøské práce v LaTeXu
+Vytvoøil Martin Mare¹ <mj@ucw.cz> roku 2011
+Tento soubor je povoleno libovolnì ¹íøit, pou¾ívat a upravovat.
+Pokud máte jakékoliv pøipomínky nebo návrhy na vylep¹ení, dejte mi prosím vìdìt.
+--------------------------------------------------------------------------------
+
+Obecná fakultní pravidla pro úpravu bakaláøských prací najdete v souboru
+bp_uprava.pdf. Tento formát pro LaTeX se jimi øídí a sna¾í se dùle¾ité vìci
+pøipomínat komentáøi. Pøesto si ale celá pravidla pøeètìte -- napøíklad úprava
+desek práce je popsána pouze tam.
+
+Pokud LaTeX je¹tì neznáte, na webu naleznete mnoho úvodních textù.
+Mnì se nejvíce osvìdèil http://en.wikibooks.org/wiki/LaTeX. Pár poznámek
+k TeXové sazbì najdete také zde v souboru ukazka.tex.
+
+Základní nastavení sazby naleznete v souboru prace.tex, ten se také
+odkazuje na ostatní soubory s jednotlivými kapitolami práce.
+
+Pokud pracujete na Unixovém systému, mù¾e se vám hodit ukázkový Makefile --
+staèí spustit program "make" a ten u¾ se postará o pøelo¾ení v¹ech souborù
+TeXem.
+
+TODO:
+- makefile: run latex twice, PDF mode
+- double-sided mód
+- formát bibliografie
+- pravidla po pou¾ívání loga
+- èeské uvozovky
+- rub titulniho listu zustava nepotisteny

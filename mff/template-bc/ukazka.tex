@@ -1,0 +1,45 @@
+%%% Ukázka pou¾ití nìkterých konstrukcí LaTeXu
+
+\subsection{Ukázka \LaTeX{}u}
+\label{ssec:ukazka}
+
+V~této krátké èásti uká¾eme pou¾ití nìkolika základních konstrukcí \LaTeX{}u,
+které by se vám mohly pøi psaní práce hodit.
+
+Tøeba odrá¾ky:
+
+\begin{itemize}
+\item Logo Matfyzu vidíme na obrázku~\ref{fig:mff}.
+\item Tato subsekce má èíslo~\ref{ssec:ukazka}.
+\item Odkaz na literaturu~\cite{lamport94}.
+\end{itemize}
+
+Druhy pomlèek:
+èerveno-èerný (krátká),
+strana 16--22 (støední),
+$45-44$ (minus),
+a~toto je --- jak se asi dalo èekat --- vlo¾ená vìta ohranièená dlouhými pomlèkami.
+(V¹imnìte si, ¾e jsme za \verb|a| napsali vlnovku místo mezery: to aby se
+tam nemohl rozdìlit øádek.)
+
+\newtheorem{theorem}{Vìta}
+\newtheorem*{define}{Definice}	% Definice neèíslujeme, proto "*"
+
+\begin{define}
+{\sl Strom} je souvislý graf bez kru¾nic.
+\end{define}
+
+\begin{theorem}
+Tato vìta neplatí.
+\end{theorem}
+
+\begin{proof}
+Neplatné vìty nemají dùkaz.
+\end{proof}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=30mm]{logo.eps}
+	\caption{Logo MFF UK}
+	\label{fig:mff}
+\end{figure}
