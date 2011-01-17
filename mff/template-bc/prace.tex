@@ -1,16 +1,8 @@
 %%% Hlavní soubor. Zde se definují základní parametry a odkazuje se na ostatní èásti. %%%
 
-%% Pokud tiskneme oboustrannì:
-% \documentclass[12pt,a4paper,twoside,openright]{report}
-% % Okraje: levý 40mm, pravý 25mm, horní a dolní 25mm
-% % (ale pozor, LaTeX si sám pøidává 1in)
-% \setlength\textwidth{145mm}
-% \setlength\textheight{247mm}
-% \setlength\oddsidemargin{15mm}
-% \setlength\evensidemargin{0mm}
-% \setlength\topmargin{0mm}
-
 %% Verze pro jednostranný tisk:
+% Okraje: levý 40mm, pravý 25mm, horní a dolní 25mm
+% (ale pozor, LaTeX si sám pøidává 1in)
 \documentclass[12pt,a4paper]{report}
 \setlength\textwidth{145mm}
 \setlength\textheight{247mm}
@@ -19,6 +11,19 @@
 \setlength\topmargin{0mm}
 \setlength\headsep{0mm}
 \setlength\headheight{0mm}
+% \openright zaøídí, aby následující text zaèínal na pravé stranì knihy
+\let\openright=\clearpage
+
+%% Pokud tiskneme oboustrannì:
+% \documentclass[12pt,a4paper,twoside,openright]{report}
+% \setlength\textwidth{145mm}
+% \setlength\textheight{247mm}
+% \setlength\oddsidemargin{15mm}
+% \setlength\evensidemargin{0mm}
+% \setlength\topmargin{0mm}
+% \setlength\headsep{0mm}
+% \setlength\headheight{0mm}
+% \let\openright=\cleardoublepage
 
 \usepackage[czech]{babel}
 % Pou¾ité kódování znakù: obvykle latin2, cp1250 nebo utf8
@@ -26,6 +31,10 @@
 \usepackage{graphicx}
 \usepackage{amsthm}
 
+%%% Drobné úpravy stylu
+
+% Tato makra pøesvìdèují mírnì o¹klivým trikem LaTeX, aby hlavièky kapitol
+% sázel pøíèetnìji a nevynechával nad nimi spoustu místa. Smìle ignorujte.
 \makeatletter
 \def\@makechapterhead#1{
   {\parindent \z@ \raggedright \normalfont
@@ -39,22 +48,23 @@
    \par\nobreak
    \vskip 20\p@
 }}
+\makeatother
 
+% Toto makro definuje kapitolu, která není oèíslovaná, ale je uvedena v obsahu.
 \def\chapwithtoc#1{
 \chapter*{#1}
 \addcontentsline{toc}{chapter}{#1}
 }
 
-\makeatother
-
 \begin{document}
 
+% Trochu volnìj¹í nastavení dìlení slov, ne¾ je default.
 \lefthyphenmin=2
 \righthyphenmin=2
 
 %%% Titulní strana práce
 
-\begin{titlepage}
+\pagestyle{empty}
 \begin{center}
 
 \large
@@ -106,7 +116,8 @@ Studijní obor: & obor \\
 Praha 2048
 
 \end{center}
-\end{titlepage}
+
+\newpage
 
 %%% Následuje vevázaný list -- kopie podepsaného "Zadání bakaláøské práce".
 %%% Toto zadání NENÍ souèástí elektronické verze práce, nescanovat.
@@ -114,16 +125,15 @@ Praha 2048
 %%% Na tomto místì mohou být napsána pøípadná podìkování (vedoucímu práce,
 %%% konzultantovi, tomu, kdo zapùjèil software, literaturu apod.)
 
-\begin{titlepage}
+\openright
 
 \noindent
 Podìkování.
 
-\end{titlepage}
+\newpage
 
 %%% Strana s èestným prohlá¹ením k bakaláøské práci
 
-\begin{titlepage}
 \vglue 0pt plus 1fill
 
 \noindent
@@ -145,12 +155,10 @@ Podpis Autora
 \hss}}
 
 \vspace{20mm}
-\eject
-\end{titlepage}
+\newpage
 
 %%% Povinná informaèní strana bakaláøské práce
 
-\begin{titlepage}
 \vbox to 0.5\vsize{
 \setlength\parindent{0mm}
 \setlength\parskip{5mm}
@@ -203,12 +211,16 @@ Keywords:
 % 3 a¾ 5 klíèových slov v angliètinì
 
 \vss}
-\end{titlepage}
+
+\newpage
 
 %%% Strana s automaticky generovaným obsahem bakaláøské práce. U matematických
 %%% prací je pøípustné, aby seznam tabulek a zkratek, existují-li, byl umístìn
 %%% na zaèátku práce, místo na jejím konci.
 
+\openright
+\pagestyle{plain}
+\setcounter{page}{1}
 \tableofcontents
 
 %%% Jednotlivé kapitoly práce jsou pro pøehlednost ulo¾eny v samostatných souborech
@@ -235,4 +247,5 @@ Keywords:
 %%% textu práce. Pøílohy se èíslují.
 \chapwithtoc{Pøílohy}
 
+\openright
 \end{document}
