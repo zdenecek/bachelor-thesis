@@ -1,0 +1,52 @@
+#!/bin/sh
+set -e
+
+make clean
+for a in bp dp phd ; do
+	rm -rf vzor-$a
+	git archive --prefix=vzor-$a/ HEAD | tar xf -
+	rm -rf vzor-$a/mkdist vzor-$a/uprava
+done
+
+# BP
+(
+	echo "Generating BP"
+	cd vzor-bp
+	cp ../uprava/bp_uprava.pdf .
+)
+
+# DP
+(
+	echo "Generating DP"
+	cd vzor-dp
+	cp ../uprava/dp_uprava.pdf .
+	sed -i '
+		s/bakaláøsk/diplomov/g
+		s/BAKALÁØSK/DIPLOMOV/g
+	' *.tex README
+	if grep -ri 'bakal' . ; then
+		echo >&2 "Substitutions failed"
+		exit 1
+	fi
+)
+
+# PhD
+(
+	echo "Generating PhD"
+	cd vzor-phd
+	sed -i '
+		s/bakaláøské/disertaèní/g
+		s/bakaláøských/disertaèních/g
+		s/bakaláøskou/disertaèní/g
+		s/BAKALÁØSKÁ/DISERTAÈNÍ/g
+		/ Následuje vevázaný /,+2d
+	' *.tex README
+	if grep -ri 'bakal' . ; then
+		echo >&2 "Substitutions failed"
+		exit 1
+	fi
+)
+
+for a in bp dp phd ; do
+	zip -r vzor-$a.zip vzor-$a
+done
