@@ -19,6 +19,3 @@ odkazuje na ostatní soubory s jednotlivými kapitolami práce.
 Pokud pracujete na Unixovém systému, mù¾e se vám hodit ukázkový Makefile --
 staèí spustit program "make" a ten u¾ se postará o pøelo¾ení v¹ech souborù
 TeXem.
-
-TODO:
-- formát bibliografie
