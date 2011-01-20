@@ -21,6 +21,7 @@ done
 	cd vzor-dp
 	cp ../uprava/dp_uprava.pdf .
 	sed -i '
+		s/bp_uprava/dp_uprava/g
 		s/bakaláøsk/diplomov/g
 		s/BAKALÁØSK/DIPLOMOV/g
 	' *.tex README
