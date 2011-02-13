@@ -3,7 +3,7 @@ set -e
 
 make clean
 for a in bp dp phd ; do
-	rm -rf vzor-$a
+	rm -rf vzor-$a{,-win}
 	git archive --prefix=vzor-$a/ HEAD | tar xf -
 	rm -rf vzor-$a/mkdist vzor-$a/uprava
 done
@@ -24,6 +24,7 @@ done
 		s/bp_uprava/dp_uprava/g
 		s/bakaláøsk/diplomov/g
 		s/BAKALÁØSK/DIPLOMOV/g
+		s/bp_uprava/dp_uprava/g
 	' *.tex README
 	if grep -ri 'bakal' . ; then
 		echo >&2 "Substitutions failed"
@@ -35,11 +36,13 @@ done
 (
 	echo "Generating PhD"
 	cd vzor-phd
+	cp ../uprava/phd_uprava.pdf .
 	sed -i '
 		s/bakaláøské/disertaèní/g
 		s/bakaláøských/disertaèních/g
 		s/bakaláøskou/disertaèní/g
 		s/BAKALÁØSKÁ/DISERTAÈNÍ/g
+		s/bp_uprava/phd_uprava/g
 		/ Následuje vevázaný /,+2d
 	' *.tex README
 	if grep -ri 'bakal' . ; then
@@ -49,5 +52,11 @@ done
 )
 
 for a in bp dp phd ; do
-	zip -r vzor-$a.zip vzor-$a
+	zip -r vzor-$a-iso.zip vzor-$a
+	cp -a vzor-$a vzor-$a-win
+	for c in vzor-$a-win/{*.tex,README} ; do
+		recode iso-8859-2..windows-1250 $c
+	done
+	sed -i 's/\[latin2]/[cp1250]/g' vzor-$a-win/prace.tex
+	zip -r vzor-$a-win.zip vzor-$a-win
 done
