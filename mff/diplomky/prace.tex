@@ -25,9 +25,16 @@
 % \setlength\headheight{0mm}
 % \let\openright=\cleardoublepage
 
-\usepackage[czech]{babel}
-% Pou¾ité kódování znakù: obvykle latin2, cp1250 nebo utf8
+%% Pokud pou¾íváte csLaTeX (doporuèeno):
+\usepackage{czech}
+%% Pokud nikoliv:
+%\usepackage[czech]{babel}
+%\usepackage[T1]{fontenc}
+
+%% Pou¾ité kódování znakù: obvykle latin2, cp1250 nebo utf8:
 \usepackage[latin2]{inputenc}
+
+%% Ostatní balíèky
 \usepackage{graphicx}
 \usepackage{amsthm}
 
