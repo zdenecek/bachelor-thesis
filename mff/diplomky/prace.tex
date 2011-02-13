@@ -38,11 +38,10 @@
 \usepackage{graphicx}
 \usepackage{amsthm}
 
-%% Hyperref: jednak jím jdou vyrábìt klikací odkazy v PDF,
-%% jednak ho pou¾ijeme k ulo¾ení jména práce a autora do PDF.
-%% (Pozor, musí být uveden za v¹emi ostatními balíèky!)
-\usepackage[ps2pdf]{hyperref}
-\hypersetup{unicode=true}
+%% Balíèek hyperref, kterým jdou vyrábìt klikací odkazy v PDF,
+%% ale hlavnì ho pou¾íváme k ulo¾ení metadat do PDF (vèetnì obsahu).
+%% POZOR, nezapomeòte vyplnit jméno práce a autora.
+\usepackage[ps2pdf,unicode]{hyperref}   % Musí být za v¹emi ostatními balíèky
 \hypersetup{pdftitle=Název práce}
 \hypersetup{pdfauthor=Jméno Pøíjmení}
 

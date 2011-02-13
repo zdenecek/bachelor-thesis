@@ -14,7 +14,8 @@ Mnì se nejvíce osvìdèil http://en.wikibooks.org/wiki/LaTeX. Pár poznámek
 k TeXové sazbì najdete také zde v souboru ukazka.tex.
 
 Základní nastavení sazby naleznete v souboru prace.tex, ten se také
-odkazuje na ostatní soubory s jednotlivými kapitolami práce.
+odkazuje na ostatní soubory s jednotlivými kapitolami práce. Peèlivì
+si hlavní soubor pøeètìte a doplòte v¹echny chybìjící údaje.
 
 Pokud pracujete na Unixovém systému, mù¾e se vám hodit ukázkový Makefile --
 staèí spustit program "make" a ten u¾ se postará o pøelo¾ení v¹ech souborù
