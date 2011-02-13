@@ -38,6 +38,14 @@
 \usepackage{graphicx}
 \usepackage{amsthm}
 
+%% Hyperref: jednak jím jdou vyrábìt klikací odkazy v PDF,
+%% jednak ho pou¾ijeme k ulo¾ení jména práce a autora do PDF.
+%% (Pozor, musí být uveden za v¹emi ostatními balíèky!)
+\usepackage[ps2pdf]{hyperref}
+\hypersetup{unicode=true}
+\hypersetup{pdftitle=Název práce}
+\hypersetup{pdfauthor=Jméno Pøíjmení}
+
 %%% Drobné úpravy stylu
 
 % Tato makra pøesvìdèují mírnì o¹klivým trikem LaTeX, aby hlavièky kapitol
