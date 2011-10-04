@@ -1,5 +1,6 @@
 \documentclass{beamer}
 \usepackage[latin2]{inputenc}
+\usepackage[czech]{babel}
 \usepackage{palatino}
 \usetheme{Warsaw}
 \title[Medvìdùv prùvodce bakaláøkou]{Medvìdùv prùvodce bakaláøkou}
@@ -9,8 +10,6 @@
 \begin{document}
 \setbeamertemplate{navigation symbols}{}
 \setbeamerfont{title page}{family=\rmfamily}
-
-\frenchspacing
 
 \begin{frame}
 \titlepage
@@ -67,47 +66,117 @@ K~dispozici je ¹ablona pro \LaTeX.
 \begin{itemize}
 \item Jakým jazykem: CS / SK / EN; jiný se souhlasem dìkana
    \begin{itemize}
-   \item Nejste-li zku¹ení, radìji ne anglicky.
+   \item Nejste-li zku¹ení, doporuèuji nepsat anglicky.
    \end{itemize}
-\item Jazyková kultura: hovorový ¾blebty, XXXXXX
-\item Vyhýbejte se slo¾itým vìtám (i souvìtím (se závorkami)),
-   jako¾ i dlouhatánským odstavcùm.
-
-% terminologie
-% jednotnost
-% pøeklepy, pravopis
-% my
-% dejte to nìkomu pøeèíst
-% nemá to být detektivka
+\item Jazyková kultura:
+   \begin{itemize}
+   \item Já být zatracenej barbar. Ale vy nebuïte.
+   \item Terminologie: vyhýbejte se czengliètinì
+   \item Slovosled (HTTP protokol, kompaktní CD disk)
+   \item Pravopys a syntaxe (Parse error~\dots)
+   \end{itemize}
+\item Obvykle pí¹e{\bf me} v~1. osobì mno¾ného èísla.
+\item Vyhýbejte se slo¾itým vìtám, pota¾mo souvìtím (a~spoustì
+   závorek (¾e?)), jako¾ i dlouhatánským odstavcùm.
+\item Nepi¹te detektivky. Hned øeknìte, ¾e vrah je zahradník.
+\item Pi¹te jednotnì.
+\item Zkuste si text pøeèíst nahlas.
+\item Testujte na lidech.
 \end{itemize}
 
 \end{frame}
 
 \begin{frame}{Typografické zákoutí}
 
-% obrázky: vektorové > ... > JPEG
-% dìlení slov
-% typy písma, barvy
-% desetinná teèka/èárka
-% èeské uvozovky
-% pomlèky
-% vlnky
-% netisknout na inkoustovce
+\begin{itemize}
+\item Pou¾ijte program urèený k~sazbì textu (\TeX, Scribus, \dots),
+   Word v~nouzi poslou¾í, ale výstup obvykle vypadá hroznì.
+\item Zvolte si typ písma pro {\bf definice,} {\tt identifikátory,} {\it zvýraznìní\/} \dots{} a
+   dodr¾ujte ho v~celém textu.
+\item S~typy písma a barvami to nepøehánìjte.
+\item Rùzné typy pomlèek: Fordùv-Fulkersonùv, 100--200 bitù, pøípadnì -- jako tady -- kolem vsuvky.
+\item Desetinné teèky {\it xor\/} èárky.
+\item \clqq~èeské uvozovky \crqq
+\item Nedìlitelné mezery: u{\tt\char32}pøedlo¾ek, vrchol{\tt\char32}$v$, a{\tt\char32}proto.
+\item Obrázky nejlépe vektorové nebo bitmapy ve~vysokém rozli¹ení. JPEG jen na fotky.
+\end{itemize}
 
 \end{frame}
 
 \begin{frame}{Citace}
 
+\begin{itemize}
+\item Za~cizí my¹lenky se nestyïte, ale správnì je citujte.
+   \begin{itemize}
+   \item Pou¾ité vìty, algoritmy, dùkazy
+   \item Celá pasá¾ cizího textu -- mìla by být jasnì ohranièena
+   \end{itemize}
+\item Odkazy: \uv{$\,$O~temnu pí¹í jak Balcar se ©tìpánkem [1], tak Jirásek [2].}
+\item {\bf ©patnì:} \uv{$\,$Jak najdeme v~[3]}
+\item Èíslování: abecednì nebo podle poøadí odkazování
+\item Alternativnì: [B©2005]~~~(hodí se, máte-li odkazù hodnì)
+\end{itemize}
+
+\begin{itemize}
+\item Vhodné zdroje (kriteria: kredit, spolehlivost, dostupnost):
+   \begin{itemize}
+   \item Pùvodní publikace (typicky èlánek)
+   \item Monografie
+   \item Uèebnice
+   \item Lze i osobní komunikace :)
+   \item Radìji ne encyklopedie
+   \item Rozhodnì ne náhodné webové stránky
+   \end{itemize}
+\end{itemize}
+
 \end{frame}
 
-% Citace:
-% ISO 690 - kde ji vzít?
-% www.citace.com
-% [27] vs. [Knu95b], jsou to závorky
-% abecední poøadí vs. poøadí podle odkazù v textu
-% BibTeX, BibLaTeX
-% citeulike.org, Google Scholar, Citeseer
-% co citovat: èlánky, monografie, náhodné webové stránky
-% velikost písmen u jmen
+\begin{frame}{Citace: Formát bibliografie}
+
+\begin{itemize}
+\item {\bf Doporuèená úprava\/} uvádí {\bf povinnost\/} dr¾et se ISO 690.
+\item Norma je ov¹em obtí¾nì dostupná. (Kdo ji èetl?)
+\item Praxe: rùzné výtahy, tøeba na \url{http://citace.com/}
+\end{itemize}
+
+\vfill
+
+{\sc Balcar}, Bohuslav a {\sc ©tìpánek}, Petr. {\it Teorie mno¾in.\/}
+2.~vydání. Praha: Academia, 2005. ISBN 80-200-0470-X.
+
+\medskip
+
+{\sc Marný}, Tomá¹. Tu¾ko¾rout obecný: tajuplný obyvatel akademické pùdy.
+In: {\it Èasopis pro pìstování stra¹idel.} \\
+2010, è.~5, s.~60--69. ISSN 1234-5678.
+
+\medskip
+
+{\sc Munroe,} Randall. Random Number.
+In: {\it XKCD: A~webcomic of romance, sarcasm, math and language\/} [online].
+2010 \hfil\break
+[cit. 2011-10-04]. Dostupné~z: \url{http://xkcd.com/221/}
+\end{frame}
+
+\begin{frame}{Citace: Nástroje}
+
+\begin{itemize}
+\item Formátování bibliografie:
+   \begin{itemize}
+   \item Bib\TeX{} -- ponìkud obskurní, ale úèinný
+   \item Bib\LaTeX{} -- novìj¹í, ohebnìj¹í
+   \item Pybibliographer -- pokud nepou¾íváte \TeX
+   \end{itemize}
+\bigskip
+\item Sbìr bibliografie:
+   \begin{itemize}
+   \item citeulike.org
+   \item Google Scholar
+   \item Citeseer
+   \item \dots{} ka¾dopádnì nutno upravovat ruènì
+   \end{itemize}
+\end{itemize}
+
+\end{frame}
 
 \end{document}
