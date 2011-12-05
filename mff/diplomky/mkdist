@@ -1,10 +1,10 @@
-#!/bin/sh
+#!/bin/bash
 set -e
 export LC_ALL=cs_CZ
 
 make clean
 for a in bp dp phd ; do
-	rm -rf vzor-$a{,-win}
+	rm -rf vzor-$a{,-win,-utf}
 	git archive --prefix=vzor-$a/ HEAD | tar xf -
 	rm -rf vzor-$a/{mkdist,uprava,slides}
 done
@@ -53,11 +53,22 @@ done
 )
 
 for a in bp dp phd ; do
+	# Basic version
 	zip -r vzor-$a-iso.zip vzor-$a
+
+	# CP1250 version
 	cp -a vzor-$a vzor-$a-win
 	for c in vzor-$a-win/{*.tex,README} ; do
 		recode iso-8859-2..windows-1250 $c
 	done
 	sed -i 's/\[latin2]/[cp1250]/g' vzor-$a-win/prace.tex
 	zip -r vzor-$a-win.zip vzor-$a-win
+
+	# UTF-8 version
+	cp -a vzor-$a vzor-$a-utf
+	for c in vzor-$a-utf/{*.tex,README} ; do
+		recode iso-8859-2..utf-8 $c
+	done
+	sed -i 's/\[latin2]/[utf8]/g' vzor-$a-utf/prace.tex
+	zip -r vzor-$a-utf.zip vzor-$a-utf
 done
