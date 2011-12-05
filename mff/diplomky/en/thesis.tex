@@ -1,0 +1,259 @@
+%%% Hlavní soubor. Zde se definují základní parametry a odkazuje se na ostatní èásti. %%%
+
+%% Verze pro jednostranný tisk:
+% Okraje: levý 40mm, pravý 25mm, horní a dolní 25mm
+% (ale pozor, LaTeX si sám pøidává 1in)
+\documentclass[12pt,a4paper]{report}
+\setlength\textwidth{145mm}
+\setlength\textheight{247mm}
+\setlength\oddsidemargin{15mm}
+\setlength\evensidemargin{15mm}
+\setlength\topmargin{0mm}
+\setlength\headsep{0mm}
+\setlength\headheight{0mm}
+% \openright zaøídí, aby následující text zaèínal na pravé stranì knihy
+\let\openright=\clearpage
+
+%% Pokud tiskneme oboustrannì:
+% \documentclass[12pt,a4paper,twoside,openright]{report}
+% \setlength\textwidth{145mm}
+% \setlength\textheight{247mm}
+% \setlength\oddsidemargin{15mm}
+% \setlength\evensidemargin{0mm}
+% \setlength\topmargin{0mm}
+% \setlength\headsep{0mm}
+% \setlength\headheight{0mm}
+% \let\openright=\cleardoublepage
+
+%% Pou¾ité kódování znakù: obvykle latin2, cp1250 nebo utf8:
+\usepackage[latin2]{inputenc}
+
+%% Ostatní balíèky
+\usepackage{graphicx}
+\usepackage{amsthm}
+
+%% Balíèek hyperref, kterým jdou vyrábìt klikací odkazy v PDF,
+%% ale hlavnì ho pou¾íváme k ulo¾ení metadat do PDF (vèetnì obsahu).
+%% POZOR, nezapomeòte vyplnit jméno práce a autora.
+\usepackage[ps2pdf,unicode]{hyperref}   % Musí být za v¹emi ostatními balíèky
+\hypersetup{pdftitle=Název práce}
+\hypersetup{pdfauthor=Jméno Pøíjmení}
+
+%%% Drobné úpravy stylu
+
+% Tato makra pøesvìdèují mírnì o¹klivým trikem LaTeX, aby hlavièky kapitol
+% sázel pøíèetnìji a nevynechával nad nimi spoustu místa. Smìle ignorujte.
+\makeatletter
+\def\@makechapterhead#1{
+  {\parindent \z@ \raggedright \normalfont
+   \Huge\bfseries \thechapter. #1
+   \par\nobreak
+   \vskip 20\p@
+}}
+\def\@makeschapterhead#1{
+  {\parindent \z@ \raggedright \normalfont
+   \Huge\bfseries #1
+   \par\nobreak
+   \vskip 20\p@
+}}
+\makeatother
+
+% Toto makro definuje kapitolu, která není oèíslovaná, ale je uvedena v obsahu.
+\def\chapwithtoc#1{
+\chapter*{#1}
+\addcontentsline{toc}{chapter}{#1}
+}
+
+\begin{document}
+
+% Trochu volnìj¹í nastavení dìlení slov, ne¾ je default.
+\lefthyphenmin=2
+\righthyphenmin=2
+
+%%% Titulní strana práce
+
+\pagestyle{empty}
+\begin{center}
+
+\large
+
+Charles University in Prague
+
+\medskip
+
+Faculty of Mathematics and Physics
+
+\vfill
+
+{\bf\Large BACHELOR THESIS}
+
+\vfill
+
+\centerline{\mbox{\includegraphics[width=60mm]{../img/logo.eps}}}
+
+\vfill
+\vspace{5mm}
+
+{\LARGE First and last name of the author}
+
+\vspace{15mm}
+
+% Název práce pøesnì podle zadání
+{\LARGE\bfseries Title of the thesis}
+
+\vfill
+
+% Název katedry nebo ústavu, kde byla práce oficiálnì zadána
+% (dle Organizaèní struktury MFF UK)
+Name of the department or institute
+
+\vfill
+
+\begin{tabular}{rl}
+
+Supervisor of the bachelor thesis: & First and last name \\
+\noalign{\vspace{2mm}}
+Study programme: & programme \\
+\noalign{\vspace{2mm}}
+Specialization: & specialization \\
+\end{tabular}
+
+\vfill
+
+% Zde doplòte rok
+Prague YEAR
+
+\end{center}
+
+\newpage
+
+%%% Následuje vevázaný list -- kopie podepsaného "Zadání bakaláøské práce".
+%%% Toto zadání NENÍ souèástí elektronické verze práce, nescanovat.
+
+%%% Na tomto místì mohou být napsána pøípadná podìkování (vedoucímu práce,
+%%% konzultantovi, tomu, kdo zapùjèil software, literaturu apod.)
+
+\openright
+
+\noindent
+Dedication.
+
+\newpage
+
+%%% Strana s èestným prohlá¹ením k bakaláøské práci
+
+\vglue 0pt plus 1fill
+
+\noindent
+I declare that I carried out this bachelor thesis independently, and only with the cited
+sources, literature and other professional sources.
+
+\medskip\noindent
+I understand that my work relates to the rights and obligations under the Act No.
+121/2000 Coll., the Copyright Act, as amended, in particular the fact that the Charles
+University in Prague has the right to conclude a license agreement on the use of this
+work as a school work pursuant to Section 60 paragraph 1 of the Copyright Act.
+
+\vspace{10mm}
+
+\hbox{\hbox to 0.5\hsize{%
+In ........ date ............
+\hss}\hbox to 0.5\hsize{%
+signature of the author
+\hss}}
+
+\vspace{20mm}
+\newpage
+
+%%% Povinná informaèní strana bakaláøské práce
+
+\vbox to 0.5\vsize{
+\setlength\parindent{0mm}
+\setlength\parskip{5mm}
+
+Název práce:
+Název práce
+% pøesnì dle zadání
+
+Autor:
+Jméno a pøíjmení autora
+
+Katedra:  % Pøípadnì Ústav:
+Název katedry èi ústavu, kde byla práce oficiálnì zadána
+% dle Organizaèní struktury MFF UK
+
+Vedoucí bakaláøské práce:
+Jméno a pøíjmení s tituly, pracovi¹tì
+% dle Organizaèní struktury MFF UK, pøípadnì plný název pracovi¹tì mimo MFF UK
+
+Abstrakt:
+% abstrakt v rozsahu 80-200 slov; nejedná se v¹ak o opis zadání bakaláøské práce
+
+Klíèová slova:
+% 3 a¾ 5 klíèových slov
+
+\vss}\nobreak\vbox to 0.49\vsize{
+\setlength\parindent{0mm}
+\setlength\parskip{5mm}
+
+Title:
+% pøesný pøeklad názvu práce v angliètinì
+
+Author:
+Jméno a pøíjmení autora
+
+Department:
+Název katedry èi ústavu, kde byla práce oficiálnì zadána
+% dle Organizaèní struktury MFF UK v angliètinì
+
+Supervisor:
+Jméno a pøíjmení s tituly, pracovi¹tì
+% dle Organizaèní struktury MFF UK, pøípadnì plný název pracovi¹tì
+% mimo MFF UK v angliètinì
+
+Abstract:
+% abstrakt v rozsahu 80-200 slov v angliètinì; nejedná se v¹ak o pøeklad
+% zadání bakaláøské práce
+
+Keywords:
+% 3 a¾ 5 klíèových slov v angliètinì
+
+\vss}
+
+\newpage
+
+%%% Strana s automaticky generovaným obsahem bakaláøské práce. U matematických
+%%% prací je pøípustné, aby seznam tabulek a zkratek, existují-li, byl umístìn
+%%% na zaèátku práce, místo na jejím konci.
+
+\openright
+\pagestyle{plain}
+\setcounter{page}{1}
+\tableofcontents
+
+%%% Jednotlivé kapitoly práce jsou pro pøehlednost ulo¾eny v samostatných souborech
+\include{preface}
+\include{chap1}
+\include{chap2}
+
+% Ukázka pou¾ití nìkterých konstrukcí LateXu (odkomentujte, chcete-li)
+% \include{example}
+
+\include{epilog}
+
+%%% Seznam pou¾ité literatury
+\include{bibliography}
+
+%%% Tabulky v bakaláøské práci, existují-li.
+\chapwithtoc{List of Tables}
+
+%%% Pou¾ité zkratky v bakaláøské práci, existují-li, vèetnì jejich vysvìtlení.
+\chapwithtoc{List of Abbreviations}
+
+%%% Pøílohy k bakaláøské práci, existují-li (rùzné dodatky jako výpisy programù,
+%%% diagramy apod.). Ka¾dá pøíloha musí být alespoò jednou odkazována z vlastního
+%%% textu práce. Pøílohy se èíslují.
+\chapwithtoc{Attachments}
+
+\openright
+\end{document}
