@@ -2,7 +2,6 @@
 set -e
 export LC_ALL=cs_CZ
 
-make clean
 for a in bp dp phd ; do
 	rm -rf vzor-$a{,-win,-utf}
 	git archive --prefix=vzor-$a/ HEAD | tar xf -
@@ -13,21 +12,24 @@ done
 (
 	echo "Generating BP"
 	cd vzor-bp
-	cp ../uprava/bp_uprava.pdf .
+	cp ../uprava/bp_uprava.pdf cs/
+	cp ../uprava/bp_uprava_en.pdf en/
 )
 
 # DP
 (
 	echo "Generating DP"
 	cd vzor-dp
-	cp ../uprava/dp_uprava.pdf .
+	cp ../uprava/dp_uprava.pdf cs/
+	cp ../uprava/dp_uprava_en.pdf en/
 	sed -i '
-		s/bp_uprava/dp_uprava/g
 		s/bakaláøsk/diplomov/g
 		s/BAKALÁØSK/DIPLOMOV/g
+		s/bachelor/master/g
+		s/BACHELOR/MASTER/g
 		s/bp_uprava/dp_uprava/g
-	' *.tex README
-	if grep -ri 'bakal' . ; then
+	' */*.tex README
+	if grep -Eri 'bakal|bachel' . ; then
 		echo >&2 "Substitutions failed"
 		exit 1
 	fi
@@ -37,16 +39,19 @@ done
 (
 	echo "Generating PhD"
 	cd vzor-phd
-	cp ../uprava/phd_uprava.pdf .
+	cp ../uprava/phd_uprava.pdf cs/
+	cp ../uprava/phd_uprava_en.pdf en/
 	sed -i '
 		s/bakaláøské/disertaèní/g
 		s/bakaláøských/disertaèních/g
 		s/bakaláøskou/disertaèní/g
 		s/BAKALÁØSKÁ/DISERTAÈNÍ/g
+		s/bachelor/doctoral/g
+		s/BACHELOR/DOCTORAL/g
 		s/bp_uprava/phd_uprava/g
 		/ Následuje vevázaný /,+2d
-	' *.tex README
-	if grep -ri 'bakal' . ; then
+	' */*.tex README
+	if grep -Eri 'bakal|bachel' . ; then
 		echo >&2 "Substitutions failed"
 		exit 1
 	fi
@@ -58,17 +63,17 @@ for a in bp dp phd ; do
 
 	# CP1250 version
 	cp -a vzor-$a vzor-$a-win
-	for c in vzor-$a-win/{*.tex,README} ; do
+	for c in vzor-$a-win/{*/*.tex,README} ; do
 		recode iso-8859-2..windows-1250 $c
 	done
-	sed -i 's/\[latin2]/[cp1250]/g' vzor-$a-win/prace.tex
+	sed -i 's/\[latin2]/[cp1250]/g' vzor-$a-win/{cs/prace.tex,en/thesis.tex}
 	zip -r vzor-$a-win.zip vzor-$a-win
 
 	# UTF-8 version
 	cp -a vzor-$a vzor-$a-utf
-	for c in vzor-$a-utf/{*.tex,README} ; do
+	for c in vzor-$a-utf/{*/*.tex,README} ; do
 		recode iso-8859-2..utf-8 $c
 	done
-	sed -i 's/\[latin2]/[utf8]/g' vzor-$a-utf/prace.tex
+	sed -i 's/\[latin2]/[utf8]/g' vzor-$a-utf/{cs/prace.tex,en/thesis.tex}
 	zip -r vzor-$a-utf.zip vzor-$a-utf
 done
