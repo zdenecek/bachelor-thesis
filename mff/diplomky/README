@@ -26,7 +26,7 @@ TeXem.
 Práci je potøeba kompilovat csLaTeXem, ten je ve vìt¹inì instalací TeXu
 dostupný v balíèku pro podporu èe¹tiny a sloven¹tiny. Pokud csLaTeX nejste
 schopni rozbìhnout, mù¾ete zkusit místo toho pou¾ít klasický LaTeX s balíèkem
-babel (viz zakomentovaná èást na zaèátku souboru babel.tex), ov¹em sazba èeských
+babel (viz zakomentovaná èást na zaèátku souboru prace.tex), ov¹em sazba èeských
 písmen bude o nìco o¹klivìj¹í.
 
 Dal¹í materiály o psaní bakaláøských prací a odborných textù vùbec najdete
