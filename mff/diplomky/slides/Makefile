@@ -1,3 +1,5 @@
+SHELL=/bin/bash
+
 all: bcintro.pdf
 
 bcintro.pdf: bcintro.tex
