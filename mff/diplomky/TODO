@@ -1,3 +1,18 @@
 \usepackage{lmodern}
 
 nebo fontencoding IL2 (pak se pouziji cs-fonty)
+
+Pozor na EPSko s logem, je v nem sediva!
+
+Pridat \usepackage{breakurl} za \usepackage{hyperref}
+
+Prejit na pdfTeX
+
+Okraj ma byt 14.2mm, ne 15mm, aby vychazel soutisk.
+
+Hyperrefu nastavit pdfanchor=false na necislovane stranky
+(viz Paliho bakalarka)
+pdfauthor a spol. maji byt uzavrene v {}
+Pridat pdfkeywords.
+
+Preklep ve slovencine, ktery objevil Pali (viz mail).
