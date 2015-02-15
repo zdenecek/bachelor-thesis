@@ -1,8 +1,8 @@
-%%% Hlavní soubor. Zde se definují základní parametry a odkazuje se na ostatní èásti. %%%
+%%% HlavnÃ­ soubor. Zde se definujÃ­ zÃ¡kladnÃ­ parametry a odkazuje se na ostatnÃ­ ÄÃ¡sti. %%%
 
-%% Verze pro jednostrannı tisk:
-% Okraje: levı 40mm, pravı 25mm, horní a dolní 25mm
-% (ale pozor, LaTeX si sám pøidává 1in)
+%% Verze pro jednostrannÃ½ tisk:
+% Okraje: levÃ½ 40mm, pravÃ½ 25mm, hornÃ­ a dolnÃ­ 25mm
+% (ale pozor, LaTeX si sÃ¡m pÅ™idÃ¡vÃ¡ 1in)
 \documentclass[12pt,a4paper]{report}
 \setlength\textwidth{145mm}
 \setlength\textheight{247mm}
@@ -11,10 +11,10 @@
 \setlength\topmargin{0mm}
 \setlength\headsep{0mm}
 \setlength\headheight{0mm}
-% \openright zaøídí, aby následující text zaèínal na pravé stranì knihy
+% \openright zaÅ™Ã­dÃ­, aby nÃ¡sledujÃ­cÃ­ text zaÄÃ­nal na pravÃ© stranÄ› knihy
 \let\openright=\clearpage
 
-%% Pokud tiskneme oboustrannì:
+%% Pokud tiskneme oboustrannÄ›:
 % \documentclass[12pt,a4paper,twoside,openright]{report}
 % \setlength\textwidth{145mm}
 % \setlength\textheight{247mm}
@@ -25,59 +25,59 @@
 % \setlength\headheight{0mm}
 % \let\openright=\cleardoublepage
 
-%% Pokud pou¾íváte csLaTeX (doporuèeno):
+%% Pokud pouÅ¾Ã­vÃ¡te csLaTeX (doporuÄeno):
 \usepackage{czech}
 %% Pokud nikoliv:
 %\usepackage[czech]{babel}
 %\usepackage[T1]{fontenc}
 
-%% Pou¾ité kódování znakù: obvykle latin2, cp1250 nebo utf8:
-\usepackage[latin2]{inputenc}
+%% PouÅ¾itÃ© kÃ³dovÃ¡nÃ­ znakÅ¯: obvykle latin2, cp1250 nebo utf8:
+\usepackage[utf8]{inputenc}
 
-%% Ostatní balíèky
+%% OstatnÃ­ balÃ­Äky
 \usepackage{graphicx}
 \usepackage{amsthm}
 
-%%% Údaje o práci
+%%% Ãšdaje o prÃ¡ci
 
-% Název práce v jazyce práce (pøesnì podle zadání)
-\def\NazevPrace{Název práce}
+% NÃ¡zev prÃ¡ce v jazyce prÃ¡ce (pÅ™esnÄ› podle zadÃ¡nÃ­)
+\def\NazevPrace{NÃ¡zev prÃ¡ce}
 
-% Název práce v angliètinì
+% NÃ¡zev prÃ¡ce v angliÄtinÄ›
 \def\NazevPraceEN{Name of thesis}
 
-% Jméno autora
-\def\AutorPrace{Jméno Pøíjmení}
+% JmÃ©no autora
+\def\AutorPrace{JmÃ©no PÅ™Ã­jmenÃ­}
 
-% Rok odevzdání
+% Rok odevzdÃ¡nÃ­
 \def\RokOdevzdani{ROK}
 
-% Název katedry nebo ústavu, kde byla práce oficiálnì zadána
-% (dle Organizaèní struktury MFF UK, pøípadnì plnı název pracovi¹tì mimo MFF)
-\def\Katedra{Název katedry nebo ústavu}
+% NÃ¡zev katedry nebo Ãºstavu, kde byla prÃ¡ce oficiÃ¡lnÄ› zadÃ¡na
+% (dle OrganizaÄnÃ­ struktury MFF UK, pÅ™Ã­padnÄ› plnÃ½ nÃ¡zev pracoviÅ¡tÄ› mimo MFF)
+\def\Katedra{NÃ¡zev katedry nebo Ãºstavu}
 \def\KatedraEN{Name of the department}
 
-% Jedná se o katedru nebo o ústav?
+% JednÃ¡ se o katedru nebo o Ãºstav?
 \def\TypPracoviste{Katedra}
 
-% Vedoucí práce: Jméno a pøíjmení s~tituly
-\def\Vedouci{Vedoucí práce}
+% VedoucÃ­ prÃ¡ce: JmÃ©no a pÅ™Ã­jmenÃ­ s~tituly
+\def\Vedouci{VedoucÃ­ prÃ¡ce}
 
-% Pracovi¹tì vedoucího (opìt dle Organizaèní struktury MFF)
+% PracoviÅ¡tÄ› vedoucÃ­ho (opÄ›t dle OrganizaÄnÃ­ struktury MFF)
 \def\KatedraVedouciho{katedra}
 \def\KatedraVedoucihoEN{department}
 
-% Studijní program a obor
-\def\StudijniProgram{studijní program}
-\def\StudijniObor{studijní obor}
+% StudijnÃ­ program a obor
+\def\StudijniProgram{studijnÃ­ program}
+\def\StudijniObor{studijnÃ­ obor}
 
-% Nepovinné podìkování (vedoucímu práce, konzultantovi, tomu, kdo
-% zapùjèil software, literaturu apod.)
+% NepovinnÃ© podÄ›kovÃ¡nÃ­ (vedoucÃ­mu prÃ¡ce, konzultantovi, tomu, kdo
+% zapÅ¯jÄil software, literaturu apod.)
 \def\Podekovani{
-Podìkování.
+PodÄ›kovÃ¡nÃ­.
 }
 
-% Abstrakt (v rozsahu cca 80-200 slov; nejedná se o zadání práce)
+% Abstrakt (v rozsahu cca 80-200 slov; nejednÃ¡ se o zadÃ¡nÃ­ prÃ¡ce)
 \def\Abstrakt{
 Abstrakt.
 }
@@ -85,55 +85,55 @@ Abstrakt.
 Abstract.
 }
 
-% 3 a¾ 5 klíèovıch slov
+% 3 aÅ¾ 5 klÃ­ÄovÃ½ch slov
 \def\KlicovaSlova{
-klíèová slova
+klÃ­ÄovÃ¡ slova
 }
 \def\KlicovaSlovaEN{
 key words
 }
 
-%% Balíèek hyperref, kterım jdou vyrábìt klikací odkazy v PDF,
-%% ale hlavnì ho pou¾íváme k ulo¾ení metadat do PDF (vèetnì obsahu).
-\usepackage[ps2pdf,unicode]{hyperref}   % Musí bıt za v¹emi ostatními balíèky
+%% BalÃ­Äek hyperref, kterÃ½m jdou vyrÃ¡bÄ›t klikacÃ­ odkazy v PDF,
+%% ale hlavnÄ› ho pouÅ¾Ã­vÃ¡me k uloÅ¾enÃ­ metadat do PDF (vÄetnÄ› obsahu).
+\usepackage[ps2pdf,unicode]{hyperref}   % MusÃ­ bÃ½t za vÅ¡emi ostatnÃ­mi balÃ­Äky
 \hypersetup{pdftitle=\NazevPrace}
 \hypersetup{pdfauthor=\AutorPrace}
 
-%% Titulní strana a rùzné povinné informaèní strany
+%% TitulnÃ­ strana a rÅ¯znÃ© povinnÃ© informaÄnÃ­ strany
 \input titulka.tex
 
-%%% Strana s automaticky generovanım obsahem bakaláøské práce. U matematickıch
-%%% prací je pøípustné, aby seznam tabulek a zkratek, existují-li, byl umístìn
-%%% na zaèátku práce, místo na jejím konci.
+%%% Strana s automaticky generovanÃ½m obsahem bakalÃ¡Å™skÃ© prÃ¡ce. U matematickÃ½ch
+%%% pracÃ­ je pÅ™Ã­pustnÃ©, aby seznam tabulek a zkratek, existujÃ­-li, byl umÃ­stÄ›n
+%%% na zaÄÃ¡tku prÃ¡ce, mÃ­sto na jejÃ­m konci.
 
 \openright
 \pagestyle{plain}
 \setcounter{page}{1}
 \tableofcontents
 
-%%% Jednotlivé kapitoly práce jsou pro pøehlednost ulo¾eny v samostatnıch souborech
+%%% JednotlivÃ© kapitoly prÃ¡ce jsou pro pÅ™ehlednost uloÅ¾eny v samostatnÃ½ch souborech
 \include{uvod}
 \include{kap1}
 \include{kap2}
 
-% Ukázka pou¾ití nìkterıch konstrukcí LateXu (odkomentujte, chcete-li)
+% UkÃ¡zka pouÅ¾itÃ­ nÄ›kterÃ½ch konstrukcÃ­ LateXu (odkomentujte, chcete-li)
 % \include{ukazka}
 
 \include{zaver}
 
-%%% Seznam pou¾ité literatury
+%%% Seznam pouÅ¾itÃ© literatury
 \include{literatura}
 
-%%% Tabulky v bakaláøské práci, existují-li.
+%%% Tabulky v bakalÃ¡Å™skÃ© prÃ¡ci, existujÃ­-li.
 \chapwithtoc{Seznam tabulek}
 
-%%% Pou¾ité zkratky v bakaláøské práci, existují-li, vèetnì jejich vysvìtlení.
-\chapwithtoc{Seznam pou¾itıch zkratek}
+%%% PouÅ¾itÃ© zkratky v bakalÃ¡Å™skÃ© prÃ¡ci, existujÃ­-li, vÄetnÄ› jejich vysvÄ›tlenÃ­.
+\chapwithtoc{Seznam pouÅ¾itÃ½ch zkratek}
 
-%%% Pøílohy k bakaláøské práci, existují-li (rùzné dodatky jako vıpisy programù,
-%%% diagramy apod.). Ka¾dá pøíloha musí bıt alespoò jednou odkazována z vlastního
-%%% textu práce. Pøílohy se èíslují.
-\chapwithtoc{Pøílohy}
+%%% PÅ™Ã­lohy k bakalÃ¡Å™skÃ© prÃ¡ci, existujÃ­-li (rÅ¯znÃ© dodatky jako vÃ½pisy programÅ¯,
+%%% diagramy apod.). KaÅ¾dÃ¡ pÅ™Ã­loha musÃ­ bÃ½t alespoÅˆ jednou odkazovÃ¡na z vlastnÃ­ho
+%%% textu prÃ¡ce. PÅ™Ã­lohy se ÄÃ­slujÃ­.
+\chapwithtoc{PÅ™Ã­lohy}
 
 \openright
 \end{document}

@@ -1,33 +1,33 @@
-©ablona pro sazbu bakaláøské práce v LaTeXu
-Vytvoøil Martin Mare¹ <mj@ucw.cz> roku 2011
-Tento soubor je povoleno libovolnì ¹íøit, pou¾ívat a upravovat.
-Pokud máte jakékoliv pøipomínky nebo návrhy na vylep¹ení, dejte mi prosím vìdìt.
+Å ablona pro sazbu bakalÃ¡Å™skÃ© prÃ¡ce v LaTeXu
+VytvoÅ™il Martin MareÅ¡ <mj@ucw.cz> roku 2011
+Tento soubor je povoleno libovolnÄ› Å¡Ã­Å™it, pouÅ¾Ã­vat a upravovat.
+Pokud mÃ¡te jakÃ©koliv pÅ™ipomÃ­nky nebo nÃ¡vrhy na vylepÅ¡enÃ­, dejte mi prosÃ­m vÄ›dÄ›t.
 --------------------------------------------------------------------------------
 
-©ablona existuje ve dvou verzích -- èeské (adresáø cs) a anglické (en).
+Å ablona existuje ve dvou verzÃ­ch -- ÄeskÃ© (adresÃ¡Å™ cs) a anglickÃ© (en).
 
-Obecná fakultní pravidla pro úpravu bakaláøskıch prací najdete v souboru
-bp_uprava.pdf. Tento formát pro LaTeX se jimi øídí a sna¾í se dùle¾ité vìci
-pøipomínat komentáøi. Pøesto si ale celá pravidla pøeètìte -- napøíklad úprava
-desek práce je popsána pouze tam.
+ObecnÃ¡ fakultnÃ­ pravidla pro Ãºpravu bakalÃ¡Å™skÃ½ch pracÃ­ najdete v souboru
+bp_uprava.pdf. Tento formÃ¡t pro LaTeX se jimi Å™Ã­dÃ­ a snaÅ¾Ã­ se dÅ¯leÅ¾itÃ© vÄ›ci
+pÅ™ipomÃ­nat komentÃ¡Å™i. PÅ™esto si ale celÃ¡ pravidla pÅ™eÄtÄ›te -- napÅ™Ã­klad Ãºprava
+desek prÃ¡ce je popsÃ¡na pouze tam.
 
-Pokud LaTeX je¹tì neznáte, na webu naleznete mnoho úvodních textù.
-Mnì se nejvíce osvìdèil http://en.wikibooks.org/wiki/LaTeX. Pár poznámek
-k TeXové sazbì najdete také zde v souboru ukazka.tex.
+Pokud LaTeX jeÅ¡tÄ› neznÃ¡te, na webu naleznete mnoho ÃºvodnÃ­ch textÅ¯.
+MnÄ› se nejvÃ­ce osvÄ›dÄil http://en.wikibooks.org/wiki/LaTeX. PÃ¡r poznÃ¡mek
+k TeXovÃ© sazbÄ› najdete takÃ© zde v souboru ukazka.tex.
 
-Základní nastavení sazby naleznete v souboru prace.tex, ten se také
-odkazuje na ostatní soubory s jednotlivımi kapitolami práce. Peèlivì
-si hlavní soubor pøeètìte a doplòte v¹echny chybìjící údaje.
+ZÃ¡kladnÃ­ nastavenÃ­ sazby naleznete v souboru prace.tex, ten se takÃ©
+odkazuje na ostatnÃ­ soubory s jednotlivÃ½mi kapitolami prÃ¡ce. PeÄlivÄ›
+si hlavnÃ­ soubor pÅ™eÄtÄ›te a doplÅˆte vÅ¡echny chybÄ›jÃ­cÃ­ Ãºdaje.
 
-Pokud pracujete na Unixovém systému, mù¾e se vám hodit ukázkovı Makefile --
-staèí spustit program "make" a ten u¾ se postará o pøelo¾ení v¹ech souborù
+Pokud pracujete na UnixovÃ©m systÃ©mu, mÅ¯Å¾e se vÃ¡m hodit ukÃ¡zkovÃ½ Makefile --
+staÄÃ­ spustit program "make" a ten uÅ¾ se postarÃ¡ o pÅ™eloÅ¾enÃ­ vÅ¡ech souborÅ¯
 TeXem.
 
-Práci je potøeba kompilovat csLaTeXem, ten je ve vìt¹inì instalací TeXu
-dostupnı v balíèku pro podporu èe¹tiny a sloven¹tiny. Pokud csLaTeX nejste
-schopni rozbìhnout, mù¾ete zkusit místo toho pou¾ít klasickı LaTeX s balíèkem
-babel (viz zakomentovaná èást na zaèátku souboru prace.tex), ov¹em sazba èeskıch
-písmen bude o nìco o¹klivìj¹í.
+PrÃ¡ci je potÅ™eba kompilovat csLaTeXem, ten je ve vÄ›tÅ¡inÄ› instalacÃ­ TeXu
+dostupnÃ½ v balÃ­Äku pro podporu ÄeÅ¡tiny a slovenÅ¡tiny. Pokud csLaTeX nejste
+schopni rozbÄ›hnout, mÅ¯Å¾ete zkusit mÃ­sto toho pouÅ¾Ã­t klasickÃ½ LaTeX s balÃ­Äkem
+babel (viz zakomentovanÃ¡ ÄÃ¡st na zaÄÃ¡tku souboru prace.tex), ovÅ¡em sazba ÄeskÃ½ch
+pÃ­smen bude o nÄ›co oÅ¡klivÄ›jÅ¡Ã­.
 
-Dal¹í materiály o psaní bakaláøskıch prací a odbornıch textù vùbec najdete
+DalÅ¡Ã­ materiÃ¡ly o psanÃ­ bakalÃ¡Å™skÃ½ch pracÃ­ a odbornÃ½ch textÅ¯ vÅ¯bec najdete
 na http://mj.ucw.cz/vyuka/bc/.

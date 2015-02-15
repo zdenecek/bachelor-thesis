@@ -1,8 +1,8 @@
-%%% Hlavní soubor. Zde se definují základní parametry a odkazuje se na ostatní èásti. %%%
+%%% HlavnÃ­ soubor. Zde se definujÃ­ zÃ¡kladnÃ­ parametry a odkazuje se na ostatnÃ­ ÄÃ¡sti. %%%
 
-%% Verze pro jednostrannı tisk:
-% Okraje: levı 40mm, pravı 25mm, horní a dolní 25mm
-% (ale pozor, LaTeX si sám pøidává 1in)
+%% Verze pro jednostrannÃ½ tisk:
+% Okraje: levÃ½ 40mm, pravÃ½ 25mm, hornÃ­ a dolnÃ­ 25mm
+% (ale pozor, LaTeX si sÃ¡m pÅ™idÃ¡vÃ¡ 1in)
 \documentclass[12pt,a4paper]{report}
 \setlength\textwidth{145mm}
 \setlength\textheight{247mm}
@@ -11,10 +11,10 @@
 \setlength\topmargin{0mm}
 \setlength\headsep{0mm}
 \setlength\headheight{0mm}
-% \openright zaøídí, aby následující text zaèínal na pravé stranì knihy
+% \openright zaÅ™Ã­dÃ­, aby nÃ¡sledujÃ­cÃ­ text zaÄÃ­nal na pravÃ© stranÄ› knihy
 \let\openright=\clearpage
 
-%% Pokud tiskneme oboustrannì:
+%% Pokud tiskneme oboustrannÄ›:
 % \documentclass[12pt,a4paper,twoside,openright]{report}
 % \setlength\textwidth{145mm}
 % \setlength\textheight{247mm}
@@ -25,24 +25,24 @@
 % \setlength\headheight{0mm}
 % \let\openright=\cleardoublepage
 
-%% Pou¾ité kódování znakù: obvykle latin2, cp1250 nebo utf8:
+%% PouÅ¾itÃ© kÃ³dovÃ¡nÃ­ znakÅ¯: obvykle latin2, cp1250 nebo utf8:
 \usepackage[latin2]{inputenc}
 
-%% Ostatní balíèky
+%% OstatnÃ­ balÃ­Äky
 \usepackage{graphicx}
 \usepackage{amsthm}
 
-%% Balíèek hyperref, kterım jdou vyrábìt klikací odkazy v PDF,
-%% ale hlavnì ho pou¾íváme k ulo¾ení metadat do PDF (vèetnì obsahu).
-%% POZOR, nezapomeòte vyplnit jméno práce a autora.
-\usepackage[ps2pdf,unicode]{hyperref}   % Musí bıt za v¹emi ostatními balíèky
-\hypersetup{pdftitle=Název práce}
-\hypersetup{pdfauthor=Jméno Pøíjmení}
+%% BalÃ­Äek hyperref, kterÃ½m jdou vyrÃ¡bÄ›t klikacÃ­ odkazy v PDF,
+%% ale hlavnÄ› ho pouÅ¾Ã­vÃ¡me k uloÅ¾enÃ­ metadat do PDF (vÄetnÄ› obsahu).
+%% POZOR, nezapomeÅˆte vyplnit jmÃ©no prÃ¡ce a autora.
+\usepackage[ps2pdf,unicode]{hyperref}   % MusÃ­ bÃ½t za vÅ¡emi ostatnÃ­mi balÃ­Äky
+\hypersetup{pdftitle=NÃ¡zev prÃ¡ce}
+\hypersetup{pdfauthor=JmÃ©no PÅ™Ã­jmenÃ­}
 
-%%% Drobné úpravy stylu
+%%% DrobnÃ© Ãºpravy stylu
 
-% Tato makra pøesvìdèují mírnì o¹klivım trikem LaTeX, aby hlavièky kapitol
-% sázel pøíèetnìji a nevynechával nad nimi spoustu místa. Smìle ignorujte.
+% Tato makra pÅ™esvÄ›dÄujÃ­ mÃ­rnÄ› oÅ¡klivÃ½m trikem LaTeX, aby hlaviÄky kapitol
+% sÃ¡zel pÅ™Ã­ÄetnÄ›ji a nevynechÃ¡val nad nimi spoustu mÃ­sta. SmÄ›le ignorujte.
 \makeatletter
 \def\@makechapterhead#1{
   {\parindent \z@ \raggedright \normalfont
@@ -58,7 +58,7 @@
 }}
 \makeatother
 
-% Toto makro definuje kapitolu, která není oèíslovaná, ale je uvedena v obsahu.
+% Toto makro definuje kapitolu, kterÃ¡ nenÃ­ oÄÃ­slovanÃ¡, ale je uvedena v obsahu.
 \def\chapwithtoc#1{
 \chapter*{#1}
 \addcontentsline{toc}{chapter}{#1}
@@ -66,11 +66,11 @@
 
 \begin{document}
 
-% Trochu volnìj¹í nastavení dìlení slov, ne¾ je default.
+% Trochu volnÄ›jÅ¡Ã­ nastavenÃ­ dÄ›lenÃ­ slov, neÅ¾ je default.
 \lefthyphenmin=2
 \righthyphenmin=2
 
-%%% Titulní strana práce
+%%% TitulnÃ­ strana prÃ¡ce
 
 \pagestyle{empty}
 \begin{center}
@@ -98,13 +98,13 @@ Faculty of Mathematics and Physics
 
 \vspace{15mm}
 
-% Název práce pøesnì podle zadání
+% NÃ¡zev prÃ¡ce pÅ™esnÄ› podle zadÃ¡nÃ­
 {\LARGE\bfseries Title of the thesis}
 
 \vfill
 
-% Název katedry nebo ústavu, kde byla práce oficiálnì zadána
-% (dle Organizaèní struktury MFF UK)
+% NÃ¡zev katedry nebo Ãºstavu, kde byla prÃ¡ce oficiÃ¡lnÄ› zadÃ¡na
+% (dle OrganizaÄnÃ­ struktury MFF UK)
 Name of the department or institute
 
 \vfill
@@ -120,18 +120,18 @@ Specialization: & specialization \\
 
 \vfill
 
-% Zde doplòte rok
+% Zde doplÅˆte rok
 Prague YEAR
 
 \end{center}
 
 \newpage
 
-%%% Následuje vevázanı list -- kopie podepsaného "Zadání bakaláøské práce".
-%%% Toto zadání NENÍ souèástí elektronické verze práce, nescanovat.
+%%% NÃ¡sleduje vevÃ¡zanÃ½ list -- kopie podepsanÃ©ho "ZadÃ¡nÃ­ bakalÃ¡Å™skÃ© prÃ¡ce".
+%%% Toto zadÃ¡nÃ­ NENÃ souÄÃ¡stÃ­ elektronickÃ© verze prÃ¡ce, nescanovat.
 
-%%% Na tomto místì mohou bıt napsána pøípadná podìkování (vedoucímu práce,
-%%% konzultantovi, tomu, kdo zapùjèil software, literaturu apod.)
+%%% Na tomto mÃ­stÄ› mohou bÃ½t napsÃ¡na pÅ™Ã­padnÃ¡ podÄ›kovÃ¡nÃ­ (vedoucÃ­mu prÃ¡ce,
+%%% konzultantovi, tomu, kdo zapÅ¯jÄil software, literaturu apod.)
 
 \openright
 
@@ -140,7 +140,7 @@ Dedication.
 
 \newpage
 
-%%% Strana s èestnım prohlá¹ením k bakaláøské práci
+%%% Strana s ÄestnÃ½m prohlÃ¡Å¡enÃ­m k bakalÃ¡Å™skÃ© prÃ¡ci
 
 \vglue 0pt plus 1fill
 
@@ -165,94 +165,94 @@ signature of the author
 \vspace{20mm}
 \newpage
 
-%%% Povinná informaèní strana bakaláøské práce
+%%% PovinnÃ¡ informaÄnÃ­ strana bakalÃ¡Å™skÃ© prÃ¡ce
 
 \vbox to 0.5\vsize{
 \setlength\parindent{0mm}
 \setlength\parskip{5mm}
 
-Název práce:
-Název práce
-% pøesnì dle zadání
+NÃ¡zev prÃ¡ce:
+NÃ¡zev prÃ¡ce
+% pÅ™esnÄ› dle zadÃ¡nÃ­
 
 Autor:
-Jméno a pøíjmení autora
+JmÃ©no a pÅ™Ã­jmenÃ­ autora
 
-Katedra:  % Pøípadnì Ústav:
-Název katedry èi ústavu, kde byla práce oficiálnì zadána
-% dle Organizaèní struktury MFF UK
+Katedra:  % PÅ™Ã­padnÄ› Ãšstav:
+NÃ¡zev katedry Äi Ãºstavu, kde byla prÃ¡ce oficiÃ¡lnÄ› zadÃ¡na
+% dle OrganizaÄnÃ­ struktury MFF UK
 
-Vedoucí bakaláøské práce:
-Jméno a pøíjmení s tituly, pracovi¹tì
-% dle Organizaèní struktury MFF UK, pøípadnì plnı název pracovi¹tì mimo MFF UK
+VedoucÃ­ bakalÃ¡Å™skÃ© prÃ¡ce:
+JmÃ©no a pÅ™Ã­jmenÃ­ s tituly, pracoviÅ¡tÄ›
+% dle OrganizaÄnÃ­ struktury MFF UK, pÅ™Ã­padnÄ› plnÃ½ nÃ¡zev pracoviÅ¡tÄ› mimo MFF UK
 
 Abstrakt:
-% abstrakt v rozsahu 80-200 slov; nejedná se v¹ak o opis zadání bakaláøské práce
+% abstrakt v rozsahu 80-200 slov; nejednÃ¡ se vÅ¡ak o opis zadÃ¡nÃ­ bakalÃ¡Å™skÃ© prÃ¡ce
 
-Klíèová slova:
-% 3 a¾ 5 klíèovıch slov
+KlÃ­ÄovÃ¡ slova:
+% 3 aÅ¾ 5 klÃ­ÄovÃ½ch slov
 
 \vss}\nobreak\vbox to 0.49\vsize{
 \setlength\parindent{0mm}
 \setlength\parskip{5mm}
 
 Title:
-% pøesnı pøeklad názvu práce v angliètinì
+% pÅ™esnÃ½ pÅ™eklad nÃ¡zvu prÃ¡ce v angliÄtinÄ›
 
 Author:
-Jméno a pøíjmení autora
+JmÃ©no a pÅ™Ã­jmenÃ­ autora
 
 Department:
-Název katedry èi ústavu, kde byla práce oficiálnì zadána
-% dle Organizaèní struktury MFF UK v angliètinì
+NÃ¡zev katedry Äi Ãºstavu, kde byla prÃ¡ce oficiÃ¡lnÄ› zadÃ¡na
+% dle OrganizaÄnÃ­ struktury MFF UK v angliÄtinÄ›
 
 Supervisor:
-Jméno a pøíjmení s tituly, pracovi¹tì
-% dle Organizaèní struktury MFF UK, pøípadnì plnı název pracovi¹tì
-% mimo MFF UK v angliètinì
+JmÃ©no a pÅ™Ã­jmenÃ­ s tituly, pracoviÅ¡tÄ›
+% dle OrganizaÄnÃ­ struktury MFF UK, pÅ™Ã­padnÄ› plnÃ½ nÃ¡zev pracoviÅ¡tÄ›
+% mimo MFF UK v angliÄtinÄ›
 
 Abstract:
-% abstrakt v rozsahu 80-200 slov v angliètinì; nejedná se v¹ak o pøeklad
-% zadání bakaláøské práce
+% abstrakt v rozsahu 80-200 slov v angliÄtinÄ›; nejednÃ¡ se vÅ¡ak o pÅ™eklad
+% zadÃ¡nÃ­ bakalÃ¡Å™skÃ© prÃ¡ce
 
 Keywords:
-% 3 a¾ 5 klíèovıch slov v angliètinì
+% 3 aÅ¾ 5 klÃ­ÄovÃ½ch slov v angliÄtinÄ›
 
 \vss}
 
 \newpage
 
-%%% Strana s automaticky generovanım obsahem bakaláøské práce. U matematickıch
-%%% prací je pøípustné, aby seznam tabulek a zkratek, existují-li, byl umístìn
-%%% na zaèátku práce, místo na jejím konci.
+%%% Strana s automaticky generovanÃ½m obsahem bakalÃ¡Å™skÃ© prÃ¡ce. U matematickÃ½ch
+%%% pracÃ­ je pÅ™Ã­pustnÃ©, aby seznam tabulek a zkratek, existujÃ­-li, byl umÃ­stÄ›n
+%%% na zaÄÃ¡tku prÃ¡ce, mÃ­sto na jejÃ­m konci.
 
 \openright
 \pagestyle{plain}
 \setcounter{page}{1}
 \tableofcontents
 
-%%% Jednotlivé kapitoly práce jsou pro pøehlednost ulo¾eny v samostatnıch souborech
+%%% JednotlivÃ© kapitoly prÃ¡ce jsou pro pÅ™ehlednost uloÅ¾eny v samostatnÃ½ch souborech
 \include{preface}
 \include{chap1}
 \include{chap2}
 
-% Ukázka pou¾ití nìkterıch konstrukcí LateXu (odkomentujte, chcete-li)
+% UkÃ¡zka pouÅ¾itÃ­ nÄ›kterÃ½ch konstrukcÃ­ LateXu (odkomentujte, chcete-li)
 % \include{example}
 
 \include{epilog}
 
-%%% Seznam pou¾ité literatury
+%%% Seznam pouÅ¾itÃ© literatury
 \include{bibliography}
 
-%%% Tabulky v bakaláøské práci, existují-li.
+%%% Tabulky v bakalÃ¡Å™skÃ© prÃ¡ci, existujÃ­-li.
 \chapwithtoc{List of Tables}
 
-%%% Pou¾ité zkratky v bakaláøské práci, existují-li, vèetnì jejich vysvìtlení.
+%%% PouÅ¾itÃ© zkratky v bakalÃ¡Å™skÃ© prÃ¡ci, existujÃ­-li, vÄetnÄ› jejich vysvÄ›tlenÃ­.
 \chapwithtoc{List of Abbreviations}
 
-%%% Pøílohy k bakaláøské práci, existují-li (rùzné dodatky jako vıpisy programù,
-%%% diagramy apod.). Ka¾dá pøíloha musí bıt alespoò jednou odkazována z vlastního
-%%% textu práce. Pøílohy se èíslují.
+%%% PÅ™Ã­lohy k bakalÃ¡Å™skÃ© prÃ¡ci, existujÃ­-li (rÅ¯znÃ© dodatky jako vÃ½pisy programÅ¯,
+%%% diagramy apod.). KaÅ¾dÃ¡ pÅ™Ã­loha musÃ­ bÃ½t alespoÅˆ jednou odkazovÃ¡na z vlastnÃ­ho
+%%% textu prÃ¡ce. PÅ™Ã­lohy se ÄÃ­slujÃ­.
 \chapwithtoc{Attachments}
 
 \openright

@@ -1,44 +1,44 @@
-%%% Ukázka pou¾ití nìkterıch konstrukcí LaTeXu
+%%% UkÃ¡zka pouÅ¾itÃ­ nÄ›kterÃ½ch konstrukcÃ­ LaTeXu
 
-\subsection{Ukázka \LaTeX{}u}
+\subsection{UkÃ¡zka \LaTeX{}u}
 \label{ssec:ukazka}
 
-V~této krátké èásti uká¾eme pou¾ití nìkolika základních konstrukcí \LaTeX{}u,
-které by se vám mohly pøi psaní práce hodit.
+V~tÃ©to krÃ¡tkÃ© ÄÃ¡sti ukÃ¡Å¾eme pouÅ¾itÃ­ nÄ›kolika zÃ¡kladnÃ­ch konstrukcÃ­ \LaTeX{}u,
+kterÃ© by se vÃ¡m mohly pÅ™i psanÃ­ prÃ¡ce hodit.
 
-Tøeba odrá¾ky:
+TÅ™eba odrÃ¡Å¾ky:
 
 \begin{itemize}
-\item Logo Matfyzu vidíme na obrázku~\ref{fig:mff}.
-\item Tato subsekce má èíslo~\ref{ssec:ukazka}.
+\item Logo Matfyzu vidÃ­me na obrÃ¡zku~\ref{fig:mff}.
+\item Tato subsekce mÃ¡ ÄÃ­slo~\ref{ssec:ukazka}.
 \item Odkaz na literaturu~\cite{lamport94}.
 \end{itemize}
 
-Druhy pomlèek:
-èerveno-èernı (krátká),
-strana 16--22 (støední),
+Druhy pomlÄek:
+Äerveno-ÄernÃ½ (krÃ¡tkÃ¡),
+strana 16--22 (stÅ™ednÃ­),
 $45-44$ (minus),
-a~toto je --- jak se asi dalo èekat --- vlo¾ená vìta ohranièená dlouhımi pomlèkami.
-(V¹imnìte si, ¾e jsme za \verb|a| napsali vlnovku místo mezery: to aby se
-tam nemohl rozdìlit øádek.)
+a~toto je --- jak se asi dalo Äekat --- vloÅ¾enÃ¡ vÄ›ta ohraniÄenÃ¡ dlouhÃ½mi pomlÄkami.
+(VÅ¡imnÄ›te si, Å¾e jsme za \verb|a| napsali vlnovku mÃ­sto mezery: to aby se
+tam nemohl rozdÄ›lit Å™Ã¡dek.)
 
-% Makro na èeské uvozovky (novìj¹í verze LaTeXu ho u¾ mají zabudované)
+% Makro na ÄeskÃ© uvozovky (novÄ›jÅ¡Ã­ verze LaTeXu ho uÅ¾ majÃ­ zabudovanÃ©)
 \newcommand{\uv}[1]{\quotedblbase #1\textquotedblleft}
-\uv{Èeské uvozovky.}
+\uv{ÄŒeskÃ© uvozovky.}
 
-\newtheorem{theorem}{Vìta}
-\newtheorem*{define}{Definice}	% Definice neèíslujeme, proto "*"
+\newtheorem{theorem}{VÄ›ta}
+\newtheorem*{define}{Definice}	% Definice neÄÃ­slujeme, proto "*"
 
 \begin{define}
-{\sl Strom} je souvislı graf bez kru¾nic.
+{\sl Strom} je souvislÃ½ graf bez kruÅ¾nic.
 \end{define}
 
 \begin{theorem}
-Tato vìta neplatí.
+Tato vÄ›ta neplatÃ­.
 \end{theorem}
 
 \begin{proof}
-Neplatné vìty nemají dùkaz.
+NeplatnÃ© vÄ›ty nemajÃ­ dÅ¯kaz.
 \end{proof}
 
 \begin{figure}

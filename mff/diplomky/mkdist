@@ -23,8 +23,8 @@ done
 	cp ../uprava/dp_uprava.pdf cs/
 	cp ../uprava/dp_uprava_en.pdf en/
 	sed -i '
-		s/bakaláøsk/diplomov/g
-		s/BAKALÁØSK/DIPLOMOV/g
+		s/bakalÃ¡Å™sk/diplomov/g
+		s/BAKALÃÅ˜SK/DIPLOMOV/g
 		s/bachelor/master/g
 		s/BACHELOR/MASTER/g
 		s/bp_uprava/dp_uprava/g
@@ -42,14 +42,14 @@ done
 	cp ../uprava/phd_uprava.pdf cs/
 	cp ../uprava/phd_uprava_en.pdf en/
 	sed -i '
-		s/bakaláøské/disertaèní/g
-		s/bakaláøských/disertaèních/g
-		s/bakaláøskou/disertaèní/g
-		s/BAKALÁØSKÁ/DISERTAÈNÍ/g
+		s/bakalÃ¡Å™skÃ©/disertaÄnÃ­/g
+		s/bakalÃ¡Å™skÃ½ch/disertaÄnÃ­ch/g
+		s/bakalÃ¡Å™skou/disertaÄnÃ­/g
+		s/BAKALÃÅ˜SKÃ/DISERTAÄŒNÃ/g
 		s/bachelor/doctoral/g
 		s/BACHELOR/DOCTORAL/g
 		s/bp_uprava/phd_uprava/g
-		/ Následuje vevázaný /,+2d
+		/ NÃ¡sleduje vevÃ¡zanÃ½ /,+2d
 	' */*.tex README
 	if grep -Eri 'bakal|bachel' . ; then
 		echo >&2 "Substitutions failed"
