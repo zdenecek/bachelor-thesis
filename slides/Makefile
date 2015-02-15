@@ -7,3 +7,6 @@ bcintro.pdf: bcintro.tex
 
 clean:
 	rm -f *~ *.{aux,log,nav,out,pdf,snm,toc,vrb}
+
+upload: bcintro.pdf
+	rs bcintro.pdf jw:www/static/vyuka/bc/
