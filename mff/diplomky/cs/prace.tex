@@ -38,195 +38,69 @@
 \usepackage{graphicx}
 \usepackage{amsthm}
 
-%% Balíèek hyperref, kterým jdou vyrábìt klikací odkazy v PDF,
-%% ale hlavnì ho pou¾íváme k ulo¾ení metadat do PDF (vèetnì obsahu).
-%% POZOR, nezapomeòte vyplnit jméno práce a autora.
-\usepackage[ps2pdf,unicode]{hyperref}   % Musí být za v¹emi ostatními balíèky
-\hypersetup{pdftitle=Název práce}
-\hypersetup{pdfauthor=Jméno Pøíjmení}
+%%% Údaje o práci
 
-%%% Drobné úpravy stylu
+% Název práce v jazyce práce (pøesnì podle zadání)
+\def\NazevPrace{Název práce}
 
-% Tato makra pøesvìdèují mírnì o¹klivým trikem LaTeX, aby hlavièky kapitol
-% sázel pøíèetnìji a nevynechával nad nimi spoustu místa. Smìle ignorujte.
-\makeatletter
-\def\@makechapterhead#1{
-  {\parindent \z@ \raggedright \normalfont
-   \Huge\bfseries \thechapter. #1
-   \par\nobreak
-   \vskip 20\p@
-}}
-\def\@makeschapterhead#1{
-  {\parindent \z@ \raggedright \normalfont
-   \Huge\bfseries #1
-   \par\nobreak
-   \vskip 20\p@
-}}
-\makeatother
+% Název práce v angliètinì
+\def\NazevPraceEN{Name of thesis}
 
-% Toto makro definuje kapitolu, která není oèíslovaná, ale je uvedena v obsahu.
-\def\chapwithtoc#1{
-\chapter*{#1}
-\addcontentsline{toc}{chapter}{#1}
-}
+% Jméno autora
+\def\AutorPrace{Jméno Pøíjmení}
 
-\begin{document}
-
-% Trochu volnìj¹í nastavení dìlení slov, ne¾ je default.
-\lefthyphenmin=2
-\righthyphenmin=2
-
-%%% Titulní strana práce
-
-\pagestyle{empty}
-\begin{center}
-
-\large
-
-Univerzita Karlova v Praze
-
-\medskip
-
-Matematicko-fyzikální fakulta
-
-\vfill
-
-{\bf\Large BAKALÁØSKÁ PRÁCE}
-
-\vfill
-
-\centerline{\mbox{\includegraphics[width=60mm]{../img/logo.eps}}}
-
-\vfill
-\vspace{5mm}
-
-{\LARGE Jméno a pøíjmení autora}
-
-\vspace{15mm}
-
-% Název práce pøesnì podle zadání
-{\LARGE\bfseries Název práce}
-
-\vfill
+% Rok odevzdání
+\def\RokOdevzdani{ROK}
 
 % Název katedry nebo ústavu, kde byla práce oficiálnì zadána
-% (dle Organizaèní struktury MFF UK)
-Název katedry nebo ústavu
+% (dle Organizaèní struktury MFF UK, pøípadnì plný název pracovi¹tì mimo MFF)
+\def\Katedra{Název katedry nebo ústavu}
+\def\KatedraEN{Name of the department}
 
-\vfill
+% Jedná se o katedru nebo o ústav?
+\def\TypPracoviste{Katedra}
 
-\begin{tabular}{rl}
+% Vedoucí práce: Jméno a pøíjmení s~tituly
+\def\Vedouci{Vedoucí práce}
 
-Vedoucí bakaláøské práce: & Jméno a pøíjmení s~tituly \\
-\noalign{\vspace{2mm}}
-Studijní program: & program \\
-\noalign{\vspace{2mm}}
-Studijní obor: & obor \\
-\end{tabular}
+% Pracovi¹tì vedoucího (opìt dle Organizaèní struktury MFF)
+\def\KatedraVedouciho{katedra}
+\def\KatedraVedoucihoEN{department}
 
-\vfill
+% Studijní program a obor
+\def\StudijniProgram{studijní program}
+\def\StudijniObor{studijní obor}
 
-% Zde doplòte rok
-Praha ROK
-
-\end{center}
-
-\newpage
-
-%%% Následuje vevázaný list -- kopie podepsaného "Zadání bakaláøské práce".
-%%% Toto zadání NENÍ souèástí elektronické verze práce, nescanovat.
-
-%%% Na tomto místì mohou být napsána pøípadná podìkování (vedoucímu práce,
-%%% konzultantovi, tomu, kdo zapùjèil software, literaturu apod.)
-
-\openright
-
-\noindent
+% Nepovinné podìkování (vedoucímu práce, konzultantovi, tomu, kdo
+% zapùjèil software, literaturu apod.)
+\def\Podekovani{
 Podìkování.
+}
 
-\newpage
+% Abstrakt (v rozsahu cca 80-200 slov; nejedná se o zadání práce)
+\def\Abstrakt{
+Abstrakt.
+}
+\def\AbstraktEN{
+Abstract.
+}
 
-%%% Strana s èestným prohlá¹ením k bakaláøské práci
-
-\vglue 0pt plus 1fill
-
-\noindent
-Prohla¹uji, ¾e jsem tuto bakaláøskou práci vypracoval(a) samostatnì a výhradnì
-s~pou¾itím citovaných pramenù, literatury a dal¹ích odborných zdrojù.
-
-\medskip\noindent
-Beru na~vìdomí, ¾e se na moji práci vztahují práva a povinnosti vyplývající
-ze zákona è. 121/2000 Sb., autorského zákona v~platném znìní, zejména skuteènost,
-¾e Univerzita Karlova v Praze má právo na~uzavøení licenèní smlouvy o~u¾ití této
-práce jako ¹kolního díla podle §60 odst. 1 autorského zákona.
-
-\vspace{10mm}
-
-\hbox{\hbox to 0.5\hsize{%
-V ........ dne ............
-\hss}\hbox to 0.5\hsize{%
-Podpis autora
-\hss}}
-
-\vspace{20mm}
-\newpage
-
-%%% Povinná informaèní strana bakaláøské práce
-
-\vbox to 0.5\vsize{
-\setlength\parindent{0mm}
-\setlength\parskip{5mm}
-
-Název práce:
-Název práce
-% pøesnì dle zadání
-
-Autor:
-Jméno a pøíjmení autora
-
-Katedra:  % Pøípadnì Ústav:
-Název katedry èi ústavu, kde byla práce oficiálnì zadána
-% dle Organizaèní struktury MFF UK
-
-Vedoucí bakaláøské práce:
-Jméno a pøíjmení s tituly, pracovi¹tì
-% dle Organizaèní struktury MFF UK, pøípadnì plný název pracovi¹tì mimo MFF UK
-
-Abstrakt:
-% abstrakt v rozsahu 80-200 slov; nejedná se v¹ak o opis zadání bakaláøské práce
-
-Klíèová slova:
 % 3 a¾ 5 klíèových slov
+\def\KlicovaSlova{
+klíèová slova
+}
+\def\KlicovaSlovaEN{
+key words
+}
 
-\vss}\nobreak\vbox to 0.49\vsize{
-\setlength\parindent{0mm}
-\setlength\parskip{5mm}
+%% Balíèek hyperref, kterým jdou vyrábìt klikací odkazy v PDF,
+%% ale hlavnì ho pou¾íváme k ulo¾ení metadat do PDF (vèetnì obsahu).
+\usepackage[ps2pdf,unicode]{hyperref}   % Musí být za v¹emi ostatními balíèky
+\hypersetup{pdftitle=\NazevPrace}
+\hypersetup{pdfauthor=\AutorPrace}
 
-Title:
-% pøesný pøeklad názvu práce v angliètinì
-
-Author:
-Jméno a pøíjmení autora
-
-Department:
-Název katedry èi ústavu, kde byla práce oficiálnì zadána
-% dle Organizaèní struktury MFF UK v angliètinì
-
-Supervisor:
-Jméno a pøíjmení s tituly, pracovi¹tì
-% dle Organizaèní struktury MFF UK, pøípadnì plný název pracovi¹tì
-% mimo MFF UK v angliètinì
-
-Abstract:
-% abstrakt v rozsahu 80-200 slov v angliètinì; nejedná se v¹ak o pøeklad
-% zadání bakaláøské práce
-
-Keywords:
-% 3 a¾ 5 klíèových slov v angliètinì
-
-\vss}
-
-\newpage
+%% Titulní strana a rùzné povinné informaèní strany
+\input titulka.tex
 
 %%% Strana s automaticky generovaným obsahem bakaláøské práce. U matematických
 %%% prací je pøípustné, aby seznam tabulek a zkratek, existují-li, byl umístìn
