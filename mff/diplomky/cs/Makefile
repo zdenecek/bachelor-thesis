@@ -16,4 +16,5 @@ prace.dvi: prace.tex $(wildcard *.tex)
 	cslatex $<
 
 clean:
-	rm -f *.{log,dvi,aux,toc,lof,out} prace.ps prace.pdf
+	rm -f *.log *.dvi *.aux *.toc *.lof *.out
+	rm -f prace.ps prace.pdf
