@@ -29,3 +29,17 @@ DVI a PostScript již není podporován.
 
 Další materiály o psaní bakalářských prací a odborných textů vůbec najdete
 na http://mj.ucw.cz/vyuka/bc/.
+
+--------------------------------------------------------------------------------
+
+Zásadní změny oproti verzi z roku 2011
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ - Již pro českou sazbu nepoužíváme starý csLaTeX, nýbrž Babel.
+   Stále ale využíváme tradiční CS-fonty, neboť mají hezčí akcenty.
+
+ - PDF generujeme přímo pomocí pdfTeXu, stará oklika přes DVI a PS
+   už snad není na žádné aktuální instalaci TeXu potřeba.
+
+ - Všechny údaje o práci se nyní definují jako makra v hlavním souboru
+   a automaticky se dosazují na všechna relevantní místa.
