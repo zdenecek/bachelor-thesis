@@ -83,20 +83,21 @@ Abstrakt.
 Abstract.
 }
 
-% 3 až 5 klíčových slov
+% 3 až 5 klíčových slov, každé uzavřeno ve složených závorkách
 \def\KlicovaSlova{
-klíčová slova
+{klíčová} {slova}
 }
 \def\KlicovaSlovaEN{
-key words
+{key} {words}
 }
 
 %% Balíček hyperref, kterým jdou vyrábět klikací odkazy v PDF,
 %% ale hlavně ho používáme k uložení metadat do PDF (včetně obsahu).
-\usepackage[unicode]{hyperref}   % Musí být za všemi ostatními balíčky
-\hypersetup{pdftitle=\NazevPrace}
-\hypersetup{pdfauthor=\AutorPrace}
-\usepackage{breakurl}
+\usepackage[pdftex,unicode]{hyperref}   % Musí být za všemi ostatními balíčky
+\hypersetup{breaklinks=true}
+\hypersetup{pdftitle={\NazevPrace}}
+\hypersetup{pdfauthor={\AutorPrace}}
+\hypersetup{pdfkeywords=\KlicovaSlova}
 
 %% Titulní strana a různé povinné informační strany
 \input titulka.tex
