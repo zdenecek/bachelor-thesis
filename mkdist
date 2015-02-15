@@ -5,7 +5,7 @@ export LC_ALL=cs_CZ
 for a in bp dp phd ; do
 	rm -rf vzor-$a{,-win,-iso}
 	git archive --prefix=vzor-$a/ HEAD | tar xf -
-	rm -rf vzor-$a/{mkdist,uprava,slides,TODO}
+	rm -rf vzor-$a/{mkdist,upload,uprava,slides,TODO}
 done
 
 # BP
