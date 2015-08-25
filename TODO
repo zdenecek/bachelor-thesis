@@ -2,3 +2,13 @@ Preklep ve slovencine, ktery objevil Pali (viz mail)
   -> bude vubec nejaka slovenska verze?
 
 Dvojtecky na titulni strane by mohly byt centrovane
+
+Je jeste potreba zminka o 1.5-nasobnem radkovani v prace.tex?
+
+Synchronizovat anglickou verzi s ceskou (a opravit README)
+
+Probrat makra.tex
+
+Hezci QED
+
+grep FIXME

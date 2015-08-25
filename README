@@ -1,7 +1,13 @@
 Šablona pro sazbu bakalářské práce v LaTeXu
-Vytvořil Martin Mareš <mj@ucw.cz> roku 2011, aktualizováno 2015
+
+Autoři:
+
+	Martin Mareš <mj@ucw.cz> -- správce šablony
+	Arnošt Komárek <komarek@karlin.mff.cuni.cz>
+	Michal Kulich <kulich@karlin.mff.cuni.cz>
+
 Tento balík souborů je povoleno libovolně šířit, používat a upravovat.
-Pokud máte jakékoliv připomínky nebo návrhy na vylepšení, dejte mi prosím vědět.
+Pokud máte jakékoliv připomínky nebo návrhy na vylepšení, dejte prosím vědět.
 --------------------------------------------------------------------------------
 
 Šablona existuje ve dvou verzích -- české (adresář cs) a anglické (en).
@@ -24,11 +30,16 @@ Pokud pracujete na Unixovém systému, může se vám hodit ukázkový Makefile 
 stačí spustit program "make" a ten už se postará o přeložení všech souborů
 TeXem.
 
-Práci je potřeba kompilovat pdfLaTeXem, starý způsob generování PDF přes
-DVI a PostScript již není podporován.
+TeX také můžete spouštět ručně. V tom případě je potřeba překládat pdfTeXem
+a spustit bibTeX na vygenerování bibliografie. (Ideálně takto: pdftex, bibtex,
+a pak 2x pdftex pro dopočítání referencí.)
 
 Další materiály o psaní bakalářských prací a odborných textů vůbec najdete
-na http://mj.ucw.cz/vyuka/bc/.
+na http://mj.ucw.cz/vyuka/bc/. Tamtéž se nachází celá historie této šablony.
+
+--------------------------------------------------------------------------------
+
+FIXME: Anglická verze neobsahuje některé změny, které už v české verzi existují.
 
 --------------------------------------------------------------------------------
 
@@ -43,3 +54,9 @@ Zásadní změny oproti verzi z roku 2011
 
  - Všechny údaje o práci se nyní definují jako makra v hlavním souboru
    a automaticky se dosazují na všechna relevantní místa.
+
+ - Bibliografii zpracováváme bibTeXem. Ručně psané položky v seznamu
+   literatury můžete v nouzi stále používat, viz zakomentovaná část
+   souboru literatura.tex.
+
+ - Ukázkové kapitoly obsahují různé rady a příklady sazby.
