@@ -58,7 +58,7 @@
 % Během generování oficiální šablony skriptem ../mkdist se automaticky smaže,
 % stejně jako všechna volání maker \X a \XXX.
 \def\X#1{\textcolor{red}{[#1]}}
-\def\XXX#1{\noindent \textcolor{red}{[#1]}}
+\def\XXX#1{\par\smallskip\noindent \textcolor{red}{[#1]}}
 %% NEMICEPS
 
 %%% Údaje o práci
@@ -159,15 +159,25 @@ Abstract.
 
 %%% Tabulky v bakalářské práci (opět nemusí být nutné uvádět)
 \listoftables
+\XXX{U~matematických prací může být lepší přemístit seznam tabulek na začátek práce.}
 
 %%% Použité zkratky v bakalářské práci (opět nemusí být nutné uvádět)
 \chapwithtoc{Seznam použitých zkratek}
+\XXX{U~matematických prací může být lepší přemístit seznam zkratek na začátek práce.}
 
 %%% Přílohy k bakalářské práci, existují-li (různé dodatky jako výpisy programů,
 %%% diagramy apod.). Každá příloha musí být alespoň jednou odkazována z vlastního
 %%% textu práce. Přílohy se číslují.
+%%%
+%%% Do tištěné verze se spíše hodí přílohy, které lze číst a prohlížet (dodatečné
+%%% tabulky a grafy, různé textové doplňky, ukázky výstupů z počítačových programů,
+%%% apod.). Do elektronické verze se hodí přílohy, které budou spíše používány
+%%% v elektronické podobě než čteny (zdrojové kódy programů, datové soubory,
+%%% interaktivní grafy apod.). Elektronické přílohy se nahrávají do SISu a lze
+%%% je také do práce vložit na CD/DVD.
 \chapwithtoc{Přílohy}
 \XXX{Přílohy k bakalářské práci, existují-li (různé dodatky jako výpisy programů, diagramy apod.). Každá příloha musí být alespoň jednou odkazována z vlastního textu práce. Přílohy se číslují.}
+\XXX{Do tištěné verze se spíše hodí přílohy, které lze číst a prohlížet (dodatečné tabulky a grafy, různé textové doplňky, ukázky výstupů z počítačových programů, apod.). Do elektronické verze se hodí přílohy, které budou spíše používány v~elektronické podobě než čteny (zdrojové kódy programů, datové soubory, interaktivní grafy apod.). Elektronické přílohy se nahrávají do SISu a lze je také do práce vložit na CD/DVD.}
 
 \openright
 \end{document}

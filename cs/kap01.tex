@@ -34,11 +34,14 @@ citovat.
 
 \section{Jednoduché příklady}
 
+Čísla v~českém textu obvykle sázíme v~matematickém režimu s~desetinnou čárkou:
 %%% Bez \usepackage{icomma}:
-% Čísla obvykle sázíme v~matematickém režimu s~desetinnou čárkou: \[\pi \doteq 3{,}141\,592\,653\,589.\]
-
+% $\pi \doteq 3{,}141\,592\,653\,589$.
 %%% S \usepackage{icomma}:
-Čísla obvykle sázíme v~matematickém režimu s~desetinnou čárkou: \[\pi \doteq 3,141\,592\,653\,589.\]
+$\pi \doteq 3,141\,592\,653\,589$.
+V~matematických textech se považuje za přípustné používat desetinnou tečku
+(pro lepší odlišení od čárky v~roli oddělovače). Numerické výsledky se uvádějí
+s~přiměřeným počtem desetinných míst.
 
 Mezi číslo a jednotku patří úzká mezera: šířka stránky A4 činí $210\,\rm mm$, což si
 pamatuje pouze $5\,\%$ autorů. Pokud ale údaj slouží jako přívlastek, mezeru vynecháváme:
@@ -66,6 +69,10 @@ Proměnné sázíme kurzívou (to \TeX{} v~matematickém módu dělá sám, ale
 nezapomínejte na to v~okolním textu a také si matematický mód zapněte).
 Názvy funkcí sázíme vzpřímeně. Tedy například:
 $\var(X) = \E X^2 - \bigl(\E X \bigr)^2$.
+
+Zlomky uvnitř odstavce (třeba $\frac{5}{7}$ nebo $\frac{x+y}{2}$) mohou
+být příliš stísněné, takže je lepší sázet jednoduché zlomky s~lomítkem:
+$5/7$, $(x+y)/2$.
 
 Nechť
 \[   % LaTeXová náhrada klasického TeXového $$
