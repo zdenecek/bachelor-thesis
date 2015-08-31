@@ -8,6 +8,11 @@ for a in bp dp phd ; do
 	(
 		cd vzor-$a
 		rm -rf mkdist upload uprava slides TODO
+		(
+			date +'%Y-%m-%d'
+			echo -n 'Git commit: '
+			git rev-parse HEAD
+		) >VERSION
 	)
 done
 
