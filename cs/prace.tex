@@ -11,7 +11,6 @@
 \setlength\topmargin{0mm}
 \setlength\headsep{0mm}
 \setlength\headheight{0mm}
-% Doporučená úprava zmiňuje řádkování 1.5, to ale není pro TeX relevantní.
 % \openright zařídí, aby následující text začínal na pravé straně knihy
 \let\openright=\clearpage
 
@@ -52,14 +51,23 @@
 \usepackage{dcolumn}        % lepší zarovnání sloupců v tabulkách
 \usepackage{booktabs}       % lepší vodorovné linky v tabulkách
 \usepackage{paralist}       % lepší enumerate a itemize
+\usepackage[usenames]{xcolor}  % barevná sazba
+
+%% SPECIMEN
+% Takto označená část slouží pro tvorbu vzorového PDF vystaveného na webu.
+% Během generování oficiální šablony skriptem ../mkdist se automaticky smaže,
+% stejně jako všechna volání maker \X a \XXX.
+\def\X#1{\textcolor{red}{[#1]}}
+\def\XXX#1{\noindent \textcolor{red}{[#1]}}
+%% NEMICEPS
 
 %%% Údaje o práci
 
 % Název práce v jazyce práce (přesně podle zadání)
-\def\NazevPrace{Název práce}
+\def\NazevPrace{Název práce \X{přesně podle zadání}}
 
 % Název práce v angličtině
-\def\NazevPraceEN{Name of thesis}
+\def\NazevPraceEN{Name of thesis \X{přesný překlad do angličtiny}}
 
 % Jméno autora
 \def\AutorPrace{Jméno Příjmení}
@@ -69,7 +77,7 @@
 
 % Název katedry nebo ústavu, kde byla práce oficiálně zadána
 % (dle Organizační struktury MFF UK, případně plný název pracoviště mimo MFF)
-\def\Katedra{Název katedry nebo ústavu}
+\def\Katedra{Název katedry nebo ústavu \X{dle organizační struktury MFF UK}}
 \def\KatedraEN{Name of the department}
 
 % Jedná se o katedru (department) nebo o ústav (institute)?
@@ -77,7 +85,7 @@
 \def\TypPracovisteEN{Department}
 
 % Vedoucí práce: Jméno a příjmení s~tituly
-\def\Vedouci{Vedoucí práce}
+\def\Vedouci{Vedoucí práce \X{s~tituly}}
 
 % Pracoviště vedoucího (opět dle Organizační struktury MFF)
 \def\KatedraVedouciho{katedra}
@@ -95,7 +103,7 @@ Poděkování.
 
 % Abstrakt (doporučený rozsah cca 80-200 slov; nejedná se o zadání práce)
 \def\Abstrakt{%
-Abstrakt.
+Abstrakt. \X{doporučeno cca 80--200 slov; nejedná se o~zadání práce}
 }
 \def\AbstraktEN{%
 Abstract.
@@ -103,7 +111,7 @@ Abstract.
 
 % 3 až 5 klíčových slov (doporučeno), každé uzavřeno ve složených závorkách
 \def\KlicovaSlova{%
-{klíčová} {slova}
+{klíčová} {slova} \X{obvykle 3 až~5 klíčových slov či frází}
 }
 \def\KlicovaSlovaEN{%
 {key} {words}
@@ -159,6 +167,7 @@ Abstract.
 %%% diagramy apod.). Každá příloha musí být alespoň jednou odkazována z vlastního
 %%% textu práce. Přílohy se číslují.
 \chapwithtoc{Přílohy}
+\XXX{Přílohy k bakalářské práci, existují-li (různé dodatky jako výpisy programů, diagramy apod.). Každá příloha musí být alespoň jednou odkazována z vlastního textu práce. Přílohy se číslují.}
 
 \openright
 \end{document}
