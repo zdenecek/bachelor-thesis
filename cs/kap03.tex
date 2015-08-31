@@ -1,23 +1,28 @@
 %%% Fiktivní kapitola s ukázkami tabulek, obrázků a kódu
 
-\chapter{Tabulky, obrázky, softwarový kód}
+\chapter{Tabulky, obrázky, programy}
 
 Používání tabulek a grafů v~odborném textu má některá společná
 pravidla a~některá specifická. Tabulky a grafy neuvádíme přímo do
 textu, ale umístíme je buď na samostatné stránky nebo na vyhrazené
 místo v~horní nebo dolní části běžných stránek. \LaTeX\ se o~umístění
-plovoucích grafů a tabulek postará automaticky. Každý graf a tabulku
+plovoucích grafů a tabulek postará automaticky.
+
+Každý graf a tabulku
 očíslujeme a umístíme pod ně legendu. Legenda má popisovat obsah grafu
 či tabulky tak podrobně, aby jim čtenář rozuměl bez důkladného
-studování textu práce. Na každou tabulku a graf musí být v~textu odkaz
+studování textu práce.
+
+Na každou tabulku a graf musí být v~textu odkaz
 pomocí jejich čísla. Na příslušném místě textu pak shrneme ty
 nejdůležitější závěry, které lze z~tabulky či grafu učinit. Text by
 měl být čitelný a srozumitelný i~bez prohlížení tabulek a grafů a
 tabulky a grafy by měly být srozumitelné i~bez podrobné četby textu.
+
 Na tabulky a grafy odkazujeme pokud možno nepřímo v~průběhu běžného
 toku textu; místo \emph{\uv{Tabulka~\ref{tab03:Nejaka} ukazuje, že
-    muži jsou v~průměru o~$9,9$ kg těžší než ženy}} raději napíšeme
-\emph{\uv{Muži jsou o~$9,9$ kg těžší než ženy (viz
+    muži jsou v~průměru o~$9,9\,\rm kg$ těžší než ženy}} raději napíšeme
+\emph{\uv{Muži jsou o~$9,9\,\rm kg$ těžší než ženy (viz
     Tabulka~\ref{tab03:Nejaka})}}.
 
 \section{Tabulky}
@@ -31,7 +36,7 @@ toku textu; místo \emph{\uv{Tabulka~\ref{tab03:Nejaka} ukazuje, že
 %%%     desetinnou čárku
 %%%     Všimněte si, že ve zdrojovém kódu jsou desetinné tečky, ale
 %%%     tisknou se čárky.
-%%% Dále používáme příkazy \pulrad a \mc definované v BcPrace.tex
+%%% Dále používáme příkazy \pulrad a \mc definované v makra.tex
 
 \begin{tabular}{l@{\hspace{1.5cm}}D{.}{,}{3.2}D{.}{,}{1.2}D{.}{,}{2.3}}
 \toprule
@@ -52,7 +57,8 @@ $^a$ Směrodatná chyba odhadu metodou Monte Carlo.}
 \end{table}
 
 U~\textbf{tabulek} se doporučuje dodržovat následující pravidla:
-\begin{compactitem} %% vyžaduje balík paralist
+
+\begin{itemize} %% nebo compactitem z balíku paralist
 \item Vyhýbat se svislým linkám. Silnějšími vodorovnými linkami
   oddělit tabulku od okolního textu včetně legendy, slabšími
   vodorovnými linkami oddělovat záhlaví sloupců od těla tabulky a
@@ -60,26 +66,27 @@ U~\textbf{tabulek} se doporučuje dodržovat následující pravidla:
   implementuje balík \texttt{booktabs}. Chceme-li výrazněji oddělit
   některé sloupce od jiných, vložíme mezi ně větší mezeru.
 \item Neměnit typ, formát a význam obsahu políček v~tomtéž sloupci
-  (není dobré do téhož sloupce zapisovat tu průměr onde procenta).
+  (není dobré do téhož sloupce zapisovat tu průměr, onde procenta).
 \item Neopakovat tentýž obsah políček mnohokrát za sebou. Máme-li
   sloupec \textit{Rozptyl}, který v~prvních deseti řádcích obsahuje
-  hodnotu 0.5 a v~druhých deseti řádcích hodnotu 1.5, pak tento
+  hodnotu $0,5$ a v~druhých deseti řádcích hodnotu $1,5$, pak tento
   sloupec raději zrušíme a vyřešíme to jinak. Například můžeme tabulku
   rozdělit na dvě nebo do ní vložit popisné řádky, které informují
 o~nějaké proměnné hodnotě opakující se v~následujícím oddíle tabulky
-  (např. \emph{\uv{Rozptyl $=$ 0.5}} a níže \emph{\uv{Rozptyl $=$
-      1.5}}).
-\item Čísla v~tabulce zarovnávat na desetinnou tečku.
+  (např. \emph{\uv{Rozptyl${}=0,5$}} a níže \emph{\uv{Rozptyl${}=
+      1,5$}}).
+\item Čísla v~tabulce zarovnávat na desetinnou čárku.
 \item V~tabulce je někdy potřebné používat zkratky, které se jinde
 nevyskytují. Tyto zkratky můžeme vysvětlit v~legendě nebo
 v~poznámkách pod tabulkou. Poznámky pod tabulkou můžeme využít i
 k~podrobnějšímu vysvětlení významu  některých sloupců nebo hodnot.
-\end{compactitem}
+\end{itemize}
 
 \section{Obrázky}
 
 Několik rad týkajících se obrázků a grafů.
-\begin{compactitem}
+
+\begin{itemize}
 \item Graf by měl být vytvořen ve velikosti, v~níž bude použit
   v~práci. Zmenšení příliš velkého grafu vede ke špatné čitelnosti
   popisků.
@@ -100,20 +107,19 @@ Několik rad týkajících se obrázků a grafů.
   dostatečně roz\-díl\-ný\-mi intensitami šedé nebo šrafováním. Význam
   jednotlivých typů čar a~ploch vysvětlíme buď v~textové legendě ke
   grafu anebo v~grafické legendě, která je přímo součástí obrázku.
-\end{compactitem}
+\item Vyhýbejte se bitmapovým obrázkům o~nízkém rozlišení a zejména
+  JPEGům (zuby a kompresní artefakty nevypadají na papíře pěkně).
+  Lepší je vytvářet obrázky vektorově a vložit do textu jako PDF.
+\end{itemize}
 
-Pomocí příkazu \texttt{{\textbackslash}psfrag} lze nahrazovat části
-\textsf{ps/eps} souborů (typicky popisky v~obrázcích) libovolnou
-kombinací {\LaTeX}ových příkazů, jak ukazují následující příklady.
+\section{Programy}
 
-\section{Softwarový kód}
-
-Softwarový kód, resp. výstupy z~počítačových programů (je-li potřeba
-je v~práci uvádět) je vhodné odlišit od ostatního textu. Jednou
-z~možností je použití {\LaTeX}o\-vé\-ho balíčku \texttt{fancyvrb}
-(fancy verbatim), pomocí něhož je v~souboru \texttt{BcPrace.tex}
+Algoritmy, výpisy programů a popis interakce s~programy je vhodné
+odlišit od ostatního textu. Jednou z~možností je použití {\LaTeX}o\-vé\-ho balíčku
+\texttt{fancyvrb} (fancy verbatim), pomocí něhož je v~souboru \texttt{makra.tex}
 nadefinováno prostředí \texttt{code}. Pomocí něho lze vytvořit
 např. následující ukázky.
+
 \begin{code}
 > mean(x)
 [1] 158.90

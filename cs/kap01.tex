@@ -1,40 +1,79 @@
 %%% Fiktivní kapitola s ukázkami sazby
 
-\chapter{Sazba matematického textu}
+\chapter{Nápověda k~sazbě}
 
-\section{Několik jednoduchých ukázek}
+\section{Úprava práce}
+
+Vlastní text bakalářské práce je uspořádaný hierarchicky do kapitol a podkapitol,
+každá kapitola začíná na nové straně. Text je zarovnán do bloku. Nový odstavec
+se obvykle odděluje malou vertikální mezerou a odsazením prvního řádku. Grafická
+úprava má být v~celém textu jednotná.
+
+Práce se tiskne na bílý papír formátu A4. Okraje musí ponechat dost místa na vazbu:
+doporučen je horní, dolní a pravý okraj $25\,\rm mm$, levý okraj $40\,\rm mm$. 
+
+Písmo se doporučuje dvanáctibodové ($12\,\rm pt$) se standardní vzdáleností mezi řádky
+(pokud píšete ve Wordu nebo podobném programu, odpovídá tomu řádkování $1,5$; v~\TeX{}u
+není potřeba nic přepínat). Pro běžný text používejte vzpřímené patkové písmo.
+Text matematických vět se obvykle tiskne pro zdůraznění skloněným (slanted) písmem,
+není-li k~dispozici, může být zastoupeno kurzívou.
+
+Primárně je doporučován jednostranný tisk (příliš tenkou práci lze obtížně svázat).
+Delší práce je lepší tisknout oboustranně a přizpůsobit tomu velikosti okrajů:
+$40\,\rm mm$ má vždy \emph{vnitřní} okraj. Rub titulního listu zůstává nepotištěný.
+
+Zkratky použité v textu musí být vysvětleny vždy u prvního výskytu zkratky (v~závorce nebo
+v poznámce pod čarou, jde-li o složitější vysvětlení pojmu či zkratky). Pokud je zkratek
+více, připojuje se seznam použitých zkratek, včetně jejich vysvětlení a/nebo odkazů
+na definici.
+
+Delší převzatý text jiného autora je nutné vymezit uvozovkami nebo jinak vyznačit a řádně
+citovat.
+
+\section{Jednoduché příklady}
 
 %%% Bez \usepackage{icomma}:
-% Číslo v~matematickém režimu s~desetinnou čárkou: $\pi \doteq 3{,}141\,592\,653\,589$.
+% Čísla obvykle sázíme v~matematickém režimu s~desetinnou čárkou: \[\pi \doteq 3{,}141\,592\,653\,589.\]
 
 %%% S \usepackage{icomma}:
-Číslo v~matematickém režimu s~desetinnou čárkou: $\pi \doteq 3,141\,592\,653\,589$.
+Čísla obvykle sázíme v~matematickém režimu s~desetinnou čárkou: \[\pi \doteq 3,141\,592\,653\,589.\]
 
-Test na hladině 5 \% (mezera mezi 5 a~\%), ale 95\% (není mezera mezi
-95 a~\%) interval spolehlivosti.
+Mezi číslo a jednotku patří úzká mezera: šířka stránky A4 činí $210\,\rm mm$, což si
+pamatuje pouze $5\,\%$ autorů. Pokud ale údaj slouží jako přívlastek, mezeru vynecháváme:
+$25\rm mm$ okraj, $95\%$ interval spolehlivosti.
 
-Platí: $\var(X) = \E X^2 - \bigl(\E X \bigr)^2$.
-
-Druhy pomlček:
-červeno-černý (krátká),
+Rozlišujeme různé druhy pomlček:
+červeno-černý (krátká pomlčka),
 strana 16--22 (střední),
-$45-44$ (minus),
+$45-44$ (matematické minus),
 a~toto je --- jak se asi dalo čekat --- vložená věta ohraničená dlouhými pomlčkami.
-(Všimněte si, že jsme za \verb|a| napsali vlnovku místo mezery: to aby se
-tam nemohl rozdělit řádek.)
 
-Odrážky:
+V~českém textu se používají \uv{české} uvozovky, nikoliv ``anglické''.
+
+% V tomto odstavci se vlnka zviditelňuje
+{
+\def~{{\tt\char126}}
+Na některých místech je potřeba zabránit lámání řádku (v~\TeX{}u značíme vlnovkou):
+u~předložek (neslabičnych, nebo obecně jednopísmenných), vrchol~$v$, před $k$~kroky,
+a~proto, \dots{} obecně kdekoliv, kde by při rozlomení čtenář \uv{škobrtnul}.
+}
+
+Seznamy obvykle sázíme pomocí odrážek:
 \begin{itemize}   % Nebo {compactitem}
 \item první
 \item druhá
 \item třetí
 \end{itemize}
 
-\uv{České uvozovky.}
-
 \section{Matematické vzorce a výrazy}
+
+Proměnné sázíme kurzívou (to \TeX{} v~matematickém módu dělá sám, ale
+nezapomínejte na to v~okolním textu a také si matematický mód zapněte).
+Názvy funkcí sázíme vzpřímeně. Tedy například:
+$\var(X) = \E X^2 - \bigl(\E X \bigr)^2$.
+
 Nechť
-\[
+\[   % LaTeXová náhrada klasického TeXového $$
 \mathbb{X} = \begin{pmatrix}
       \T{\bm x_1} \\
       \vdots \\
@@ -71,6 +110,7 @@ Dva vzorce se spojovníkem:
 S(t) &= \pr(T > t) \\[1ex]
 F(t) &= \pr(T \leq t)
 \end{aligned}
+\;	% zde pomůže ručně vynechat trochu místa
 \right\}
 \quad t>0 \qquad \text{(zprava spojité).}
 \end{equation}
@@ -142,9 +182,9 @@ Vzorec na dva řádky, zarovnaný na $=$, číslovaný uprostřed:
 Konstrukce typu definice, věta, důkaz, příklad, \dots je vhodné
 odlišit od okolního textu a~případně též číslovat s~možností použití
 křížových odkazů. Pro každý typ těchto konstrukcí je vhodné mít
-v~hlavním souboru (\texttt{BcPrace.tex}) nadefinované jedno prostředí,
+v~souboru s~makry (\texttt{makra.tex}) nadefinované jedno prostředí,
 které zajistí jak vizuální odlišení od okolního textu, tak
-automatickou tvorbu čísel s~možností křížově odkazovat.
+automatické číslování s~možností křížově odkazovat.
 
 \begin{definice}\label{def01:1}
   Nechť náhodné veličiny $X_1,\dots,X_n$ jsou definovány na témž
