@@ -3,25 +3,25 @@ set -e
 export LC_ALL=cs_CZ
 
 for a in bp dp phd ; do
-	rm -rf vzor-$a{,-win,-iso}
+	rm -rf vzor-$a{,-win,-iso}{,.zip}
 	git archive --prefix=vzor-$a/ HEAD | tar xf -
-	rm -rf vzor-$a/{mkdist,upload,uprava,slides,TODO}
+	(
+		cd vzor-$a
+		rm -rf mkdist upload uprava slides TODO
+	)
 done
 
 # BP
 (
 	echo "Generating BP"
 	cd vzor-bp
-	cp ../uprava/bp_uprava.pdf cs/
-	cp ../uprava/bp_uprava_en.pdf en/
+	# Nothing to do at the moment :)
 )
 
 # DP
 (
 	echo "Generating DP"
 	cd vzor-dp
-	cp ../uprava/dp_uprava.pdf cs/
-	cp ../uprava/dp_uprava_en.pdf en/
 	sed -i '
 		s/bakalářsk/diplomov/g
 		s/BAKALÁŘSK/DIPLOMOV/g
@@ -39,9 +39,8 @@ done
 (
 	echo "Generating PhD"
 	cd vzor-phd
-	cp ../uprava/phd_uprava.pdf cs/
-	cp ../uprava/phd_uprava_en.pdf en/
 	sed -i '
+		s/bakalářská/disertační/g
 		s/bakalářské/disertační/g
 		s/bakalářských/disertačních/g
 		s/bakalářskou/disertační/g
@@ -56,6 +55,30 @@ done
 		exit 1
 	fi
 )
+
+for a in bp dp phd ; do
+	(
+		cd vzor-$a/cs
+		make
+		mv prace.pdf vzor.pdf
+		make clean
+	)
+	(
+		cd vzor-$a/en
+		make
+		mv thesis.pdf example.pdf
+		make clean
+	)
+	(
+		cd vzor-$a
+		sed -i '
+			/^%\+ *NEMICEPS/N
+			/^%\+ *SPECIMEN/,/^%\+ *NEMICEPS/d
+			s/ *\\X{[^}]*}//
+			/^\\XXX{/d
+		' */*.tex
+	)
+done
 
 for a in bp dp phd ; do
 	# Basic version (UTF-8)
