@@ -5,10 +5,4 @@ Dvojtecky na titulni strane by mohly byt centrovane
 
 Synchronizovat anglickou verzi s ceskou (a opravit README)
 
-Probrat makra.tex
-
-Hezci QED
-
-grep FIXME
-
 Upravit mkdist, aby vyhazoval SPECIMEN, \X a \XXX a prikladal spravna ukazkova PDF.
