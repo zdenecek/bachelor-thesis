@@ -11,6 +11,4 @@ Hezci QED
 
 grep FIXME
 
-Overfullrules
-
 Upravit mkdist, aby vyhazoval SPECIMEN, \X a \XXX a prikladal spravna ukazkova PDF.
