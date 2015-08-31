@@ -1,16 +1,33 @@
-%%% Seznam použité literatury je zpracován podle platných standardů. Povinnou citační
-%%% normou pro bakalářskou práci je ISO 690. Jména časopisů lze uvádět zkráceně, ale jen
-%%% v kodifikované podobě. Všechny použité zdroje a prameny musí být řádně citovány.
+%%% Bibliography (literature used as a source)
+%%%
+%%% We employ bibTeX to construct the bibliography. It processes
+%%% citations in the text (e.g., the \cite{...} macro) and looks up
+%%% relevant entries in the bibliography.bib file.
+%%%
+%%% The \bibliographystyle command selects, which style will be used
+%%% for references from the text. The argument in curly brackets is
+%%% the name of the corresponding style file (*.bst). Both styles
+%%% mentioned in this template are included in LaTeX distributions.
 
-\def\bibname{Bibliography}
-\begin{thebibliography}{99}
-\addcontentsline{toc}{chapter}{\bibname}
+\bibliographystyle{plainnat}    %% Author (year)
+% \bibliographystyle{unsrt}     %% [number]
 
-%\bibitem{lamport94}
-%  {\sc Lamport,} Leslie.
-%  \emph{\LaTeX: A Document Preparation System}.
-%  2. vydání.
-%  Massachusetts: Addison Wesley, 1994.
-%  ISBN 0-201-52983-1.
+\renewcommand{\bibname}{Bibliography}
 
-\end{thebibliography}
+%%% Generate the bibliography. Beware that if you cited no works,
+%%% the empty list will be omitted completely.
+
+\bibliography{bibliography}
+
+%%% If case you prefer to write the bibliography manually (without bibTeX), you can do this:
+
+% \begin{thebibliography}{99}
+%
+% \bibitem{lamport94}
+%   {\sc Lamport,} Leslie.
+%   \emph{\LaTeX: A Document Preparation System}.
+%   2nd edition.
+%   Massachusetts: Addison Wesley, 1994.
+%   ISBN 0-201-52983-1.
+%
+% \end{thebibliography}

@@ -33,7 +33,6 @@
 \usepackage[utf8]{inputenc}
 
 %%% Další užitečné balíčky (jsou součástí běžných distribucí LaTeXu)
-%%% Některé jsou zatím zakomentovné, pokud se vám hodí, odkomentujte je.
 \usepackage{amsmath}        % rozšíření pro sazbu matematiky
 \usepackage{amsfonts}       % matematické fonty
 \usepackage{amsthm}         % sazba vět, definic apod.
@@ -133,9 +132,7 @@ Abstract.
 \begin{document}
 \include{titulka}
 
-%%% Strana s automaticky generovaným obsahem bakalářské práce. U matematických
-%%% prací je přípustné, aby seznam tabulek a zkratek, existují-li, byl umístěn
-%%% na začátku práce, místo na jejím konci.
+%%% Strana s automaticky generovaným obsahem bakalářské práce
 
 \tableofcontents
 
@@ -144,9 +141,6 @@ Abstract.
 \include{kap01}
 \include{kap02}
 \include{kap03}
-
-% Ukázka použití některých konstrukcí LateXu (odkomentujte, chcete-li)
-% \include{ukazka}
 
 \include{zaver}
 
@@ -158,16 +152,17 @@ Abstract.
 \listoffigures
 
 %%% Tabulky v bakalářské práci (opět nemusí být nutné uvádět)
+%%% U matematických prací může být lepší přemístit seznam tabulek na začátek práce.
 \listoftables
 \XXX{U~matematických prací může být lepší přemístit seznam tabulek na začátek práce.}
 
 %%% Použité zkratky v bakalářské práci (opět nemusí být nutné uvádět)
+%%% U matematických prací může být lepší přemístit seznam zkratek na začátek práce.
 \chapwithtoc{Seznam použitých zkratek}
 \XXX{U~matematických prací může být lepší přemístit seznam zkratek na začátek práce.}
 
-%%% Přílohy k bakalářské práci, existují-li (různé dodatky jako výpisy programů,
-%%% diagramy apod.). Každá příloha musí být alespoň jednou odkazována z vlastního
-%%% textu práce. Přílohy se číslují.
+%%% Přílohy k bakalářské práci, existují-li. Každá příloha musí být alespoň jednou
+%%% odkazována z vlastního textu práce. Přílohy se číslují.
 %%%
 %%% Do tištěné verze se spíše hodí přílohy, které lze číst a prohlížet (dodatečné
 %%% tabulky a grafy, různé textové doplňky, ukázky výstupů z počítačových programů,
@@ -176,7 +171,7 @@ Abstract.
 %%% interaktivní grafy apod.). Elektronické přílohy se nahrávají do SISu a lze
 %%% je také do práce vložit na CD/DVD.
 \chapwithtoc{Přílohy}
-\XXX{Přílohy k bakalářské práci, existují-li (různé dodatky jako výpisy programů, diagramy apod.). Každá příloha musí být alespoň jednou odkazována z vlastního textu práce. Přílohy se číslují.}
+\XXX{Přílohy k bakalářské práci, existují-li. Každá příloha musí být alespoň jednou odkazována z vlastního textu práce. Přílohy se číslují.}
 \XXX{Do tištěné verze se spíše hodí přílohy, které lze číst a prohlížet (dodatečné tabulky a grafy, různé textové doplňky, ukázky výstupů z počítačových programů, apod.). Do elektronické verze se hodí přílohy, které budou spíše používány v~elektronické podobě než čteny (zdrojové kódy programů, datové soubory, interaktivní grafy apod.). Elektronické přílohy se nahrávají do SISu a lze je také do práce vložit na CD/DVD.}
 
 \openright

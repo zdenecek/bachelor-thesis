@@ -19,12 +19,15 @@ připomínat komentáři. Přesto si ale celá pravidla přečtěte -- napříkl
 úprava desek práce je popsána pouze tam.
 
 Pokud LaTeX ještě neznáte, na webu naleznete mnoho úvodních textů.
-Mně se nejvíce osvědčil http://en.wikibooks.org/wiki/LaTeX. Pár poznámek
-k TeXové sazbě najdete také zde v souboru ukazka.tex.
+Nám se nejvíce osvědčil http://en.wikibooks.org/wiki/LaTeX.
 
 Základní nastavení sazby naleznete v souboru prace.tex, ten se také
 odkazuje na ostatní soubory s jednotlivými kapitolami práce. Pečlivě
 si hlavní soubor přečtěte a doplňte všechny chybějící údaje.
+
+Česká verze obsahuje komentáře a ukázkové kapitoly s popisem doporučené
+úpravy a různými radami pro sazbu v TeXu. Anglická verze má zatím pouze
+komentáře.
 
 Pokud pracujete na Unixovém systému, může se vám hodit ukázkový Makefile --
 stačí spustit program "make" a ten už se postará o přeložení všech souborů
@@ -36,10 +39,6 @@ a pak 2x pdftex pro dopočítání referencí.)
 
 Další materiály o psaní bakalářských prací a odborných textů vůbec najdete
 na http://mj.ucw.cz/vyuka/bc/. Tamtéž se nachází celá historie této šablony.
-
---------------------------------------------------------------------------------
-
-FIXME: Anglická verze neobsahuje některé změny, které už v české verzi existují.
 
 --------------------------------------------------------------------------------
 
@@ -59,4 +58,6 @@ Zásadní změny oproti verzi z roku 2011
    literatury můžete v nouzi stále používat, viz zakomentovaná část
    souboru literatura.tex.
 
- - Ukázkové kapitoly obsahují různé rady a příklady sazby.
+ - Ukázkové kapitoly obsahují různé rady a příklady sazby. Přesunula
+   se do nich většina původního manuálu "Úprava bakalářské práce",
+   ovšem ujasnili jsme, co je povinnost a co pouze doporučení.
