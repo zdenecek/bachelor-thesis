@@ -61,3 +61,6 @@ Zásadní změny oproti verzi z roku 2011
  - Ukázkové kapitoly obsahují různé rady a příklady sazby. Přesunula
    se do nich většina původního manuálu "Úprava bakalářské práce",
    ovšem ujasnili jsme, co je povinnost a co pouze doporučení.
+
+ - Matematická sekce vydávala svou vlastní verzi staré šablony
+   s ukázkovým textem a makry. Tyto ukázky jsme integrovali.
