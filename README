@@ -34,8 +34,8 @@ stačí spustit program "make" a ten už se postará o přeložení všech soubo
 TeXem.
 
 TeX také můžete spouštět ručně. V tom případě je potřeba překládat pdfTeXem
-a spustit bibTeX na vygenerování bibliografie. (Ideálně takto: pdftex, bibtex,
-a pak 2x pdftex pro dopočítání referencí.)
+a spustit bibTeX na vygenerování bibliografie. (Ideálně takto: pdflatex, bibtex,
+a pak 2x pdflatex pro dopočítání referencí.)
 
 Další materiály o psaní bakalářských prací a odborných textů vůbec najdete
 na http://mj.ucw.cz/vyuka/bc/. Tamtéž se nachází celá historie této šablony.
