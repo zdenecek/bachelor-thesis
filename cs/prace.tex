@@ -25,6 +25,8 @@
 % \setlength\headheight{0mm}
 % \let\openright=\cleardoublepage
 
+\usepackage[a-2u]{pdfx}
+
 % Přepneme na českou sazbu
 \usepackage[czech]{babel}
 \usepackage[IL2]{fontenc}
@@ -118,12 +120,12 @@ Abstract.
 
 %% Balíček hyperref, kterým jdou vyrábět klikací odkazy v PDF,
 %% ale hlavně ho používáme k uložení metadat do PDF (včetně obsahu).
-\usepackage[pdftex,unicode]{hyperref}   % Musí být za všemi ostatními balíčky
+\hypersetup{unicode}
 \hypersetup{breaklinks=true}
-\hypersetup{pdftitle={\NazevPrace}}
-\hypersetup{pdfauthor={\AutorPrace}}
-\hypersetup{pdfkeywords=\KlicovaSlova}
-\hypersetup{urlcolor=blue}
+%\hypersetup{pdftitle={\NazevPrace}}
+%\hypersetup{pdfauthor={\AutorPrace}}
+%\hypersetup{pdfkeywords=\KlicovaSlova}
+%\hypersetup{urlcolor=blue}
 
 %% Definice různých užitečných maker (viz popis uvnitř souboru)
 \include{makra}
