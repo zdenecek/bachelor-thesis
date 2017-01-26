@@ -3,7 +3,7 @@ set -e
 export LC_ALL=cs_CZ
 
 for a in bp dp phd ; do
-	rm -rf vzor-$a{,-win,-iso}{,.zip}
+	rm -rf vzor-$a{,.zip}
 	git archive --prefix=vzor-$a/ HEAD | tar xf -
 	(
 		cd vzor-$a
@@ -86,22 +86,5 @@ for a in bp dp phd ; do
 done
 
 for a in bp dp phd ; do
-	# Basic version (UTF-8)
 	zip -r vzor-$a.zip vzor-$a
-
-	# CP1250 version
-	cp -a vzor-$a vzor-$a-win
-	for c in vzor-$a-win/{*/*.tex,README} ; do
-		recode utf-8..windows-1250 $c
-	done
-	sed -i 's/\[utf8]/[cp1250]/g' vzor-$a-win/{cs/prace.tex,en/thesis.tex}
-	zip -r vzor-$a-win.zip vzor-$a-win
-
-	# ISO-8859-2 version
-	cp -a vzor-$a vzor-$a-iso
-	for c in vzor-$a-iso/{*/*.tex,README} ; do
-		recode utf-8..iso-8859-2 $c
-	done
-	sed -i 's/\[utf8]/[latin2]/g' vzor-$a-iso/{cs/prace.tex,en/thesis.tex}
-	zip -r vzor-$a-iso.zip vzor-$a-iso
 done
