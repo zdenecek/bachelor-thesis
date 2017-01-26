@@ -25,8 +25,14 @@
 % \setlength\headheight{0mm}
 % \let\openright=\cleardoublepage
 
+%% Generate PDF/A-2u
+\usepackage[a-2u]{pdfx}
+
 %% Character encoding: usually latin2, cp1250 or utf8:
 \usepackage[utf8]{inputenc}
+
+%% Prefer Latin Modern fonts
+\usepackage{lmodern}
 
 %% Further useful packages (included in most LaTeX distributions)
 \usepackage{amsmath}        % extensions for typesetting of math
@@ -100,12 +106,9 @@ Abstract. \X{Recommended length around 80--200 words. This is not a~copy of your
 
 %% The hyperref package for clickable links in PDF and also for storing
 %% metadata to PDF (including the table of contents).
-\usepackage[pdftex,unicode]{hyperref}   % Must follow all other packages
+%% Most settings are pre-set by the pdfx package.
+\hypersetup{unicode}
 \hypersetup{breaklinks=true}
-\hypersetup{pdftitle={\ThesisTitle}}
-\hypersetup{pdfauthor={\ThesisAuthor}}
-\hypersetup{pdfkeywords=\Keywords}
-\hypersetup{urlcolor=blue}
 
 % Definitions of macros (see description inside)
 \include{macros}
