@@ -1,4 +1,4 @@
-export TEXINPUTS=../pdfx:
+export TEXINPUTS=../tex//:
 
 all: prace.pdf
 
