@@ -4,5 +4,3 @@ Preklep ve slovencine, ktery objevil Pali (viz mail)
 Dvojtecky na titulni strane by mohly byt centrovane
 
 Ctverecek na konci dukazu by mohl byt na konci odstavce.
-
-Konverze obrázků: gs -q -dNOPAUSE -dBATCH -dPDFSETTINGS=/prepress -sDEVICE=pdfwrite -sOutputFile=vystup.pdf vstup.pdf  ; done
