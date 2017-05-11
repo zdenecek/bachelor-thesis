@@ -6,7 +6,7 @@
 \title[Medvědův průvodce bakalářkou]{Medvědův průvodce bakalářkou}
 \author[Martin Mareš]{Martin Mareš\\\texttt{mj@ucw.cz}}
 \institute{Katedra Aplikované Matematiky\\MFF UK Praha}
-\date{2016}
+\date{2017}
 \begin{document}
 \setbeamertemplate{navigation symbols}{}
 \setbeamerfont{title page}{family=\rmfamily}
@@ -17,7 +17,8 @@
 
 \begin{frame}{Odevzdávání práce}
 
-Formality určují Směrnice děkana 8/2010, 2/2015 a 5/2016.
+Formality určují Směrnice děkana 8/2010, 2/2015 a 7/2016
+a Opatření rektora 13/2017.
 
 ~
 
@@ -35,7 +36,7 @@ Papírová verze:
 Elektronická verze:
 
 \begin{itemize}
-\item PDF (verze alespoň 1.3, prohledávatelné) + přílohy
+\item PDF/A (level 1a nebo 2u) + přílohy (omezení formátů!)
 \item Odevzdává se do SISu
 \item Pokud jsou přílohy příliš velké, odevzdává se též
       na DVD vlepeném do desek papírové verze
@@ -126,6 +127,46 @@ K~dispozici je šablona pro \LaTeX:
 \item Nedělitelné mezery: u{\tt\char32}předložek, vrchol{\tt\char32}$v$, a{\tt\char32}proto.
 \item Obrázky nejlépe vektorové nebo bitmapy ve~vysokém rozlišení. JPEG jen na fotky.
 \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Formát práce: PDF/A}
+
+\begin{itemize}
+\item PDF/A je profil formátu PDF určený pro archivaci
+\item Různé varianty: na UK povoleno PDF/A-1a nebo PDF/A-2u
+\item Nesmí obsahovat:
+	\begin{itemize}
+	\item odkazy na externí fonty (včetně systémových)
+	\item audio, video, skripty, obskurnosti
+	\item transparentní vrstvy (povoleny ve 2u)
+	\end{itemize}
+\item Musí obsahovat:
+	\begin{itemize}
+	\item deklarace barevných prostorů
+	\item meta-data ve formátu XMP
+	\end{itemize}
+\item Ve všelijakých officech alespoň formálně OK
+\item V~\LaTeX{}u použijte balíček {\bf pdfx} (viz šablona)
+\item Pozor na vložené obrázky (záchrana GhostScriptem)
+\item Kontrola pomocí VeraPDF (\url{http://verapdf.org/})
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Formát práce: Přílohy}
+
+Povolené formáty příloh jsou tyto:
+
+\begin{itemize}
+\item Text: PDF/A
+\item Obrázky: JPEG, PDF/A
+\item Zvuk: WAV, MP3
+\item Video: MPEG2, MPEG4
+\item Tabulky: CSV, XML, TXT
+\end{itemize}
+
+Ostatní po schválení fakultním koordinátorem.
 
 \end{frame}
 
