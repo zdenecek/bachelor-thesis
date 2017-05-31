@@ -37,15 +37,4 @@ obvyklých fontů (které se vkládají pouze v~bitmapové podobě a/nebo bez
 unicodových tabulek) a vkládání obrázků v~PDF, které samy o~sobě standard
 PDF/A nesplňují.
 
-Je pravděpodobné, že se to týká obrázků vytvářených mnoha různými programy.
-V~takovém případě se můžete pokusit obrázek do zkonvertovat do PDF/A pomocí
-GhostScriptu, například takto:
-
-\begin{verbatim}
-        gs -q -dNOPAUSE -dBATCH
-           -sDEVICE=pdfwrite -dPDFSETTINGS=prepress
-           -sOutputFile=vystup.pdf vstup.pdf
-\end{verbatim}
-
-Jelikož PDF/A je v~\TeX{}ovem světě (a~nejen tam) novinkou, budeme rádi
-za vaše zkušenosti.
+Další postřehy o~práci s~PDF/A najdete na \url{http://mj.ucw.cz/vyuka/bc/pdfaq.html}.
