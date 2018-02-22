@@ -20,7 +20,10 @@ done
 (
 	echo "Generating BP"
 	cd vzor-bp
-	# Nothing to do at the moment :)
+	sed -i '
+		/^%\+ *ONLYPHD/N
+		/^%\+ *PHDONLY/,/^%\+ *ONLYPHD/d
+	' */*.tex README
 )
 
 # DP
@@ -33,6 +36,8 @@ done
 		s/bachelor/master/g
 		s/BACHELOR/MASTER/g
 		s/bp_uprava/dp_uprava/g
+		/^%\+ *ONLYPHD/N
+		/^%\+ *PHDONLY/,/^%\+ *ONLYPHD/d
 	' */*.tex README
 	if grep -Eri 'bakal|bachel' . ; then
 		echo >&2 "Substitutions failed"
@@ -54,6 +59,8 @@ done
 		s/BACHELOR/DOCTORAL/g
 		s/bp_uprava/phd_uprava/g
 		/ Následuje vevázaný /,+2d
+		/^%\+ *PHDONLY/d
+		/^%\+ *ONLYPHD/d
 	' */*.tex README
 	if grep -Eri 'bakal|bachel' . ; then
 		echo >&2 "Substitutions failed"
