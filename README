@@ -33,8 +33,9 @@ komentáře.
 Elektronická podoba práce, kterou odevzdáváte do SISu, musí být povinně
 ve formátu PDF/A-1a nebo -2u. Tato šablona vytváří PDF/A-2u pomocí balíčku
 pdfx (https://www.ctan.org/tex-archive/macros/latex/contrib/pdfx). Pozor,
-ve většině instalací TeXu je tento balíček buď zastaralý nebo nefunkční,
+v mnoha instalacích TeXu je tento balíček buď zastaralý nebo nefunkční,
 takže si ho raději stáhněte samostatně a rozbalte do adresáře tex/pdfx/.
+
 Další instrukce k přípravě PDF/A naleznete v ukázkových kapitolách
 a na http://mj.ucw.cz/vyuka/bc/pdfaq.html.
 
