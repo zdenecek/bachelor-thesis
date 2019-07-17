@@ -39,6 +39,10 @@ takže si ho raději stáhněte samostatně a rozbalte do adresáře tex/pdfx/.
 Další instrukce k přípravě PDF/A naleznete v ukázkových kapitolách
 a na http://mj.ucw.cz/vyuka/bc/pdfaq.html.
 
+Upozorňujeme, že MikTeX pod Windows má problémy s některými (obzvláště
+matematickými) fonty a vytváří pak nekorektní PDF/A. Doporučujeme místo
+něj použít distribuci TeXlive.
+
 Pokud pracujete na Unixovém systému, může se vám hodit ukázkový Makefile --
 stačí spustit program "make" a ten už se postará o přeložení všech souborů
 TeXem.
