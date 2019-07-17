@@ -23,6 +23,8 @@ done
 	sed -i '
 		/^%\+ *ONLYPHD/N
 		/^%\+ *PHDONLY/,/^%\+ *ONLYPHD/d
+		/^%\+ *NOPHD/d
+		/^%\+ *PHDNO/d
 	' */*.tex README
 )
 
@@ -38,6 +40,8 @@ done
 		s/bp_uprava/dp_uprava/g
 		/^%\+ *ONLYPHD/N
 		/^%\+ *PHDONLY/,/^%\+ *ONLYPHD/d
+		/^%\+ *NOPHD/d
+		/^%\+ *PHDNO/d
 	' */*.tex README
 	if grep -Eri 'bakal|bachel' . ; then
 		echo >&2 "Substitutions failed"
@@ -58,9 +62,10 @@ done
 		s/bachelor/doctoral/g
 		s/BACHELOR/DOCTORAL/g
 		s/bp_uprava/phd_uprava/g
-		/ Následuje vevázaný /,+2d
 		/^%\+ *PHDONLY/d
 		/^%\+ *ONLYPHD/d
+		/^%\+ *PHDNO/N
+		/^%\+ *NOPHD/,/^%\+ *PHDNO/d
 	' */*.tex README
 	if grep -Eri 'bakal|bachel' . ; then
 		echo >&2 "Substitutions failed"
