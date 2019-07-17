@@ -49,7 +49,7 @@ TeXem.
 
 TeX také můžete spouštět ručně. V tom případě je potřeba překládat pdfTeXem
 a spustit bibTeX na vygenerování bibliografie. (Ideálně takto: pdflatex, bibtex,
-a pak 2x pdflatex pro dopočítání referencí.)
+a pak 2x pdflatex pro dopočítání referencí. Případně využít latexmk.)
 
 Další materiály o psaní bakalářských prací a odborných textů vůbec najdete
 na http://mj.ucw.cz/vyuka/bc/. Tamtéž se nachází celá historie této šablony.
