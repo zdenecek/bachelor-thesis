@@ -52,7 +52,8 @@ a spustit bibTeX na vygenerování bibliografie. (Ideálně takto: pdflatex, bib
 a pak 2x pdflatex pro dopočítání referencí. Případně využít latexmk.)
 
 Další materiály o psaní bakalářských prací a odborných textů vůbec najdete
-na http://mj.ucw.cz/vyuka/bc/. Tamtéž se nachází celá historie této šablony.
+na http://mj.ucw.cz/vyuka/bc/. Tamtéž se nachází aktuální vývojová verze této
+šablony.
 
 --------------------------------------------------------------------------------
 
