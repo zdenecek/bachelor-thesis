@@ -48,13 +48,13 @@
 
 %%% An environment for proofs
 
-%%% FIXME %%% \newenvironment{proof}{
-%%% FIXME %%%   \par\medskip\noindent
-%%% FIXME %%%   \textit{Proof}.
-%%% FIXME %%% }{
-%%% FIXME %%% \newline
-%%% FIXME %%% \rightline{$\square$}  % or \SquareCastShadowBottomRight from bbding package
-%%% FIXME %%% }
+\newenvironment{myproof}{
+  \par\medskip\noindent
+  \textit{Proof}.
+}{
+\newline
+\rightline{$\qedsymbol$}
+}
 
 %%% An environment for typesetting of program code and input/output
 %%% of programs. (Requires the fancyvrb package -- fancy verbatim.)
