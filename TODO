@@ -4,8 +4,6 @@ Jaký typ PDFkových anotací produkuje hyperref? Někdy prohlížeče
 rámečky kolem odkazů neukazují, jindy ne, a například linuxové lp
 je pak vytiskne.
 
-Anglické README.
-
 Pojmenované věty mají nepěknou tučnou tečku za netučným jménem.
 Za to ovšem může balíček amsthm a není jasné, jak mu v tom zabránit.
 Pomocí \newtheoremstyle sice jde předefinovat, jak se tečka sází,
