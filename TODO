@@ -8,3 +8,7 @@ Pojmenované věty mají nepěknou tučnou tečku za netučným jménem.
 Za to ovšem může balíček amsthm a není jasné, jak mu v tom zabránit.
 Pomocí \newtheoremstyle sice jde předefinovat, jak se tečka sází,
 ale v tom okamžiku není dostupná informace o tom, zda věta má jméno.
+
+Ukázková bibliografie by měla ukazovat i citování online zdrojů.
+
+Anglická verze šablony by měla používat stejný styl citací jako česká.
