@@ -136,4 +136,5 @@
 % are deleted, as well as all calls of \X and \XXX macros.
 \def\X#1{\textcolor{red}{[#1]}}
 \def\XXX#1{\par\smallskip\noindent \textcolor{red}{[#1]}}
+\def\XOverlap#1{\dimen0=\prevdepth\nointerlineskip{\vbox to 0pt{\XXX{#1}\vss}}\prevdepth=\dimen0}
 %% NEMICEPS
