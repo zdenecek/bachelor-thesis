@@ -9,7 +9,7 @@ thesis.pdf: thesis.tex $(wildcard *.tex) bibliography.bib
 	pdflatex $<
 	pdflatex $<
 
-abstract.pdf: abstract.tex abstract.xmpdata
+abstract.pdf: abstract.tex
 	pdflatex $<
 
 clean:

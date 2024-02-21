@@ -1,4 +1,14 @@
-%%% A template for a simple PDF/A file like a stand-alone abstract of the thesis.
+%%% A template for a simple PDF/A file with a stand-alone abstract of the thesis.
+
+% Meta-data of your thesis (please edit)
+\input metadata.tex
+
+% Generate metadata in XMP format for use by the pdfx package
+\let\OrigThesisTitleXMP=\ThesisTitleXMP
+\def\ThesisTitleXMP{\OrigThesisTitleXMP (abstract)}
+\def\AbstractXMP{}
+\def\ThesisKeywordsXMP{}
+\input xmp.tex
 
 \documentclass[12pt]{report}
 
@@ -8,11 +18,19 @@
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 \usepackage{textcomp}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{fancyvrb}
+
+\pagestyle{empty}
+
+% Definitions of macros (see description inside)
+\input macros.tex
 
 \begin{document}
 
-%% Do not forget to edit abstract.xmpdata.
-
-This is an example abstract.
+% By default, we create the abstract from the metadata
+\Abstract
 
 \end{document}
