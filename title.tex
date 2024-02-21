@@ -1,7 +1,8 @@
 %%% Title page of the thesis and other mandatory pages
 
-%%% SPECIMEN
-%%% Inscriptions at the opening page of the hard cover
+%%% Inscriptions at the opening page of the hard cover (PhD thesis only)
+
+\ifx\ThesisType\TypePhD
 
 \pagestyle{empty}
 \hypersetup{pageanchor=false}
@@ -17,7 +18,7 @@ Faculty of Mathematics and Physics
 
 \vfill
 
-{\huge\bf BACHELOR THESIS}
+{\huge\bf\ThesisTypeTitle}
 
 \vfill
 
@@ -27,7 +28,7 @@ Faculty of Mathematics and Physics
 
 \newpage\openright
 
-%%% NEMICEPS
+\fi
 
 %%% Title page of the thesis
 
@@ -40,7 +41,7 @@ Faculty of Mathematics and Physics
 \vspace{-8mm}
 \vfill
 
-{\bf\Large BACHELOR THESIS}
+{\bf\Large\ThesisTypeTitle}
 
 \vfill
 
@@ -61,25 +62,15 @@ Faculty of Mathematics and Physics
 Supervisor of the bachelor thesis:&\Supervisor \cr
 \noalign{\vspace{2mm}}
 Study programme:&\StudyProgramme \cr
-\noalign{\vspace{2mm}}
-Study branch:&\StudyBranch \cr
 }}}}
 
 \vfill
 
-% Zde doplňte rok
 Prague \YearSubmitted
 
 \end{center}
 
 \newpage
-
-%%% NOPHD
-%%% Here should be a bound sheet included -- a signed copy of the "bachelor
-%%% thesis assignment". This assignment is NOT a part of the electronic
-%%% version of the thesis. DO NOT SCAN.
-\XXX{Bound into the introductory part must be the form with signed approval of the thesis topic (a photocopy suffices). This is not a~part of the electronic version of the thesis, do not scan!}
-%%% PHDNO
 
 %%% A page with a solemn declaration to the bachelor thesis
 
@@ -123,6 +114,7 @@ In \hbox to 6em{\dotfill} date \hbox to 6em{\dotfill}
 %%% Mandatory information page of the thesis
 
 \openright
+{\InfoPageFont
 
 \vbox to 0.5\vsize{
 \setlength\parindent{0mm}
@@ -149,7 +141,40 @@ Keywords:
 \XXX{This information must be stored as PDF meta-data, too. Please refer to the {\tt README} file.}
 \vss}
 
+% In Czech study programmes, it is mandatory to include Czech meta-data:
+
+\ifx\StudyLanguage\LangCS
+
+\vbox to 0.49\vsize{
+\setlength\parindent{0mm}
+\setlength\parskip{5mm}
+
+Název práce:
+\ThesisTitleCS
+
+Autor:
+\ThesisAuthor
+
+\DeptTypeCS:
+\DepartmentCS
+
+Vedoucí bakalářské práce:
+\Supervisor, \SupervisorsDepartment
+
+Abstrakt:
+\AbstractCS
+
+Klíčová slova:
+\KeywordsCS
+}
+
+\fi
+
+}
+
 \newpage
+
+%%% From this point on, pages shall be numbered
 
 \openright
 \pagestyle{plain}

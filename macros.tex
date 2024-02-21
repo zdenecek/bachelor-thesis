@@ -1,6 +1,47 @@
 %%% This file contains definitions of various useful macros and environments %%%
 %%% Please add more macros here instead of cluttering other files with them. %%%
 
+%%% Switches based on thesis type
+
+\def\TypeBc{bc}
+\def\TypeMgr{mgr}
+\def\TypePhD{phd}
+\def\TypeRig{rig}
+
+\ifx\ThesisType\TypeBc
+\def\ThesisTypeName{bachelor}
+\def\ThesisTypeTitle{BACHELOR THESIS}
+\fi
+
+\ifx\ThesisType\TypeMgr
+\def\ThesisTypeName{master}
+\def\ThesisTypeTitle{MASTER THESIS}
+\fi
+
+\ifx\ThesisType\TypePhD
+\def\ThesisTypeName{doctoral}
+\def\ThesisTypeTitle{DOCTORAL THESIS}
+\fi
+
+\ifx\ThesisType\TypeRig
+\def\ThesisTypeName{rigorosum}
+\def\ThesisTypeTitle{RIGOROSUM THESIS}
+\fi
+
+\ifx\ThesisTypeName\undefined
+\PackageError{thesis}{Unknown thesis type.}{Please check the definition of ThesisType in metadata.tex.}
+\fi
+
+%%% Switches based on study program language
+
+\def\LangCS{cs}
+\def\LangEN{en}
+
+\ifx\StudyLanguage\LangCS
+\else\ifx\StudyLanguage\LangEn
+\else\PackageError{thesis}{Unknown study language.}{Please check the definition of StudyLanguage in metadata.tex.}
+\fi\fi
+
 %%% Minor tweaks of style
 
 % These macros employ a little dirty trick to convince LaTeX to typeset
@@ -85,3 +126,6 @@
 %%% Various table goodies
 \newcommand{\pulrad}[1]{\raisebox{1.5ex}[0pt]{#1}}
 \newcommand{\mc}[1]{\multicolumn{1}{c}{#1}}
+
+%%% TODO items: remove before submitting :)
+\newcommand{\xxx}[1]{\textcolor{red!}{#1}}
