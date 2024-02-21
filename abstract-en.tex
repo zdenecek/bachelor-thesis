@@ -1,11 +1,11 @@
-%%% A template for a simple PDF/A file with a stand-alone abstract of the thesis.
+%%% A template of a stand-alone abstract in English
 
 % Meta-data of your thesis (please edit)
 \input metadata.tex
 
 % Generate metadata in XMP format for use by the pdfx package
 \let\OrigThesisTitleXMP=\ThesisTitleXMP
-\def\ThesisTitleXMP{\OrigThesisTitleXMP (abstract)}
+\def\ThesisTitleXMP{\OrigThesisTitleXMP\space (abstract)}
 \def\AbstractXMP{}
 \def\ThesisKeywordsXMP{}
 \input xmp.tex
@@ -23,7 +23,7 @@
 \usepackage{amsfonts}
 \usepackage{fancyvrb}
 
-\pagestyle{empty}
+\pagenumbering{gobble}
 
 % Definitions of macros (see description inside)
 \input macros.tex
