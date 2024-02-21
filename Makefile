@@ -13,5 +13,5 @@ abstract.pdf: abstract.tex
 	pdflatex $<
 
 clean:
-	rm -f *.log *.dvi *.aux *.toc *.lof *.lot *.out *.bbl *.blg *.xmpi *.xmpdata
+	rm -f *.aux *.bbl *.blg *.lof *.log *.lot *.out *.toc *.xmpdata *.xmpi
 	rm -f thesis.pdf abstract.pdf
