@@ -45,23 +45,30 @@
 \usepackage{amsfonts}       % math fonts
 \usepackage{amsthm}         % theorems, definitions, etc.
 \usepackage{bm}             % boldface symbols (\bm)
+\usepackage{booktabs}       % improved horizontal lines in tables
+\usepackage{caption}        % custom captions of floating objects
+\usepackage{dcolumn}        % improved alignment of table columns
+\usepackage{floatrow}       % custom float environments
 \usepackage{graphicx}       % embedding of pictures
-\usepackage{fancyvrb}       % improved verbatim environment
+\usepackage{microtype}      % micro-typographic refinement
 \usepackage{natbib}         % citation style AUTHOR (YEAR), or AUTHOR [NUMBER]
+\usepackage{paralist}       % improved enumerate and itemize
 \usepackage[nottoc]{tocbibind} % makes sure that bibliography and the lists
 			    % of figures/tables are included in the table
 			    % of contents
-\usepackage{dcolumn}        % improved alignment of table columns
-\usepackage{booktabs}       % improved horizontal lines in tables
-\usepackage{paralist}       % improved enumerate and itemize
 \usepackage{xcolor}         % typesetting in color
 
-%% The hyperref package for clickable links in PDF and also for storing
-%% metadata to PDF (including the table of contents).
-%% Most settings are pre-set by the pdfx package.
+% The hyperref package for clickable links in PDF and also for storing
+% metadata to PDF (including the table of contents).
+% Most settings are pre-set by the pdfx package.
 \hypersetup{unicode}
 \hypersetup{breaklinks=true}
 
+% Packages for computer science theses
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\usepackage{fancyvrb}       % improved verbatim environment
+\usepackage{listings}       % pretty-printer of source code
 
 % Our definitions of macros (see description inside)
 \input macros.tex
