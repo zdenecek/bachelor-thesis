@@ -14,10 +14,13 @@
 
 \usepackage[a4paper, hmargin=1in, vmargin=1in]{geometry}
 \usepackage[a-2u]{pdfx}
+\usepackage{iftex}
+\ifpdftex
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage{lmodern}
 \usepackage{textcomp}
+\fi
+\usepackage{lmodern}
 \usepackage{amsmath}
 \usepackage{amsthm}
 \usepackage{amsfonts}

@@ -34,14 +34,15 @@
 %% Generate PDF/A-2u
 \usepackage[a-2u]{pdfx}
 
-%% Character encoding: all modern system use UTF-8
-\usepackage[utf8]{inputenc}
-
 %% Prefer Latin Modern fonts
 \usepackage{lmodern}
-% Comment out if not using LuaLaTeX
-%\usepackage[T1]{fontenc}
-%\usepackage{textcomp}
+% If we are not using LuaTeX, we need to set up character encoding:
+\usepackage{iftex}
+\ifpdftex
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\fi
 
 %% Further useful packages (included in most LaTeX distributions)
 \usepackage{amsmath}        % extensions for typesetting of math
