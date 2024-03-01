@@ -51,7 +51,6 @@
 \usepackage{floatrow}       % custom float environments
 \usepackage{graphicx}       % embedding of pictures
 \usepackage{microtype}      % micro-typographic refinement
-\usepackage{natbib}         % citation style AUTHOR (YEAR), or AUTHOR [NUMBER]
 \usepackage{paralist}       % improved enumerate and itemize
 \usepackage[nottoc]{tocbibind} % makes sure that bibliography and the lists
 			    % of figures/tables are included in the table
@@ -72,6 +71,53 @@
 
 % Our definitions of macros (see description inside)
 \input macros.tex
+
+%%% Set up bibliography formatting
+% CHECK THE REQUIREMENTS OF YOUR DEPARTMENT AND FACULTY ON THE CITATION FORMAT!
+%
+% These are relatively "safe" default options that most people use:
+%\usepackage[natbib,style=numeric,sorting=none]{biblatex}
+% alternative with alphanumeric citations (more informative than numbers, and
+% more common in computer science journals):
+%\usepackage[natbib,style=alphabetic]{biblatex}
+%
+% ALTERNATIVES THAT CONFORM TO ISO 690
+% ISO 690 is not the greatest citation format ever, but may be formally
+% required at Charles University, depending on your faculty and department.
+\usepackage[natbib,style=iso-numeric,sorting=none]{biblatex}
+%\usepackage[natbib,style=iso-alphabetic]{biblatex}
+% You might want to add extra options such as `maxbibnames=6,maxcitenames=2`
+% here to further conform to some of the formatting requirements (see below for
+% details). Again, consult your faculty rules.
+%
+% Additional option choices:
+%  - add `giveninits=true` to typeset "E. A. Poe" instead of full Edgar Allan
+%  - `terseinits=true` additionaly shortens it to nature-like "Poe EA"
+%  - add `maxnames=10` to limit (or loosen) the maximum number of authors in
+%    bibliography entry before shortening to `et al.` (useful when referring to
+%    book collections that may have hundreds of authors)
+%  - use `maxcitenames=2` to finetune the amount of authors listed in text-cite
+%    commands (\citet). Corresponding option that only affects the bibliography
+%    is `maxbibnames=10`.
+%  - `sorting=none` causes the bibliography list to be ordered by the order of
+%    citation as they appear in the text, which is usually the desired behavior
+%    with numeric citations. Additionally you can use a style like
+%    `numeric-comp` that compresses the long lists of citations such as
+%    [1,2,3,4,5,6,7,8] to simpler [1--8]. This is especially useful if you plan
+%    to add tremendous amounts of citations, as usual in life sciences and
+%    bioinformatics.
+%  - if you don't like the "In:" appearing in the bibliography, use the
+%    extended style (`ext-numeric` or `ext-alphabetic`), and add option
+%    `articlein=false`.
+%
+% Possibly reverse the names of the authors with the non-ISO styles:
+%\DeclareNameAlias{default}{family-given}
+%
+% Use caps-and-small-caps for family names in ISO 690 style.
+\let\familynameformat=\textsc
+
+% Load the file with bibliography entries
+\addbibresource{bibliography.bib}
 
 %%% Title page and various mandatory informational pages
 \begin{document}
