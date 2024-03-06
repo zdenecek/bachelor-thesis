@@ -1,5 +1,3 @@
-export TEXINPUTS=../tex//:
-
 all: thesis.pdf abstract-cs.pdf abstract-en.pdf
 
 %.pdf: force
