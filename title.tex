@@ -118,7 +118,7 @@ In \hbox to 6em{\dotfill} date \hbox to 6em{\dotfill}
 \openright
 {\InfoPageFont
 
-\vbox to 0.5\vsize{
+\vtop to 0.5\vsize{
 \setlength\parindent{0mm}
 \setlength\parskip{5mm}
 
@@ -139,13 +139,15 @@ Abstract:
 
 Keywords:
 {\def\sep{\unskip, }\ThesisKeywords}
+
+\vfil
 }
 
 % In Czech study programmes, it is mandatory to include Czech meta-data:
 
 \ifx\StudyLanguage\LangCS
 
-\vbox to 0.49\vsize{
+\vtop to 0.49\vsize{
 \setlength\parindent{0mm}
 \setlength\parskip{5mm}
 
@@ -166,6 +168,8 @@ Abstrakt:
 
 Klíčová slova:
 {\def\sep{\unskip, }\ThesisKeywordsCS}
+
+\vfil
 }
 
 \fi
