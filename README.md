@@ -7,7 +7,7 @@ This is a LaTeX template for typesetting of bachelor, master, dissertation
 
 Requirements on formatting of theses are given by Dean's directives 26/2023
 and 27/2023 and by the Rector's directive 72/2017. Other guidelines can be
-found in FIXME: add link to specimen.pdf.
+found in [https://kam.mff.cuni.cz/thesis-templates/](example layout).
 This LaTeX template follows the directives; it also tries to emphasize
 important points in comments. Still, we advise you to read the complete rules.
 
