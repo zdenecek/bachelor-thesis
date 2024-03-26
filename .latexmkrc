@@ -1,4 +1,4 @@
-$aux_dir = 'aux';
+$aux_dir = 'tmp';
 $pdf_mode = 4;
 
 # If your TeX environment does not provide working LuaLaTeX, uncomment this:
