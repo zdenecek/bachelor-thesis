@@ -27,7 +27,7 @@ abstract is also submitted in SIS together with the thesis.
 If you are not familiar with LaTeX yet, you can find numerous tutorials on
 the Web. We like [the Wikibook on LaTeX](http://en.wikibooks.org/wiki/LaTeX).
 
-The Czech version of the template (FIXME: link)
+The [Czech version of the template](https://www.mff.cuni.cz/en/students/student-theses-templates)
 contains example chapters with a description of the recommended layout
 and various hints on typesetting in TeX. It will be hopefully translated
 to English soon.
