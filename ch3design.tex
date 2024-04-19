@@ -58,32 +58,119 @@ Using Python as the runtime also comes with the benefit of being able to use Pyt
 
 For these reasons, the second approach is chosen. The code will be generated as Python code using the ast module, and then compiled into a Python module.
 
-\section{Ataccama Expression language}
+\section{Compatibility with the Ataccama Expression language}
+
+
+The goal of this project is to bring the Ataccama expression language over to
+Python. However, the language is complex and has many features, along with
+platform specific quirks a peculiarities. For this reason, the implementation will
+not be a one-to-one copy of the language, but rather a subset of the language
+features that are most commonly used with some differences in behaviour.
+The differences between the Ataccama Expression Language and the Python
+implementation will be outlined in detail i the following sections. As the goal
+is to make the implementation as close to the original language as possible, the
+differences will be kept to a minimum. Consequently, the implementation will be
+able to run most of the data quality rules written in the Ataccama Expression
+Language.
+The rest of this section describes a high level overview of the differences that
+will have to be introduced along with the reasons behind them. Most of the
+differences are a result of a different underlying technology, decisions have to be
+made on where to draw the line between mimicking the original language and
 
 This section has two purposes: The first is to describe the language and its features, the second is to outline and discuss design decisions related to the individual fetatures and functionality that have to be made in order to implement the language in Python 
+introducing accepting differences for the sake of simplicity and performance.
 
 \subsection{Dynamic typing}
 
-The Ataccama Expression Language is statically typed, following its language of implementation which is Java. This means that the type of each variable and expression is known at compile time compile time. This allows the compiler to catch type errors at compile time, and to generate more efficient code. Also, it allows for function and operator overloading, as the compiler can choose the correct function based on the types of the arguments.
+The Ataccama Expression Language is statically typed, following its language of implementation The Ataccama Expression Language is statically typed, following its language
+of implementation which is Java. This means that the type of each variable and
+expression is known at compile time compile time. This allows the compiler to
+catch type errors at compile time, and to generate more efficient code. Also,
+it allows for function and operator overloading, as the compiler can choose the
+correct function based on the types of the arguments.
+This is possible thanks to the record format being known at compile time. The
+record format is a schema that defines the types of the fields in the record.
+Python is dynamically typed, which means that it is possible to allow for
+dynamic typing in the implementation.
+On the other hand, to reimplement static typing in Python would require
+aditional work like keeping track of the types of all symbols and expressions and
+resolving function overloads.
+Furthermore, static typing would require the user to define the record format
+at compile time, which would make the API less user-friendly, which in our case
+is a priority.
+Considering the above stated arguments, the decision is to allow for dynamic
+typing in the implementation, as it is easier to implement and more flexible.
 
-This is possible thanks to the record format being known at compile time. The record format is a schema that defines the types of the fields in the record. 
-
-Python is dynamically typed, which means that it is possible to allow for dynamic typing in the implementation. 
-
-On the other hand, to reimplement static typing in Python would require aditional work like keeping track of the types of all symbols and expressions and resolving function overloads. 
-
-Furthermore, static typing would require the user to define the record format at compile time, which would make the API less user-friendly, which in our case is a priority.
-
-Considering the above stated arguments, the decision is to allow for dynamic typing in the implementation, as it is easier to implement and more flexible.
-
+\subsubsection{Function and operator overloading}
 
 \subsection{Implementation scope}
-\subsection{Language and library specific differences and addressing them}
-• Date formatting
-• String formatting
-• Null coalescing
-• Arithmetic operations
+
+The Ataccama Expression Language supports a great number of functions, in
+total it is more than 150 functions.
+The implementation of the language in Python will be limited to a subset of
+the language features. The reasoning behind this is that many of the functions are
+not commonly used, and the implementation of all of them would be a significant
+effort.
+
+The functions have been categorized by priority, and the implementation will
+focus on the high and medium priority functions.
+TODO add list of functions
+
+\subsection{Arithmetic}
+The Ataccama Expression Language operates, like standard types in Java, in
+fixed-size bit arithmetic, i.e. 32 bits for integers and 64 bits for Python. Python,
+on the other hand, uses arbitrary precision arithmetic, which means that the size
+of the integers is not limited. This means that the results of arithmetic operations
+can differ between the two languages.
+For every day operation, the difference is not significant and it could be said
+that the Python behaviour is better. However, in some use cases, the fixed-size
+arithmetic is necessary, for example when working with hash tables. As the number
+of these cases is limited and most of them are provided as implemented functionality,
+the implementation will use Python-native arbitrary precision arithmetic and
+handle fixed-size arithmetic as a special case where necessary.
+Furthermore, the Ataccama Expression Language provides arithmetic operators
+for division, integer division, and modulo. Python provides the same operators, but
+the behaviour of the operators is different. The Ataccama Expression Language
+uses integer division and modulo for integer operands, and floating-point division
+and modulo for floating-point operands. Python uses integer division and modulo
+for integer operands, and floating-point division and modulo for floating-point
+operands. These operators will have to be implemented in a way that is compatible
+with the Ataccama Expression Language.
+\subsection{Null handling and null coalescing}
+The way Ataccama Expression language handles nulls has a lot of aspects
+which have to be addressed.
+Operators handle null values in a SQL-like way, mostly returning null if any
+of the operands is null. Implication for the implementation is that it will not be
+possible to use native Python operators, as they do not handle null values in the
+same way.
+Empty strings are treated as null values, the documentation states "A null
+string and an empty string are considered equal". Moreover, any empty string
+returns are coalesced to null. This behaviour also has its own quirks, for example
+‘1 + null == null‘ but ‘1 + "" == "1"‘, which breaks the aforementioned statement.
+
+Furthermore, functions have to be prepared to handle null values in any of the
+arguments. Most commonly, functions return null if any of the arguments is null,
+so extensive null checking has to be implemented in the functions.
+The implementation in Python will have to address these differences, and
+provide a way to handle null values in a Python environment.
+Date and floating point formatting
 
 \section{Interface design}
 
+There are not a lot of decision to be made in the API Design as the the public
+functionality is simple: Compile expression and running.
+Considering the functions of the implementation, one more area has to be
+exposed to the user, and that concerns the ‘isInFile’ function, which is used to
+do a lookup in a proprietary file format used by Ataccama for the purpose of
+data quality rules. The ‘isInFile’ function accepts a string as its second argument
+which is used as a identifier for the file. In the Ataccama environment, this is then
+translated into a file which is loaded. The implementation will have to provide a
+way to translate the file identifiers into files or paths so that the the lookup can
+be executed in a local environment.
+
 \includegraphics{diagrams/api_design-class.png}
+
+
+
+
+
