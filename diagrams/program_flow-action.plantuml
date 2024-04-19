@@ -1,0 +1,10 @@
+@startuml
+(*) -right->  "Parse expression"
+-right-> "Evaluate expression"
+-right->  "Return result"
+if "More data?" then
+-right-> "Evaluate expression"
+else 
+-right-> (*)
+endif
+@enduml

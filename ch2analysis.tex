@@ -1,0 +1,92 @@
+\chapter{Analysis}
+
+
+\section{Need for programmatic access}
+
+In context of data quality management, most commonly the centerpoint of the focus is on the personal of the so called 'data steward'. The reason for this is that data stewards are crucial
+for any kind of data quality initiative. Data stewards need to be involved with the setup of data quality process to ensure its success. This includes many tasks such as defining data quality rules,
+data profiling, and addressing data quality issues. [What is a data steward? https://www.ataccama.com/blog/what-is-a-data-steward]
+
+In the world of data quality management, there arises a need to consume data quality tools programatically. This is where the persona of a data engineer comes into play. There are more reasons for this, in simple terms,
+the necessity is a collaraly to the need to integrate data quality tools into data pipelines. Enter the data engineer. Data engineers are responsible for the development of data pipelines, and the integration of data quality tools into these pipelines. 
+
+The need for programmatic access to data quality tools is dictated by the need to integrate data quality tools into data pipelines. Data engineers are responsible for the development of data pipelines, and the integration of data quality tools into these pipelines. It follows that any solution aimed at pipeline integration and so at data engineers should be designed to accommodate for this. In the following sections, we will discuss the needs of data engineers in the context of data quality management tools.
+
+\section{Data Quality Management Tools at Ataccama}
+
+One of the major players in the field of dq management tools is Ataccama. 
+
+Ataccama ONE is a data management application that provides a wide range of features for data quality management, such as Data cataloging, Master data management, and Data visualisations. Most importantly, Ataccama ONE includes a wide suite of data quality management tools. This includes data profiling, data quality rules, data quality monitoring, and data quality issue resolution. Ataccama also provides a wide range of connectors to various data sources and data targets.
+
+Ataccama is a powerful tool for data quality management, but it has some limitations. One of the limitations of Ataccama is that it is not designed for programmatic access. The main interface for Ataccama ONE is a web interface. This means that it is not easy to integrate Ataccama into data pipelines. 
+
+\subsection{Data Quality Rules at Ataccama}
+
+[SOMEWHERE HERE converge more into DQ Rules]
+
+I deal with ataccama -> Let’s do ataccama
+
+\section{The persona of Data engineer and their needs}
+
+As we have established earlier, data engineers are the key persona for the integration of data quality tools into data pipelines. It is good practice to tailor application to the its users and their requirements. It follows that any solution aimed at pipeline integration should take into account the needs of data engineers.
+
+Data engineers like any others are working professionals. Many of them are used to working with some particular tools and technologies. It is important to take into account the tools and technologies that data engineers are familiar with when designing a solution for them.
+
+Although between many data engineers there are differences in the tools and technologies they use, there are some common tools and technologies that are used by the majority of them in today's world. It is important to realize that we should not only consider an ideal data engineer, a skilled senior, but also take into account that there are many junior data engineers. Also, it is important to consider the cognitive load of new tools and technologies on data engineers. Not only need to be the tools and technologies easy to learn and use, also they should be based on familiar concepts and technologies. This way, the data engineers can focus on their work, and not on learning new tools and technologies. 
+
+[Source needed] The most commonly used tools and technologies by data engineers are Python, Java, Scala, and SQL. These tools and technologies are used for the development of data pipelines, and the integration of data quality tools into these pipelines. For any set of data engineers, the intersection of their knowledge bases will include Python more often than anything else.
+
+\section{Data pipelines and requirements for the integration of data quality tools}
+
+Data pipelines are a crucial part of any data engineering project. Data pipelines are used to move data from one place to another, and to transform data from one format to another. Data pipelines are used to integrate data quality tools into data pipelines. Data engineers are responsible for the development of data pipelines, and the integration of data quality tools into these pipelines.
+
+Many of usecases for integrating data quality tools into data pipelines include the requirement to integrate with existing data pipeline or solution. This means that the data quality tools should be able to integrate with commonly used data pipelines. It also follows that to force the use of a new data pipeline or ETL solution is a non-functional requirement. 
+
+For example in Ataccama, the application is intended to be connected to all the data sources and data targets using its custom connectors. To access the Ataccama engine and run any sort of evaluation of data quality rules, the data either need to be loaded into Ataccama ONE using a connection setup within the application, or the data needs to be sent into a service set up from within the application. Both of these approaches present a challenge for the integration of Ataccama into existing data pipelines.
+
+\subsection{Data security}
+
+One of the main concerns of any data owner is data security. Sending data over the internet to a third-party service can be a security risk. This is especially true for sensitive data. Data security is a major concern for data engineers, and it is important to take into account the security requirements of data engineers when designing a solution for them.
+
+When a data quality integration in a pipeline needs to accesa a server, an application running somewhere else, it means network access. This can be a security risk. In case of a private network, the application needs to be exposed to the network, which can introduce entirely new vectors of attack
+
+\subsection{Ease of configuration}
+
+The need to access a running instance of an application in order to run data quality tooling comes with added complexities.
+
+First, the application needs to be configured and running. This is fine for an environmnent where such an application is already in use, yet still it is an added complexity as part of the process is running somewhere else and so it can be more difficult to debug, monitor, and maintain.
+
+Second, the pipeline needs to access the application over a network. This means that the application needs to be exposed to the network, which can not only be a security risk, but also provide further complexities in terms of network configuration. In case of a private network, the application needs to be exposed to the network, which can in some cases be even out of question and make the integration impossible.
+
+\subsection{Pipelines in commonly used data stores, warehouses, and environments}
+
+• Snowflake
+• AWS Glue
+• azure data factories,
+• Databricks
+
+\section{Similar Solutions}
+
+Given we have established Ataccama ONE data quality rules as a tool that is not designed for programmatic access, it is important to look at other solutions that are designed for programmatic access.
+
+Let us have a look at other data quality tools meant for integration into data pipelines with respect to the technologies on which they are based and how those integrate with commonly used data pipelines.
+
+2.3.1. Soda Core
+2.3.2. Greater Expectations
+2.3.3. Comparative Analysis
+• stack
+• integration with commonly used data pipelines
+
+\section{Possible approaches to the integration of data quality tools into data pipelines}
+
+The following section summarizes the requirements discussed so far and converge into a decision to what will be the focus of the rest of this thesis.
+
+\subsection{Running the application on the same machine as the pipeline}
+
+One option is to run the application on the same machine as the pipeline. This approach addresses many of the possible security risk outlined earlier in this section. To make the engine available to be run in such a way would mean transforming a part of the application engine into a library that can be used by the pipeline. This way, the pipeline can access the application engine directly, without the need for network access. This approach is more secure, and also easier to configure, debug, monitor, and maintain.
+
+In case of the Ataccama ONE engine, which is written in Java and runs on JVM, it would mean added neccessity to run the pipeline on JVM. This is not always possible, and so it is not a viable solution for all usecases. 
+
+\subsection{Rewriting the application engine in a language that is commonly used by data engineers}
+
+Another option is to rewrite the application engine in a language that is commonly used by data engineers. This way, the pipeline can access the application engine directly, without the need for network access. This approach is more secure, and also easier to configure, debug, monitor, and maintain.

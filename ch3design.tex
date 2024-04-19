@@ -1,0 +1,89 @@
+
+\chapter{Design}
+
+The design section of this thesis serves as a bridge between the theoretical analysis and the practical implementation of the project. This section should comprehensively outline the proposed solution, coming from the goals summarized in analysis, describing design principles, methodologies, and tools to be employed. 
+
+\section{Goals}
+
+First step of the design process is to summarize the goals of the project. The goals of the project are derived from the analysis section of the thesis. In subsequent subsections, the goals will serve as a base for making design decisions. 
+
+
+\subsection{Compatibility with the Ataccama Expression Language}
+
+In Ataccama, data quality rules are defined using a custom expression language Ataccama Expressions. 
+
+The solution should be designed to be compatible with Ataccama Expressions, most importantly, a user should be able to reuse data quality rules originally written in Ataccama Expression Language, and run evaluate them.
+
+This language is defined using a formal grammar. The expected functions and operators output is defined in a separate documentation.
+
+The goal of this project is to bring the Ataccama expression language over to Python, so that it can be executed with as little managed dependecies as possible. This means that the language will have to be implemented in such a way that it can be executed in a Python environment without any additional dependencies except for Python packages, which are easily managable and an industry standard.
+
+
+\subsection{Design an API that is easy to use for data engineers}
+
+In the analysis section, the persona of data engineer was introduced as the main user of the solution. The main goal of the project is to design an API that is easy to use for data engineers. The API should be based on familiar concepts and technologies, and should be easy to learn and use. The API should be designed to accommodate for the needs of data engineers, and should be tailored to their requirements.
+
+\subsection{Reasonable performance}
+
+The API should be designed to be fast and efficient. The API should be designed to be compatible with commonly used data pipelines, and should be designed to be easy to integrate into data pipelines. The API should be designed to be secure, and should be designed to be easy to configure, debug, monitor, and maintain.
+
+\section{Architecture}
+
+One of the first decisions that have to be made is the architecture of the solution.
+
+The program itself will do the following:
+
+\begin{enumerate}
+    \item Parse the input expression
+    \item Evaluate the expression on a record and return the result
+\end{enumerate}
+
+In the first step, the expression will be parsed into an abstract syntaxt tree (AST). Given the complexity of the expression language, a best-fit solution will be to use a parser generator. The parser generator will take the grammar of the language as input and generate a parser that can parse the input expression, providing a way to add custom logic into the subsequent semantic analysis of the expression.
+
+In the semantic analysis, the AST will be traversed and built into some for of executable code so that it can be evaluated on a record. The evaluation will be done in a Python environment, and the result will be returned to the user.
+
+In the last step, the generated code will be executed on records, and the results will be returned.
+
+\subsection{Parser generator}
+
+For the parser generator, a specific approach is indicated. The Ataccama Expression Language implementation uses a parser generator called ANTLR. ANTLR (ANother Tool for Language Recognition) is a powerful parser generator for reading, processing, executing, or translating structured text or binary files. It's widely used to build languages, tools, and frameworks. From a grammar, ANTLR generates a parser that can build and walk parse trees. [https://www.antlr.org/] As the grammar of the Ataccama Expression Language is already defined, it is simple and robust to use adapt and reuse the grammar by also using ANTLR to generate the parser.
+
+\subsection{Code generation}
+
+Having decided on the parser generator, the next step is to decide how to generate the code for the expression. There are two obvious approaches at hand: Represent the expression in an object tree with execution being a recursive descent through the tree. The second approach is to generate Python code directly. This can be done using Python standard module ast, which can be used build an abstract syntax tree of the expression, and then compile it into a Python function. Alternatively, the code can be generated as a string and then executed using Python's exec function, but this approach is less safe, more error-prone, harder to debug and introduces more overhead as it adds an additional step of parsing the code.
+
+The second approach is more efficient, as it avoids the overhead of traversing the AST, but it is also more complex, as it requires generating Python code. The first approach might appear simpler, but it is less efficient, as it requires traversing the AST and does not include the option to use compilation to Python bytecode.
+
+Using Python as the runtime also comes with the benefit of being able to use Python's scope resolution and name hiding to implement the scoping rules of the Ataccama Expression Language, so a reimplementation can be avoided.
+
+For these reasons, the second approach is chosen. The code will be generated as Python code using the ast module, and then compiled into a Python module.
+
+\section{Ataccama Expression language}
+
+This section has two purposes: The first is to describe the language and its features, the second is to outline and discuss design decisions related to the individual fetatures and functionality that have to be made in order to implement the language in Python 
+
+\subsection{Dynamic typing}
+
+The Ataccama Expression Language is statically typed, following its language of implementation which is Java. This means that the type of each variable and expression is known at compile time compile time. This allows the compiler to catch type errors at compile time, and to generate more efficient code. Also, it allows for function and operator overloading, as the compiler can choose the correct function based on the types of the arguments.
+
+This is possible thanks to the record format being known at compile time. The record format is a schema that defines the types of the fields in the record. 
+
+Python is dynamically typed, which means that it is possible to allow for dynamic typing in the implementation. 
+
+On the other hand, to reimplement static typing in Python would require aditional work like keeping track of the types of all symbols and expressions and resolving function overloads. 
+
+Furthermore, static typing would require the user to define the record format at compile time, which would make the API less user-friendly, which in our case is a priority.
+
+Considering the above stated arguments, the decision is to allow for dynamic typing in the implementation, as it is easier to implement and more flexible.
+
+
+\subsection{Implementation scope}
+\subsection{Language and library specific differences and addressing them}
+• Date formatting
+• String formatting
+• Null coalescing
+• Arithmetic operations
+
+\section{Interface design}
+
+\includegraphics{diagrams/api_design-class.png}
