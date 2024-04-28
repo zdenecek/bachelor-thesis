@@ -55,25 +55,34 @@ The structure of an expression in Ataccama's language consists of:
 
 \subsection{Examples of a expression}
 
-the following examples illustrate the structure of an expression in Ataccama's language:
+The two following examples illustrate the structure of an expression in Ataccama's language.
 
-\subsubsection{Simple Arithmetic Expression}
+\subsubsection{Simple example: Arithmetic Expression}
 
-a := 10;  // Assigns 10 to 'a'
-b := a * 2;  // Assigns double of 'a' to 'b'
-return b + 5;  // Returns 25 as the final result
+
+\begin{verbatim}
+a := 10;  
+b := a * 2; 
+b + 5
+\end{verbatim}
 
 In this example, variables a and b are used in statements to set up values that are manipulated in the resulting expression, b + 5, which computes the final output.
 
-\subsubsection{Complex Expression with Functions}
+\subsubsection{Complex example: Digit sum}
 
 \begin{verbatim}
-        value:=replace(trim(input), '-', '');
-    function digitSum(integer digit) {set.sumExp(trim(substituteAll("(.)", "$1 ", toString(digit))), " ", (x) {toInteger(x)})}
-
-    digitSum(value) % 13 == 0;
+value := replace(trim(input), '-', '');
+function digitSum(integer digit) { 
+    set.sumExp(
+        trim(substituteAll("(.)", "$1 ", toString(digit))), 
+        " ", 
+        (x) {toInteger(x)}
+    )
+}
+digitSum(value) % 13 == 0
 \end{verbatim}
 
+This example demonstrates a more complex expression that includes a function definition, digitSum, which is then called in the resulting expression, digitSum(value). The expression is a simplified excerpt from a data quality rule that checks ISIN numbers for validity.
 
 \subsection{Components of Ataccama Expression Language}
 
