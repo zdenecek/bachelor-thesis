@@ -1,7 +1,11 @@
 \chapter{Analysis}
+As we established in introduction, there are many benefits to having DQM processes in place. In fact, in today's data-driven environments, the assurance of data quality is not just a preference but a critical necessity. Organizations rely on accurate, timely, and reliable data to make informed decisions, drive strategies, and optimize operations. As such, the field of data quality management has evolved to address these needs through sophisticated tools and methodologies. However, the effective implementation of these tools requires a deep understanding of both the tools themselves and the roles of those who interact with them.
 
 
-\section{Need for programmatic access}
+This chapter delves into the analysis of the current landscape of data quality management, focusing particularly on the need for programmatic access to these tools. This need stems from the growing requirement to seamlessly integrate data quality solutions into existing data pipelines, a task that typically falls within the purview of data engineers. As we explore this topic, we will discuss the challenges faced by data engineers and the crucial role of data stewards in ensuring the success of data quality initiatives. The insights gained here will lay the groundwork for understanding how programmatic access can bridge the gap between manual data quality oversight and automated, scalable data governance frameworks.
+
+
+\section{The need for programmatic access}
 
 In context of data quality management, most commonly the centerpoint of the focus is on the personal of the so called 'data steward'. The reason for this is that data stewards are crucial
 for any kind of data quality initiative. Data stewards need to be involved with the setup of data quality process to ensure its success. This includes many tasks such as defining data quality rules,
@@ -16,15 +20,17 @@ The need for programmatic access to data quality tools is dictated by the need t
 
 One of the major players in the field of dq management tools is Ataccama. 
 
-Ataccama ONE is a data management application that provides a wide range of features for data quality management, such as Data cataloging, Master data management, and Data visualisations. Most importantly, Ataccama ONE includes a wide suite of data quality management tools. This includes data profiling, data quality rules, data quality monitoring, and data quality issue resolution. Ataccama also provides a wide range of connectors to various data sources and data targets.
+Ataccama ONE is a data management application that provides a wide range of features for data quality management, such as Data cataloging, Master data management, and Data visualisations. Most importantly, Ataccama ONE includes a wide suite of data quality management tools. This includes data profiling, data quality rules, data quality monitoring, and data quality issue resolution. Ataccama ONE also provides a wide range of connectors to various data sources and data targets.
 
-Ataccama is a powerful tool for data quality management, but it has some limitations. One of the limitations of Ataccama is that it is not designed for programmatic access. The main interface for Ataccama ONE is a web interface. This means that it is not easy to integrate Ataccama into data pipelines. 
+Ataccama is a powerful tool for data quality management, but it has some limitations. One of the limitations of Ataccama ONE is that it is not designed for programmatic access. The main interface for Ataccama ONE is a web interface. This means that it is not easy to integrate Ataccama into data pipelines.
 
 \subsection{Data Quality Rules at Ataccama}
 
-[SOMEWHERE HERE converge more into DQ Rules]
+Data quality rules are essential components of any comprehensive data management strategy, and Ataccama ONE excels in providing robust capabilities for defining and enforcing these rules. Ataccama's approach to data quality rules allows businesses to ensure that their data conforms to specific standards and requirements, crucial for accurate, reliable, and actionable data insights.
 
-I deal with ataccama -> Let’s do ataccama
+Data quality rules in Ataccama are closely integrated with the platform's data governance capabilities. This integration ensures that the enforcement of data quality is aligned with broader data governance frameworks and compliance requirements. Rules can be linked to specific data governance policies, providing traceability and accountability.
+
+Ataccama ONE's data quality management features are both robust and comprehensive, making it an exemplary foundation for any organization's data quality initiatives. The platform's extensive capabilities in defining, applying, monitoring, and resolving data quality issues position it as an ideal choice for those looking to enforce stringent data quality standards. With its rich suite of tools for data profiling, quality rule creation, and issue management, Ataccama ONE is well-equipped to handle the diverse and complex data landscapes of modern enterprises. Given its strong feature set and integration potential, we will base our solution on Ataccama's proven frameworks to ensure that our data governance and quality management efforts are both effective and efficient.
 
 \section{The persona of Data engineer and their needs}
 
@@ -58,35 +64,94 @@ First, the application needs to be configured and running. This is fine for an e
 
 Second, the pipeline needs to access the application over a network. This means that the application needs to be exposed to the network, which can not only be a security risk, but also provide further complexities in terms of network configuration. In case of a private network, the application needs to be exposed to the network, which can in some cases be even out of question and make the integration impossible.
 
-\subsection{Pipelines in commonly used data stores, warehouses, and environments}
+\subsection{Pipelines in commonly used data platforms}
 
-• Snowflake
-• AWS Glue
-• azure data factories,
-• Databricks
+Modern data ecosystems are diverse, with organizations leveraging a variety of data storage solutions and computing environments to manage and analyze data. Here’s how Python integration plays a critical role across commonly used platforms:
+
+\begin{itemize}
+\item  Snowflake
+
+Snowflake supports multiple programming languages, including Java and .NET, but Python remains a popular choice due to its extensive library support and community.
+
+Python is well-supported in Snowflake through connectors like Snowflake Connector for Python, which allows executing SQL statements and performing data manipulations directly from Python scripts.
+
+
+\item AWS Glue
+
+    AWS Glue supports Python and Scala. Python, being one of the main languages supported by AWS Glue, benefits from seamless integration with other AWS services.
+    
+    Python scripts in AWS Glue can perform extract, transform, and load (ETL) tasks effectively, which can be developed and debugged directly in Python using Glue’s development endpoints.
+
+
+    \item Azure Data Factories
+
+    Azure Data Factory (ADF) supports custom activities in various languages, but Python’s use in Azure functions for custom processing activities is notable due to its simplicity and effectiveness.
+   
+    Python in ADF can be used to orchestrate complex data workflows, invoking Python-based processes as part of the data integration pipelines.
+
+
+    \item Databricks
+
+    Databricks offers a unified analytics platform that supports Python, Scala, SQL, and R. Python’s integration, particularly with PySpark for big data processing, makes it a primary choice for many developers.
+
+    Python is extensively used in Databricks notebooks for data exploration, visualization, and machine learning, highlighting its versatility and ease of use.
+
+\end{itemize}
+
+
+Given the need to operate within commonly used compute platforms such as the above mentioned, it is imperative to consider the compatibility of programming languages supported by these environments. Each platform offers support for various technologies; however, Python stands out due to its universal acceptance and extensive integration capabilities across these systems. Whether it is executing complex data manipulation tasks in Snowflake, orchestrating ETL processes in AWS Glue, running custom activities in Azure Data Factory, or performing data analysis and machine learning in Databricks, Python is consistently supported. Therefore, focusing on Python for implementing data quality rules not only aligns with the operational capabilities of these platforms but also ensures that our solutions are versatile and adaptable across different technological ecosystems. This strategic choice maximizes the utility and reach of our data quality management tools, making them accessible and functional within the predominant data processing frameworks employed by contemporary organizations.
 
 \section{Similar Solutions}
 
-Given we have established Ataccama ONE data quality rules as a tool that is not designed for programmatic access, it is important to look at other solutions that are designed for programmatic access.
+This section compares Ataccama ONE to other data quality management tools that are designed for programmatic access, highlighting the relative strengths and limitations of each solution in terms of features, technology stack, and integration capabilities.
 
-Let us have a look at other data quality tools meant for integration into data pipelines with respect to the technologies on which they are based and how those integrate with commonly used data pipelines.
+\subsection{Soda Core}
 
-2.3.1. Soda Core
-2.3.2. Greater Expectations
-2.3.3. Comparative Analysis
-• stack
-• integration with commonly used data pipelines
+Soda Core is a robust open-source tool tailored for integrating data quality checks directly into data pipelines. However, its feature set primarily focuses on:
 
-\section{Possible approaches to the integration of data quality tools into data pipelines}
+\begin{itemize}
+    \item Data Monitoring and Alerting
+    
+    Automatically detecting and alerting on anomalies in data as it flows through pipelines.
 
-The following section summarizes the requirements discussed so far and converge into a decision to what will be the focus of the rest of this thesis.
+    \item Customizable Quality Checks
 
-\subsection{Running the application on the same machine as the pipeline}
+    While flexible, these are generally more basic compared to the depth provided by comprehensive DQM platforms.
 
-One option is to run the application on the same machine as the pipeline. This approach addresses many of the possible security risk outlined earlier in this section. To make the engine available to be run in such a way would mean transforming a part of the application engine into a library that can be used by the pipeline. This way, the pipeline can access the application engine directly, without the need for network access. This approach is more secure, and also easier to configure, debug, monitor, and maintain.
+    \item Python Integration
+    
+    Strong integration with Python-based data ecosystems, suitable for teams relying heavily on Python for data processing.
+\end{itemize}
 
-In case of the Ataccama ONE engine, which is written in Java and runs on JVM, it would mean added neccessity to run the pipeline on JVM. This is not always possible, and so it is not a viable solution for all usecases. 
+\subsection{Great Expectations}
 
-\subsection{Rewriting the application engine in a language that is commonly used by data engineers}
+Great Expectations offers a framework for setting up complex data validation and documentation, which is crucial for maintaining high data quality standards. Its key features include:
 
-Another option is to rewrite the application engine in a language that is commonly used by data engineers. This way, the pipeline can access the application engine directly, without the need for network access. This approach is more secure, and also easier to configure, debug, monitor, and maintain.
+\begin{itemize}
+    \item   Validation Framework
+    
+    Extensive support for defining expectations about data, which can be automatically validated against data batches.
+
+    \item Data Docs
+    
+    Automatically generated documentation that helps keep teams aligned on data quality standards.
+
+    \item Integration
+    
+    While it offers broad integration capabilities, it requires significant setup and maintenance compared to more out-of-the-box solutions.
+\end{itemize}
+
+
+\subsection{Comparison with Ataccama ONE}
+
+Ataccama ONE offers a more extensive suite of features than either Soda Core or Great Expectations. This includes advanced functionalities like Master Data Management, Data Cataloging, and enriched Metadata Management, which are not typically found in the aforementioned open-source tools.
+
+Ataccama integrates machine learning and AI-driven insights into its platform, providing a more sophisticated analysis and automation level than Soda Core and Great Expectations typically offer.
+
+Despite its robust feature set, Ataccama’s main limitation lies in its less flexible integration with Python-based data pipelines, which is where Soda Core and Great Expectations excel due to their native Python support.
+
+\section{Enhancing Ataccama's Integration Capabilities}
+
+Given the comprehensive features of Ataccama ONE, the focus of this thesis will shift towards enhancing its integration capabilities with Python-based data pipelines to leverage its extensive data quality functionalities more effectively in programmatic environments.
+
+While Ataccama offers a superior range of features, enhancing its programmatic accessibility would significantly increase its utility in modern data environments. This thesis will explore feasible solutions to bridge this gap, thereby extending the powerful capabilities of Ataccama ONE to a broader range of applications and use cases.

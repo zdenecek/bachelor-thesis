@@ -13,4 +13,4 @@ clean:
 .PHONY: force
 
 watch: 
-	latexmk -pvc -pdf thesis.tex -shell-escape
+	latexmk -pvc -pdf thesis.tex -shell-escape -interaction=nonstopmode

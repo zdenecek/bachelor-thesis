@@ -1,125 +1,103 @@
 
-\chapter{Design}
+\chapter{Implementation}
 
-The design section of this thesis serves as a bridge between the theoretical analysis and the practical implementation of the project. This section should comprehensively outline the proposed solution, coming from the goals summarized in analysis, describing design principles, methodologies, and tools to be employed. 
+The implementation phase of the project is critical for translating the design into a functional system. This section details the setup of the development environment, focusing on the tools and technologies selected to ensure a robust and efficient development process. The implementation of the individual features is then discussed, providing detailed documentation of the coding process, including snippets and explanations of how the Ataccama Expression language features are implemented in Python. The testing and validation process is also described. Finally, any challenges faced during the implementation are discussed, along with the resolutions that were implemented to overcome them.
 
-\section{Goals}
+\section{Development Environment Setup}
+% Describe the setup of your development environment necessary.
 
-First step of the design process is to summarize the goals of the project. The goals of the project are derived from the analysis section of the thesis. In subsequent subsections, the goals will serve as a base for making design decisions. 
+For this project, a modern and efficient development environment is set up to facilitate the coding, testing, and deployment phases. The environment leverages several key tools and technologies designed to enhance productivity and ensure the quality of the software developed. Below is a breakdown of the core components of the development setup:
 
+\subsection{Poetry for Dependency Management and Package Publishing}
 
-\subsection{ Compatibility with the Ataccama Expression Language}
+Poetry is utilized as the primary tool for dependency management and package publishing. It offers a streamlined approach to manage libraries and dependencies, ensuring that the project environment is reproducible and consistent across different setups. Poetry simplifies the management of project dependencies, and its lock file ensures that the same versions are used in every environment, reducing "works on my machine" problems.
 
-In Ataccama, data quality rules are defined using a custom expression language Ataccama Expressions. 
+\subsubsection{Configuration}
 
-The solution should be designed to be compatible with Ataccama Expressions, most importantly, a user should be able to reuse data quality rules originally written in Ataccama Expression Language, and run evaluate them.
+The pyproject.toml file is configured to list all necessary libraries and their specific versions. This file also includes configurations for package metadata, making it easier to package and distribute the final software if needed.
 
-This language is defined using a formal grammar. The expected functions and operators output is defined in a separate documentation.
+\subsection{Mypy for Type Checks}
 
-The goal of this project is to bring the Ataccama expression language over to Python, so that it can be executed with as little managed dependecies as possible. This means that the language will have to be implemented in such a way that it can be executed in a Python environment without any additional dependencies except for Python packages, which are easily managable and an industry standard.
+Purpose and Benefits: Given the dynamic nature of Python, Mypy is incorporated to provide optional static type checking. By annotating Python code with type hints, Mypy can catch many programming errors before they manifest at runtime. It enhances code quality and reliability, especially in large and complex projects where types play a crucial role in the correctness of the program.
 
+\subsubsection{Configuration}
+Mypy is configured to run as part of the continuous integration process, checking type annotations during development. Some leniencies are allowed in the configuration to enable a balance between strict type checking and developmental flexibility. For instance, certain third-party libraries without type hints might be excluded from these checks to prevent excessive false positives.
 
-\subsection{Design an API that is easy to use for data engineers}
+\subsection{Pytest for Testing}
 
-In the analysis section, the persona of data engineer was introduced as the main user of the solution. The main goal of the project is to design an API that is easy to use for data engineers. The API should be based on familiar concepts and technologies, and should be easy to learn and use. The API should be designed to accommodate for the needs of data engineers, and should be tailored to their requirements.
+Pytest is chosen for its powerful testing capabilities, which are essential for verifying the functionality of the re-implemented data quality rules in Python. It supports complex test scenarios and is highly customizable, with a vast ecosystem of plugins which can be utilized to extend its functionality further.
 
-\subsection{Reasonable performance}
+\subsubsection{Configuration}
 
-The API should be designed to be fast and efficient. The API should be designed to be compatible with commonly used data pipelines, and should be designed to be easy to integrate into data pipelines. The API should be designed to be secure, and should be designed to be easy to configure, debug, monitor, and maintain.
+Tests are written to cover various cases, from basic unit tests that validate each function's behavior with different inputs to integration tests that ensure that the system components work together as expected. Pytest fixtures are used to setup and teardown test environments, making it easy to manage test state and dependencies.
 
-\section{Architecture}
+\subsection{Additional Tools and Practices}
 
-One of the first decisions that have to be made is the architecture of the solution.
+\subsubsection{Version Control}
 
-The program itself will do the following:
+Git is used for version control, with a repository hosted the company Gitlab, providing a robust framework for collaboration and version tracking.
 
-\begin{enumerate}
-    \item Parse the input expression
-    \item Evaluate the expression on a record and return the result
-\end{enumerate}
+\subsubsection{Continuous Integration/Continuous Deployment (CI/CD) A}
 
-In the first step, the expression will be parsed into an abstract syntaxt tree (AST). Given the complexity of the expression language, a best-fit solution will be to use a parser generator. The parser generator will take the grammar of the language as input and generate a parser that can parse the input expression, providing a way to add custom logic into the subsequent semantic analysis of the expression.
-
-In the semantic analysis, the AST will be traversed and built into some for of executable code so that it can be evaluated on a record. The evaluation will be done in a Python environment, and the result will be returned to the user.
-
-In the last step, the generated code will be executed on records, and the results will be returned.
-
-\subsection{Parser generator}
-
-For the parser generator, a specific approach is indicated. The Ataccama Expression Language implementation uses a parser generator called ANTLR. ANTLR (ANother Tool for Language Recognition) is a powerful parser generator for reading, processing, executing, or translating structured text or binary files. It's widely used to build languages, tools, and frameworks. From a grammar, ANTLR generates a parser that can build and walk parse trees. [https://www.antlr.org/] As the grammar of the Ataccama Expression Language is already defined, it is simple and robust to use adapt and reuse the grammar by also using ANTLR to generate the parser.
-
-\subsection{Code generation}
-
-Having decided on the parser generator, the next step is to decide how to generate the code for the expression. There are two obvious approaches at hand: Represent the expression in an object tree with execution being a recursive descent through the tree. The second approach is to generate Python code directly. This can be done using Python standard module ast, which can be used build an abstract syntax tree of the expression, and then compile it into a Python function. Alternatively, the code can be generated as a string and then executed using Python's exec function, but this approach is less safe, more error-prone, harder to debug and introduces more overhead as it adds an additional step of parsing the code.
-
-The second approach is more efficient, as it avoids the overhead of traversing the AST, but it is also more complex, as it requires generating Python code. The first approach might appear simpler, but it is less efficient, as it requires traversing the AST and does not include the option to use compilation to Python bytecode.
-
-Using Python as the runtime also comes with the benefit of being able to use Python's scope resolution and name hiding to implement the scoping rules of the Ataccama Expression Language, so a reimplementation can be avoided.
-
-For these reasons, the second approach is chosen. The code will be generated as Python code using the ast module, and then compiled into a Python module.
-
-\section{Compatibility with the Ataccama Expression language}
-
-The goal of this project is to bring the Ataccama expression language over to Python. However, the language is complex and has many features, along with platform specific quirks a peculiarities. For this reason, the implementation will not be a one-to-one copy of the language, but rather a subset of the language features that are most commonly used with some differences in behaviour.
-
-The differences between the Ataccama Expression Language and the Python implementation will be outlined in detail i the following sections. As the goal is to make the implementation as close to the original language as possible, the differences will be kept to a minimum. Consequently, the implementation will be able to run most of the data quality rules written in the Ataccama Expression Language. 
-
-The rest of this section describes a high level overview of the differences that will have to be introduced along with the reasons behind them. Most of the differences are a result of a different underlying technology, decisions have to be made on where to draw the line between mimicking the original language and introducing accepting differences for the sake of simplicity and performance. 
-
-\subsection{Typing}
-
-The Ataccama Expression Language is statically typed, following its language of implementation which is Java. This means that the type of each variable and expression is known at compile time compile time. This allows the compiler to catch type errors at compile time, and to generate more efficient code. Also, it allows for function and operator overloading, as the compiler can choose the correct function based on the types of the arguments.
-
-This is possible thanks to the record format being known at compile time. The record format is a schema that defines the types of the fields in the record. 
-
-Python is dynamically typed, which means that it is possible to allow for dynamic typing in the implementation. 
-
-On the other hand, to reimplement static typing in Python would require aditional work like keeping track of the types of all symbols and expressions and resolving function overloads. 
-
-Furthermore, static typing would require the user to define the record format at compile time, which would make the API less user-friendly, which in our case is a priority.
-
-Considering the above stated arguments, the decision is to allow for dynamic typing in the implementation, as it is easier to implement and more flexible.
-
-\subsection{Function overloading}
-
-\subsection{Implementation scope}
-
-The Ataccama Expression Language supports a great number of functions, in total it is more than 150 functions. 
-
-The implementation of the language in Python will be limited to a subset of the language features. The reasoning behind this is that many of the functions are not commonly used, and the implementation of all of them would be a significant effort.
-
-The functions have been categorized by priority, and the implementation will focus on the high and medium priority functions. 
-
-TODO add list of functions
-
-\subsection{Arithmetic}
-
-The Ataccama Expression Language operates, like standard types in Java, in fixed-size bit arithmetic, i.e. 32 bits for integers and 64 bits for Python. Python, on the other hand, uses arbitrary precision arithmetic, which means that the size of the integers is not limited. This means that the results of arithmetic operations can differ between the two languages.
-
-For every day operation, the difference is not significant and it could be said that the Python behaviour is better. However, in some use cases, the fixed-size arithmetic is necessary, for example when working with hash tables. As the number of these cases is limited and most of them are provided as implemented functionality, the implementation will use Python-native arbitrary precision arithmetic and handle fixed-size arithmetic as a special case where necessary.
-
-Furthermore, the Ataccama Expression Language provides arithmetic operators for division, integer division, and modulo. Python provides the same operators, but the behaviour of the operators is different. The Ataccama Expression Language uses integer division and modulo for integer operands, and floating-point division and modulo for floating-point operands. Python uses integer division and modulo for integer operands, and floating-point division and modulo for floating-point operands. These operators will have to be implemented in a way that is compatible with the Ataccama Expression Language.
-
-\subsubsection{Null handling and null coalescing}
-
-The way Ataccama Expression language handles nulls has a lot of aspects which have to be addressed. 
-
-Operators handle null values in a SQL-like way, mostly returning null if any of the operands is null. Implication for the implementation is that it will not be possible to use native Python operators, as they do not handle null values in the same way. 
-
-Empty strings are treated as null values, the documentation states "A null string and an empty string are considered equal". Moreover, any empty string returns are coalesced to null. This behaviour also has its own quirks, for example `1 + null == null` but `1 + "" == "1"`, which breaks the aforementioned statement.
-
-Furthermore, functions have to be prepared to handle null values in any of the arguments. Most commonly, functions return null if any of the arguments is null, so extensive null checking has to be implemented in the functions.
-
-The implementation in Python will have to address these differences, and provide a way to handle null values in a Python environment.
-
-\subsubsection{Date and floating point formatting}
+CI/CD pipeline is set up using Gitlab CI/CD to automate the testing and deployment process. The pipeline is configured to run tests on every commit and deploy the application to a staging environment if the tests pass. This setup ensures that the software is continuously tested and can be deployed automatically to a production environment when ready.
 
 
-\section{Interface design}
+\section{Implementation of individual features}
+% Provide detailed documentation of the coding process, including snippets and explanations of how Ataccama’s rules are implemented in Python.
 
-There are not a lot of decision to be made in the API Design as the the public functionality is simple: Compile expression and running. 
+This section delves into the technical specifics of implementing the key features of the Ataccama Expression Language in Python. The primary goal is to accurately interpret and execute the expression rules defined in Ataccama's custom language using Python tools and libraries.
 
-Considering the functions of the implementation, one more area has to be exposed to the user, and that concerns the `isInFile' function, which is used to do a lookup in a proprietary file format used by Ataccama for the purpose of data quality rules. The `isInFile' function accepts a string as its second argument which is used as a identifier for the file. In the Ataccama environment, this is then translated into a file which is loaded. The implementation will have to provide a way to translate the file identifiers into files or paths so that the the lookup can be executed in a local environment.
+\section{Expression Parsing}
 
+The first step in processing Ataccama’s custom expression language in Python is to parse the expressions into a format that can be programmatically analyzed and executed. This is achieved using ANTLR, a powerful tool that generates a lexer and parser based on the grammar used in Ataccama ONE.
 
-\includegraphics{diagrams/api_design-class.png}
+\subsubsection{ANTLR Lexer and Parser}
+
+The lexer reads the raw input text and converts it into a stream of tokens based on the grammar rules defined for Ataccama’s language. The parser then takes these tokens and builds a parse tree.
+
+\subsubsection{Visitor Pattern}
+ From the parse tree, a visitor is generated—a component that traverses the parse tree. This visitor uses the visitor design pattern to execute operations based on the nodes of the parse tree. For the expression language, the visitor's primary role is to transform the parse tree into an Abstract Syntax Tree (AST) using Python’s ast module, which can then be executed or evaluated in a Python environment.
+
+python
+
+// Insert grammar snippet here
+
+// Insert visitor code snippet here
+
+\subsubsection{Error Handling}
+
+Syntax errors in the expressions are handled using ANTLR's error listeners. These listeners are customized to provide meaningful error messages that help in identifying and correcting syntax issues in the input expressions.
+
+\subsection{Statements}
+
+Handling variables and functions within expressions involves maintaining a symbol table where each variable's name and value are stored. Variables are parsed and evaluated through the visitor, which checks the symbol table to resolve their values during the execution of expressions.
+
+ The symbol table keeps track of all symbols used in expressions. It ensures that each variable is correctly declared and used within its scope. Additionally, symbol transformation is employed to prevent collisions and ensure that variable names are unique within the global execution context.
+
+ \subsection{Functions and Operators}
+
+Implementing functions and operators in the Python version of the Ataccama Expression Language involves defining Python functions that correspond to each function and operator in the original language.
+
+Each function from Ataccama’s language is mapped to a Python function. These functions handle various data types and perform the necessary computations or data manipulations as defined in the Ataccama language specifications.
+
+Each operator is mapped to a function call with the operand(s) as the arguments. This allows for customizing behavior for arithmetic, logical, and comparison operations to closely align with how they function in the original implementation.
+
+The reimplementation of the functions and operators constitutes a significant portion of the work, as the language supports a wide range of operations that need to be accurately translated to Python.
+
+\subsection{Additional Features and Utilities}
+
+In addition to the core features of the Ataccama Expression Language, several utilities and enhancements are implemented.
+
+\subsubsection{Command Line Interface (CLI)}
+
+A command-line interface is developed to allow users to interact with the expression evaluation engine directly. This CLI provides a simple way to input expressions and receive the output, making it easier to test and validate the implementation.
+
+\subsubsection{Expression Generator}
+
+An expression generator is created to produce random expressions based on the grammar of the Ataccama Expression Language. This tool is useful for testing the parser and visitor components, ensuring that they can handle a wide range of expressions and edge cases.
+
+\section{Testing and Validation}
+% Explain how you tested the reimplementation of DQ rules to ensure they work correctly and efficiently in local Python environments.
+
+\section{Challenges and Resolutions}
+% Discuss any challenges faced during the implementation and how they were resolved.

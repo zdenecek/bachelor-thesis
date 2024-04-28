@@ -1,9 +1,8 @@
 @startuml
 
-left to right direction
+top to bottom direction
 
 class Compiler {
-    __init__(lookup_file_resolver: LookupFileResolver = None)
     compile(expression: string) -> Expression
 }
 
@@ -11,9 +10,6 @@ class Expression {
     evaluate(record: Dict[str, Any]) -> Any
 }
 
-
-interface LookupFileResolver {
-
-}
+Compiler -- Expression : creates
 
 @enduml

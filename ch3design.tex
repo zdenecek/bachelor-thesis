@@ -27,9 +27,119 @@ In the analysis section, the persona of data engineer was introduced as the main
 
 The API should be designed to be fast and efficient. The API should be designed to be compatible with commonly used data pipelines, and should be designed to be easy to integrate into data pipelines. The API should be designed to be secure, and should be designed to be easy to configure, debug, monitor, and maintain.
 
+\section{Ataccama Expression Language}
+
+To facilitate the integration of Ataccama's data quality rules into Python, a thorough understanding of the Ataccama Expression Language is essential. Below is an overview of the language components, types, and operational logic.
+
+\subsection{Anatomy of an expression}
+
+The structure of an expression in Ataccama's language consists of:
+
+\begin{itemize}
+
+    \item Statements
+    
+        \begin{itemize}
+            \item Variable Assignments
+            
+            Variables are assigned values which can include literals, operations, or function calls.
+            \item Function Definitions
+            
+            Optional definitions that encapsulate logic or operations reusable within the expression.
+        \end{itemize}
+    \item Resulting Expression
+    
+    This is the final part of the expression where the previously defined variables and functions are utilized to compute a result. The outcome of the resulting expression is the output of the entire expression.
+\end{itemize}
+
+
+\subsection{Examples of a expression}
+
+the following examples illustrate the structure of an expression in Ataccama's language:
+
+\subsubsection{Simple Arithmetic Expression}
+
+a := 10;  // Assigns 10 to 'a'
+b := a * 2;  // Assigns double of 'a' to 'b'
+return b + 5;  // Returns 25 as the final result
+
+In this example, variables a and b are used in statements to set up values that are manipulated in the resulting expression, b + 5, which computes the final output.
+
+\subsubsection{Complex Expression with Functions}
+
+\begin{verbatim}
+        value:=replace(trim(input), '-', '');
+    function digitSum(integer digit) {set.sumExp(trim(substituteAll("(.)", "$1 ", toString(digit))), " ", (x) {toInteger(x)})}
+
+    digitSum(value) % 13 == 0;
+\end{verbatim}
+
+
+\subsection{Components of Ataccama Expression Language}
+
+Ataccama Expression Language, also called ONE Expressions, organizes data operations and logic into a series of expressions and operands defined by a rigorous structure:
+
+
+    \subsubsection{Operands}
+    
+    Operands in Ataccama Expressions are categorized into four main types:
+
+    \begin{itemize}
+        \item  Literals
+        
+        These include numeric, string, or logical constants (e.g., TRUE, FALSE) and the null literal. All keywords are case-insensitive.
+
+        \item Columns
+        
+        Identified by their names, which require square brackets if they include spaces. In multiple input scenarios, columns are specified using dot notation (input\_name.column\_name). If only one input is used, dot notation can be omitted.
+
+        \item Set
+        
+        Used exclusively with the IN operation, representing a constant expression. Sets can only appear on the right side of the IN operation.
+    
+        \item Complex Expressions
+        
+        These may involve various combinations of the above operand types and function calls.
+    \end{itemize}
+
+    \subsubsection{Data Types and Conversions}
+    
+    Operands can be of specific column types such as INTEGER, FLOAT, LONG, STRING, DATETIME, DAY, and BOOLEAN. Ataccama handles type conversions automatically, widening data types as necessary ( e.g., INTEGER - LONG - FLOAT ) to accommodate operations.
+
+    \subsubsection{Handling Null Values}
+
+    The handling of null values aligns with SQL rules, with a notable exception for the STRING data type. In Ataccama, a null string is considered equal to an empty string, impacting how comparisons and operations are performed.
+
+    \subsubsection{Variables}
+
+    Expressions in Ataccama can include sequences of assignment expressions followed by a resulting expression, separated by semicolons. The first occurrence of a variable defines its type, with subsequent references needing to conform to this type.
+
+    \subsubsection{Operations and Functions}
+    
+    Ataccama ONE supports a variety of operations and functions:
+
+    \begin{itemize}
+        \item arithmetic functions
+        \item logical functions
+        \item comparison functions
+        \item set functions
+        \item date functions
+        \item string functions
+        \item bitwise functions
+        \item MinMax functions
+        \item aggregating functions
+        \item conditional functions
+        \item conversion functions
+        \item formatting functions
+        \item word set operation functions
+    \end{itemize}
+
+    The full list of functions and their descriptions can be found in the Ataccama documentation.
+
+
 \section{Architecture}
 
-One of the first decisions that have to be made is the architecture of the solution.
+One of the first decisions to be made is the architecture of the solution.
 
 The program itself will do the following:
 
@@ -103,6 +213,10 @@ typing in the implementation, as it is easier to implement and more flexible.
 
 \subsubsection{Function and operator overloading}
 
+The decision to utilize dynamic typing in the Python implementation of the Ataccama Expression Language carries significant implications for function and operator overloading. Unlike in Java, where Ataccama's static typing enables the compiler to select the correct function or operator based on argument types at compile time, Python's dynamic typing means the types of variables are only known at runtime. This characteristic prevents overloading functions and operators based on type, as there is no way to determine the type of the inputs beforehand.
+
+As a result, each function in the Python implementation must be universally applicable, handling all expected input types through internal logic. This requires implementing comprehensive type checking within each function, where the function determines the appropriate action based on the runtime types of the arguments. Such an approach aligns with Python’s duck typing philosophy, where operations are attempted regardless of type, with the function internally managing any type mismatches or errors. This method ensures flexibility and broad applicability of functions, albeit at the cost of the type-specific optimization possible in statically typed languages like Java.
+
 \subsection{Implementation scope}
 
 The Ataccama Expression Language supports a great number of functions, in
@@ -158,17 +272,9 @@ Date and floating point formatting
 \section{Interface design}
 
 There are not a lot of decision to be made in the API Design as the the public
-functionality is simple: Compile expression and running.
-Considering the functions of the implementation, one more area has to be
-exposed to the user, and that concerns the ‘isInFile’ function, which is used to
-do a lookup in a proprietary file format used by Ataccama for the purpose of
-data quality rules. The ‘isInFile’ function accepts a string as its second argument
-which is used as a identifier for the file. In the Ataccama environment, this is then
-translated into a file which is loaded. The implementation will have to provide a
-way to translate the file identifiers into files or paths so that the the lookup can
-be executed in a local environment.
+functionality is simple: Compile expression and run it. A class structure like the following is proposed:
 
-\includegraphics{diagrams/api_design-class.png}
+\includegraphics[scale=0.7]{diagrams/api_design-class.png}
 
 
 

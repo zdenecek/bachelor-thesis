@@ -13,3 +13,8 @@ tmp/
 *.toc
 *.xmpdata
 *.xmpi
+
+
+# custom
+
+*.synctex.gz
