@@ -159,6 +159,7 @@ The output can be used to identify any inconsistencies between the original and 
 % Discuss any challenges faced during the implementation and how they were resolved.
 
 \subsection{Date formatting strings}
+\paragraph{Problem}
 
 One of the challenges encountered during the implementation was handling date formatting strings in the Ataccama Expression Language. The original language mirrors Java date formatting patterns, which are not directly compatible with Python’s datetime module. \cite{noauthor_datetimeformatter_nodate}
 
@@ -170,13 +171,26 @@ To perform this mapping, a separate grammar with lexer and parser were added to 
 
 \subsection{Multiline lambda functions}
 
+\paragraph{Problem}
+
 Another challenge was implementing multiline lambda functions in Python. The Ataccama Expression Language supports multiline lambda functions, which are not directly supported in Python. This required finding a workaround to enable multiline lambda functions in the Python implementation.
 
 \paragraph{Resolution}
 
+The solution involved defining full-fledged functions instead of using lambda expressions for multiline needs. To integrate these functions seamlessly and avoid namespace conflicts, we employed a symbol table that manages and mangles names dynamically. This approach ensures that all function names are unique and avoids identifier collisions within the Python environment, effectively replicating the flexibility of Ataccama's multiline lambdas within Python's syntactic constraints.
+\subsection{Lookup Files}
+\paragraph{Problem}
 
+Ataccama's expressions can perform lookups against reference data stored in proprietary binary formats with sophisticated hashing strategies. This feature is crucial for validating data against predefined sets which are optimized for performance in Ataccama's native environment.
+\paragraph{Solution}
 
-\subsection{Lookup files}
+To handle this, the proprietary lookup functionality was reimplemented in Python. This involved developing a method to read and interpret the binary format into a usable form in Python. Additionally, to mimic the fixed-size arithmetic and specialized hashing used by Ataccama, similar algorithms were implemented in Python, ensuring that the lookup performance remains efficient and consistent with the original implementation.
+\subsection{Null Handling}
+\paragraph{Problem}
 
-\subsection{Null handling}
+Ataccama's functions and operators are designed to handle null values gracefully, often returning null or a neutral value when encountering nulls in expressions. This feature is essential for maintaining data integrity and ensuring robust data quality checks.
+\paragraph{Solution}
 
+The Python implementation adopted a similar approach to null handling. Custom operators and functions were developed to replicate the behavior of Ataccama's handling of nulls. For example, custom implementations of addition (+) and other operators were created to return null or appropriate neutral values when encountering null inputs. This ensures that the data quality rules continue to function predictably and effectively even when faced with incomplete or missing data.
+
+This careful replication of functionality ensures that the Python version of Ataccama's DQ rules maintains the robustness and reliability of the original system, adhering closely to its operational logic and data handling practices.
