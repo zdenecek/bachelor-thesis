@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build thesis PDFs
+    runs-on: ubuntu-latest
+    container: { image: 'aergus/latex' }
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build the thesis
+        run: latexmk thesis.tex -shell-escape && latexmk abstract-cz.tex -shell-escape && latexmk abstract-en.tex -shell-escape
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: Thesis
+          path: |
+            *.pdf
