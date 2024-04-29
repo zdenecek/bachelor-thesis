@@ -1,3 +1,135 @@
 
-\chapter{Viability Analysis}
+% \chapter{Viability Analysis}
 
+
+\section{Introduction to Performance Testing}
+
+\subsection{Purpose of Testing}
+
+
+Performance testing is crucial in assessing the viability of the Python implementation of the Ataccama Expression Language, particularly in ensuring it can efficiently and effectively handle data quality rules within Python environments. This testing is not about matching the performance of the original Java implementation but rather ensuring that the Python version is sufficiently efficient for practical use. The aim is to determine if the Python implementation performs within acceptable limits, where a slowdown by a factor of up to 10 times compared to the Java version might be considered tolerable for deployment, but a 1000 times slowdown would indicate serious efficiency issues that could render the solution impractical. By establishing these performance benchmarks, we can validate that the Python implementation meets minimum requirements for real-world applications, ensuring it is a viable alternative for data engineers who require programmatic access to Ataccama's data quality tools.
+
+\subsection{Testing Framework}
+
+\subsubsection{Tools and Setup}
+
+The performance testing utilizes a structured approach where a specific data quality rule—represented in three different formats: an original Ataccama expression, a Soda Core implementation, and a Great Expectations setup—is executed across a range of dataset sizes. This comprehensive method allows for a direct comparison of how well the Python implementation scales with increasing data volumes, a critical factor in many data engineering tasks.
+
+\subsubsection{Methodology}
+
+\paragraph{Dataset Sizes} Tests are conducted on datasets of varying sizes, starting from 10 records and scaling up to 10 million records. This range is chosen to simulate different real-world scenarios, from small, manageable datasets to large-scale data processing tasks.
+
+\paragraph{Execution Repetition} Each test is repeated ten times to ensure consistency and reliability in the results. This repetition helps mitigate any anomalies or outliers that could affect the accuracy of the performance assessment.
+The first run is considered a warm-up to allow the Python interpreter to optimize the code before the actual performance metrics are recorded. This approach ensures that the performance measurements are based on the optimized execution of the code.
+
+\paragraph{Process Isolation} Each test run is executed in a freshly started Python process to avoid any potential interference from memory leaks, residual data, or other artifacts from previous executions. This approach ensures that each test is conducted in a clean state, providing accurate and unbiased performance measurements.
+
+\paragraph{Measurement Metrics} The key performance metrics collected during the tests is execution time. This metric provides a direct measure of how long it takes for the Python implementation to process the data quality rule on datasets of different sizes, which is essential for assessing the viability and scalability of the Python implementation.
+
+
+\section{Test Environment Setup}
+
+%     % Hardware Specifications: Describe the computer systems on which the tests are conducted, including processor speeds, memory, and network configurations if relevant.
+%     % Software Configuration: Detail the versions of Python, Java, and other relevant software tools or libraries used during the tests.
+
+This section details the hardware and software specifications of the test environment to ensure that the performance results are reproducible and relevant to typical data engineering scenarios.
+
+\subsection{Hardware Specifications}
+
+    \paragraph{Processor} The tests are conducted on a system equipped with an Intel Core i7-9700K CPU operating at 3.60 GHz. This processor is chosen for its high performance and ability to handle multiple threads, making it suitable for intensive data processing tasks.
+    \paragraph{Memory} The system includes 32 GB of RAM, providing ample capacity to handle large datasets and complex computations without memory constraints impacting performance.
+    \paragraph{Storage} SSD storage is used to ensure fast read/write speeds, which is crucial for performance testing involving large volumes of data.
+    \paragraph{Network Configuration} While most testing is conducted in a localized environment, any network configurations, if relevant, are set to gigabit Ethernet to minimize potential bottlenecks in scenarios where data is streamed or accessed over a network.
+
+    \subsection{Software Configuration}
+
+    \paragraph{Python Version} Python 3.10 is used for all Python-related tests. This version balances recent improvements in language features and stability, making it a common choice in production environments.
+    
+    \paragraph{Testing Frameworks} For execution time measurements, the timeit module is used.
+    \paragraph{Performance Monitoring Tools} Standard tools such as time for measuring execution time and psutil for monitoring memory and CPU usage are employed to gather performance metrics.
+    \paragraph{Other Software} Relevant libraries and dependencies for each test scenario are documented and version-controlled to ensure consistency. For Ataccama-related tests, the specific versions of the Ataccama software used are noted to align with the tested functionalities.
+
+\section{Test Cases}
+
+%     % Selection Rationale: Explain why specific test cases were chosen to reflect real-world usage scenarios that data engineers might encounter.
+%     % Test Case Descriptions: Briefly introduce each test case before a detailed analysis.
+
+\paragraph{Test Cases Descriptions and Rationale}
+
+The choice of test cases for evaluating the performance and viability of the reimplemented Ataccama Expression Language in Python is designed to reflect a range of real-world scenarios that data engineers commonly encounter. These test cases are selected to cover a spectrum of complexity, from relatively simple checks to more involved, multi-condition validations that interact with external data sources and complex logic. This selection ensures that the testing not only assesses basic functionality but also gauges the performance under more demanding processing conditions.
+
+All of the test cases include listing out the failed records, which is a common requirement in data quality management tasks. This feature is essential for identifying and addressing data quality issues efficiently, making it a key aspect of the performance evaluation.
+
+\subsection{Test Case 1: Simple Continent Validation}
+
+\paragraph{Description} This test involves evaluating a relatively straightforward expression that checks if the value of a 'continent' field does not belong to a predefined list of continent names. 
+
+\paragraph{Relevance} This test case is chosen for its simplicity and its commonality in data validation tasks. It represents typical scenarios where fields within datasets are validated against a fixed set of allowable values. Testing this case helps verify the Python implementation’s ability to handle basic inclusion checks efficiently, a frequent requirement in data cleaning and standardization processes.
+
+\subsubsection{Expressions Implementation}
+
+\begin{verbatim}
+    ( NOT ( lower(continent) in { "asia", "africa", "europe", "north america", "south america", "oceania", "antarctica" } ) )
+\end{verbatim}
+
+\subsubsection{Great Expectations Implementation}
+
+\begin{verbatim}
+    {
+  "data_asset_type": "Dataset",
+  "expectation_suite_name": "default",
+  "expectations": [
+    {
+      "expectation_type": "expect_column_values_to_be_in_set",
+      "kwargs": {
+        "column": "continent_lower",
+        "mostly": 1,
+        "value_set": [
+          "asia",
+          "africa",
+          "europe",
+          "north america",
+          "south america",
+          "oceania",
+          "antarctica"
+        ]
+      },
+      "meta": {}
+    }
+  ],
+  "ge_cloud_id": null,
+  "meta": {
+    "great_expectations_version": "0.18.12"
+  }
+}
+\end{verbatim}
+
+\subsubsection{Soda Core Implementation}
+
+\begin{verbatim}
+checks for continents:
+    - invalid_count(continent_lower) = 0:
+          valid values: ["asia", "africa", "europe", "north america", "south america", "oceania", "antarctica"]
+\end{verbatim}
+
+
+\subsection{Test Case 2: Complex Customer Validation}
+
+\paragraph{Description} This more complex test case applies multiple conditions to validate customer data, involving null checks, file lookups, regex pattern matching.
+
+\paragraph{Relevance} This test case is designed to simulate the complex validation processes often required in customer data management, where multiple fields need to be verified against various conditions. It tests the system’s capacity to execute multiple, diverse operations — from file lookups to regular expressions and string manipulations — which are typical in scenarios involving data integration and compliance checks. It provides a robust challenge to the system, testing its performance and accuracy under load and complex logic conditions.
+
+
+\section{Performance Analysis}
+
+%     Metrics Collected: List the metrics that will be evaluated, such as execution time, memory usage, and CPU utilization.
+%     Comparative Analysis: Present a detailed comparison of the performance metrics obtained from the Python implementation against those from the original Java version.
+
+\xxx{TODO}
+
+\section{Discussion}
+
+%     Interpretation of Results: Discuss the implications of the test results for the viability of the Python implementation in real-world applications.
+%     Potential Bottlenecks and Limitations: Identify any performance bottlenecks or limitations observed during testing and suggest possible explanations or solutions.
+
+\xxx{TODO}

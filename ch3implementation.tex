@@ -70,8 +70,6 @@ assign:
     ;
 \end{verbatim}
 
-\includegraphics{img/expressions.svg}
-
 \subsubsection{Visitor Pattern}
  From the parse tree, a visitor is generated—a component that traverses the parse tree. This visitor uses the visitor design pattern to execute operations based on the nodes of the parse tree. For the expression language, the visitor's primary role is to transform the parse tree into an Abstract Syntax Tree (AST) using Python’s ast module, which can then be executed or evaluated in a Python environment.
 

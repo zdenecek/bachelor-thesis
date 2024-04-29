@@ -19,3 +19,12 @@ In Prague, 2024
     - Code snippets - formatting
     - Diagrams - caption, formatting
 - Add mention of Perf analysis to ch1 - Analysis
+- Add more of
+    - code snippets
+    - diagrams
+    - references to code - e.g. this functionality can be found in module a.b.c
+
+- Conclusion
+- Revision of text continuity (!)
+- bibliography
+    - Add more references to related work
