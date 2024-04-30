@@ -18,3 +18,4 @@ tmp/
 # custom
 
 *.synctex.gz
+.vscode

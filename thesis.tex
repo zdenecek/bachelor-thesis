@@ -88,6 +88,7 @@
 % You might want to use cleveref for references
 % \usepackage{cleveref}
 
+
 % Set up formatting of bibliography (references to literature)
 % Details can be adjusted in macros.tex.
 %
@@ -113,8 +114,16 @@
 % Load the file with bibliography entries
 \addbibresource{bibliography.bib}
 
+\usepackage[acronym,toc=true,automake=immediate]{glossaries-extra}
+\makeglossaries
+\glssetcategoryattribute{acronym}{indexonlyfirst}{false}
+\setabbreviationstyle[acronym,]{long-short}
+
+
 % Our definitions of macros (see description inside)
 \input macros.tex
+
+\input acronyms-and-glossary.tex
 
 %%% Title page and various mandatory informational pages
 \begin{document}
@@ -125,7 +134,7 @@
 \tableofcontents
 
 %%% Each chapter is kept in a separate file
-\include{preface}
+\include{ch0preface}
 \include{ch1analysis}
 \include{ch2design}
 \include{ch3implementation}
@@ -146,7 +155,8 @@
 
 %%% Abbreviations used in the thesis, if any, including their explanation
 %%% In mathematical theses, it could be better to move the list of abbreviations to the beginning of the thesis.
-\chapwithtoc{List of Abbreviations}
+
+\printglossary[type=\acronymtype]
 
 %%% Doctoral theses must contain a list of author's publications
 \ifx\ThesisType\TypePhD

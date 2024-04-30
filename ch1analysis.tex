@@ -1,28 +1,28 @@
 \chapter{Analysis}
-As we established in introduction, there are many benefits to having DQM processes in place. In fact, in today's data-driven environments, the assurance of data quality is not just a preference but a critical necessity. Organizations rely on accurate, timely, and reliable data to make informed decisions, drive strategies, and optimize operations. As such, the field of data quality management has evolved to address these needs through sophisticated tools and methodologies. However, the effective implementation of these tools requires a deep understanding of both the tools themselves and the roles of those who interact with them.
+There are many benefits to having \acrfull{dqm} processes in place. In fact, in today's data-driven environments, the assurance of data quality is not just a preference but a critical necessity. Organizations rely on accurate, timely, and reliable data to make informed decisions, drive strategies, and optimize operations. As such, the field of \acrshort{dqm} has evolved to address these needs through sophisticated tools and methodologies. However, the effective implementation of these tools requires a deep understanding of both the tools themselves and the roles of those who interact with them.
 
 
-This chapter delves into the analysis of the current landscape of data quality management, focusing particularly on the need for programmatic access to these tools. This need stems from the growing requirement to seamlessly integrate data quality solutions into existing data pipelines, a task that typically falls within the purview of data engineers. As we explore this topic, we will discuss the challenges faced by data engineers and the crucial role of data stewards in ensuring the success of data quality initiatives. The insights gained here will lay the groundwork for understanding how programmatic access can bridge the gap between manual data quality oversight and automated, scalable data governance frameworks.
+This chapter delves into the analysis of the current landscape of \acrshort{dqm}, focusing particularly on the need for programmatic access to these tools. This need stems from the growing requirement to seamlessly integrate data quality solutions into existing data pipelines, a task that typically falls within the purview of data engineers. As we explore this topic, we will discuss the challenges faced by data engineers and the crucial role of data stewards in ensuring the success of data quality initiatives. The insights gained here will lay the groundwork for understanding how programmatic access can bridge the gap between manual data quality oversight and automated, scalable data governance frameworks.
 
 
 \section{The need for programmatic access}
 
-In context of data quality management, most commonly the centerpoint of the focus is on the personal of the so called 'data steward'. The reason for this is that data stewards are crucial
+In context of \acrshort{dqm}, most commonly the centerpoint of the focus is on the persona of the so called 'data steward'. The reason for this is that data stewards are crucial
 for any kind of data quality initiative. Data stewards need to be involved with the setup of data quality process to ensure its success. This includes many tasks such as defining data quality rules,
 data profiling, and addressing data quality issues. [What is a data steward? https://www.ataccama.com/blog/what-is-a-data-steward]
 
-In the world of data quality management, there arises a need to consume data quality tools programatically. This is where the persona of a data engineer comes into play. There are more reasons for this, in simple terms,
-the necessity is a collaraly to the need to integrate data quality tools into data pipelines. Enter the data engineer. Data engineers are responsible for the development of data pipelines, and the integration of data quality tools into these pipelines. 
+In the world of \acrshort{dqm}, there arises a need to consume data quality tools programatically. This is where the persona of a data engineer comes into play. There are more reasons for this, in simple terms,
+the necessity is a corrolary to the need to integrate data quality tools into data pipelines, which is what data engineers are responsible for.
 
-The need for programmatic access to data quality tools is dictated by the need to integrate data quality tools into data pipelines. Data engineers are responsible for the development of data pipelines, and the integration of data quality tools into these pipelines. It follows that any solution aimed at pipeline integration and so at data engineers should be designed to accommodate for this. In the following sections, we will discuss the needs of data engineers in the context of data quality management tools.
+ It follows that any solution aimed at pipeline integration  should be designed to accommodate data engineers as they are going to be its users. In the following sections, we will discuss the needs of data engineers in the context of \acrshort{dqm} tools.
 
 \section{Data Quality Management Tools at Ataccama}
 
-One of the major players in the field of dq management tools is Ataccama. 
+One of the major players in the field of \acrshort{dqm} tools is Ataccama. 
 
-Ataccama ONE is a data management application that provides a wide range of features for data quality management, such as Data cataloging, Master data management, and Data visualisations. Most importantly, Ataccama ONE includes a wide suite of data quality management tools. This includes data profiling, data quality rules, data quality monitoring, and data quality issue resolution. Ataccama ONE also provides a wide range of connectors to various data sources and data targets.
+Ataccama ONE is a data management application that provides a wide range of features for \acrshort{dqm}, such as Data cataloging, Master data management, and Data visualizations. Most importantly, Ataccama ONE includes a wide suite of \acrshort{dqm} tools. This includes data profiling, data quality rules, data quality monitoring, and data quality issue resolution. Ataccama ONE also provides a wide range of connectors to various data sources and data targets.
 
-Ataccama is a powerful tool for data quality management, but it has some limitations. One of the limitations of Ataccama ONE is that it is not designed for programmatic access. The main interface for Ataccama ONE is a web interface. This means that it is not easy to integrate Ataccama into data pipelines.
+Ataccama is a powerful tool for \acrshort{dqm}, but it has some limitations. One of the limitations of Ataccama ONE is that it is not designed for programmatic access. The main interface for Ataccama ONE is a web interface. This means that it is not easy to integrate Ataccama into data pipelines.
 
 \subsection{Data Quality Rules at Ataccama}
 
@@ -30,11 +30,11 @@ Data quality rules are essential components of any comprehensive data management
 
 Data quality rules in Ataccama are closely integrated with the platform's data governance capabilities. This integration ensures that the enforcement of data quality is aligned with broader data governance frameworks and compliance requirements. Rules can be linked to specific data governance policies, providing traceability and accountability.
 
-Ataccama ONE's data quality management features are both robust and comprehensive, making it an exemplary foundation for any organization's data quality initiatives. The platform's extensive capabilities in defining, applying, monitoring, and resolving data quality issues position it as an ideal choice for those looking to enforce stringent data quality standards. With its rich suite of tools for data profiling, quality rule creation, and issue management, Ataccama ONE is well-equipped to handle the diverse and complex data landscapes of modern enterprises. Given its strong feature set and integration potential, we will base our solution on Ataccama's proven frameworks to ensure that our data governance and quality management efforts are both effective and efficient.
+Ataccama ONE's \acrshort{dqm} features are both robust and comprehensive, making it an exemplary foundation for any organization's data quality initiatives. The platform's extensive capabilities in defining, applying, monitoring, and resolving data quality issues position it as an ideal choice for those looking to enforce stringent data quality standards. With its rich suite of tools for data profiling, quality rule creation, and issue management, Ataccama ONE is well-equipped to handle the diverse and complex data landscapes of modern enterprises. Given its strong feature set and integration potential, we will base our solution on Ataccama's proven frameworks to ensure that our data governance and quality management efforts are both effective and efficient.
 
 \section{The persona of Data engineer and their needs}
 
-As we have established earlier, data engineers are the key persona for the integration of data quality tools into data pipelines. It is good practice to tailor application to the its users and their requirements. It follows that any solution aimed at pipeline integration should take into account the needs of data engineers.
+As we have established earlier, data engineers are the key persona for the integration of data quality tools into data pipelines. It is good practice to tailor application to its users and their requirements. It follows that any solution aimed at pipeline integration should take into account the needs of data engineers.
 
 Data engineers like any others are working professionals. Many of them are used to working with some particular tools and technologies. It is important to take into account the tools and technologies that data engineers are familiar with when designing a solution for them.
 
@@ -44,9 +44,9 @@ Although between many data engineers there are differences in the tools and tech
 
 \section{Data pipelines and requirements for the integration of data quality tools}
 
-Data pipelines are a crucial part of any data engineering project. Data pipelines are used to move data from one place to another, and to transform data from one format to another. Data pipelines are used to integrate data quality tools into data pipelines. Data engineers are responsible for the development of data pipelines, and the integration of data quality tools into these pipelines.
+Data pipelines are a crucial part of any data engineering project. Data pipelines are used to move data from one place to another, and to transform data from one format to another. 
 
-Many of usecases for integrating data quality tools into data pipelines include the requirement to integrate with existing data pipeline or solution. This means that the data quality tools should be able to integrate with commonly used data pipelines. It also follows that to force the use of a new data pipeline or ETL solution is a non-functional requirement. 
+Many of usecases for integrating data quality tools into data pipelines include the requirement to integrate with existing data pipeline or solution. This means that the data quality tools should support integration into commonly used data pipelines. It also follows that to force the use of a new data pipeline or ETL solution is not a valid requirement. 
 
 For example in Ataccama, the application is intended to be connected to all the data sources and data targets using its custom connectors. To access the Ataccama engine and run any sort of evaluation of data quality rules, the data either need to be loaded into Ataccama ONE using a connection setup within the application, or the data needs to be sent into a service set up from within the application. Both of these approaches present a challenge for the integration of Ataccama into existing data pipelines.
 
@@ -54,11 +54,11 @@ For example in Ataccama, the application is intended to be connected to all the 
 
 One of the main concerns of any data owner is data security. Sending data over the internet to a third-party service can be a security risk. This is especially true for sensitive data. Data security is a major concern for data engineers, and it is important to take into account the security requirements of data engineers when designing a solution for them.
 
-When a data quality integration in a pipeline needs to accesa a server, an application running somewhere else, it means network access. This can be a security risk. In case of a private network, the application needs to be exposed to the network, which can introduce entirely new vectors of attack
+When a data quality integration in a pipeline needs to access a server, an application running somewhere else, it means network access. This can be a security risk. In case of a private network, the application needs to be exposed to the network, which can introduce entirely new vectors of attack
 
 \subsection{Ease of configuration}
 
-The need to access a running instance of an application in order to run data quality tooling comes with added complexities.
+The need to access a running instance of a \acrshort{dqm} application in order to run data quality tooling comes with added complexities.
 
 First, the application needs to be configured and running. This is fine for an environmnent where such an application is already in use, yet still it is an added complexity as part of the process is running somewhere else and so it can be more difficult to debug, monitor, and maintain.
 
@@ -99,11 +99,11 @@ Python is well-supported in Snowflake through connectors like Snowflake Connecto
 \end{itemize}
 
 
-Given the need to operate within commonly used compute platforms such as the above mentioned, it is imperative to consider the compatibility of programming languages supported by these environments. Each platform offers support for various technologies; however, Python stands out due to its universal acceptance and extensive integration capabilities across these systems. Whether it is executing complex data manipulation tasks in Snowflake, orchestrating ETL processes in AWS Glue, running custom activities in Azure Data Factory, or performing data analysis and machine learning in Databricks, Python is consistently supported. Therefore, focusing on Python for implementing data quality rules not only aligns with the operational capabilities of these platforms but also ensures that our solutions are versatile and adaptable across different technological ecosystems. This strategic choice maximizes the utility and reach of our data quality management tools, making them accessible and functional within the predominant data processing frameworks employed by contemporary organizations.
+Given the need to operate within commonly used compute platforms such as the above mentioned, it is imperative to consider the compatibility of programming languages supported by these environments. Each platform offers support for various technologies; however, Python stands out due to its universal acceptance and extensive integration capabilities across these systems. Whether it is executing complex data manipulation tasks in Snowflake, orchestrating ETL processes in AWS Glue, running custom activities in Azure Data Factory, or performing data analysis and machine learning in Databricks, Python is consistently supported. Therefore, focusing on Python for implementing data quality rules not only aligns with the operational capabilities of these platforms but also ensures that our solutions are versatile and adaptable across different technological ecosystems. This strategic choice maximizes the utility and reach of our \acrshort{dqm} tools, making them accessible and functional within the predominant data processing frameworks employed by contemporary organizations.
 
 \section{Similar Solutions}
 
-This section compares Ataccama ONE to other data quality management tools that are designed for programmatic access, highlighting the relative strengths and limitations of each solution in terms of features, technology stack, and integration capabilities.
+This section compares Ataccama ONE to other \acrshort{dqm} tools that are designed for programmatic access, highlighting the relative strengths and limitations of each solution in terms of features, technology stack, and integration capabilities.
 
 \subsection{Soda Core}
 
