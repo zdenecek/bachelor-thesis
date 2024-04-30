@@ -18,10 +18,10 @@ The pyproject.toml file is configured to list all necessary libraries and their 
 
 \subsection{Mypy for Type Checks}
 
-Purpose and Benefits: Given the dynamic nature of Python, Mypy is incorporated to provide optional static type checking. By annotating Python code with type hints, Mypy can catch many programming errors before they manifest at runtime. It enhances code quality and reliability, especially in large and complex projects where types play a crucial role in the correctness of the program.
+Given the dynamic nature of Python, Mypy is incorporated to provide optional static type checking. By annotating Python code with type hints, Mypy can catch many programming errors before they manifest at runtime. It enhances code quality and reliability, especially in large and complex projects where types play a crucial role in the correctness of the program.
 
 \subsubsection{Configuration}
-Mypy is configured to run as part of the continuous integration process, checking type annotations during development. Some leniencies are allowed in the configuration to enable a balance between strict type checking and developmental flexibility. For instance, certain third-party libraries without type hints might be excluded from these checks to prevent excessive false positives.
+Mypy is configured to run as part of the continuous integration process, checking type annotations during development. Some leniencies are allowed in the configuration to strike a balance between strict type checking and development flexibility. For instance, certain third-party libraries without type hints and generated code like the lexer and parser might be excluded from these checks to prevent excessive false positives.
 
 \subsection{Pytest for Testing}
 
@@ -138,7 +138,7 @@ An expression generator is created to produce random expressions based on the gr
 \section{Testing and Validation}
 % Explain how you tested the reimplementation of DQ rules to ensure they work correctly and efficiently in local Python environments.
 
-Testing and validation are critical components of the software development process, especially when reimplementing data quality (DQ) rules to ensure they perform as expected in local Python environments. For this project, we employ pytest with test parametrization to thoroughly test the Python implementation of Ataccama DQ rules.
+Testing and validation are critical components of the software development process, especially when reimplementing data quality rules to ensure they perform as expected in local Python environments. For this project, we employ pytest with test parametrization to thoroughly test the Python implementation of Ataccama DQ rules.
 
 
 Use of test Parametrization allows for running the same test function with different input values. It is particularly useful in this project for applying a wide array of test scenarios to the implemented functions to ensure comprehensive coverage and that the rules behave as intended across diverse data sets and conditions.

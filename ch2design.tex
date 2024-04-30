@@ -12,20 +12,22 @@ First step of the design process is to summarize the goals of the project. The g
 
 In Ataccama, data quality rules are defined using a custom expression language Ataccama Expressions. 
 
-The solution should be designed to be compatible with Ataccama Expressions, most importantly, a user should be able to reuse data quality rules originally written in Ataccama Expression Language, and run evaluate them.
+The solution should be designed to be compatible with Ataccama Expressions, most importantly, a user should be able to reuse data quality rules originally written in Ataccama Expression Language, and evaluate them.
 
 This language is defined using a formal grammar. The expected functions and operators output is defined in a separate documentation.
 
-The goal of this project is to bring the Ataccama expression language over to Python, so that it can be executed with as little managed dependecies as possible. This means that the language will have to be implemented in such a way that it can be executed in a Python environment without any additional dependencies except for Python packages, which are easily managable and an industry standard.
+The goal of this project is to bring the Ataccama expression language over to Python, so that it can be executed with as little managed dependecies as possible. This means that the language will have to be implemented in such a way that it can be executed in a Python environment. To satisfy the requirement for simple configuration and ease of use, the solution should strive to avoid any additional managed dependencies, meaning any application that need to be set up outside Python dependency management, i.e. any runtimes, compilers, application. This does not apply to Python packages, which are easily managable within the Python environment itself and are a industry standard, which engineers are used to and as such satisfies the ease of use criterion. Attention must be paid to package compatibility regarding Python versions, implementations, and operating systems - requirements for this will be set later on. 
 
 
 \subsection{Design an API that is easy to use for data engineers}
 
-In the analysis section, the persona of data engineer was introduced as the main user of the solution. The main goal of the project is to design an API that is easy to use for data engineers. The API should be based on familiar concepts and technologies, and should be easy to learn and use. The API should be designed to accommodate for the needs of data engineers, and should be tailored to their requirements.
+In the analysis section, the persona of data engineer was introduced as the main user of the solution. The main goal of the project is to design an API that is easy to use for data engineers. The API should be simple a easy to understand and use. Any complex abstraction such as advanced design patterns should be avoided. For example, the creation of object should be simple, using either a constructor or a imported function. 
+
+Furthermore, it should be taken into account that the library will be outside of IDE and similar environments where code suggestion and documentation might not be available. For example, when writing integrations in the platforms discussed such as Azure Data Factory and Data Bricks, the user will not have access to the documentation or code suggestions. For this reason, the API should be designed to be self-explanatory, and should be designed to be easy to use without the need for extensive documentation.
 
 \subsection{Reasonable performance}
 
-The API should be designed to be fast and efficient. The API should be designed to be compatible with commonly used data pipelines, and should be designed to be easy to integrate into data pipelines. The API should be designed to be secure, and should be designed to be easy to configure, debug, monitor, and maintain.
+To be considered a viable alternative to the original Ataccama implementation and to similar solutions on the market, the Python implementation should be able to handle data quality rules within Python environments efficiently and effectively. The performance of the Python implementation should be within acceptable limits, where a slowdown by a factor of up to 10 times compared to the Java version might be considered tolerable for deployment, but a 1000 times slowdown would indicate serious efficiency issues that could render the solution impractical. By establishing these performance benchmarks, we can validate that the Python implementation meets minimum requirements for real-world applications, ensuring it is a viable alternative for data engineers who require programmatic access to Ataccama's data quality tools. This will be further discussed in the viability analysis section.
 
 \section{Ataccama Expression Language}
 
@@ -180,17 +182,18 @@ For these reasons, the second approach is chosen. The code will be generated as 
 \section{Compatibility with the Ataccama Expression language}
 
 
-The goal of this project is to bring the Ataccama expression language over to
-Python. However, the language is complex and has many features, along with
+The Ataccama Expression Language is complex and has many features, along with
 platform specific quirks a peculiarities. For this reason, the implementation will
 not be a one-to-one copy of the language, but rather a subset of the language
 features that are most commonly used with some differences in behaviour.
+
 The differences between the Ataccama Expression Language and the Python
-implementation will be outlined in detail i the following sections. As the goal
+implementation will be outlined in detail in the following sections. As the goal
 is to make the implementation as close to the original language as possible, the
 differences will be kept to a minimum. Consequently, the implementation will be
 able to run most of the data quality rules written in the Ataccama Expression
 Language.
+
 The rest of this section describes a high level overview of the differences that
 will have to be introduced along with the reasons behind them. Most of the
 differences are a result of a different underlying technology, decisions have to be
@@ -201,7 +204,7 @@ introducing accepting differences for the sake of simplicity and performance.
 
 \subsection{Dynamic typing}
 
-The Ataccama Expression Language is statically typed, following its language of implementation The Ataccama Expression Language is statically typed, following its language
+The Ataccama Expression Language is statically typed, following its language
 of implementation which is Java. This means that the type of each variable and
 expression is known at compile time compile time. This allows the compiler to
 catch type errors at compile time, and to generate more efficient code. Also,
@@ -211,14 +214,19 @@ This is possible thanks to the record format being known at compile time. The
 record format is a schema that defines the types of the fields in the record.
 Python is dynamically typed, which means that it is possible to allow for
 dynamic typing in the implementation.
+
 On the other hand, to reimplement static typing in Python would require
 aditional work like keeping track of the types of all symbols and expressions and
 resolving function overloads.
+
 Furthermore, static typing would require the user to define the record format
 at compile time, which would make the API less user-friendly, which in our case
-is a priority.
+is a priority. This could be solved by allowing the user to define the record format optionally.
+
 Considering the above stated arguments, the decision is to allow for dynamic
-typing in the implementation, as it is easier to implement and more flexible.
+typing in the implementation, as it is easier to implement and more flexible. 
+The implementation of optional static typing is a possible future improvement, but for the initial implementation would
+constitute a great effort for little gain from the user's perspective.
 
 \subsubsection{Function and operator overloading}
 
@@ -228,15 +236,16 @@ As a result, each function in the Python implementation must be universally appl
 
 \subsection{Implementation scope}
 
-The Ataccama Expression Language supports a great number of functions, in
-total it is more than 150 functions.
-The implementation of the language in Python will be limited to a subset of
+The Ataccama Expression Language supports over 150 functions but the implementation in Python will be limited to a subset of
 the language features. The reasoning behind this is that many of the functions are
 not commonly used, and the implementation of all of them would be a significant
-effort.
+effort and would be out of scope for this project as the goal is to provide a simple
+prototype and validate the viability first. 
 
-The functions have been categorized by priority, and the implementation will
-focus on the high and medium priority functions.
+For this reason, the functions have been categorized by priority, and the implementation will
+focus on the high and medium priority functions. The categorization is based on the frequency of use of the functions in the data quality rules, and the complexity of the implementation. The high priority functions are the most commonly used functions, and the medium priority functions are less commonly used but still important. The low priority functions are the least commonly used functions, and will not be implemented in the initial version of the implementation.
+
+
 TODO add list of functions
 
 \subsection{Arithmetic}
@@ -251,23 +260,30 @@ arithmetic is necessary, for example when working with hash tables. As the numbe
 of these cases is limited and most of them are provided as implemented functionality,
 the implementation will use Python-native arbitrary precision arithmetic and
 handle fixed-size arithmetic as a special case where necessary.
+
 Furthermore, the Ataccama Expression Language provides arithmetic operators
-for division, integer division, and modulo. Python provides the same operators, but
-the behaviour of the operators is different. The Ataccama Expression Language
-uses integer division and modulo for integer operands, and floating-point division
-and modulo for floating-point operands. Python uses integer division and modulo
-for integer operands, and floating-point division and modulo for floating-point
-operands. These operators will have to be implemented in a way that is compatible
-with the Ataccama Expression Language.
+for addition, subtraction, multiplication, division, integer division, and remainder. 
+Python provides the same operators, but
+the behaviour of the operators is different. The first significant difference
+is handling of null values. In Ataccama Expression Language, the operators are null safe and
+follow a SQL-like behaviour. In Python, the operators throw an exception if any of the operands is null.
+Also the arithmetics are different, modulo and division produce different results for negative operands. These differences will have to be addressed as the
+results differ too much to be ignored.  Moreover, Python uses arbitrary precision arithmetic, whereas Ataccama Expressions use the underlying Java types, but this difference is not significant for most use cases and could be considered an improvement. 
+Lastly, the plus operator in Ataccama Expression Language is overloaded for string concatenation, converting any non-string to string first, which is not the case in Python. This will have to be implemented as it is a common use case.
+
+
 \subsection{Null handling and null coalescing}
+
 The way Ataccama Expression language handles nulls has a lot of aspects
 which have to be addressed.
+
 Operators handle null values in a SQL-like way, mostly returning null if any
 of the operands is null. Implication for the implementation is that it will not be
 possible to use native Python operators, as they do not handle null values in the
 same way.
+
 Empty strings are treated as null values, the documentation states "A null
-string and an empty string are considered equal". Moreover, any empty string
+string and an empty string are considered equal". Moreover, in Ataccama Expression Languages most empty string
 returns are coalesced to null. This behaviour also has its own quirks, for example
 ‘1 + null == null‘ but ‘1 + "" == "1"‘, which breaks the aforementioned statement.
 

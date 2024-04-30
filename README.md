@@ -28,3 +28,31 @@ In Prague, 2024
 - Revision of text continuity (!)
 - bibliography
     - Add more references to related work
+
+
+Nepořádek ve "výběru Ataccamy"
+
+reálná motivace je, že vyjdu z toho, že to chci dělat pro Ataccamu
+
+V práci to je takto
+
+Chceme udělat něco, co bude fungovat i lokálně, protože to je problém
+
+Podíváme se na více platforem
+
+Vybereme Ataccamu
+
+-> to je blbé, ostatní platformy mají super podporu out of the box, navíc jsou jiné, podobnější platformy, které nevyzkouším,
+protože jsou taky primárně proprietary saasy a paasy.
+
+Ataccama má jiný feature set než GE a SodaCore, ale v rámci té práce se nechci pouštět do srovnání.
+
+
+Nešlo by
+
+
+Přesunout Enhancing Ataccama’s Integration Capabilities do Ataccama intro,
+říct, že tohle budu implementovat
+
+a similar solutions použít "jen" pro perfomance porovnání.
+
