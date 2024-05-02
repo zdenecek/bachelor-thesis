@@ -19,3 +19,7 @@ tmp/
 
 *.synctex.gz
 .vscode
+
+.idea/
+
+venv/
