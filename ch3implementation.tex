@@ -25,17 +25,17 @@ Mypy is configured to run as part of the continuous integration process, checkin
 
 \subsection{Pytest for Testing}
 
-Pytest is chosen for its powerful testing capabilities, which are essential for verifying the functionality of the re-implemented data quality rules in Python. It supports complex test scenarios and is highly customizable, with a vast ecosystem of plugins which can be utilized to extend its functionality further.
+Pytest is chosen for its powerful testing capabilities, which are essential for verifying the functionality of the re-implemented data quality rules in Python. It supports complex test scenarios and is highly customizable, with a vast ecosystem of plugins that can be utilized to extend its functionality further.
 
 \subsubsection{Configuration}
 
-Tests are written to cover various cases, from basic unit tests that validate each function's behavior with different inputs to integration tests that ensure that the system components work together as expected. Pytest fixtures are used to setup and teardown test environments, making it easy to manage test state and dependencies.
+Tests are written to cover various cases, from basic unit tests that validate each function's behavior with different inputs to integration tests that ensure that the system components work together as expected. Pytest fixtures are used to set up and teardown test environments, making it easy to manage test states and dependencies.
 
 \subsection{Additional Tools and Practices}
 
 \subsubsection{Version Control}
 
-Git is used for version control, with a repository hosted the company Gitlab, providing a robust framework for collaboration and version tracking.
+Git is used for version control, with a repository hosted on the company Gitlab, providing a robust framework for collaboration and version tracking.
 
 \subsubsection{Continuous Integration/Continuous Deployment (CI/CD) A}
 
@@ -97,11 +97,11 @@ def visitAddExpr(self, ctx: ExpressionsParser.AddExprContext):
 
 \subsubsection{Error Handling}
 
-Syntax errors in the expressions are handled using ANTLR's error listeners. These listeners are customized to provide meaningful error messages that help in identifying and correcting syntax issues in the input expressions.
+Syntax errors in the expressions are handled using ANTLR's error listeners. These listeners are customized to provide meaningful error messages that help identify and correct syntax issues in the input expressions.
 
 \subsection{Statements}
 
-Handling variables and functions within expressions involves maintaining a symbol table where each variable's name and value are stored. Variables are parsed and evaluated through the visitor, which checks the symbol table to resolve their values during the execution of expressions.
+Handling variables and functions within expressions involves maintaining a symbol table where each variable's name and value are stored. Variables are parsed and evaluated by the visitor, which checks the symbol table to resolve their values during the execution of expressions.
 
  The symbol table keeps track of all symbols used in expressions. It ensures that each variable is correctly declared and used within its scope. Additionally, symbol transformation is employed to prevent collisions and ensure that variable names are unique within the global execution context.
 
@@ -113,7 +113,7 @@ Each function from Ataccama’s language is mapped to a Python function. These f
 
 Each operator is mapped to a function call with the operand(s) as the arguments. This allows for customizing behavior for arithmetic, logical, and comparison operations to closely align with how they function in the original implementation.
 
-The reimplementation of the functions and operators constitutes a significant portion of the work, as the language supports a wide range of operations that need to be accurately translated to Python.
+The reimplementation of the functions and operators constitutes a significant portion of the work, as the language supports a wide range of operations that need to be accurately translated into Python.
 
 \subsection{Additional Features and Utilities}
 
@@ -124,7 +124,7 @@ In addition to the core features of the Ataccama Expression Language, several ut
 A command-line interface is developed to allow users to interact with the expression evaluation engine directly. This CLI provides a simple way to input expressions and receive the output, making it easier to test and validate the implementation.
 
 Running `poetry install` will make the `evaluate-records` script available.
-`evaluate-records` can be used to evaluate records on a expression:
+`evaluate-records` can be used to evaluate records on an expression:
 
 \begin{verbatim}
 echo "John,25\nJohn,18" | evaluate-records "name == 'John' and
@@ -138,10 +138,10 @@ An expression generator is created to produce random expressions based on the gr
 \section{Testing and Validation}
 % Explain how you tested the reimplementation of DQ rules to ensure they work correctly and efficiently in local Python environments.
 
-Testing and validation are critical components of the software development process, especially when reimplementing data quality rules to ensure they perform as expected in local Python environments. For this project, we employ pytest with test parametrization to thoroughly test the Python implementation of Ataccama DQ rules.
+Testing and validation are critical components of the software development process, especially when reimplementing data quality rules to ensure they perform as expected in local Python environments. For this project, we employ \texttt{pytest} with test parametrization to thoroughly test the Python implementation of Ataccama DQ rules.
 
 
-Use of test Parametrization allows for running the same test function with different input values. It is particularly useful in this project for applying a wide array of test scenarios to the implemented functions to ensure comprehensive coverage and that the rules behave as intended across diverse data sets and conditions.
+The use of test parametrization allows for running the same test function with different input values. It is particularly useful in this project for applying a wide array of test scenarios to the implemented functions to ensure comprehensive coverage and that the rules behave as intended across diverse data sets and conditions.
 
 The primary focus during testing is to ensure that the reimplemented rules behave as similarly as possible to the Ataccama Expression Language. Tests are designed to validate both typical and edge-case scenarios, ensuring the rules are robust under various data conditions.
 
@@ -149,7 +149,8 @@ The primary focus during testing is to ensure that the reimplemented rules behav
 
 To validate the accuracy of the reimplementation, we have developed a test suite that compares the outputs of our Python implementation against those generated by the original Ataccama ONE Expressions Java engine. This ensures that our implementation produces results consistent with the established behavior of the rules in the Ataccama environment.
 
-This test suite can be run programatically using a script which the pytest test suite; the suite is using a fixture for running any expression that captures it and if enabled, saves it into a file. The script executes the tests and, for a subset of them, runs the same expressions in the Ataccama ONE Desktop environment. It then compares the outputs from both implementations and highlights any discrepancies.
+This test suite can be run programmatically using a script which runs the pytest test suite; the suite is using a fixture for running any expression that captures it and if enabled, saves it into a file. The script executes the tests and, for a subset of them, runs the same expressions in the Ataccama ONE Desktop environment. It then compares the outputs from both implementations and highlights any discrepancies.
+
 
 The output can be used to identify any inconsistencies between the original and re-implemented rules, allowing for further refinement and debugging to ensure the rules are correctly implemented.
 
@@ -159,13 +160,13 @@ The output can be used to identify any inconsistencies between the original and 
 \subsection{Date formatting strings}
 \paragraph{Problem}
 
-One of the challenges encountered during the implementation was handling date formatting strings in the Ataccama Expression Language. The original language mirrors Java date formatting patterns, which are not directly compatible with Python’s datetime module. \cite{noauthor_datetimeformatter_nodate}
+One of the challenges encountered during the implementation was handling date formatting strings in the Ataccama Expression Language. The original language mirrors Java date formatting patterns, which are not directly compatible with Python’s \textt{datetime} module. \cite{noauthor_datetimeformatter_nodate}
 
 \paragraph{Resolution}
 
 To address the date formatting issue, a mapping between Java and Python date formatting patterns was created. This mapping allows the Python implementation to interpret the date formatting strings correctly and convert them to the appropriate Python format.
 
-To perform this mapping, a separate grammar with lexer and parser were added to parse the original date formatting string into pattern and text tokens. Pattern tokens are then converted using a lookup table.
+To perform this mapping, a separate grammar with lexer and parser was added to parse the original date formatting string into pattern and text tokens. Pattern tokens are then converted using a lookup table.
 
 \subsection{Multiline lambda functions}
 
@@ -186,7 +187,7 @@ To handle this, the proprietary lookup functionality was reimplemented in Python
 \subsection{Null Handling}
 \paragraph{Problem}
 
-Ataccama's functions and operators are designed to handle null values gracefully, often returning null or a neutral value when encountering nulls in expressions. This feature is essential for maintaining data integrity and ensuring robust data quality checks.
+Ataccama's functions and operators are designed to handle null values gracefully, often returning a null or a neutral value when encountering nulls in expressions. This feature is essential for maintaining data integrity and ensuring robust data quality checks.
 \paragraph{Solution}
 
 The Python implementation adopted a similar approach to null handling. Custom operators and functions were developed to replicate the behavior of Ataccama's handling of nulls. For example, custom implementations of addition (+) and other operators were created to return null or appropriate neutral values when encountering null inputs. This ensures that the data quality rules continue to function predictably and effectively even when faced with incomplete or missing data.

@@ -20,11 +20,11 @@ The performance testing utilizes a structured approach where a specific data qua
 \paragraph{Dataset Sizes} Tests are conducted on datasets of varying sizes, starting from 10 records and scaling up to 10 million records. This range is chosen to simulate different real-world scenarios, from small, manageable datasets to large-scale data processing tasks.
 
 \paragraph{Execution Repetition} Each test is repeated ten times to ensure consistency and reliability in the results. This repetition helps mitigate any anomalies or outliers that could affect the accuracy of the performance assessment.
-The first repetition is considered a warm-up to allow the Python interpreter to optimize the code before the actual performance metrics are recorded. This approach ensures that the performance measurements are based on the optimized execution of the code - while Python is often perceived as an interpreted language that executes code directly from its high-level syntax, in practice, Python first compiles the source code into bytecode, which is a lower-level, platform-independent representation of the code. This bytecode is then executed by the Python interpreter. During the warm-up phase, the Python interpreter can perform several optimizations on this bytecode such as type specializations, loop unrolling and conditional simplifications and inline caching. 
+The first repetition is considered a warm-up to allow the Python interpreter to optimize the code before the actual performance metrics are recorded. This approach ensures that the performance measurements are based on the optimized execution of the code - while Python is often perceived as an interpreted language that executes code directly from its high-level syntax, in practice, Python first compiles the source code into bytecode, which is a lower-level, platform-independent representation of the code. This bytecode is then executed by the Python interpreter. During the warm-up phase, the Python interpreter can perform several optimizations on this bytecode, such as type specializations, loop unrolling, conditional simplifications, and inline caching. 
 
 \paragraph{Process Isolation} Each test run is executed in a freshly started Python process to avoid any potential interference from memory leaks, memory layout, residual data, or other artifacts from previous executions. This approach ensures that each test is conducted in a clean state, providing accurate and unbiased performance measurements.
 
-\paragraph{Measurement Metrics} The key performance metrics collected during the tests is execution time. This metric provides a direct measure of how long it takes for the Python implementation to process the data quality rule on datasets of different sizes, which is essential for assessing the viability and scalability of the Python implementation.
+\paragraph{Measurement Metrics} The key performance metric collected during the tests is execution time. This metric provides a direct measure of how long it takes for the Python implementation to process the data quality rule on datasets of different sizes, which is essential for assessing the viability and scalability of the Python implementation.
 
 
 \section{Test Environment Setup}
@@ -45,7 +45,7 @@ This section details the hardware and software specifications of the test enviro
 
     \paragraph{Python Version} Python 3.10 is used for all Python-related tests. This version balances recent improvements in language features and stability, making it a common choice in production environments.
     
-    \paragraph{Testing Frameworks} For execution time measurements, the timeit module is used.
+    \paragraph{Testing Frameworks} For execution time measurements, the \texttt{timeit} module is used.
     \paragraph{Performance Monitoring Tools} Standard tools such as \texttt{timeit} for measuring execution time and \texttt{psutil} for monitoring memory and CPU usage are employed to gather performance metrics.
     \paragraph{Other Software} Relevant libraries and dependencies for each test scenario are documented and version-controlled to ensure consistency. For Ataccama-related tests, the specific versions of the Ataccama software used are noted to align with the tested functionalities.
 

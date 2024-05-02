@@ -243,20 +243,20 @@ effort and would be out of scope for this project as the goal is to provide a si
 prototype and validate the viability first. 
 
 For this reason, the functions have been categorized by priority, and the implementation will
-focus on the high and medium priority functions. The categorization is based on the frequency of use of the functions in the data quality rules, and the complexity of the implementation. The high priority functions are the most commonly used functions, and the medium priority functions are less commonly used but still important. The low priority functions are the least commonly used functions, and will not be implemented in the initial version of the implementation.
+focus on the high- and medium-priority functions. The categorization is based on the frequency of use of the tasks in the data quality rules, and the complexity of the implementation. The high-priority functions are the most commonly used functions, and the medium-priority functions are less commonly used but still important. The low-priority functions are the least commonly used functions, and will not be implemented in the initial version of the implementation.
 
 
 TODO add list of functions
 
 \subsection{Arithmetic}
 The Ataccama Expression Language operates, like standard types in Java, in
-fixed-size bit arithmetic, i.e. 32 bits for integers and 64 bits for Python. Python,
-on the other hand, uses arbitrary precision arithmetic, which means that the size
+fixed-size bit arithmetic, i.e., 32 bits for integers and 64 bits for Python. 
+On the other hand, Python uses arbitrary precision arithmetic, which means that the size
 of the integers is not limited. This means that the results of arithmetic operations
 can differ between the two languages.
-For every day operation, the difference is not significant and it could be said
+For everyday operations, the difference is not significant, and it could be said
 that the Python behaviour is better. However, in some use cases, the fixed-size
-arithmetic is necessary, for example when working with hash tables. As the number
+arithmetic is necessary, for example, when working with hash tables. As the number
 of these cases is limited and most of them are provided as implemented functionality,
 the implementation will use Python-native arbitrary precision arithmetic and
 handle fixed-size arithmetic as a special case where necessary.
@@ -265,9 +265,9 @@ Furthermore, the Ataccama Expression Language provides arithmetic operators
 for addition, subtraction, multiplication, division, integer division, and remainder. 
 Python provides the same operators, but
 the behaviour of the operators is different. The first significant difference
-is handling of null values. In Ataccama Expression Language, the operators are null safe and
+is the handling of null values. In Ataccama Expression Language, the operators are null safe and
 follow a SQL-like behaviour. In Python, the operators throw an exception if any of the operands is null.
-Also the arithmetics are different, modulo and division produce different results for negative operands. These differences will have to be addressed as the
+Also, the arithmetics are different; modulo and division produce different results for negative operands. These differences will have to be addressed as the
 results differ too much to be ignored.  Moreover, Python uses arbitrary precision arithmetic, whereas Ataccama Expressions use the underlying Java types, but this difference is not significant for most use cases and could be considered an improvement. 
 Lastly, the plus operator in Ataccama Expression Language is overloaded for string concatenation, converting any non-string to string first, which is not the case in Python. This will have to be implemented as it is a common use case.
 
@@ -278,26 +278,26 @@ The way Ataccama Expression language handles nulls has a lot of aspects
 which have to be addressed.
 
 Operators handle null values in a SQL-like way, mostly returning null if any
-of the operands is null. Implication for the implementation is that it will not be
+of the operands is null. The implication for the implementation is that it will not be
 possible to use native Python operators, as they do not handle null values in the
 same way.
 
-Empty strings are treated as null values, the documentation states "A null
-string and an empty string are considered equal". Moreover, in Ataccama Expression Languages most empty string
+Empty strings are treated as null values. The documentation states: "A null
+string and an empty string are considered equal". Moreover, in the Ataccama Expression Language, most empty string
 returns are coalesced to null. This behaviour also has its own quirks, for example
 ‘1 + null == null‘ but ‘1 + "" == "1"‘, which breaks the aforementioned statement.
 
 Furthermore, functions have to be prepared to handle null values in any of the
 arguments. Most commonly, functions return null if any of the arguments is null,
 so extensive null checking has to be implemented in the functions.
-The implementation in Python will have to address these differences, and
+The implementation in Python will have to address these differences and
 provide a way to handle null values in a Python environment.
 Date and floating point formatting
 
 \section{Interface design}
 
-There are not a lot of decision to be made in the API Design as the the public
-functionality is simple: Compile expression and run it. A class structure like the following is proposed:
+There are not a lot of decisions to be made in the API Design as the public
+functionality is simple: Compile an expression and run it. A class structure like the following is proposed:
 
 \includegraphics[scale=0.7]{diagrams/api_design-class.png}
 
