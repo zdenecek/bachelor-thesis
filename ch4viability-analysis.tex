@@ -7,17 +7,17 @@
 \subsection{Purpose of Testing}
 
 
-Performance testing is crucial in assessing the viability of the Python implementation of the Ataccama Expression Language, particularly in ensuring it can efficiently and effectively handle data quality rules within Python environments. This testing is not about matching the performance of the original Java implementation but rather ensuring that the Python version is sufficiently efficient for practical use. The aim is to determine if the Python implementation performs within acceptable limits, where a slowdown by a factor of up to 10 times compared to the Java version might be considered tolerable for deployment, but a 1000 times slowdown would indicate serious efficiency issues that could render the solution impractical. By establishing these performance benchmarks, we can validate that the Python implementation meets minimum requirements for real-world applications, ensuring it is a viable alternative for data engineers who require programmatic access to Ataccama's data quality tools.
+Performance testing is crucial in assessing the viability of the Python implementation of the Ataccama Expression Language, particularly in ensuring it can efficiently and effectively handle data quality rules within Python environments. This testing is not about matching the performance of similar solutions - Soda Core and Great Expectations -  but rather ensuring that the Python version is sufficiently efficient for practical use. The aim is to determine if the Python implementation performs within acceptable limits, where a slowdown by a factor of up to 10 times compared to the similar solutions might be considered tolerable for deployment, but a 1000 times slowdown would indicate serious efficiency issues that could render the solution impractical. By establishing these performance benchmarks, we can validate that the Python implementation meets minimum requirements for real-world applications, ensuring it is a viable alternative for data engineers who require programmatic access to Ataccama's data quality tools.
 
 \subsection{Testing Framework}
 
 \subsubsection{Tools and Setup}
 
-The performance testing utilizes a structured approach where a specific data quality rule—represented in three different formats: an original Ataccama expression, a Soda Core implementation, and a Great Expectations setup—is executed across a range of dataset sizes. This comprehensive method allows for a direct comparison of how well the Python implementation scales with increasing data volumes, a critical factor in many data engineering tasks.
+The performance testing utilizes a structured approach where a specific data quality rule—represented in three different formats: an original Ataccama expression, a Soda Core implementation, and a Great Expectations setup—is executed across a range of dataset sizes. This method allows for a direct comparison of how well the Python implementation scales with increasing data volumes, a critical factor in many data engineering tasks.
 
 \subsubsection{Methodology}
 
-\paragraph{Dataset Sizes} Tests are conducted on datasets of varying sizes, starting from 10 records and scaling up to 10 million records. This range is chosen to simulate different real-world scenarios, from small, manageable datasets to large-scale data processing tasks.
+\paragraph{Dataset Sizes} Tests are conducted on datasets of varying sizes, starting from 10 records and scaling up to 1 or 10 million records depending on test case complexity. This range is chosen to simulate different real-world scenarios, from small, manageable datasets to large-scale data processing tasks.
 
 \paragraph{Execution Repetition} Each test is repeated ten times to ensure consistency and reliability in the results. This repetition helps mitigate any anomalies or outliers that could affect the accuracy of the performance assessment.
 The first repetition is considered a warm-up to allow the Python interpreter to optimize the code before the actual performance metrics are recorded. This approach ensures that the performance measurements are based on the optimized execution of the code - while Python is often perceived as an interpreted language that executes code directly from its high-level syntax, in practice, Python first compiles the source code into bytecode, which is a lower-level, platform-independent representation of the code. This bytecode is then executed by the Python interpreter. During the warm-up phase, the Python interpreter can perform several optimizations on this bytecode, such as type specializations, loop unrolling, conditional simplifications, and inline caching. 
@@ -36,18 +36,22 @@ This section details the hardware and software specifications of the test enviro
 
 \subsection{Hardware Specifications}
 
-    \paragraph{Processor} The tests are conducted on a system equipped with an Intel Core i7-9700K CPU operating at 3.60 GHz. This processor is chosen for its high performance and ability to handle multiple threads, making it suitable for intensive data processing tasks.
-    \paragraph{Memory} The system includes 32 GB of RAM, providing ample capacity to handle large datasets and complex computations without memory constraints impacting performance.
-    \paragraph{Storage} SSD storage is used to ensure fast read/write speeds, which is crucial for performance testing involving large volumes of data.
-    \paragraph{Network Configuration} While most testing is conducted in a localized environment, any network configurations, if relevant, are set to gigabit Ethernet to minimize potential bottlenecks in scenarios where data is streamed or accessed over a network.
+    The performance tests were conducted on a M1 MacBook Pro with the following specifications:
+
+    \begin{itemize}
+        \item Processor: Apple M1 10-core CPU
+        \item Memory: 32 GB
+        \item Operating System: macOS Sonoma 14.4.1
+    \end{itemize}
 
     \subsection{Software Configuration}
 
-    \paragraph{Python Version} Python 3.10 is used for all Python-related tests. This version balances recent improvements in language features and stability, making it a common choice in production environments.
+    \paragraph{Python Version} Python 3.10 is used for all Python-related tests.
     
     \paragraph{Testing Frameworks} For execution time measurements, the \texttt{timeit} module is used.
-    \paragraph{Performance Monitoring Tools} Standard tools such as \texttt{timeit} for measuring execution time and \texttt{psutil} for monitoring memory and CPU usage are employed to gather performance metrics.
-    \paragraph{Other Software} Relevant libraries and dependencies for each test scenario are documented and version-controlled to ensure consistency. For Ataccama-related tests, the specific versions of the Ataccama software used are noted to align with the tested functionalities.
+    \paragraph{Performance Monitoring Tools} Standard module \texttt{timeit} for measuring execution timewas employed.
+    \paragraph{Other Software} Relevant libraries and dependencies for each test scenario are documented and version-controlled to ensure consistency. 
+    
 
 \section{Test Cases}
 

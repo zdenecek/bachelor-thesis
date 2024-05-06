@@ -56,3 +56,11 @@ Přesunout Enhancing Ataccama’s Integration Capabilities do Ataccama intro,
 
 a similar solutions použít "jen" pro perfomance porovnání.
 
+
+popsat testy, kolik jich mám, které části jsou důležité.
+
+Prodat z hlediska softwarového inženýrství => je to řádně otestované, je to kvalitní kód, je to kvalitní řešení
+
+Mít tam evaluation, evaluation vyhodnotit => závěr - je to viable prototyp, jaké jsou bottlenecky, performance gap je akceptovatelný pokud je čím ho vyvážit (naše featury). Python se může zrychlovat (podívej se na gil).
+
+
