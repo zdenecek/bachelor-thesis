@@ -1,0 +1,169 @@
+﻿Function,Category,Status,Priority
+math.sqr,Math functions,Implemented,Low
+math.e,Math functions,Implemented,Low
+math.log10,Math functions,Implemented,Low
+math.tan,Math functions,Implemented,Low
+math.sqrt,Math functions,Implemented,Medium
+math.exp,Math functions,Implemented,Low
+math.sin,Math functions,Implemented,Low
+math.atan,Math functions,Implemented,Low
+math.pi,Math functions,Implemented,Low
+math.acos,Math functions,Implemented,Low
+math.asin,Math functions,Implemented,Low
+math.log,Math functions,Implemented,Low
+math.cos,Math functions,Implemented,Low
+math.pow,Math functions,Implemented,Low
+removeAccents,String functions,Implemented,High
+length,String functions,Implemented,High
+jaroWinkler,String functions,Not Implemented,
+upper,String functions,Implemented,High
+matches,String functions,Implemented,High
+lastIndexOf,String functions,Implemented,High
+trim,String functions,Implemented,High
+capitalize,String functions,Implemented,High
+trashNonLetters,String functions,Implemented,High
+sortWords,String functions,Implemented,Medium
+indexOf,String functions,Implemented,High
+diceCoefficient,String functions,Not Implemented,Low
+jaccardCoefficient,String functions,Not Implemented,
+right,String functions,Implemented,High
+soundex,String functions,Not Implemented,Low
+transliterate,String functions,Implemented,Low
+distinct,String functions,Implemented,Medium
+wordCombinations,String functions,Not Implemented,Low
+set.sumExp,Set functions,Implemented,Low
+replace,String functions,Implemented,High
+set.symmetricDifference,Set functions,Not Implemented,Low
+containsWord,String functions,Implemented,High
+set.lcsIntersectionResultExp,Set functions,Not Implemented,Low
+set.lastIndexOfExp,Set functions,Implemented,Low
+set.intersectionExp,Set functions,Not Implemented,Low
+set.filterExp,Set functions,Implemented,Low
+set.lcsSymmetricDifferenceResult,Set functions,Not Implemented,Low
+set.distinct,Set functions,Implemented,Low
+editDistance,String functions,Implemented,Medium
+set.lcsDifferenceResultExp,Set functions,Not Implemented,Low
+set.lastIndexOf,Set functions,Implemented,Low
+wordCount,String functions,Implemented,High
+set.differenceExp,Set functions,Not Implemented,Low
+set.approxSymmetricDifference,Set functions,Not Implemented,Low
+word,String functions,Implemented,High
+set.unionResultExp,Set functions,Not Implemented,Low
+left,String functions,Implemented,High
+set.indexOf,Set functions,Implemented,Low
+set.lcsDifferenceResult,Set functions,Not Implemented,Low
+isNumber,String functions,Implemented,High
+set.differenceResultExp,Set functions,Not Implemented,Low
+set.containsExp,Set functions,Implemented,Low
+set.union,Set functions,Not Implemented,Low
+levenshtein,String functions,Implemented,Medium
+set.lcsSymmetricDifferenceResultExp,Set functions,Not Implemented,Low
+set.difference,Set functions,Not Implemented,Low
+trimLeft,String functions,Implemented,High
+set.lcsIntersectionResult,Set functions,Not Implemented,Low
+eraseSpacesInNames,String functions,Implemented,High
+set.lcsSymmetricDifference,Set functions,Not Implemented,Low
+set.unionExp,Set functions,Not Implemented,Low
+trashNonDigits,String functions,Implemented,High
+set.indexOfExp,Set functions,Implemented,Low
+replicate,String functions,Implemented,Low
+set.intersection,Set functions,Not Implemented,Low
+set.unionResult,Set functions,Not Implemented,Low
+set.distinctExp,Set functions,Implemented,Low
+set.size,Set functions,Implemented,Low
+set.intersectionResult,Set functions,Not Implemented,Low
+set.item,Set functions,Implemented,Low
+preserveCase,String functions,Not Implemented,Low
+set.symmetricDifferenceResult,Set functions,Not Implemented,Low
+hamming,String functions,Implemented,Low
+set.subSequence,Set functions,Implemented,Low
+set.lcsIntersection,Set functions,Not Implemented,Low
+set.differenceResult,Set functions,Not Implemented,Low
+set.symmetricDifferenceResultExp,Set functions,Not Implemented,Low
+trimRight,String functions,Implemented,High
+set.contains,Set functions,Implemented,Low
+set.symmetricDifferenceExp,Set functions,Not Implemented,Low
+set.intersectionResultExp,Set functions,Not Implemented,Low
+set.lcsDifference,Set functions,Not Implemented,Low
+ngram,String functions,Not Implemented,Low
+trashConsonants,String functions,Not Implemented,Low
+set.lcsDifferenceExp,Set functions,Not Implemented,Low
+set.lcsSymmetricDifferenceExp,Set functions,Not Implemented,Low
+set.lcsIntersectionExp,Set functions,Not Implemented,Low
+set.sort,Set functions,Implemented,Low
+set.mapExp,Set functions,Implemented,Low
+isInFile,String functions,Implemented,High
+cpConvert,String functions,Implemented,Medium
+substituteAll,String functions,Implemented,High
+metaphone,String functions,Not Implemented,Low
+doubleMetaphone,String functions,Not Implemented,Low
+lower,String functions,Implemented,High
+substituteMany,String functions,Implemented,Medium
+trashVowels,String functions,Not Implemented,Low
+capitalizeWithException,String functions,Implemented,Medium
+countNonAsciiLetters,String functions,Implemented,Medium
+trashDiacritics,String functions,Not needed,
+substr,String functions,Implemented,High
+squeezeSpaces,String functions,Implemented,Medium
+find,String functions,Implemented,High
+is in,Set operations,Implemented,High
+in,Set operations,Implemented,High
+not in,Set operations,Implemented,High
+is not in,Set operations,Implemented,High
+bitand,Bitwise functions,Implemented,Low
+bitxor,Bitwise functions,Implemented,Low
+bitor,Bitwise functions,Implemented,Low
+bitneg,Bitwise functions,Implemented,Low
+case,Conditional expressions,Implemented,High
+decode,Conditional expressions,Implemented,Medium
+nvl,Conditional expressions,Implemented,High
+iif,Conditional expressions,Implemented,High
+getRuntimeVersion,Other operations,Not Implemented,Low
+is,Other operations,Implemented,High
+is not,Other operations,Implemented,High
+setParameterValue,Other operations,Not Implemented,Low
+getParameterValue,Other operations,Not Implemented,Low
+NOT,Logical operations,Implemented,High
+AND,Logical operations,Implemented,High
+XOR,Logical operations,Implemented,Medium
+OR,Logical operations,Implemented,High
+today,Date functions,Implemented,High
+dateTrunc,Date functions,Implemented,High
+now,Date functions,Implemented,High
+dateAdd,Date functions,Implemented,High
+datePart,Date functions,Implemented,High
+getRequestTime,Date functions,Implemented,
+dateDiff,Date functions,Implemented,High
+getDate,Date functions,Implemented,High
+geoDistance,Uncategorized functions,Implemented,Low
+namedSequence,Uncategorized functions,Implemented,Low
+coding.fromBase64,Coding functions,Implemented,
+randomUUID,Uncategorized functions,Implemented,Low
+"coding.md5, encode.md5",Coding functions,Implemented,
+sequence,Uncategorized functions,Implemented,Low
+"coding.toBase64, encode.base64",Coding functions,Implemented,
+random,Uncategorized functions,Implemented,High
+max,MinMax functions,Implemented,High
+safeMin,MinMax functions,Implemented,Medium
+safeMax,MinMax functions,Implemented,Medium
+min,MinMax functions,Implemented,High
+xpath,Xml functions,Implemented,Low
+toString,Conversion and formatting,Implemented,High
+math.round,Conversion and formatting,Implemented,Medium
+math.longFloor,Conversion and formatting,Implemented,Medium
+"math.ceil, math.ceiling",Conversion and formatting,Implemented,Medium
+math.abs,Conversion and formatting,Implemented,Medium
+toLong,Conversion and formatting,Implemented,High
+math.floor,Conversion and formatting,Implemented,Medium
+getMilliseconds,Conversion and formatting,Implemented,High
+toInteger,Conversion and formatting,Implemented,High
+toDate,Conversion and formatting,Implemented,High
+toDateTime,Conversion and formatting,Implemented,High
+toFloat,Conversion and formatting,Implemented,High
+"math.longCeil, math.longCeiling",Conversion and formatting,Implemented,Medium
+>=,Comparison operators,Implemented,High
+"=, ==",Comparison operators,Implemented,High
+<,Comparison operators,Implemented,High
+>,Comparison operators,Implemented,High
+<=,Comparison operators,Implemented,High
+"<>, !=",Comparison operators,Implemented,High

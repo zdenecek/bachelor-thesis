@@ -243,10 +243,11 @@ effort and would be out of scope for this project as the goal is to provide a si
 prototype and validate the viability first. 
 
 For this reason, the functions have been categorized by priority, and the implementation will
-focus on the high- and medium-priority functions. The categorization is based on the frequency of use of the tasks in the data quality rules, and the complexity of the implementation. The high-priority functions are the most commonly used functions, and the medium-priority functions are less commonly used but still important. The low-priority functions are the least commonly used functions, and will not be implemented in the initial version of the implementation.
+focus on the high- and medium-priority functions. The categorization is based on the frequency of use of the tasks in the data quality rules, and the complexity of the implementation. The high-priority functions are the most commonly used functions, and the medium-priority functions are less commonly used but still important. 
+The prioritization comes from Ataccama's knowledge base. The low-priority functions are the least commonly used functions, and will not be implemented in the initial version of the implementation. 
 
+A list of all function along with their priority and implementation status can be found in the appendix \ref{app:list-of-functions}.
 
-TODO add list of functions
 
 \subsection{Arithmetic}
 The Ataccama Expression Language operates, like standard types in Java, in
@@ -297,11 +298,16 @@ Date and floating point formatting
 \section{Interface design}
 
 There are not a lot of decisions to be made in the API Design as the public
-functionality is simple: Compile an expression and run it. A class structure like the following is proposed:
+functionality is simple. The following diagram shows the public interface of the transpiler.
 
-\includegraphics[scale=0.7]{diagrams/api_design-class.png}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[scale=0.7]{diagrams/api_design-class.png}
+    \caption{API overview}
+    \label{fig:api}
+\end{figure}
 
 
-
+The functionality is simple and so is the interface.  All necessary actions are to compile an expression and run it. 
 
 

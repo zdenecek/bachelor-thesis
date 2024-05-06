@@ -1,0 +1,27 @@
+@startuml
+skinparam componentStyle rectangle
+
+component ExpressionToPythonCompiler {
+    component IdentifierTable
+    component ExpressionsLexer
+    component ExpressionsParser
+    component ExpressionsVisitor
+}
+
+component FunctionFactoryContext
+component LookupFileResolver
+component Expression
+
+ExpressionToPythonCompiler --> ExpressionsLexer : uses
+ExpressionToPythonCompiler --> ExpressionsParser : uses
+ExpressionToPythonCompiler --> ExpressionsVisitor : uses
+ExpressionToPythonCompiler --> IdentifierTable : manages
+ExpressionsVisitor ..> IdentifierTable : accesses
+ExpressionsVisitor ..> FunctionFactoryContext : accesses
+
+ExpressionsParser --> ExpressionsVisitor : generates
+ExpressionToPythonCompiler --> FunctionFactoryContext : uses
+FunctionFactoryContext --> LookupFileResolver : uses
+
+Expression ..> ExpressionToPythonCompiler : compiled by
+@enduml

@@ -4,7 +4,7 @@ diagrams: diagrams/*.plantuml
 	plantuml diagrams/**.plantuml
 
 %.pdf: force diagrams
-	latexmk $*.tex -shell-escape
+	latexmk $*.tex -shell-escape -interaction=nonstopmode
 
 clean:
 	rm -rf tmp

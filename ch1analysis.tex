@@ -24,7 +24,6 @@ Ataccama ONE is a data management application that provides a wide range of feat
 
 Ataccama is a powerful tool for \glsxtrshort{dqm}, but it has some limitations. One of the limitations of Ataccama ONE is that it is designed for something other than programmatic access. The main interface for Ataccama ONE is a web interface. This means it takes work to integrate Ataccama into data pipelines.
 
-
 \subsection{Data Quality Rules at Ataccama}
 
 Data quality rules are essential components of any comprehensive data management strategy, and Ataccama ONE excels in providing robust capabilities for defining and enforcing these rules. Ataccama's approach to data quality rules allows businesses to ensure that their data conforms to specific standards and requirements, which is crucial for accurate, reliable, and actionable data insights.
@@ -32,6 +31,10 @@ Data quality rules are essential components of any comprehensive data management
 Data quality rules in Ataccama are closely integrated with the platform's data governance capabilities. This integration ensures that the enforcement of data quality is aligned with broader data governance frameworks and compliance requirements. Rules can be linked to specific data governance policies, providing traceability and accountability.
 
 Ataccama ONE's \glsxtrshort{dqm} features are both robust and comprehensive, making it an exemplary foundation for any organization's data quality initiatives. The platform's extensive capabilities in defining, applying, monitoring, and resolving data quality issues position it as an ideal choice for those looking to enforce stringent data quality standards. With its rich suite of tools for data profiling, quality rule creation, and issue management, Ataccama ONE is well-equipped to handle modern enterprises' diverse and complex data landscapes. Given its robust feature set and integration potential, we will base our solution on Ataccama's proven frameworks to ensure that our data governance and quality management efforts are practical and efficient.
+
+\subsection{Why Ataccama}
+
+The choice of Ataccama as the focus of this thesis is manifold. A personal motivation must be disclosed: the author is at the time of writing employed at Ataccama in a developer relations related position and as such the oportunity to work on Ataccama's language has presented itself. Furthermore, Ataccama provides its comprehensive feature set and robust capabilities in the field of \glsxtrshort{dqm}, which makes it an ideal platform for enhancing programmatic access to data quality tools. By leveraging Ataccama's existing frameworks and functionalities, we can ensure that our solution is aligned with industry best practices and standards.
 
 \section{The persona of Data engineer and their needs}
 
@@ -158,14 +161,12 @@ Great Expectations offers a framework for setting up complex data validation and
 
 \subsection{Comparison with Ataccama ONE}
 
-Ataccama ONE offers a more extensive suite of features than either Soda Core or Great Expectations. This includes advanced functionalities like Master Data Management, Data Cataloging, and enriched Metadata Management, which are not typically found in the aforementioned open-source tools.
+Ataccama ONE offers a more extensive suite of features than either Soda Core or Great Expectations. This includes advanced functionalities like Master Data Management, Data Cataloging, and enriched Metadata Management, which are not typically found in the aforementioned open-source tools. However, also the data quality features are more comprehensive, more advanced functions are included out of the box, including but not limited to: reference data checks, complex string manipulations, and set operations.
 
-Ataccama integrates machine learning and AI-driven insights into its platform, providing a more sophisticated analysis and automation level than Soda Core and Great Expectations typically offer.
-
-Despite its robust feature set, Ataccama’s main limitation lies in its less flexible integration with Python-based data pipelines, which is where Soda Core and Great Expectations excel due to their native Python support.
+Despite its robust feature set, Ataccama’s main limitation lies in its less flexible integration with Python-based data pipelines, which is where Soda Core and Great Expectations excel due to their native Python support. This limitation is a significant drawback for data engineers who rely heavily on Python for data processing and pipeline orchestration and for this reason this thesis will focus on enhancing Ataccama's integration capabilities with Python-based data pipelines.
 
 \section{Enhancing Ataccama's Integration Capabilities}
 
-Given the comprehensive features of Ataccama ONE, the focus of this thesis will shift towards enhancing its integration capabilities with Python-based data pipelines to leverage its extensive data quality functionalities more effectively in programmatic environments.
+The focus of this thesis will shift towards enhancing its integration capabilities with Python-based data pipelines to leverage its extensive data quality functionalities more effectively in programmatic environments with focus on the persona of the data engineer.
 
 While Ataccama offers a superior range of features, enhancing its programmatic accessibility would significantly increase its utility in modern data environments. This thesis will explore feasible solutions to bridge this gap, thereby extending the powerful capabilities of Ataccama ONE to a broader range of applications and use cases.

@@ -1,0 +1,17 @@
+\section{Performance analysis code}
+\label{app:analysis-code}
+
+The performance analysis is for reproduction purposes provided as code. The package has following structure:
+
+\dirtree{%
+.1 /.
+.2 expressions_perf_test/. % \DTcomment{source code package for performance tests}.
+.3 continent/. % \DTcomment{performance test code for the continent dataset}.
+.3 customers/. % \DTcomment{performance test code for the customers dataset}.
+.3 common/. % \DTcomment{common performance test code}.
+.3 run_single.py. % \DTcomment{script to run a single performance test run}.
+.2 requirements.txt. % \DTcomment{required Python packages for the performance tests, described in README.md}.
+.2 README.md. % \DTcomment{instructions on how to run the performance tests}.
+.2 results.csv. % \DTcomment{output file with performance results}.
+.2 run_all.sh. % \DTcomment{main script to run all performance tests and save results into results.csv}.
+}

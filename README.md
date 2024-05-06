@@ -23,44 +23,19 @@ In Prague, 2024
     - code snippets
     - diagrams
     - references to code - e.g. this functionality can be found in module a.b.c
-
 - Conclusion
 - Revision of text continuity (!)
 - bibliography
     - Add more references to related work
 
 
-Nepořádek ve "výběru Ataccamy"
-
-reálná motivace je, že vyjdu z toho, že to chci dělat pro Ataccamu
-
-V práci to je takto
-
-Chceme udělat něco, co bude fungovat i lokálně, protože to je problém
-
-Podíváme se na více platforem
-
-Vybereme Ataccamu
-
--> to je blbé, ostatní platformy mají super podporu out of the box, navíc jsou jiné, podobnější platformy, které nevyzkouším,
-protože jsou taky primárně proprietary saasy a paasy.
-
-Ataccama má jiný feature set než GE a SodaCore, ale v rámci té práce se nechci pouštět do srovnání.
-
-
-Nešlo by
-
-
-Přesunout Enhancing Ataccama’s Integration Capabilities do Ataccama intro,
-říct, že tohle budu implementovat
-
-a similar solutions použít "jen" pro perfomance porovnání.
-
-
-popsat testy, kolik jich mám, které části jsou důležité.
 
 Prodat z hlediska softwarového inženýrství => je to řádně otestované, je to kvalitní kód, je to kvalitní řešení
 
 Mít tam evaluation, evaluation vyhodnotit => závěr - je to viable prototyp, jaké jsou bottlenecky, performance gap je akceptovatelný pokud je čím ho vyvážit (naše featury). Python se může zrychlovat (podívej se na gil).
 
 
+EXPERIMENTS
+
+- PYPY
+- LOAD LOOKUPS INTO MEMORY

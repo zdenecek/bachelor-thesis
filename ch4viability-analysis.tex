@@ -51,7 +51,7 @@ This section details the hardware and software specifications of the test enviro
     \paragraph{Testing Frameworks} For execution time measurements, the \texttt{timeit} module is used.
     \paragraph{Performance Monitoring Tools} Standard module \texttt{timeit} for measuring execution timewas employed.
     \paragraph{Other Software} Relevant libraries and dependencies for each test scenario are documented and version-controlled to ensure consistency. 
-    
+
 
 \section{Test Cases}
 
@@ -68,7 +68,7 @@ All of the test cases include listing out the failed records, which is a common 
 
 \paragraph{Description} This test involves evaluating a relatively straightforward expression that checks if the value of a 'continent' field does not belong to a predefined list of continent names. 
 
-\paragraph{Relevance} This test case is chosen for its simplicity and its commonality in data validation tasks. It represents typical scenarios where fields within datasets are validated against a fixed set of allowable values. Testing this case helps verify the Python implementation’s ability to handle basic inclusion checks efficiently, a frequent requirement in data cleaning and standardization processes.
+\paragraph{Relevance} This test case is chosen for its simplicity and its commonality in data validation tasks. It represents typical scenarios where fields within datasets are validated against a fixed set of allowable values. Testing this case helps verify the Python implementation’s ability to handle basic inclusion checks efficiently, a frequent requirement in data cleaning and standardization processes. It also serves as a check for the system’s ability to process simple expressions quickly and accurately, possibly revealing any performance overhead and bottlenecks in the compilation process itself.
 
 \subsubsection{Expressions Implementation}
 
@@ -123,7 +123,7 @@ checks for continents:
 
 \paragraph{Description} This more complex test case applies multiple conditions to validate customer data, involving null checks, file lookups, regex pattern matching.
 
-\paragraph{Relevance} This test case is designed to simulate the complex validation processes often required in customer data management, where multiple fields need to be verified against various conditions. It tests the system’s capacity to execute multiple, diverse operations — from file lookups to regular expressions and string manipulations — which are typical in scenarios involving data integration and compliance checks. It provides a robust challenge to the system, testing its performance and accuracy under load and complex logic conditions.
+\paragraph{Relevance} This test case is designed to simulate the complex validation processes often required in customer data management, where multiple fields need to be verified against various conditions. It tests the system’s capacity to execute multiple, diverse operations — from static reference data lookups to regular expressions and string manipulations — which are typical in scenarios involving data integration and compliance checks. It provides a robust challenge to the system, testing its performance and accuracy under load and complex logic conditions.
 
 
 \section{Performance Analysis}
@@ -131,11 +131,101 @@ checks for continents:
 %     Metrics Collected: List the metrics that will be evaluated, such as execution time, memory usage, and CPU utilization.
 %     Comparative Analysis: Present a detailed comparison of the performance metrics obtained from the Python implementation against those from the original Java version.
 
-\xxx{TODO}
+For the purpose of this performance analysis, the primary metric that will be evaluated is execution time. Execution time is chosen as the focus metric because it directly impacts the user experience and operational efficiency in real-world applications of the Python implementation of the Ataccama Expression Language. The efficiency with which the system processes data validations directly affects throughput and responsiveness, which are critical factors for data processing workflows.
+
+
+\subsection{Expected Outcomes}
+
+This analysis aims to validate that the Python implementation, while possibly slower the original implementation and similar solutions, remains within an acceptable range of performance efficiency. If the Python version performs within a factor of up to 10-20 times slower than similar solutions, it may still be considered viable for scenarios where Python’s ease of use and integration capabilities and the provided feature set provide significant value over raw execution speed. 
+
+By clearly outlining and adhering to this analytical framework, the performance analysis will provide stakeholders with the critical information needed to make informed decisions about the viability and further development considerations of the Python implementation of the Ataccama Expression Language.
+
+\subsection{Performance Results}
+
+\subsubsection{Test Case 1: Simple Continent Validation}
+
+Table \ref{tab:time-continents} shows the execution time comparison for test case n. 1: Continent Validation. The results are also visualized in Figure \ref{fig:time-comparison-continents}.
+
+\begin{table}[h] 
+    \centering 
+    \caption{Execution Time Comparison for test case n. 1: Continent Validation} 
+    \label{tab:time-continents} 
+    \input{result-analysis/plots/execution_time_comparison_continents}
+\end{table}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=1.0\columnwidth]{result-analysis/plots/execution_time_comparison_continents.png}
+  \caption{Execution Time Comparison for test case n. 1: Continent Validation}
+  \label{fig:time-comparison-continents}
+\end{figure}
+
+
+More important than the absolute execution time is the relative performance compared to the similar solutions. Table \ref{tab:time-continents} shows the relative execution time comparison to Soda Core for test case n. 1: Continent Validation. The results are also visualized in Figure \ref{fig:time-comparison-continents-relative}.
+
+\begin{table}[h] 
+  \centering 
+  \caption{Relative execution time comparison to Soda Core for test case n. 1: Continent Validation} 
+  \label{tab:time-continents-relative} 
+  \input{result-analysis/plots/relative_time_comparison_continents.tex}
+\end{table}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=1.0\columnwidth]{result-analysis/plots/relative_speedup_comparison_continents.png}
+  \caption{Relative execution time comparison to Soda Core for test case n. 1. relative to Soda Core}
+  \label{fig:time-comparison-continents-relative}
+\end{figure}
+
+In this simple test case, even for 10M records, the Python implementation is within an acceptable range of performance efficiency compared to the similar solutions. The execution time is slower than both Soda Core and Greater Expectations, but the difference is no more than 4x. 
+
+
+\subsubsection{Test Case 2: Complex Customer Validation}
+
+Table \ref{tab:time-customers} shows the execution time comparison for test case n. 2: Customers Validation. The results are also visualized in Figure \ref{fig:time-comparison-customers}.
+
+\begin{table}[h] 
+    \centering 
+    \caption{Execution Time Comparison for test case n. 1: Continent Validation} 
+    \label{tab:time-customers} 
+    \input{result-analysis/plots/execution_time_comparison_customers}
+\end{table}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=1.0\columnwidth]{result-analysis/plots/execution_time_comparison_customers.png}
+  \caption{Execution Time Comparison for test case n. 2: Customer Validation}
+  \label{fig:time-comparison-customers}
+\end{figure}
+
+
+More important than the absolute execution time is the relative performance compared to similar solutions. Table \ref{tab:time-customers} shows the relative execution time comparison to Soda Core for test case n. 1: Continent Validation. The results are also visualized in Figure \ref{fig:time-comparison-customers-relative}.
+
+\begin{table}[h] 
+  \centering 
+  \caption{Relative execution time comparison to Soda Core for test case n. 2: Customer Validation} 
+  \label{tab:time-customers-relative} 
+  \input{result-analysis/plots/relative_time_comparison_customers.tex}
+\end{table}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=1.0\columnwidth]{result-analysis/plots/relative_speedup_comparison_customers.png}
+  \caption{Relative execution time comparison to Soda Core for test case n. 2. relative to Soda Core}
+  \label{fig:time-comparison-customers-relative}
+\end{figure}
+
+In the more complex test case involving reference data lookups, even for 1M records, the Python implementation is within an acceptable range of performance efficiency compared to the similar solutions. The execution time is slower than for both Soda Core and Greater Expectations, but the difference is below 10x. 
 
 \section{Discussion}
 
 %     Interpretation of Results: Discuss the implications of the test results for the viability of the Python implementation in real-world applications.
 %     Potential Bottlenecks and Limitations: Identify any performance bottlenecks or limitations observed during testing and suggest possible explanations or solutions.
 
-\xxx{TODO}
+The performance analysis of the Python implementation of the Ataccama Expression Language reveals that the system is within an acceptable range of performance efficiency for real-world applications. The Python version, while slower than similar tested solutions Soda Core and Great Expectations, remains competitive in terms of execution time, even for large datasets. The performance results indicate that the Python implementation can handle data quality rules efficiently and effectively, making it a viable alternative for data engineers who require programmatic access to Ataccama's data quality tools.
+
+The performance gap is acceptable, especially considering the more comprehensive feature set it provides compared to the other two solutions. 
+
+
+
+
