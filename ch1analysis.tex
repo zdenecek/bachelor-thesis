@@ -18,9 +18,9 @@ the necessity is a corollary to the need to integrate data quality tools into da
 
 \section{Data Quality Management Tools at Ataccama}
 
-One of the major players in the field of \glsxtrshort{dqm} tools is Ataccama. 
+One of the major players in the field of \glsxtrshort{dqm} tools is Ataccama. \cite{ataccama_gartner}
 
-Ataccama ONE is a data management application that provides a wide range of features for \glsxtrshort{dqm}, such as Data cataloging, Master data management, and Data visualizations. Most importantly, Ataccama ONE includes a broad suite of \glsxtrshort{dqm} tools. This includes data profiling, data quality rules, data quality monitoring, and data quality issue resolution. Ataccama ONE also provides a wide range of connectors to various data sources and data targets.
+Ataccama ONE is a data management application that provides a wide range of features for \glsxtrshort{dqm}, such as Data cataloging, Master data management, and Data visualizations. Most importantly, Ataccama ONE includes a broad suite of \glsxtrshort{dqm} tools. This includes data profiling, data quality rules, data quality monitoring, and data quality issue resolution. Ataccama ONE also provides a wide range of connectors to various data sources and data targets. \cite{ataccama_ONE}
 
 Ataccama is a powerful tool for \glsxtrshort{dqm}, but it has some limitations. One of the limitations of Ataccama ONE is that it is designed for something other than programmatic access. The main interface for Ataccama ONE is a web interface. This means it takes work to integrate Ataccama into data pipelines.
 
@@ -86,28 +86,28 @@ Modern data ecosystems are diverse, with organizations leveraging a variety of d
 \begin{itemize}
 \item  Snowflake
 
-Snowflake supports multiple programming languages, including Java and .NET, but Python remains a popular choice due to its extensive library support and community.
+Snowflake\cite{snowflake} supports multiple programming languages, including Java and .NET, but Python remains a popular choice due to its extensive library support and community.
 
 Python is well-supported in Snowflake through connectors like Snowflake Connector for Python, which allows executing SQL statements and performing data manipulations directly from Python scripts.
 
 
 \item AWS Glue
 
-    AWS Glue supports Python and Scala. Python, being one of the main languages supported by AWS Glue, benefits from seamless integration with other AWS services.
+    AWS Glue\cite{aws_glue} supports Python and Scala. Python, being one of the main languages supported by AWS Glue, benefits from seamless integration with other AWS services.
     
     Python scripts in AWS Glue can perform extract, transform, and load (ETL) tasks effectively, which can be developed and debugged directly in Python using Glue’s development endpoints.
 
 
     \item Azure Data Factories
 
-    Azure Data Factory (ADF) supports custom activities in various languages, but Python’s use in Azure functions for custom processing activities is notable due to its simplicity and effectiveness.
+    Azure Data Factory\cite{azure_data_factory} supports custom activities in various languages, but Python’s use in Azure functions for custom processing activities is notable due to its simplicity and effectiveness.
    
     Python in ADF can be used to orchestrate complex data workflows, invoking Python-based processes as part of the data integration pipelines.
 
 
     \item Databricks
 
-    Databricks offers a unified analytics platform that supports Python, Scala, SQL, and R. Python’s integration, particularly with PySpark for big data processing, makes it a primary choice for many developers.
+    Databricks\cite{databricks} offers a unified analytics platform that supports Python, Scala, SQL, and R. Python’s integration, particularly with PySpark for big data processing, makes it a primary choice for many developers.
 
     Python is extensively used in Databricks notebooks for data exploration, visualization, and machine learning, highlighting its versatility and ease of use.
 
@@ -124,7 +124,7 @@ This section compares Ataccama ONE to other \glsxtrshort{dqm} tools that are des
 
 \subsection{Soda Core}
 
-Soda Core is a robust open-source tool tailored to integrate data quality checks directly into data pipelines. However, its feature set primarily focuses on:
+Soda Core \cite{sodacore} is a robust open-source tool tailored to integrate data quality checks directly into data pipelines. However, its feature set primarily focuses on:
 
 \begin{itemize}
     \item Data Monitoring and Alerting
@@ -142,7 +142,7 @@ Soda Core is a robust open-source tool tailored to integrate data quality checks
 
 \subsection{Great Expectations}
 
-Great Expectations offers a framework for setting up complex data validation and documentation, which is crucial for maintaining high data quality standards. Its key features include:
+Great Expectations \cite{great_expectations} offers a framework for setting up complex data validation and documentation, which is crucial for maintaining high data quality standards. Its key features include:
 
 \begin{itemize}
     \item   Validation Framework

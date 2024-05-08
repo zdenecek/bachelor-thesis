@@ -145,7 +145,7 @@ Ataccama Expression Language, also called ONE Expressions, organizes data operat
         \item word set operation functions
     \end{itemize}
 
-    The full list of functions and their descriptions can be found in the Ataccama documentation.
+    The full list of functions and their descriptions can be found in the Ataccama ONE Expressions documentation \cite{one_expressions}.
 
 
 \section{Architecture}
@@ -167,7 +167,7 @@ In the last step, the generated code will be executed on records, and the result
 
 \subsection{Parser generator}
 
-For the parser generator, a specific approach is indicated. The Ataccama Expression Language implementation uses a parser generator called ANTLR. ANTLR (ANother Tool for Language Recognition) is a powerful parser generator for reading, processing, executing, or translating structured text or binary files. It's widely used to build languages, tools, and frameworks. From a grammar, ANTLR generates a parser that can build and walk parse trees. [https://www.antlr.org/] As the grammar of the Ataccama Expression Language is already defined, it is simple and robust to use adapt and reuse the grammar by also using ANTLR to generate the parser.
+For the parser generator, a specific approach is indicated. The Ataccama Expression Language implementation uses a parser generator called ANTLR. ANTLR (ANother Tool for Language Recognition) is a powerful parser generator\cite{antlr}. It's widely used to build languages, tools, and frameworks. From a grammar, ANTLR generates a parser that can build and walk parse trees\cite{antlr4docs}. As the grammar of the Ataccama Expression Language is already defined, it is simple and robust to use adapt and reuse the grammar by also using ANTLR to generate the parser. 
 
 \subsection{Code generation}
 

@@ -14,7 +14,7 @@ Poetry is utilized as the primary tool for dependency management and package pub
 
 \subsubsection{Configuration}
 
-The pyproject.toml file is configured to list all necessary libraries and their specific versions. This file also includes configurations for package metadata, making it easier to package and distribute the final software if needed.
+The \texttt{pyproject.toml} file is configured to list all necessary libraries and their specific versions. This file also includes configurations for package metadata, making it easier to package and distribute the final software if needed.
 
 \subsection{Mypy for Type Checks}
 
@@ -25,11 +25,11 @@ Mypy is configured to run as part of the continuous integration process, checkin
 
 \subsection{Pytest for Testing}
 
-Pytest is chosen for its powerful testing capabilities, which are essential for verifying the functionality of the re-implemented data quality rules in Python. It supports complex test scenarios and is highly customizable, with a vast ecosystem of plugins that can be utilized to extend its functionality further.
+Pytest is chosen for its powerful testing capabilities, which are essential for verifying the functionality of the re-implemented data quality rules in Python. It supports complex test scenarios and is highly customizable, with a vast ecosystem of plugins that can be utilized to extend its functionality further.\cite{pytest}
 
 \subsubsection{Configuration}
 
-Tests are written to cover various cases, from basic unit tests that validate each function's behavior with different inputs to integration tests that ensure that the system components work together as expected. Pytest fixtures are used to set up and teardown test environments, making it easy to manage test states and dependencies.
+Tests are written to cover various cases, from basic unit tests that validate each function's behavior with different inputs to integration tests that ensure that the system components work together as expected. Pytest fixtures are used to set up and teardown test environments, making it easy to manage test states and dependencies.\cite{pytest_fixtures}
 
 \subsection{Additional Tools and Practices}
 
@@ -89,7 +89,7 @@ def visitAddExpr(self, ctx: ExpressionsParser.AddExprContext):
         elif op == ExpressionsParser.MINUS:
             name = Operator.SUB.value
         else:
-            raise ValueError(f"Unknown operator: {op}")
+            raise ValueError(f"Unknown operator: \{op\}")
         identifier = self.get_symbol_table().get_identifier_for_name(name, "internal", "load")
         args = [self.visit(ctx.left), self.visit(ctx.right)]
         node = self.create_call_node(identifier, ctx.start.line, ctx.stop.line, args)
@@ -105,9 +105,9 @@ There are two layers of names: visible and internal. Internal names are used for
 
 The symbol table is also used to create child symbol tables, which handles the logic of symbol hiding, i.e. when a symbol is defined in a scope, it hides the symbol with the same name in the parent scope.
 
-The use of a symbol table in our system is not primarily due to limitations within Python’s name resolution and scoping capabilities. Instead, it addresses specific challenges that arise in our context. Without a symbol table, name resolution would have to occur at runtime, which complicates any future implementation of name existence checks. Additionally, it is good practice to prevent users from accessing internal names related to operators or multiline lambda functions. By using a symbol table, we can simplify the mapping of complex names, such as converting \texttt{math.tan} to \texttt{math_tan}, while also providing a robust system for detecting and handling name collisions.
+The use of a symbol table in our system is not primarily due to limitations within Python’s name resolution and scoping capabilities. Instead, it addresses specific challenges that arise in our context. Without a symbol table, name resolution would have to occur at runtime, which complicates any future implementation of name existence checks. Additionally, it is good practice to prevent users from accessing internal names related to operators or multiline lambda functions. By using a symbol table, we can simplify the mapping of complex names, such as converting \texttt{math.tan} to , while also providing a robust system for detecting and handling name collisions.
 
-Lastly, the symbol table creates infrastucture for compile-time type checking, should we decide to implement it in the future.
+Lastly, the symbol table provides an infrastucture for compile-time type checking, should we decide to implement it in the future.
 
 \subsubsection{Error Handling}
 
@@ -156,15 +156,15 @@ Testing and validation are critical components of the software development proce
 
 The use of test parametrization allows for running the same test function with different input values. It is particularly useful in this project for applying a wide array of test scenarios to the implemented functions to ensure comprehensive coverage and that the rules behave as intended across diverse data sets and conditions.
 
-The primary focus during testing is to ensure that the reimplemented rules behave as similarly as possible to the Ataccama Expression Language, this is achieved using unit test. Tests are designed to validate both typical and edge-case scenarios, ensuring the rules are robust under various data conditions.
+The primary focus during testing is to ensure that the reimplemented rules behave as similarly as possible to the Ataccama Expression Language, this is achieved using unit tests. Tests are designed to validate both typical and edge-case scenarios, ensuring the rules are robust under various data conditions.
 
-The test suite contains more than 1300 tests, covering a the wide range of functions, operators, and expressions. These tests are designed to validate the correctness defined by the Ataccama implementation and ensure that the Python version produces the same results in as many cases as possible.
+The test suite contains more than 1300 tests, covering the wide range of functions, operators, and expressions. These tests are designed to validate the correctness defined by the Ataccama implementation and ensure that the Python version produces the same results in as many cases as possible.
 
 \subsection{Tool for Output Comparison}
 
 To validate the accuracy of the reimplementation, we have developed a test suite that compares the outputs of our Python implementation against those generated by the original Ataccama ONE Expressions Java engine. This ensures that our implementation produces results consistent with the established behavior of the rules in the Ataccama environment.
 
-This test suite can be run programmatically using a script which runs the pytest test suite; the suite is using a fixture for running any expression that captures it and if enabled, saves it into a file. The script executes the tests and, for a subset of them, runs the same expressions in the Ataccama ONE Desktop environment. It then compares the outputs from both implementations and highlights any discrepancies.
+This test suite can be run programmatically using a script which runs the \texttt{pytest} test suite; the suite is using a fixture for running any expression that captures it and if enabled, saves it into a file. The script executes the tests and, for a subset of them, runs the same expressions in the Ataccama ONE Desktop environment. It then compares the outputs from both implementations and highlights any discrepancies.
 
 The output can be used to identify any inconsistencies between the original and re-implemented rules, allowing for further refinement and debugging to ensure the rules are correctly implemented.
 
@@ -174,7 +174,7 @@ The output can be used to identify any inconsistencies between the original and 
 \subsection{Date formatting strings}
 \paragraph{Problem}
 
-One of the challenges encountered during the implementation was handling date formatting strings in the Ataccama Expression Language. The original language mirrors Java date formatting patterns, which are not directly compatible with Python’s \textt{datetime} module. \cite{noauthor_datetimeformatter_nodate}
+One of the challenges encountered during the implementation was handling date formatting strings in the Ataccama Expression Language. The original language mirrors Java date formatting patterns \cite{datetimeformatter}, which are not directly compatible with Python’s \texttt{datetime} module \cite{datetime}.
 
 \paragraph{Resolution}
 
@@ -188,7 +188,7 @@ Related code is located in the \texttt{ataccama.expressions.dateformat} package 
 
 \paragraph{Problem}
 
-Another challenge was implementing multiline lambda functions in Python. The Ataccama Expression Language supports multiline lambda functions, which are not directly supported in Python. This required finding a workaround to enable multiline lambda functions in the Python implementation.
+Another challenge was implementing multiline lambda functions in Python. The Ataccama Expression Language supports multiline lambda functions, which are not directly supported in Python\cite{pythonlambdas}. This required finding a workaround to enable multiline lambda functions in the Python implementation.
 
 \paragraph{Resolution}
 
@@ -208,7 +208,7 @@ Ataccama's functions and operators are designed to handle null values gracefully
 
 The Python implementation adopted a similar approach to null handling. Custom operators and functions were developed to replicate the behavior of Ataccama's handling of nulls. For example, custom implementations of addition (+) and other operators were created to return null or appropriate neutral values when encountering null inputs. This ensures that the data quality rules continue to function predictably and effectively even when faced with incomplete or missing data.
 
-This careful replication of functionality ensures that the Python version of Ataccama's DQ rules maintains the robustness and reliability of the original system, adhering closely to its operational logic and data handling practices.
+This careful replication of functionality ensures that the Python version of Ataccama's data quality rules maintains the robustness and reliability of the original system, adhering closely to its operational logic and data handling practices.
 
 \section{Architecture}
 
@@ -221,7 +221,7 @@ The following diagram illustrates the class diagram of the transpiler \ref{fig:a
     \label{fig:architecture}
 \end{figure}
 
-The \texttt{ExpressionToPythonCompiler} is initiated with contexts that potentially include debug flags and external function handling capabilities. It registers various operators and functions that can be used within expressions, ensuring that these are correctly integrated into the compiled code. The lexer and parser transform the input expressions into a format that can be used to generate Python bytecode, with the visitor handling the actual translation into code and symbol resolution. Option for user to provide custom functions is also available.
+The \texttt{ExpressionToPythonCompiler} is initiated with contexts that potentially include debug flags and external function handling capabilities. It registers various operators and functions that can be used within expressions, ensuring that these are correctly integrated into the compiled code. The lexer and parser transform the input expressions into a format that can be used to generate Python bytecode, with the visitor handling the actual translation into code and symbol resolution. The option for user to provide custom functions is also available.
 
 The \texttt{IdentifierTable} plays a crucial role in managing the names for fields, variables, and functions. The \texttt{FunctionFactoryContext} and \texttt{LookupFileResolver} provide mechanisms to incorporate external functionalities and data, enhancing the flexibility and power of the expression evaluation.
 
@@ -229,15 +229,15 @@ Finally, the \texttt{Expression} class encapsulates the executable code, providi
 
 \section{Example usage}
 
-To demonstrate the usage of the Python implementation of Ataccama's DQ rules, we provide a simple example of evaluating an expression on a set of records. The following code snippet shows how to evaluate an expression on a list of records using the Python implementation:
+To demonstrate the usage of the Python implementation of Ataccama's data quality rules, we provide a simple example of evaluating an expression on a set of records. The following code snippet shows how to evaluate an expression on a list of records using the Python implementation:
 
 \begin{verbatim}
 records = ...
 compiler = create_compiler()
 expression_str = ('( NOT ( lower(continent) in '
-                  '{ "asia", "africa", "europe", '
+                  '\{ "asia", "africa", "europe", '
                   '"north america", "south america", '
-                  '"oceania", "antarctica" } ) )')
+                  '"oceania", "antarctica" \} ) )')
 expression = compiler.compile(expression_str)
 
 for record in records:
@@ -246,4 +246,4 @@ for record in records:
 \end{verbatim}
 
 
-More example are provided as part of appendix \ref{app:transpiler} in the \textttt{examples} directory in form of jupyter notebook with simple demostrations followed by explanations and commentaries. 
+More examples are provided as part of appendix \ref{app:transpiler} in the \texttt{examples} directory in the form of \texttt{jupyter} \cite{jupyter} notebooks with simple demonstrations followed by explanations and commentaries. 

@@ -73,8 +73,8 @@ All of the test cases include listing out the failed records, which is a common 
 \subsubsection{Expressions Implementation}
 
 \begin{verbatim}
-    ( NOT ( lower(continent) in { "asia", "africa", "europe", 
-    "north america", "south america", "oceania", "antarctica" } ) )
+    ( NOT ( lower(continent) in \{ "asia", "africa", "europe", 
+    "north america", "south america", "oceania", "antarctica" \} ) )
 \end{verbatim}
 
 \subsubsection{Great Expectations Implementation}
@@ -84,9 +84,9 @@ All of the test cases include listing out the failed records, which is a common 
   "data_asset_type": "Dataset",
   "expectation_suite_name": "default",
   "expectations": [
-    {
+    \{
       "expectation_type": "expect_column_values_to_be_in_set",
-      "kwargs": {
+      "kwargs": \{
         "column": "continent_lower",
         "mostly": 1,
         "value_set": [
@@ -98,15 +98,15 @@ All of the test cases include listing out the failed records, which is a common 
           "oceania",
           "antarctica"
         ]
-      },
-      "meta": {}
-    }
+      \},
+      "meta": \{\}
+    \}
   ],
   "ge_cloud_id": null,
-  "meta": {
+  "meta": \{
     "great_expectations_version": "0.18.12"
-  }
-}
+  \}
+\}
 \end{verbatim}
 
 \subsubsection{Soda Core Implementation}
@@ -147,6 +147,7 @@ By clearly outlining and adhering to this analytical framework, the performance 
 Table \ref{tab:time-continents} shows the execution time comparison for test case n. 1: Continent Validation. The results are also visualized in Figure \ref{fig:time-comparison-continents}.
 
 \begin{table}[h] 
+    \footnotesize
     \centering 
     \caption{Execution Time Comparison for test case n. 1: Continent Validation} 
     \label{tab:time-continents} 
@@ -185,6 +186,7 @@ In this simple test case, even for 10M records, the Python implementation is wit
 Table \ref{tab:time-customers} shows the execution time comparison for test case n. 2: Customers Validation. The results are also visualized in Figure \ref{fig:time-comparison-customers}.
 
 \begin{table}[h] 
+    \footnotesize
     \centering 
     \caption{Execution Time Comparison for test case n. 1: Continent Validation} 
     \label{tab:time-customers} 
@@ -215,7 +217,7 @@ More important than the absolute execution time is the relative performance comp
   \label{fig:time-comparison-customers-relative}
 \end{figure}
 
-In the more complex test case involving reference data lookups, even for 1M records, the Python implementation is within an acceptable range of performance efficiency compared to the similar solutions. The execution time is slower than for both Soda Core and Greater Expectations, but the difference is below 10x. 
+In the more complex test case involving reference data lookups, even for 1M records, the Python implementation is within an acceptable range of performance efficiency compared to the similar solutions. The execution time is slower than both Soda Core and Greater Expectations, but the difference is below 10x. 
 
 \section{Discussion}
 

@@ -1,10 +1,20 @@
-\section{Expressions transpiler package}
+\section{Expressions transpiler code}
 \label{app:transpiler}
 
 The expression transpiler package is the main source code package. It contains the source code, tests, documentation, and additional files.
 
 \dirtree{%
-.1 /.
-.2 src/ataccama/expressions/.
-.2 tests/ataccama/expressions/.
+.1 .
+.2 src.
+.3 ataccama.
+.4 expressions\DTcomment{main code package}.
+.2 tests.
+.3 ataccama.
+.4 expressions\DTcomment{package with pytest test suite}.
+.2 examples\DTcomment{jupyter notebooks with simple examples}.
+.2 docs\DTcomment{markdown files with high-level docs}.
+.2 pyproject.toml\DTcomment{package file}.
+.2 README.md.\DTcomment{overview with installation and usage instructions}.
+.2 DEVELOPMENT.md\DTcomment{contains information about how to run tests}.
+.2 poetry.lock\DTcomment{lock file with dependency versions for installation}.
 }
