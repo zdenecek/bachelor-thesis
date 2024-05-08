@@ -1,13 +1,11 @@
 
-\chapter{Viability Analysis}
-
+\chapter{Evaluation}
 
 \section{Introduction to Performance Testing}
 
 \subsection{Purpose of Testing}
 
-
-Performance testing is crucial in assessing the viability of the Python implementation of the Ataccama Expression Language, particularly in ensuring it can efficiently and effectively handle data quality rules within Python environments. This testing is not about matching the performance of similar solutions - Soda Core and Great Expectations -  but rather ensuring that the Python version is sufficiently efficient for practical use. The aim is to determine if the Python implementation performs within acceptable limits, where a slowdown by a factor of up to 10 times compared to the similar solutions might be considered tolerable for deployment, but a 1000 times slowdown would indicate serious efficiency issues that could render the solution impractical. By establishing these performance benchmarks, we can validate that the Python implementation meets minimum requirements for real-world applications, ensuring it is a viable alternative for data engineers who require programmatic access to Ataccama's data quality tools.
+Performance testing is crucial in assessing the viability of the Python implementation of the Ataccama Expression Language, particularly in ensuring it can efficiently and effectively handle data quality rules within Python environments. This testing is not about matching the performance of similar solutions - Soda Core and Great Expectations -  but rather ensuring that the Python prototype is sufficiently efficient for practical use. The aim is to determine if the Python implementation performs within acceptable limits, where a slowdown by a factor of up to 10 times compared to the similar solutions might be considered tolerable for deployment, but a 1000 times slowdown would indicate serious efficiency issues that could render the solution impractical. By establishing these performance benchmarks, we can validate that the Python implementation meets minimum requirements for real-world applications, ensuring it is a viable alternative for data engineers who require programmatic access to Ataccama's data quality tools.
 
 \subsection{Testing Framework}
 
@@ -49,9 +47,7 @@ This section details the hardware and software specifications of the test enviro
     \paragraph{Python Version} Python 3.10 is used for all Python-related tests.
     
     \paragraph{Testing Frameworks} For execution time measurements, the \texttt{timeit} module is used.
-    \paragraph{Performance Monitoring Tools} Standard module \texttt{timeit} for measuring execution timewas employed.
-    \paragraph{Other Software} Relevant libraries and dependencies for each test scenario are documented and version-controlled to ensure consistency. 
-
+   
 
 \section{Test Cases}
 
@@ -60,15 +56,17 @@ This section details the hardware and software specifications of the test enviro
 
 \paragraph{Test Cases Descriptions and Rationale}
 
-The choice of test cases for evaluating the performance and viability of the reimplemented Ataccama Expression Language in Python is designed to reflect a range of real-world scenarios that data engineers commonly encounter. These test cases are selected to cover a spectrum of complexity, from relatively simple checks to more involved, multi-condition validations that interact with external data sources and complex logic. This selection ensures that the testing not only assesses basic functionality but also gauges the performance under more demanding processing conditions.
+The choice of test cases for evaluating the performance and viability of the reimplemented Ataccama Expression Language in Python is designed to reflect a range of real-world scenarios that data engineers commonly encounter. These test cases are selected to cover a spectrum of complexity, from relatively simple checks to more involved, multi-condition validations that interact with external data sources and complex logic. This selection ensures that the testing not only assesses basic functionality but also gauges the performance under more demanding processing conditions. 
 
-All of the test cases include listing out the failed records, which is a common requirement in \glsxtrshort{dqm} tasks. This feature is essential for identifying and addressing data quality issues efficiently, making it a key aspect of the performance evaluation.
+There are two test cases selected for the performance evaluation representing different levels of complexity in data quality rule validation. This scope allows for a comprehensive assessment of the Python implementation's performance across a range of scenarios, from basic data validation to more intricate customer data checks. The test cases are designed to simulate common data quality tasks that data engineers might encounter in their daily work, providing a realistic basis for evaluating the Python implementation's efficiency and effectiveness in handling these tasks.
+
+Both of the test cases include listing out the failed records, which is a common requirement in \glsxtrshort{dqm} tasks. This feature is essential for identifying and addressing data quality issues efficiently, making it a key aspect of the performance evaluation.
 
 \subsection{Test Case 1: Simple Continent Validation}
 
 \paragraph{Description} This test involves evaluating a relatively straightforward expression that checks if the value of a 'continent' field does not belong to a predefined list of continent names. 
 
-\paragraph{Relevance} This test case is chosen for its simplicity and its commonality in data validation tasks. It represents typical scenarios where fields within datasets are validated against a fixed set of allowable values. Testing this case helps verify the Python implementation’s ability to handle basic inclusion checks efficiently, a frequent requirement in data cleaning and standardization processes. It also serves as a check for the system’s ability to process simple expressions quickly and accurately, possibly revealing any performance overhead and bottlenecks in the compilation process itself.
+\paragraph{Relevance} This test case is chosen for its simplicity and its commonality in data validation tasks. It represents typical scenarios where fields within datasets are validated against a fixed set of allowable values.  Only a single condition is used wherein lies the simplicity of the case. Testing this case helps verify the Python implementation’s ability to handle basic inclusion checks efficiently, a frequent requirement in data cleaning and standardization processes. It also serves as a check for the system’s ability to process simple expressions quickly and accurately, possibly revealing any performance overhead and bottlenecks in the compilation process itself.
 
 \subsubsection{Expressions Implementation}
 
@@ -121,7 +119,7 @@ checks for continents:
 
 \subsection{Test Case 2: Complex Customer Validation}
 
-\paragraph{Description} This more complex test case applies multiple conditions to validate customer data, involving null checks, file lookups, regex pattern matching.
+\paragraph{Description} This more complex test case. The complexity lies in applying multiple conditions to validate customer data, involving null checks, file lookups, regex pattern matching.
 
 \paragraph{Relevance} This test case is designed to simulate the complex validation processes often required in customer data management, where multiple fields need to be verified against various conditions. It tests the system’s capacity to execute multiple, diverse operations — from static reference data lookups to regular expressions and string manipulations — which are typical in scenarios involving data integration and compliance checks. It provides a robust challenge to the system, testing its performance and accuracy under load and complex logic conditions.
 

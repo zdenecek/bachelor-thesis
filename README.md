@@ -29,7 +29,6 @@ In Prague, 2024
     - Add more references to related work
 
 
-
 Prodat z hlediska softwarového inženýrství => je to řádně otestované, je to kvalitní kód, je to kvalitní řešení
 
 Mít tam evaluation, evaluation vyhodnotit => závěr - je to viable prototyp, jaké jsou bottlenecky, performance gap je akceptovatelný pokud je čím ho vyvážit (naše featury). Python se může zrychlovat (podívej se na gil).
@@ -39,3 +38,49 @@ EXPERIMENTS
 
 - PYPY
 - LOAD LOOKUPS INTO MEMORY
+
+introduction je kratka, nejsou tam cile, pridat zadani.
+rict, co je za problem, proc je problem problemem a jake reseni se chysta.
+
+analyza - rozebiram situaci do detailu, doberu se ke konkretnejsim cilum.
+cile jsou v praci dvakrat, v introduction a v analysis.
+
+na konci analyzy zopakovat velke cile a shrnout male cile
+
+Pokud bylo cilem lokalni prostredi => vyplynulo, ze dobry je python, ze to bude ata, a ze to overime.
+
+v introduction: goals, obecne, co bude success te prace, zminit ata, zminit lokalni prostredi
+analyza na konci: technicke kroky
+design: navrh technickych kroku
+
+přesunu cíle do analýzy summary
+začít s interface ...
+v design ()
+
+prodat testy !!!!
+compliance testing.
+pridat testy do analyzy
+
+popsat: expected, python, java outputs -> some differences are permissible some not.
+nemluvit tooly - mluvit o tom, jak jsem definoval ocekavane cile.
+
+Evaluation
+
+co je cilem 
+
+discussion - zminit konkretni cisla. pridat, ze muzeme zkusit pypy,
+popsat na co se koukame, co je tam za data, co to znamena, co to znamena pro nas.
+
+celkovy summary
+
+v zaveru chceme oponentovi rict, ze jsme splnili zadani prace.
+
+
+-----
+
+
+odskrtavat cile
+
+prodat testy
+
+compliance suite

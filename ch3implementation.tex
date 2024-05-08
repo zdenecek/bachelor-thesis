@@ -90,9 +90,15 @@ def visitAddExpr(self, ctx: ExpressionsParser.AddExprContext):
             name = Operator.SUB.value
         else:
             raise ValueError(f"Unknown operator: \{op\}")
-        identifier = self.get_symbol_table().get_identifier_for_name(name, "internal", "load")
+        identifier = self.get_symbol_table()
+                .get_identifier_for_name(name,
+                                         "internal",
+                                         "load")
         args = [self.visit(ctx.left), self.visit(ctx.right)]
-        node = self.create_call_node(identifier, ctx.start.line, ctx.stop.line, args)
+        node = self.create_call_node(identifier, 
+                                     ctx.start.line,
+                                     ctx.stop.line,
+                                    args)
         return ExpressionArgument(node)
 
     return self.visitChildren(ctx)
@@ -150,9 +156,9 @@ echo "John,25\nJohn,18" | evaluate-records "name == 'John' and
 An expression generator is created to produce random expressions based on the grammar of the Ataccama Expression Language. This tool is useful for testing the parser and visitor components.
 
 \section{Testing and Validation}
-% Explain how you tested the reimplementation of DQ rules to ensure they work correctly and efficiently in local Python environments.
+% Explain how you tested the reimplementation of data quality rules to ensure they work correctly and efficiently in local Python environments.
 
-Testing and validation are critical components of the software development process, especially when reimplementing data quality rules to ensure they perform as expected in local Python environments. For this project, we employ \texttt{pytest} with test parametrization to thoroughly test the Python implementation of Ataccama DQ rules.
+Testing and validation are critical components of the software development process, especially when reimplementing data quality rules to ensure they perform as expected in local Python environments. For this project, we employ \texttt{pytest} with test parametrization to thoroughly test the Python implementation of Ataccama data quality rules.
 
 The use of test parametrization allows for running the same test function with different input values. It is particularly useful in this project for applying a wide array of test scenarios to the implemented functions to ensure comprehensive coverage and that the rules behave as intended across diverse data sets and conditions.
 
