@@ -1,177 +1,64 @@
 
 \chapter{Design}
 
-The design section of this thesis serves as a bridge between the theoretical analysis and the practical implementation of the project. This section should comprehensively outline the proposed solution, coming from the goals summarized in analysis, describing design principles, methodologies, and tools to be employed. 
+In the design section, we will detail the process of translating Ataccama's expression language into Python, focusing on local execution and user-friendliness. The aim is to allow data engineers to seamlessly integrate Ataccama's data quality rules into their Python workflows. This section outlines the architecture, methodologies, and tools necessary to adapt Ataccama expressions for effective use in Python environments, ensuring the solution is both practical and easy to use.
 
-\section{Goals}
+\section{Context of data transformations}
 
-First step of the design process is to summarize the goals of the project. The goals of the project are derived from the analysis section of the thesis. In subsequent subsections, the goals will serve as a base for making design decisions. 
+Data processing pipelines typically adhere to a structured pattern known as extract-transform-load (ETL)\cite{etl}\ref{fig:etl_process}, crucial in data management. These pipelines start by extracting data from various sources, which is then transformed through cleaning, enrichment, and aggregation processes before being loaded into a final storage destination.
 
+This thesis specifically concentrates on this transformation step, where data quality rules can be effectively implemented and integrated.
 
-\subsection{Compatibility with the Ataccama Expression Language}
-
-In Ataccama, data quality rules are defined using a custom expression language Ataccama Expressions. 
-
-The solution should be designed to be compatible with Ataccama Expressions, most importantly, a user should be able to reuse data quality rules originally written in Ataccama Expression Language, and evaluate them.
-
-This language is defined using a formal grammar. The expected functions and operators output is defined in a separate documentation.
-
-The goal of this project is to bring the Ataccama expression language over to Python, so that it can be executed with as little managed dependecies as possible. This means that the language will have to be implemented in such a way that it can be executed in a Python environment. To satisfy the requirement for simple configuration and ease of use, the solution should strive to avoid any additional managed dependencies, meaning any application that need to be set up outside Python dependency management, i.e. any runtimes, compilers, application. This does not apply to Python packages, which are easily managable within the Python environment itself and are a industry standard, which engineers are used to and as such satisfies the ease of use criterion. Attention must be paid to package compatibility regarding Python versions, implementations, and operating systems - requirements for this will be set later on. 
-
-
-\subsection{Design an API that is easy to use for data engineers}
-
-In the analysis section, the persona of data engineer was introduced as the main user of the solution. The main goal of the project is to design an API that is easy to use for data engineers. The API should be simple a easy to understand and use. Any complex abstraction such as advanced design patterns should be avoided. For example, the creation of object should be simple, using either a constructor or a imported function. 
-
-Furthermore, it should be taken into account that the library will be outside of IDE and similar environments where code suggestion and documentation might not be available. For example, when writing integrations in the platforms discussed such as Azure Data Factory and Data Bricks, the user will not have access to the documentation or code suggestions. For this reason, the API should be designed to be self-explanatory, and should be designed to be easy to use without the need for extensive documentation.
-
-\subsection{Reasonable performance}
-
-To be considered a viable alternative to the original Ataccama implementation and to similar solutions on the market, the Python implementation should be able to handle data quality rules within Python environments efficiently and effectively. The performance of the Python implementation should be within acceptable limits, where a slowdown by a factor of up to 10 times compared to the Java version might be considered tolerable for deployment, but a 1000 times slowdown would indicate serious efficiency issues that could render the solution impractical. By establishing these performance benchmarks, we can validate that the Python implementation meets minimum requirements for real-world applications, ensuring it is a viable alternative for data engineers who require programmatic access to Ataccama's data quality tools. This will be further discussed in the evaluation section.
-
-\section{Ataccama Expression Language}
-
-To facilitate the integration of Ataccama's data quality rules into Python, a thorough understanding of the Ataccama Expression Language is essential. Below is an overview of the language components, types, and operational logic.
-
-\subsection{Anatomy of an expression}
-
-The structure of an expression in Ataccama's language consists of:
-
-\begin{itemize}
-
-    \item Statements
+\begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}
+        % Draw boxes
+        \node[draw, rectangle, align=center, minimum height=3cm, minimum width=4cm, fill=blue!20] (extract) at (0,0) {Extract \\ \scriptsize Fetch data from multiple sources};
+        \node[draw, rectangle, align=center, minimum height=3cm, minimum width=4cm, fill=green!20] (transform) at (5,0) {Transform \\ \scriptsize Clean data, Enrich data, \\ \scriptsize Aggregate data, \\ \scriptsize Apply data quality rules};
+        \node[draw, rectangle, align=center, minimum height=3cm, minimum width=4cm, fill=red!20] (load) at (10,0) {Load \\ \scriptsize Store in destination};
     
-        \begin{itemize}
-            \item Variable Assignments
-            
-            Variables are assigned values which can include literals, operations, or function calls.
-            \item Function Definitions
-            
-            Optional definitions that encapsulate logic or operations reusable within the expression.
-        \end{itemize}
-    \item Resulting Expression
-    
-    This is the final part of the expression where the previously defined variables and functions are utilized to compute a result. The outcome of the resulting expression is the output of the entire expression.
-\end{itemize}
+        % Draw arrows
+        \draw[->, thick] (extract.east) -- (transform.west);
+        \draw[->, thick] (transform.east) -- (load.west);
+    \end{tikzpicture}
+    \caption{Diagram illustrating the ETL (Extract-Transform-Load) process.}
+    \label{fig:etl_process}
+    \end{figure}
 
+\section{Interface design}
 
-\subsection{Examples of a expression}
+The design of the API is straightforward due to the simplicity of the public functionality it offers. Below is a diagram that outlines the public interface of the transpiler:
 
-The two following examples illustrate the structure of an expression in Ataccama's language.
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[scale=0.7]{diagrams/api_design-class.png}
+    \caption{API overview}
+    \label{fig:api}
+\end{figure}
 
-\subsubsection{Simple example: Arithmetic Expression}
+The interface is uncomplicated, designed primarily to compile and execute expressions efficiently. This simplicity ensures that all essential actions—compiling an expression and executing it—are both intuitive and accessible for users.
 
-
-\begin{verbatim}
-a := 10;  
-b := a * 2; 
-b + 5
-\end{verbatim}
-
-In this example, variables a and b are used in statements to set up values that are manipulated in the resulting expression, b + 5, which computes the final output.
-
-\subsubsection{Complex example: Digit sum}
-
-\begin{verbatim}
-value := replace(trim(input), '-', '');
-function digitSum(integer digit) { 
-    set.sumExp(
-        trim(substituteAll("(.)", "$1 ", toString(digit))), 
-        " ", 
-        (x) {toInteger(x)}
-    )
-}
-digitSum(value) % 13 == 0
-\end{verbatim}
-
-This example demonstrates a more complex expression that includes a function definition, digitSum, which is then called in the resulting expression, digitSum(value). The expression is a simplified excerpt from a data quality rule that checks ISIN numbers for validity.
-
-\subsection{Components of Ataccama Expression Language}
-
-Ataccama Expression Language, also called ONE Expressions, organizes data operations and logic into a series of expressions and operands defined by a rigorous structure:
-
-
-    \subsubsection{Operands}
-    
-    Operands in Ataccama Expressions are categorized into four main types:
-
-    \begin{itemize}
-        \item  Literals
-        
-        These include numeric, string, or logical constants (e.g., TRUE, FALSE) and the null literal. All keywords are case-insensitive.
-
-        \item Columns
-        
-        Identified by their names, which require square brackets if they include spaces. In multiple input scenarios, columns are specified using dot notation (input\_name.column\_name). If only one input is used, dot notation can be omitted.
-
-        \item Set
-        
-        Used exclusively with the IN operation, representing a constant expression. Sets can only appear on the right side of the IN operation.
-    
-        \item Complex Expressions
-        
-        These may involve various combinations of the above operand types and function calls.
-    \end{itemize}
-
-    \subsubsection{Data Types and Conversions}
-    
-    Operands can be of specific column types such as INTEGER, FLOAT, LONG, STRING, DATETIME, DAY, and BOOLEAN. Ataccama handles type conversions automatically, widening data types as necessary ( e.g., INTEGER - LONG - FLOAT ) to accommodate operations.
-
-    \subsubsection{Handling Null Values}
-
-    The handling of null values aligns with SQL rules, with a notable exception for the STRING data type. In Ataccama, a null string is considered equal to an empty string, impacting how comparisons and operations are performed.
-
-    \subsubsection{Variables}
-
-    Expressions in Ataccama can include sequences of assignment expressions followed by a resulting expression, separated by semicolons. The first occurrence of a variable defines its type, with subsequent references needing to conform to this type.
-
-    \subsubsection{Operations and Functions}
-    
-    Ataccama ONE supports a variety of operations and functions:
-
-    \begin{itemize}
-        \item arithmetic functions
-        \item logical functions
-        \item comparison functions
-        \item set functions
-        \item date functions
-        \item string functions
-        \item bitwise functions
-        \item MinMax functions
-        \item aggregating functions
-        \item conditional functions
-        \item conversion functions
-        \item formatting functions
-        \item word set operation functions
-    \end{itemize}
-
-    The full list of functions and their descriptions can be found in the Ataccama ONE Expressions documentation \cite{one_expressions}.
-
+The API consists of two primary classes: \texttt{Compiler} and \texttt{Expression}. The \texttt{Compiler} class is responsible for compiling the expression into Python code, while the \texttt{Expression} class encapsulates the compiled code and provides a method to execute it with a given record. The record is supplied as a dictionary, where the keys correspond to the field names and the values to the field values.
 
 \section{Architecture}
 
-One of the first decisions to be made is the architecture of the solution.
+The initial step in developing the solution involves establishing its architecture, which is critical for defining how the program will function. 
 
-The program itself will do the following:
+The architecture of the Python implementation of the Ataccama Expression Language is designed to facilitate the translation of Ataccama's expression language into Python code to enable for local execution, one of the goals of outlined in analysis. This translation process involves parsing the input expression, generating executable code, and evaluating the expression against a dataset. The architecture is structured to accommodate these steps seamlessly, ensuring the efficient execution of data quality rules within a Python environment.
 
-\begin{enumerate}
-    \item Parse the input expression
-    \item Evaluate the expression on a record and return the result
-\end{enumerate}
+For the first step, the input expression will be converted into an abstract syntax tree (AST). Given the complexity of the expression language used by Ataccama, employing a parser generator is deemed the most effective approach. The parser generator will utilize the predefined grammar of the language to generate a parser capable of translating input expressions into an AST. This facilitates the incorporation of custom logic in the subsequent steps, particularly during the semantic analysis phase.
 
-In the first step, the expression will be parsed into an abstract syntaxt tree (AST). Given the complexity of the expression language, a best-fit solution will be to use a parser generator. The parser generator will take the grammar of the language as input and generate a parser that can parse the input expression, providing a way to add custom logic into the subsequent semantic analysis of the expression.
+During semantic analysis, the AST will be traversed to construct executable code. This transformation is essential for preparing the expression for evaluation in a Python environment, from which the results can be dynamically generated and returned.
 
-In the semantic analysis, the AST will be traversed and built into some for of executable code so that it can be evaluated on a record. The evaluation will be done in a Python environment, and the result will be returned to the user.
-
-In the last step, the generated code will be executed on records, and the results will be returned.
+The final component of the architecture involves executing the generated code on the provided records. This step ensures that each record is evaluated according to the defined expressions, and the outcomes are systematically returned to the user.
 
 \subsection{Parser generator}
 
-For the parser generator, a specific approach is indicated. The Ataccama Expression Language implementation uses a parser generator called ANTLR. ANTLR (ANother Tool for Language Recognition) is a powerful parser generator\cite{antlr}. It's widely used to build languages, tools, and frameworks. From a grammar, ANTLR generates a parser that can build and walk parse trees\cite{antlr4docs}. As the grammar of the Ataccama Expression Language is already defined, it is simple and robust to use adapt and reuse the grammar by also using ANTLR to generate the parser. 
+For the parser generator, a specific approach is indicated. The Ataccama Expression Language implementation uses a parser generator called ANTLR. ANTLR (ANother Tool for Language Recognition) is a powerful parser generator\cite{antlr}. It's widely used to build languages, tools, and frameworks. From a grammar, ANTLR generates a parser that can build and walk parse trees\cite{antlr4docs}. As the grammar of the Ataccama Expression Language is already defined, it is simple and robust to use, adapt and reuse the grammar by also using ANTLR to generate the parser. 
 
 \subsection{Code generation}
 
-Having decided on the parser generator, the next step is to decide how to generate the code for the expression. There are two obvious approaches at hand: Represent the expression in an object tree with execution being a recursive descent through the tree. The second approach is to generate Python code directly. This can be done using Python standard module ast, which can be used build an abstract syntax tree of the expression, and then compile it into a Python function. Alternatively, the code can be generated as a string and then executed using Python's exec function, but this approach is less safe, more error-prone, harder to debug and introduces more overhead as it adds an additional step of parsing the code.
+Having decided on the parser generator, the next step is to decide how to generate the code for the expression. There are two obvious approaches at hand: Represent the expression in an object tree with execution being a recursive descent through the tree. The second approach is to generate Python code directly. This can be done using Python standard module \texttt{ast}, which can be used build an abstract syntax tree of the expression, and then compile it into a Python function. Alternatively, the code can be generated as a string and then executed using Python's exec function, but this approach is less safe, more error-prone, harder to debug and introduces more overhead as it adds an additional step of parsing the code.
 
 The second approach is more efficient, as it avoids the overhead of traversing the AST, but it is also more complex, as it requires generating Python code. The first approach might appear simpler, but it is less efficient, as it requires traversing the AST and does not include the option to use compilation to Python bytecode.
 
@@ -180,7 +67,6 @@ Using Python as the runtime also comes with the benefit of being able to use Pyt
 For these reasons, the second approach is chosen. The code will be generated as Python code using the ast module, and then compiled into a Python module.
 
 \section{Compatibility with the Ataccama Expression language}
-
 
 The Ataccama Expression Language is complex and has many features, along with
 platform specific quirks a peculiarities. For this reason, the implementation will
@@ -194,7 +80,9 @@ differences will be kept to a minimum. Consequently, the implementation will be
 able to run most of the data quality rules written in the Ataccama Expression
 Language.
 
-The rest of this section describes a high level overview of the differences that
+To ensure compatibility, the test suite will be created based on the Ataccama Expression Language test suite. The test suite will be used to validate the implementation and ensure that it behaves as expected.
+
+The rest of this section describes a high-level overview of the differences that
 will have to be introduced along with the reasons behind them. Most of the
 differences are a result of a different underlying technology, decisions have to be
 made on where to draw the line between mimicking the original language and
@@ -295,19 +183,6 @@ The implementation in Python will have to address these differences and
 provide a way to handle null values in a Python environment.
 Date and floating point formatting
 
-\section{Interface design}
+\section{Summary}
 
-There are not a lot of decisions to be made in the API Design as the public
-functionality is simple. The following diagram shows the public interface of the transpiler.
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[scale=0.7]{diagrams/api_design-class.png}
-    \caption{API overview}
-    \label{fig:api}
-\end{figure}
-
-
-The functionality is simple and so is the interface.  All necessary actions are to compile an expression and run it. 
-
-
+The design of the Python implementation of the Ataccama Expression Language is structured to facilitate the translation of Ataccama's expression language into Python code for local execution. The architecture is designed to accommodate the parsing of input expressions, the generation of executable code, and the evaluation of expressions against a dataset. The implementation will focus on a subset of the language features, prioritizing high- and medium-priority functions based on their frequency of use and complexity. The implementation will also address key differences between the Ataccama Expression Language and Python, such as dynamic typing, null handling, and arithmetic operations, to ensure compatibility and functionality. The design decisions outlined in this section provide a roadmap for the development of the Python implementation, guiding the translation of the Ataccama Expression Language into a Python environment for accessible and easy data quality rule execution.

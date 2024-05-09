@@ -1,11 +1,14 @@
 
 \chapter{Evaluation}
+\label{chap:evaluation}
+
+One of the goals outlined in \autoref{chap:analysis} was for the Python implementation of the Ataccama Expression Language to be viable for real-world applications. As a metric for this viability, we have chosen to evaluate the performance of the Python implementation against similar solutions, Soda Core and Great Expectations. This chapter presents the performance testing methodology, the test environment setup, the test cases, the performance analysis, and a discussion of the results.
 
 \section{Introduction to Performance Testing}
 
 \subsection{Purpose of Testing}
 
-Performance testing is crucial in assessing the viability of the Python implementation of the Ataccama Expression Language, particularly in ensuring it can efficiently and effectively handle data quality rules within Python environments. This testing is not about matching the performance of similar solutions - Soda Core and Great Expectations -  but rather ensuring that the Python prototype is sufficiently efficient for practical use. The aim is to determine if the Python implementation performs within acceptable limits, where a slowdown by a factor of up to 10 times compared to the similar solutions might be considered tolerable for deployment, but a 1000 times slowdown would indicate serious efficiency issues that could render the solution impractical. By establishing these performance benchmarks, we can validate that the Python implementation meets minimum requirements for real-world applications, ensuring it is a viable alternative for data engineers who require programmatic access to Ataccama's data quality tools.
+Performance testing is crucial in assessing the viability of the Python implementation of the Ataccama Expression Language, particularly in ensuring it can efficiently and effectively handle data quality rules within Python environments, i.e. comparably to similar solutions. This testing is not about matching the performance of similar solutions - Soda Core and Great Expectations -  but rather ensuring that the Python prototype is sufficiently efficient for practical use. The aim is to determine if the Python implementation performs within acceptable limits, where a slowdown by a factor of up to 10 times compared to the similar solutions might be considered tolerable for deployment, but a 1000 times slowdown would indicate serious efficiency issues that could render the solution impractical. By establishing these performance benchmarks, we can validate that the Python implementation meets minimum requirements for real-world applications, ensuring it is a viable alternative for data engineers who require programmatic access to Ataccama's data quality tools.
 
 \subsection{Testing Framework}
 
@@ -121,6 +124,25 @@ checks for continents:
 
 \paragraph{Description} This more complex test case. The complexity lies in applying multiple conditions to validate customer data, involving null checks, file lookups, regex pattern matching.
 
+Below is the Ataccama Expression Language expression for the test case:
+
+\begin{verbatim}
+  (customernumber IS NULL)
+  OR ( NOT ( isInFile(contactlastname, "surnames.lkp") ) ) 
+  OR (NOT isInFile(contactfirstname, "acc_first_names.lkp"))
+  OR (contactfirstname IS NULL)
+  OR ( NOT ( isInFile(contactfirstname, "first_names.lkp") ) )
+  OR (indexOf(upper(email), "NOREPLY") is not null)
+  OR ( NOT ( matches(@"^[^@]+@[A-z0-9._-]+\.+[A-z._-]+$", email) ) )
+  OR (email IS NULL)
+  OR (trim(email) is in {'NULL', 'Null', 'null', '.', ',',
+   '-', '_', '', 'N/A', 'n/a', 'na', 'NA'})
+\end{verbatim}
+
+The expressions references three lookup files, each of which contains a list of valid values for the corresponding field - more than 1M rows in total.
+
+The Great Expectations and Soda Core implementations are omitted for brevity, but they follow the same pattern as the simple continent validation test case. 
+
 \paragraph{Relevance} This test case is designed to simulate the complex validation processes often required in customer data management, where multiple fields need to be verified against various conditions. It tests the system’s capacity to execute multiple, diverse operations — from static reference data lookups to regular expressions and string manipulations — which are typical in scenarios involving data integration and compliance checks. It provides a robust challenge to the system, testing its performance and accuracy under load and complex logic conditions.
 
 
@@ -219,12 +241,11 @@ In the more complex test case involving reference data lookups, even for 1M reco
 
 \section{Discussion}
 
-%     Interpretation of Results: Discuss the implications of the test results for the viability of the Python implementation in real-world applications.
-%     Potential Bottlenecks and Limitations: Identify any performance bottlenecks or limitations observed during testing and suggest possible explanations or solutions.
+The performance analysis of the Python implementation of the Ataccama Expression Language reveals that the system is within an acceptable range of performance efficiency for real-world applications. The Python version, while up to 6-times slower on 1M records than similar tested solutions Soda Core and Great Expectations, remains competitive in terms of execution time, even for large datasets. The performance results indicate that the Python implementation can handle data quality rules efficiently and effectively, making it a viable alternative for data engineers who require programmatic access to Ataccama's data quality tools.
 
-The performance analysis of the Python implementation of the Ataccama Expression Language reveals that the system is within an acceptable range of performance efficiency for real-world applications. The Python version, while slower than similar tested solutions Soda Core and Great Expectations, remains competitive in terms of execution time, even for large datasets. The performance results indicate that the Python implementation can handle data quality rules efficiently and effectively, making it a viable alternative for data engineers who require programmatic access to Ataccama's data quality tools.
+The performance gap is acceptable, especially considering the more comprehensive feature set it provides compared to the other two solutions and pluggability with data quality rules in Ataccama. 
 
-The performance gap is acceptable, especially considering the more comprehensive feature set it provides compared to the other two solutions. 
+The Python implementation's performance is likely to improve further with optimizations and enhancements, such as parallel processing, caching, and JIT compilation, which could help narrow the gap with the similar solutions. These optimizations can be explored in the futher development of the Python implementation but could also come from further improvements in the Python interpreter itself.
 
 
 

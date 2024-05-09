@@ -1,122 +1,9 @@
 \chapter{Analysis}
+\label{chap:analysis}
+
 There are many benefits to having \glsxtrfull{dqm} processes in place. In fact, in today's data-driven environments, the assurance of data quality is not just a preference but a critical necessity. Organizations rely on accurate, timely, and reliable data to make informed decisions, drive strategies, and optimize operations. As such, the field of \glsxtrshort{dqm} has evolved to address these needs through sophisticated tools and methodologies. However, the effective implementation of these tools requires a deep understanding of both the tools themselves and the roles of those who interact with them.
 
-
-This chapter delves into the analysis of the current landscape of \glsxtrshort{dqm}, focusing particularly on the need for programmatic access to these tools. This need stems from the growing requirement to seamlessly integrate data quality solutions into existing data pipelines, a task that typically falls within the purview of data engineers. As we explore this topic, we will discuss the challenges faced by data engineers and the crucial role of data stewards in ensuring the success of data quality initiatives. The insights gained here will lay the groundwork for understanding how programmatic access can bridge the gap between manual data quality oversight and automated, scalable data governance frameworks.
-
-
-\section{The need for programmatic access}
-
-In the context of \glsxtrshort{dqm}, most commonly, the center point of the focus is on the persona of the so-called 'data steward.' This is because data stewards are crucial
-for any data quality initiative. Data stewards must be involved in setting up data quality processes to ensure success. This includes tasks such as defining data quality rules,
-profiling, and addressing data quality issues. [What is a data steward? https://www.ataccama.com/blog/what-is-a-data-steward]
-
-In the world of \glsxtrshort{dqm}, there arises a need to consume data quality tools programmatically. This is where the persona of a data engineer comes into play. There are more reasons for this, in simple terms,
-the necessity is a corollary to the need to integrate data quality tools into data pipelines, which is what data engineers are responsible for.
-
- It follows that any solution aimed at pipeline integration should be designed to accommodate data engineers as they will be its users. In the following sections, we will discuss the needs of data engineers in the context of \glsxtrshort{dqm} tools.
-
-\section{Data Quality Management Tools at Ataccama}
-
-One of the major players in the field of \glsxtrshort{dqm} tools is Ataccama. \cite{ataccama_gartner}
-
-Ataccama ONE is a data management application that provides a wide range of features for \glsxtrshort{dqm}, such as Data cataloging, Master data management, and Data visualizations. Most importantly, Ataccama ONE includes a broad suite of \glsxtrshort{dqm} tools. This includes data profiling, data quality rules, data quality monitoring, and data quality issue resolution. Ataccama ONE also provides a wide range of connectors to various data sources and data targets. \cite{ataccama_ONE}
-
-Ataccama is a powerful tool for \glsxtrshort{dqm}, but it has some limitations. One of the limitations of Ataccama ONE is that it is designed for something other than programmatic access. The main interface for Ataccama ONE is a web interface. This means it takes work to integrate Ataccama into data pipelines.
-
-\subsection{Data Quality Rules at Ataccama}
-
-Data quality rules are essential components of any comprehensive data management strategy, and Ataccama ONE excels in providing robust capabilities for defining and enforcing these rules. Ataccama's approach to data quality rules allows businesses to ensure that their data conforms to specific standards and requirements, which is crucial for accurate, reliable, and actionable data insights.
-
-Data quality rules in Ataccama are closely integrated with the platform's data governance capabilities. This integration ensures that the enforcement of data quality is aligned with broader data governance frameworks and compliance requirements. Rules can be linked to specific data governance policies, providing traceability and accountability.
-
-Ataccama ONE's \glsxtrshort{dqm} features are both robust and comprehensive, making it an exemplary foundation for any organization's data quality initiatives. The platform's extensive capabilities in defining, applying, monitoring, and resolving data quality issues position it as an ideal choice for those looking to enforce stringent data quality standards. With its rich suite of tools for data profiling, quality rule creation, and issue management, Ataccama ONE is well-equipped to handle modern enterprises' diverse and complex data landscapes. Given its robust feature set and integration potential, we will base our solution on Ataccama's proven frameworks to ensure that our data governance and quality management efforts are practical and efficient.
-
-\subsection{Why Ataccama}
-
-The choice of Ataccama as the focus of this thesis is manifold. A personal motivation must be disclosed: the author is at the time of writing employed at Ataccama in a developer relations related position and as such the oportunity to work on Ataccama's language has presented itself. Furthermore, Ataccama provides its comprehensive feature set and robust capabilities in the field of \glsxtrshort{dqm}, which makes it an ideal platform for enhancing programmatic access to data quality tools. By leveraging Ataccama's existing frameworks and functionalities, we can ensure that our solution is aligned with industry best practices and standards.
-
-\section{The persona of Data engineer and their needs}
-
-As we have established earlier, data engineer is the key persona in integrating data quality tools into data pipelines. It is good practice to tailor the application to its users and their requirements. It follows that any solution aimed at pipeline integration should consider the needs of data engineers.
-
-\subsection{Used technologies}
-
-Data engineers, like any others, are working professionals. Many of them are used to working with some particular tools and technologies. It is vital to take into account the tools and technologies that data engineers are familiar with when designing a solution for them.
-
-Although among the many data engineers, there are differences in the tools and technologies they use, there are some common tools and technologies that are used by the majority of them in today's world. It is important to realize that we should not only consider an ideal data engineer, a skilled senior, but also consider that there are many junior data engineers. Also, it is important to consider the cognitive load of new tools and technologies on data engineers. Not only should the tools and technologies be easy to learn and use, but also they should be based on familiar concepts and technologies. This way, the data engineers can focus on their work and not on learning new tools and technologies. 
-
-[Source needed] The most commonly used tools and technologies by data engineers are Python, Java, Scala, and SQL. These tools and technologies are used for the development of data pipelines and the integration of data quality tools into these pipelines. For any set of data engineers, the intersection of their knowledge bases will include Python more often than anything else.
-
-\subsection{Ease of use}
-
-In any software, a balance between ease of use and functionality complemented by the correctness of conceptual abstraction needs to be found. As the API surface of this solution is not going to be large, not a lot of decisions will have to be made on this front. However, it is important to keep in mind that the users of the solution are data engineers, some of whom work in a consultant background. Many of them are not used to advanced language features, and abstractions have limited experience with software engineering. For this reason, it is important to keep the solution simple and easy to use, avoiding any complex constructs and patterns.
-
-\section{Data pipelines and requirements for the integration of data quality tools}
-
-Data pipelines are a crucial part of any data engineering project. Data pipelines are used to move data from one place to another and to transform data from one format to another. 
-
-Many of the use cases for integrating data quality tools into data pipelines include the requirement to integrate with existing data pipeline or solutions. The data quality tools should support integration into commonly used data pipelines. It also follows that forcing a new data pipeline or ETL solution is not a valid requirement. 
-
-For example, in Ataccama, the application is intended to be connected to all the data sources and data targets using its custom connectors. To access the Ataccama engine and run any sort of evaluation of data quality rules, the data must be loaded into Ataccama ONE using a connection setup within the application, or the data needs to be sent into a service set up from within the application. Both approaches present a challenge for integrating Ataccama into existing data pipelines.
-
-\subsection{Data security}
-
-When designing data quality solutions for integration into existing data pipelines, especially those that involve interfacing with external applications or servers, security is a paramount concern. This is particularly critical when the data involved is sensitive, as is often the case in industries such as finance, healthcare, and government.
-
- Sending data over the internet to a third-party service can be a security risk. Data security is a major concern for data engineers, and it is important to take into account the security requirements of data engineers when designing a solution for them.
-
-When a data quality integration in a pipeline needs to access the server - an application running somewhere else - the network of the server has to be accessible. This can be a security risk as every new network endpoint provides an additional entry point for attackers. When applications within a private network start communicating with external entities, these points of interaction need to be secured, adding complexity and potential for oversight.  If the networked application has vulnerabilities, such as insufficient authentication, flawed authorization practices, or software bugs, it could be exploited by attackers to gain unauthorized access. This could lead to data breaches, data loss, or malicious data manipulation. 
-
-
-Additionally, data transmitted over networks can be intercepted, viewed, or altered by unauthorized parties if not adequately protected. This risk is particularly severe if data is transmitted over unsecured or improperly secured connections, such as those not using TLS/SSL protocols. 
-
-\subsection{Ease of configuration}
-
-The need to access a running instance of a \glsxtrshort{dqm} application in order to run data quality tooling comes with added complexities.
-
-First, the application needs to be configured and running. This is fine for an environment where such an application is already in use. Yet, still, it is an added complexity as part of the process is running somewhere else, so it can be more difficult to debug, monitor, and maintain.
-
-Second, the pipeline needs to access the application over a network. This means that the application needs to be exposed to the network, which can not only be a security risk but also provide further complexities in terms of network configuration. In case of the server being accessible only on a private network, the application needs to be exposed to the network, which can, in some cases, be even out of question and make the integration impossible, or it can be an obstacle on the way to successful integration.
-
-\subsection{Pipelines in commonly used data platforms}
-
-Modern data ecosystems are diverse, with organizations leveraging a variety of data storage solutions and computing environments to manage and analyze data. Here’s how Python integration plays a critical role across commonly used platforms:
-
-\begin{itemize}
-\item  Snowflake
-
-Snowflake\cite{snowflake} supports multiple programming languages, including Java and .NET, but Python remains a popular choice due to its extensive library support and community.
-
-Python is well-supported in Snowflake through connectors like Snowflake Connector for Python, which allows executing SQL statements and performing data manipulations directly from Python scripts.
-
-
-\item AWS Glue
-
-    AWS Glue\cite{aws_glue} supports Python and Scala. Python, being one of the main languages supported by AWS Glue, benefits from seamless integration with other AWS services.
-    
-    Python scripts in AWS Glue can perform extract, transform, and load (ETL) tasks effectively, which can be developed and debugged directly in Python using Glue’s development endpoints.
-
-
-    \item Azure Data Factories
-
-    Azure Data Factory\cite{azure_data_factory} supports custom activities in various languages, but Python’s use in Azure functions for custom processing activities is notable due to its simplicity and effectiveness.
-   
-    Python in ADF can be used to orchestrate complex data workflows, invoking Python-based processes as part of the data integration pipelines.
-
-
-    \item Databricks
-
-    Databricks\cite{databricks} offers a unified analytics platform that supports Python, Scala, SQL, and R. Python’s integration, particularly with PySpark for big data processing, makes it a primary choice for many developers.
-
-    Python is extensively used in Databricks notebooks for data exploration, visualization, and machine learning, highlighting its versatility and ease of use.
-
-\end{itemize}
-
-
-Given the need to operate within commonly used compute platforms such as the above-mentioned, it is imperative to consider the compatibility of programming languages supported by these environments. Each platform offers support for various technologies; however, Python stands out due to its universal acceptance and extensive integration capabilities across these systems. Whether it is executing complex data manipulation tasks in Snowflake, orchestrating ETL processes in AWS Glue, running custom activities in Azure Data Factory, or performing data analysis and machine learning in Databricks, Python is consistently supported. 
-
-Therefore, focusing on Python to implement data quality rules not only aligns with the operational capabilities of these platforms but also ensures that our solutions are versatile and adaptable across different technological ecosystems. This strategic choice maximizes the utility and reach of our \glsxtrshort{dqm} tools, making them accessible and functional within the predominant data processing frameworks employed by contemporary organizations.
+This chapter delves into the analysis of the current landscape of \glsxtrshort{dqm}, focusing particularly on the need for programmatic access to these tools. This need stems from the growing requirement to seamlessly integrate data quality solutions into existing data pipelines, a task that typically falls within the purview of data engineers. As we explore this topic, we will discuss the challenges faced by data engineers. 
 
 \section{Similar Solutions}
 
@@ -145,28 +32,250 @@ Soda Core \cite{sodacore} is a robust open-source tool tailored to integrate dat
 Great Expectations \cite{great_expectations} offers a framework for setting up complex data validation and documentation, which is crucial for maintaining high data quality standards. Its key features include:
 
 \begin{itemize}
-    \item   Validation Framework
-    
-    Extensive support for defining expectations about data, which can be automatically validated against data batches.
+\item Validation Framework
 
-    \item Data Docs
-    
-    Automatically generated documentation that helps keep teams aligned on data quality standards.
+Extensive support for defining expectations about data, which can be automatically validated against data batches.
 
-    \item Integration
-    
-    While it offers broad integration capabilities, it requires significant setup and maintenance compared to more out-of-the-box solutions.
+\item Data Docs
+
+Automatically generated documentation that helps keep teams aligned on data quality standards.
+
+\item Integration
+
+While it offers broad integration capabilities, it requires significant setup and maintenance compared to more out-of-the-box solutions.
 \end{itemize}
 
 
 \subsection{Comparison with Ataccama ONE}
 
-Ataccama ONE offers a more extensive suite of features than either Soda Core or Great Expectations. This includes advanced functionalities like Master Data Management, Data Cataloging, and enriched Metadata Management, which are not typically found in the aforementioned open-source tools. However, also the data quality features are more comprehensive, more advanced functions are included out of the box, including but not limited to: reference data checks, complex string manipulations, and set operations.
+Ataccama ONE offers a more extensive suite of features than either Soda Core or Great Expectations. This includes advanced functionalities like Master Data Management, Data Cataloging, and enriched Metadata Management, which are not typically found in the aforementioned open-source tools. However, also the data quality features are more comprehensive, more advanced functions are included out of the box, including but not limited to: reference data checks, complex string manipulation, and set operations.
 
 Despite its robust feature set, Ataccama’s main limitation lies in its less flexible integration with Python-based data pipelines, which is where Soda Core and Great Expectations excel due to their native Python support. This limitation is a significant drawback for data engineers who rely heavily on Python for data processing and pipeline orchestration and for this reason this thesis will focus on enhancing Ataccama's integration capabilities with Python-based data pipelines.
 
+\section{The persona of Data engineer and their needs}
+
+As previously noted, data engineers play a crucial role in integrating data quality tools into data pipelines. It is essential to design applications that meet the specific needs and requirements of its primary users. Therefore, any solution intended for pipeline integration must be carefully tailored to accommodate the unique needs of data engineers. This ensures that the tools not only fit seamlessly into their workflows but also enhance their efficiency and effectiveness in managing data quality across systems.
+
+\subsection{Used technologies}
+
+Data engineers, like any others, are working professionals. Many of them are used to working with some particular tools and technologies. It is vital to take into account the tools and technologies that data engineers are familiar with when designing a solution for them.
+
+Although among the many data engineers, there are differences in the tools and technologies they use, there are some common tools and technologies that are used by the majority of them in today's world. It is important to realize that we should not only consider an ideal data engineer, a skilled senior, but also consider that there are many junior data engineers. Also, it is important to consider the cognitive load of new tools and technologies on data engineers. Not only should the tools and technologies be easy to learn and use, but also they should be based on familiar concepts and technologies. This way, the data engineers can focus on their work and not on learning new tools and technologies. 
+
+The most commonly used tools and technologies by data engineers are Python, Java, Scala, and SQL. These tools and technologies are used for the development of data pipelines and the integration of data quality tools into these pipelines. For any set of data engineers, the intersection of their knowledge bases will include Python more often than anything else.
+
+\subsection{Ease of use}
+
+In any software, a balance between ease of use and functionality complemented by the correctness of conceptual abstraction needs to be found. As the API surface of this solution is not going to be large, not a lot of decisions will have to be made on this front. However, it is important to keep in mind that the users of the solution are data engineers, some of whom work in a consultant background. Many of them are not used to advanced language features, and abstractions have limited experience with software engineering. For this reason, it is important to keep the solution simple and easy to use, avoiding any complex constructs and patterns.
+
+Furthermore, it should be taken into account that the library can be used outside of IDE and similar environments where code suggestion and documentation might not be available. For example, when writing integrations in the platforms discussed such as Azure Data Factory and Data Bricks, the user will not have access to the documentation or code suggestions. For this reason, the API should be designed to be self-explanatory, and should be designed to be easy to use without the need for extensive documentation.
+
+\subsection{Data security}
+
+When designing data quality solutions for integration into existing data pipelines, especially those that involve interfacing with external applications or servers, security is a paramount concern. This is particularly critical when the data involved is sensitive, as is often the case in industries such as finance, healthcare, and government.
+
+Sending data over the internet to a third-party service can be a security risk. Data security is a major concern for data engineers, and it is important to take into account the security requirements of data engineers when designing a solution for them.
+
+When a data quality integration in a pipeline needs to access the server - an application running somewhere else - the network of the server has to be accessible. This can be a security risk as every new network endpoint provides an additional entry point for attackers. When applications within a private network start communicating with external entities, these points of interaction need to be secured, adding complexity and potential for oversight.  If the networked application has vulnerabilities, such as insufficient authentication, flawed authorization practices, or software bugs, it could be exploited by attackers to gain unauthorized access. This could lead to data breaches, data loss, or malicious data manipulation. 
+
+Additionally, data transmitted over networks can be intercepted, viewed, or altered by unauthorized parties if not adequately protected. This risk is particularly severe if data is transmitted over unsecured or improperly secured connections, such as those not using TLS/SSL protocols. 
+
+\subsection{Ease of configuration}
+
+The need to access a running instance of a \glsxtrshort{dqm} application in order to run data quality tooling comes with added complexities.
+
+First, the application needs to be configured and running. This is fine for an environment where such an application is already in use. Yet, still, it is an added complexity as part of the process is running somewhere else, so it can be more difficult to debug, monitor, and maintain.
+
+Second, the pipeline needs to access the application over a network. This means that the application needs to be exposed to the network, which can not only be a security risk but also provide further complexities in terms of network configuration. In case of the server being accessible only on a private network, the application needs to be exposed to the network, which can, in some cases, be even out of question and make the integration impossible, or it can be an obstacle on the way to successful integration.
+
+\section{Data pipelines and requirements for the integration of data quality tools}
+
+Data pipelines are a crucial part of any data engineering project. Data pipelines are used to move data from one place to another and to transform data from one format to another. 
+
+Many of the use cases for integrating data quality tools into data pipelines include the requirement to integrate with existing data pipeline or solutions. The data quality tools should support integration into commonly used data pipelines. It also follows that forcing a new data pipeline or ETL solution is not a valid requirement. 
+
+For example, in Ataccama, the application is intended to be connected to all the data sources and data targets using its custom connectors. To access the Ataccama engine and run any sort of evaluation of data quality rules, the data must be loaded into Ataccama ONE using a connection setup within the application, or the data needs to be sent into a service set up from within the application. Both approaches present a challenge for integrating Ataccama into existing data pipelines.
+
+\subsection{Pipelines in commonly used data platforms}
+
+Modern data ecosystems are diverse, with organizations leveraging a variety of data storage solutions and computing environments to manage and analyze data. Here’s how Python integration plays a critical role across commonly used platforms:
+
+\begin{itemize}
+
+\item  Snowflake
+
+Snowflake\cite{snowflake} supports multiple programming languages, including Java and .NET, but Python remains a popular choice due to its extensive library support and community.
+
+Python is well-supported in Snowflake through connectors like Snowflake Connector for Python, which allows executing SQL statements and performing data manipulations directly from Python scripts.
+
+\item AWS Glue
+
+AWS Glue\cite{aws_glue} supports Python and Scala. Python, being one of the main languages supported by AWS Glue, benefits from seamless integration with other AWS services.
+
+Python scripts in AWS Glue can perform extract, transform, and load (ETL) tasks effectively, which can be developed and debugged directly in Python using Glue’s development endpoints.
+
+\item Azure Data Factories
+
+Azure Data Factory\cite{azure_data_factory} supports custom activities in various languages, but Python’s use in Azure functions for custom processing activities is notable due to its simplicity and effectiveness.
+
+Python in ADF can be used to orchestrate complex data workflows, invoking Python-based processes as part of the data integration pipelines.
+
+\item Databricks
+
+Databricks\cite{databricks} offers a unified analytics platform that supports Python, Scala, SQL, and R. Python’s integration, particularly with PySpark for big data processing, makes it a primary choice for many developers.
+
+Python is extensively used in Databricks notebooks for data exploration, visualization, and machine learning, highlighting its versatility and ease of use.
+
+\end{itemize}
+
+Given the need to operate within commonly used compute platforms such as the above-mentioned, it is imperative to consider the compatibility of programming languages supported by these environments. Each platform offers support for various technologies; however, Python stands out due to its universal acceptance and extensive integration capabilities across these systems. Whether it is executing complex data manipulation tasks in Snowflake, orchestrating ETL processes in AWS Glue, running custom activities in Azure Data Factory, or performing data analysis and machine learning in Databricks, Python is consistently supported. 
+
+Therefore, focusing on Python to implement data quality rules not only aligns with the operational capabilities of these platforms but also ensures that our solutions are versatile and adaptable across different technological ecosystems. This strategic choice maximizes the utility and reach of our \glsxtrshort{dqm} tools, making them accessible and functional within the predominant data processing frameworks employed by contemporary organizations.
+
 \section{Enhancing Ataccama's Integration Capabilities}
 
-The focus of this thesis will shift towards enhancing its integration capabilities with Python-based data pipelines to leverage its extensive data quality functionalities more effectively in programmatic environments with focus on the persona of the data engineer.
+While Ataccama offers a rich set of data quality management features, one critical area where enhancement is needed is in its programmatic accessibility. This thesis sets out to address this limitation by focusing on the development of methodologies that will enable better integration into automated data environments, particularly through the reimagination of Ataccama’s data quality expression language.
 
-While Ataccama offers a superior range of features, enhancing its programmatic accessibility would significantly increase its utility in modern data environments. This thesis will explore feasible solutions to bridge this gap, thereby extending the powerful capabilities of Ataccama ONE to a broader range of applications and use cases.
+The core of this enhancement strategy involves reimplementing Ataccama's expression language in a way that maintains full compatibility with the original system. The intention is not to build entirely new features but to translate the existing capabilities into forms that are more accessible for programmatic use. This effort requires careful consideration to ensure that all functionalities remain consistent with Ataccama’s established methods, thus preserving the integrity and reliability of the platform while extending its usability.
+
+This focus on reimplementing the expression language aims to facilitate the direct application of Ataccama's powerful data quality rules within more diverse programming environments. By doing so, the project seeks to bridge the gap between Ataccama’s robust data management tools and the practical, operational needs of modern data pipelines, making it more adaptable for data engineers who need to incorporate sophisticated data quality checks directly into their workflows. The outcome will be a more flexible tool that fits seamlessly into existing data infrastructures, enhancing Ataccama’s integration capabilities while upholding the essence of its trusted features.
+
+
+\section{Ataccama Expression Language}
+
+To facilitate the integration of Ataccama's data quality rules, a thorough understanding of the Ataccama Expression Language is essential. Below is an overview of the language components, types, and operational logic.
+
+\subsection{Anatomy of an expression}
+
+The structure of an expression in Ataccama's language consists of:
+
+\begin{itemize}
+
+\item Statements
+
+    \begin{itemize}
+        \item Variable Assignments
+        
+        Variables are assigned values which can include literals, operations, or function calls.
+        \item Function Definitions
+        
+        Optional definitions that encapsulate logic or operations reusable within the expression.
+    \end{itemize}
+\item Resulting Expression
+
+This is the final part of the expression where the previously defined variables and functions are utilized to compute a result. The outcome of the resulting expression is the output of the entire expression.
+\end{itemize}
+
+\subsection{Examples of an expression}
+
+The two following examples illustrate the structure of an expression in Ataccama's language.
+
+\subsubsection{Simple example: Arithmetic Expression}
+
+\begin{verbatim}
+a := 10;  
+b := a * 2; 
+b + 5
+\end{verbatim}
+
+In this example, variables a and b are used in statements to set up values that are manipulated in the resulting expression, b + 5, which computes the final output.
+
+\subsubsection{Complex example: Digit sum}
+
+\begin{verbatim}
+value := replace(trim(input), '-', '');
+function digitSum(integer digit) { 
+    set.sumExp(
+        trim(substituteAll("(.)", "$1 ", toString(digit))), 
+        " ", 
+        (x) {toInteger(x)}
+    )
+}
+digitSum(value) % 13 == 0
+\end{verbatim}
+
+This example demonstrates a more complex expression that includes a function definition, digitSum, which is then called in the resulting expression, digitSum(value). The expression is a simplified excerpt from a data quality rule that checks ISIN numbers for validity.
+
+\subsection{Components of Ataccama Expression Language}
+
+Ataccama Expression Language, also called ONE Expressions, organizes data operations and logic into a series of expressions and operands defined by a rigorous structure:
+
+\subsubsection{Operands}
+
+Operands in Ataccama Expressions are categorized into four main types:
+
+\begin{itemize}
+    \item  Literals
+    
+    These include numeric, string, or logical constants (e.g., TRUE, FALSE) and the null literal. All keywords are case-insensitive.
+
+    \item Columns
+    
+    Identified by their names, which require square brackets if they include spaces. In multiple input scenarios, columns are specified using dot notation (input\_name.column\_name). If only one input is used, dot notation can be omitted.
+
+    \item Set
+    
+    Used exclusively with the IN operation, representing a constant expression. Sets can only appear on the right side of the IN operation.
+
+    \item Complex Expressions
+    
+    These may involve various combinations of the above operand types and function calls.
+\end{itemize}
+
+\subsubsection{Data Types and Conversions}
+
+Operands can be of specific column types such as INTEGER, FLOAT, LONG, STRING, DATETIME, DAY, and BOOLEAN. Ataccama handles type conversions automatically, widening data types as necessary ( e.g., INTEGER - LONG - FLOAT ) to accommodate operations.
+
+\subsubsection{Handling Null Values}
+
+The handling of null values aligns with SQL rules, with a notable exception for the STRING data type. In Ataccama, a null string is considered equal to an empty string, impacting how comparisons and operations are performed.
+
+\subsubsection{Variables}
+
+Expressions in Ataccama can include sequences of assignment expressions followed by a resulting expression, separated by semicolons. The first occurrence of a variable defines its type, with subsequent references needing to conform to this type.
+
+\subsubsection{Operations and Functions}
+
+Ataccama ONE supports a variety of operations and functions:
+
+\begin{itemize}
+    \item arithmetic functions
+    \item logical functions
+    \item comparison functions
+    \item set functions
+    \item date functions
+    \item string functions
+    \item bitwise functions
+    \item MinMax functions
+    \item aggregating functions
+    \item conditional functions
+    \item conversion functions
+    \item formatting functions
+    \item word set operation functions
+\end{itemize}
+
+The full list of functions and their descriptions can be found in the Ataccama ONE Expressions documentation \cite{one_expressions}.
+
+\section{Summary}
+
+Let us summarize the goals of the project:
+
+\subsection{Use of Python}
+
+The solution should utilize Python for the implementation of the data quality expression language. This choice is driven by two key reasons. Firstly, Python is widely recognized and utilized among data engineers, which ensures that the tools developed are easily adoptable and integrate seamlessly into existing workflows. Secondly, Python's compatibility with various data pipeline platforms makes it an ideal candidate for ensuring that our solution can be integrated across diverse data environments efficiently, facilitating broader accessibility and practical utility.
+
+\subsection{Simple API}
+
+In the analysis section, we identified data engineers as the primary users of the solution. The project's main objective is to develop an API that is straightforward and intuitive for data engineers. The API should be simple and user-friendly, avoiding overly complex abstractions or advanced design patterns. For instance, object creation should be straightforward, utilizing basic constructors or simple imported functions to minimize complexity and ensure ease of use.
+
+\subsection{Local execution}
+
+The solution should be designed to run locally, allowing data engineers to execute data quality rules directly within their Python environments. This is relevant with respect to the need for ease of use and security. By enabling local execution, data engineers can test and validate data quality rules without the need to access external servers or applications. This approach also simplifies the development process by removing dependencies on external services, ensuring that the solution is self-contained and easily deployable in various environments.
+
+\subsection{Compatibility with the Ataccama Expression Language}
+
+In order to maintain compatibility with the existing Ataccama ecosystem, the Python implementation should be able to execute the same data quality rules as the original Ataccama Expression Language. This includes supporting the same set of functions, operators, and expressions to ensure that data quality rules defined in Ataccama ONE can be seamlessly executed within Python environments. The Python implementation should mirror the behavior of the original Ataccama Expression Language as closely as possible to ensure consistency and compatibility across platforms.
+
+\subsection{Reasonable performance}
+
+To be considered a viable alternative to the original Ataccama implementation and to similar solutions on the market, the Python implementation should be able to handle data quality rules within Python environments efficiently and effectively. The performance of the Python implementation should be within acceptable limits, where a slowdown by a factor of up to 10 times compared to alternatives might be considered tolerable for deployment, but a 1000 times slowdown would indicate serious efficiency issues that could render the solution impractical. By establishing these performance benchmarks, we can validate that the Python implementation meets minimum requirements for real-world applications, ensuring it is a viable alternative for data engineers who require programmatic access to Ataccama's data quality tools. This will be further discussed in the evaluation section.

@@ -3,44 +3,22 @@
 
 The implementation phase of the project is critical for translating the design into a functional system. This section details the setup of the development environment, focusing on the tools and technologies selected to ensure a robust and efficient development process. The implementation of the individual features is then discussed, providing detailed documentation of the coding process, including snippets and explanations of how the Ataccama Expression language features are implemented in Python. The testing and validation process is also described. Finally, any challenges faced during the implementation are discussed, along with the resolutions that were implemented to overcome them.
 
-\section{Development Environment Setup}
-% Describe the setup of your development environment necessary.
+\section{Architecture}
 
-For this project, a modern and efficient development environment is set up to facilitate the coding, testing, and deployment phases. The environment leverages several key tools and technologies designed to enhance productivity and ensure the quality of the software developed. Below is a breakdown of the core components of the development setup:
+The following diagram illustrates the class diagram of the transpiler \ref{fig:architecture}.
 
-\subsection{Poetry for Dependency Management and Package Publishing}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=1.0\columnwidth]{diagrams/architecture.png}
+    \caption{Architecture overview}
+    \label{fig:architecture}
+\end{figure}
 
-Poetry is utilized as the primary tool for dependency management and package publishing. It offers a streamlined approach to manage libraries and dependencies, ensuring that the project environment is reproducible and consistent across different setups. Poetry simplifies the management of project dependencies, and its lock file ensures that the same versions are used in every environment, reducing "works on my machine" problems.
+The \texttt{ExpressionToPythonCompiler} is initiated with contexts that include external function handling capabilities. It registers various operators and functions that can be used within expressions, ensuring that these are correctly integrated into the compiled code. The lexer and parser transform the input expressions into a format that can be used to generate Python bytecode, with the visitor handling the actual translation into code and symbol resolution. The option for user to provide custom functions is also available.
 
-\subsubsection{Configuration}
+The \texttt{IdentifierTable} plays a crucial role in managing the names for fields, variables, and functions. The \texttt{FunctionFactoryContext} and \texttt{LookupFileResolver} provide mechanisms to incorporate external functionalities and data, enhancing the flexibility and power of the expression evaluation.
 
-The \texttt{pyproject.toml} file is configured to list all necessary libraries and their specific versions. This file also includes configurations for package metadata, making it easier to package and distribute the final software if needed.
-
-\subsection{Mypy for Type Checks}
-
-Given the dynamic nature of Python, Mypy is incorporated to provide optional static type checking. By annotating Python code with type hints, Mypy can catch many programming errors before they manifest at runtime. It enhances code quality and reliability, especially in large and complex projects where types play a crucial role in the correctness of the program.
-
-\subsubsection{Configuration}
-Mypy is configured to run as part of the continuous integration process, checking type annotations during development. Some leniencies are allowed in the configuration to strike a balance between strict type checking and development flexibility. For instance, certain third-party libraries without type hints and generated code like the lexer and parser might be excluded from these checks to prevent excessive false positives.
-
-\subsection{Pytest for Testing}
-
-Pytest is chosen for its powerful testing capabilities, which are essential for verifying the functionality of the re-implemented data quality rules in Python. It supports complex test scenarios and is highly customizable, with a vast ecosystem of plugins that can be utilized to extend its functionality further.\cite{pytest}
-
-\subsubsection{Configuration}
-
-Tests are written to cover various cases, from basic unit tests that validate each function's behavior with different inputs to integration tests that ensure that the system components work together as expected. Pytest fixtures are used to set up and teardown test environments, making it easy to manage test states and dependencies.\cite{pytest_fixtures}
-
-\subsection{Additional Tools and Practices}
-
-\subsubsection{Version Control}
-
-Git is used for version control, with a repository hosted on the company Gitlab, providing a robust framework for collaboration and version tracking.
-
-\subsubsection{Continuous Integration/Continuous Deployment (CI/CD) A}
-
-CI/CD pipeline is set up using Gitlab CI/CD to automate the testing and deployment process. The pipeline is configured to run tests on every commit and deploy the application to a staging environment if the tests pass. This setup ensures that the software is continuously tested and can be deployed automatically to a production environment when ready.
-
+Finally, the \texttt{Expression} class encapsulates the executable code, providing a method to evaluate it with specific inputs. This architecture supports extensibility and customization, key traits for systems requiring dynamic data manipulation capabilities.
 
 \section{Implementation of individual features}
 % Provide detailed documentation of the coding process, including snippets and explanations of how Ataccama’s rules are implemented in Python.
@@ -54,7 +32,6 @@ The first step in processing Ataccama’s custom expression language in Python i
 \subsubsection{ANTLR Lexer and Parser}
 
 The lexer reads the raw input text and converts it into a stream of tokens based on the grammar rules defined for Ataccama’s language. The parser then takes these tokens and builds a parse tree.
-
 
 \begin{verbatim}
 sequence:
@@ -111,7 +88,7 @@ There are two layers of names: visible and internal. Internal names are used for
 
 The symbol table is also used to create child symbol tables, which handles the logic of symbol hiding, i.e. when a symbol is defined in a scope, it hides the symbol with the same name in the parent scope.
 
-The use of a symbol table in our system is not primarily due to limitations within Python’s name resolution and scoping capabilities. Instead, it addresses specific challenges that arise in our context. Without a symbol table, name resolution would have to occur at runtime, which complicates any future implementation of name existence checks. Additionally, it is good practice to prevent users from accessing internal names related to operators or multiline lambda functions. By using a symbol table, we can simplify the mapping of complex names, such as converting \texttt{math.tan} to , while also providing a robust system for detecting and handling name collisions.
+The use of a symbol table in our system is not primarily due to limitations within Python’s name resolution and scoping capabilities. Instead, it addresses specific challenges that arise in our context. Without a symbol table, name resolution would have to occur at runtime, which complicates any future implementation of name existence checks. Additionally, it is good practice to prevent users from accessing internal names related to operators or multiline lambda functions. By using a symbol table, we can simplify the mapping of complex names, such as converting \texttt{math.tan} to a valid identifier such as \texttt{math\_tan}, while also providing a robust system for detecting and handling name collisions.
 
 Lastly, the symbol table provides an infrastucture for compile-time type checking, should we decide to implement it in the future.
 
@@ -166,6 +143,10 @@ The primary focus during testing is to ensure that the reimplemented rules behav
 
 The test suite contains more than 1300 tests, covering the wide range of functions, operators, and expressions. These tests are designed to validate the correctness defined by the Ataccama implementation and ensure that the Python version produces the same results in as many cases as possible.
 
+This extensive testing process is crucial for identifying and resolving any discrepancies between the original and re-implemented rules, ensuring that the Python implementation is accurate and reliable for data quality checks. As such it is a key component of the development process, providing confidence in the correctness and efficiency of the reimplementation.
+
+Expected outputs are set with the help of the original Ataccama ONE Expressions Java engine, which serves as a reference for the Python implementation. This ensures that the Python version produces consistent results with the established behavior of the rules in the Ataccama environment. This is aided by the tool for output comparison, which is discussed in the next section.
+
 \subsection{Tool for Output Comparison}
 
 To validate the accuracy of the reimplementation, we have developed a test suite that compares the outputs of our Python implementation against those generated by the original Ataccama ONE Expressions Java engine. This ensures that our implementation produces results consistent with the established behavior of the rules in the Ataccama environment.
@@ -216,22 +197,44 @@ The Python implementation adopted a similar approach to null handling. Custom op
 
 This careful replication of functionality ensures that the Python version of Ataccama's data quality rules maintains the robustness and reliability of the original system, adhering closely to its operational logic and data handling practices.
 
-\section{Architecture}
+\section{Development Environment Setup}
+% Describe the setup of your development environment necessary.
 
-The following diagram illustrates the class diagram of the transpiler \ref{fig:architecture}.
+For this project, a modern and efficient development environment is set up to facilitate the coding, testing, and deployment phases. The environment leverages several key tools and technologies designed to enhance productivity and ensure the quality of the software developed. Below is a breakdown of the core components of the development setup:
 
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=1.0\columnwidth]{diagrams/architecture.png}
-    \caption{Architecture overview}
-    \label{fig:architecture}
-\end{figure}
+\subsection{Poetry for Dependency Management and Package Publishing}
 
-The \texttt{ExpressionToPythonCompiler} is initiated with contexts that potentially include debug flags and external function handling capabilities. It registers various operators and functions that can be used within expressions, ensuring that these are correctly integrated into the compiled code. The lexer and parser transform the input expressions into a format that can be used to generate Python bytecode, with the visitor handling the actual translation into code and symbol resolution. The option for user to provide custom functions is also available.
+Poetry is utilized as the primary tool for dependency management and package publishing. It offers a streamlined approach to manage libraries and dependencies, ensuring that the project environment is reproducible and consistent across different setups. Poetry simplifies the management of project dependencies, and its lock file ensures that the same versions are used in every environment, reducing "works on my machine" problems.
 
-The \texttt{IdentifierTable} plays a crucial role in managing the names for fields, variables, and functions. The \texttt{FunctionFactoryContext} and \texttt{LookupFileResolver} provide mechanisms to incorporate external functionalities and data, enhancing the flexibility and power of the expression evaluation.
+\subsubsection{Configuration}
 
-Finally, the \texttt{Expression} class encapsulates the executable code, providing a method to evaluate it with specific inputs. This setup allows the system to be used in scenarios where dynamic expression evaluation is required, such as in data transformation, querying interfaces, or complex rule-based systems. This architecture supports extensibility and customization, key traits for systems requiring dynamic and powerful data manipulation capabilities.
+The \texttt{pyproject.toml} file is configured to list all necessary libraries and their specific versions. This file also includes configurations for package metadata, making it easier to package and distribute the final software if needed.
+
+\subsection{Mypy for Type Checks}
+
+Given the dynamic nature of Python, Mypy is incorporated to provide optional static type checking. By annotating Python code with type hints, Mypy can catch many programming errors before they manifest at runtime. It enhances code quality and reliability, especially in large and complex projects where types play a crucial role in the correctness of the program.
+
+\subsubsection{Configuration}
+Mypy is configured to run as part of the continuous integration process, checking type annotations during development. Some leniencies are allowed in the configuration to strike a balance between strict type checking and development flexibility. For instance, certain third-party libraries without type hints and generated code like the lexer and parser might be excluded from these checks to prevent excessive false positives.
+
+\subsection{Pytest for Testing}
+
+Pytest has been selected as the preferred testing framework for this project also due to its support for parametrized testing and test fixtures.\cite{pytest}
+
+\subsubsection{Configuration}
+
+Tests are written to cover various cases, from basic unit tests that validate each function's behavior with different inputs to integration tests that ensure that the system components work together as expected. Pytest fixtures are used to set up and teardown test environments, making it easy to manage test states and dependencies.\cite{pytest_fixtures}
+
+\subsection{Additional Tools and Practices}
+
+\subsubsection{Version Control}
+
+Git is used for version control, with a repository hosted on the company Gitlab, providing a robust framework for collaboration and version tracking.
+
+\subsubsection{Continuous Integration/Continuous Deployment (CI/CD) A}
+
+CI/CD pipeline is set up using Gitlab CI/CD to automate the testing and deployment process. The pipeline is configured to run tests on every commit and deploy the application to a staging environment if the tests pass. This setup ensures that the software is continuously tested and can be deployed automatically to a production environment when ready.
+
 
 \section{Example usage}
 
@@ -251,5 +254,10 @@ for record in records:
         ...
 \end{verbatim}
 
-
 More examples are provided as part of appendix \ref{app:transpiler} in the \texttt{examples} directory in the form of \texttt{jupyter} \cite{jupyter} notebooks with simple demonstrations followed by explanations and commentaries. 
+
+\section{Summary}
+
+In the implementation the goal of keeping compatibility was stressed and the Python implementation was designed to closely mirror the behavior of the original Ataccama Expression Language. This was addressed on a problem by problem basis, with each challenge met with a specific solution that ensured the Python version behaved as closely as possible to the original. Furthermore, a wide suite of tests was developed to validate the correctness of the reimplementation.
+
+The goal of enabling local execution so as to avoid the need for a connection to the Ataccama ONE environment was achieved, with the Python implementation providing a standalone solution for evaluating data quality rules.
