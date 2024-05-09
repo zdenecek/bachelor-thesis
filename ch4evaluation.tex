@@ -63,7 +63,7 @@ The choice of test cases for evaluating the performance and viability of the rei
 
 There are two test cases selected for the performance evaluation representing different levels of complexity in data quality rule validation. This scope allows for a comprehensive assessment of the Python implementation's performance across a range of scenarios, from basic data validation to more intricate customer data checks. The test cases are designed to simulate common data quality tasks that data engineers might encounter in their daily work, providing a realistic basis for evaluating the Python implementation's efficiency and effectiveness in handling these tasks.
 
-Both of the test cases include listing out the failed records, which is a common requirement in \glsxtrshort{dqm} tasks. This feature is essential for identifying and addressing data quality issues efficiently, making it a key aspect of the performance evaluation.
+Both of the test cases include enumerating the failed records, which is a common requirement in \glsxtrshort{dqm} tasks. This feature is essential for identifying and addressing data quality issues efficiently, making it a key aspect of the performance evaluation.
 
 \subsection{Test Case 1: Simple Continent Validation}
 
@@ -74,8 +74,8 @@ Both of the test cases include listing out the failed records, which is a common
 \subsubsection{Expressions Implementation}
 
 \begin{verbatim}
-    ( NOT ( lower(continent) in \{ "asia", "africa", "europe", 
-    "north america", "south america", "oceania", "antarctica" \} ) )
+( NOT ( lower(continent) in \{ "asia", "africa", "europe", 
+"north america", "south america", "oceania", "antarctica" \} ) )
 \end{verbatim}
 
 \subsubsection{Great Expectations Implementation}
@@ -115,14 +115,15 @@ Both of the test cases include listing out the failed records, which is a common
 \begin{verbatim}
 checks for continents:
     - invalid_count(continent_lower) = 0:
-          valid values: ["asia", "africa", "europe", "north america", 
-                         "south america", "oceania", "antarctica"]
+          valid values: ["asia", "africa", "europe", 
+                         "north america", "south america", 
+                         "oceania", "antarctica"]
 \end{verbatim}
 
 
 \subsection{Test Case 2: Complex Customer Validation}
 
-\paragraph{Description} This more complex test case. The complexity lies in applying multiple conditions to validate customer data, involving null checks, file lookups, regex pattern matching.
+\paragraph{Description} This more complex test case. The complexity lies in applying multiple conditions to validate customer data, involving null checks, file lookups, regular expression pattern matching.
 
 Below is the Ataccama Expression Language expression for the test case:
 

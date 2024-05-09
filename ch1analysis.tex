@@ -94,7 +94,7 @@ Data pipelines are a crucial part of any data engineering project. Data pipeline
 
 Many of the use cases for integrating data quality tools into data pipelines include the requirement to integrate with existing data pipeline or solutions. The data quality tools should support integration into commonly used data pipelines. It also follows that forcing a new data pipeline or ETL solution is not a valid requirement. 
 
-For example, in Ataccama, the application is intended to be connected to all the data sources and data targets using its custom connectors. To access the Ataccama engine and run any sort of evaluation of data quality rules, the data must be loaded into Ataccama ONE using a connection setup within the application, or the data needs to be sent into a service set up from within the application. Both approaches present a challenge for integrating Ataccama into existing data pipelines.
+For example, in Ataccama, the application is intended to be connected to all the data sources and data targets using its custom connectors. To access the Ataccama engine and run any sort of evaluation of data quality rules, the data must be loaded into Ataccama ONE using a connection setup within the application,  or Ataccama can pushdown processing directly into databases or the data needs to be sent into a service set up from within the application. Either way, there is no straightforward way to process the data directly in the data stream because Ataccama current solution is oriented more toward table processing. In summary, all of these approaches present a challenge for integrating Ataccama into existing data pipelines.
 
 \subsection{Pipelines in commonly used data platforms}
 

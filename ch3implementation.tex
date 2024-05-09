@@ -16,7 +16,8 @@ The following diagram illustrates the class diagram of the transpiler \ref{fig:a
 
 The \texttt{ExpressionToPythonCompiler} is initiated with contexts that include external function handling capabilities. It registers various operators and functions that can be used within expressions, ensuring that these are correctly integrated into the compiled code. The lexer and parser transform the input expressions into a format that can be used to generate Python bytecode, with the visitor handling the actual translation into code and symbol resolution. The option for user to provide custom functions is also available.
 
-The \texttt{IdentifierTable} plays a crucial role in managing the names for fields, variables, and functions. The \texttt{FunctionFactoryContext} and \texttt{LookupFileResolver} provide mechanisms to incorporate external functionalities and data, enhancing the flexibility and power of the expression evaluation.
+The \texttt{IdentifierTable} plays a crucial role in managing the names for fields, variables, and functions. The \texttt{FunctionFactoryContext} and
+\texttt{LookupFileResolver} provide mechanisms to incorporate external functionalities and data, enhancing the flexibility and power of the expression evaluation.
 
 Finally, the \texttt{Expression} class encapsulates the executable code, providing a method to evaluate it with specific inputs. This architecture supports extensibility and customization, key traits for systems requiring dynamic data manipulation capabilities.
 
