@@ -49,9 +49,9 @@ assign:
 \end{verbatim}
 
 \subsubsection{Visitor Pattern}
- From the parse tree, a visitor is generated—a component that traverses the parse tree. This visitor uses the visitor design pattern to execute operations based on the nodes of the parse tree. For the expression language, the visitor's primary role is to transform the parse tree into an Abstract Syntax Tree (AST) using Python’s ast module, which can then be executed or evaluated in a Python environment. The visitor visits the non-terminals of the grammar and transforms them to \texttt{ast} objects or, where needed, some other intermediate objects.
+ From the parse tree, a visitor is generated—a component that traverses the parse tree. This visitor uses the visitor design pattern to execute operations based on the nodes of the parse tree. For the expression language, the visitor's primary role is to transform the parse tree into an  \glsxtrfull{ast} using Python’s \texttt{ast} module, which can then be executed or evaluated in a Python environment. The visitor visits the non-terminals of the grammar and transforms them to \texttt{ast} objects or, where needed, some other intermediate objects.
 
-The top-level non-terminal \texttt{main} otherwise known as the compilation unit is visited and the visitor returns an \texttt{ast} represenation of Python module.
+The top-level non-terminal \texttt{main} otherwise known as the compilation unit is visited and the visitor returns an \texttt{ast} representation of Python module.
 
 The module, when executed, stores the result of the expression in a variable with a predefined name and from which the result can be retrieved.
 
@@ -136,7 +136,7 @@ An expression generator is created to produce random expressions based on the gr
 \section{Testing and Validation}
 % Explain how you tested the reimplementation of data quality rules to ensure they work correctly and efficiently in local Python environments.
 
-Testing and validation are critical components of the software development process, especially when reimplementing data quality rules to ensure they perform as expected in local Python environments. For this project, we employ \texttt{pytest} with test parametrization to thoroughly test the Python implementation of Ataccama data quality rules.
+Testing and validation play crucial roles in software development, particularly when reimplementing data quality rules to verify their performance in Python environments. In this project, we utilize \texttt{pytest}, leveraging its parametrization features to rigorously test the implementation of Ataccama's data quality rules in Python.
 
 The use of test parametrization allows for running the same test function with different input values. It is particularly useful in this project for applying a wide array of test scenarios to the implemented functions to ensure comprehensive coverage and that the rules behave as intended across diverse data sets and conditions.
 
@@ -230,11 +230,11 @@ Tests are written to cover various cases, from basic unit tests that validate ea
 
 \subsubsection{Version Control}
 
-Git is used for version control, with a repository hosted on the company Gitlab, providing a robust framework for collaboration and version tracking.
+Git is used for version control, with a repository hosted on the company GitLab, providing a robust framework for collaboration and version tracking.
 
 \subsubsection{Continuous Integration/Continuous Deployment (CI/CD)}
 
-CI/CD pipeline is set up using Gitlab CI/CD to automate the testing and deployment process. The pipeline is configured to run tests on every commit and deploy the application to a staging environment if the tests pass. This setup ensures that the software is continuously tested and can be deployed automatically to a production environment when ready.
+CI/CD pipeline is set up using GitLab CI/CD to automate the testing and deployment process. The pipeline is configured to run tests on every commit and deploy the application to a staging environment if the tests pass. This setup ensures that the software is continuously tested and can be deployed automatically to a production environment when ready.
 
 
 \section{Example usage}

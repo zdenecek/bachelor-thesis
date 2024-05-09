@@ -46,9 +46,9 @@ The initial step in developing the solution involves establishing its architectu
 
 The architecture of the Python implementation of the Ataccama Expression Language is designed to facilitate the translation of Ataccama's expression language into Python code to enable for local execution, one of the goals of outlined in analysis. This translation process involves parsing the input expression, generating executable code, and evaluating the expression against a dataset. The architecture is structured to accommodate these steps seamlessly, ensuring the efficient execution of data quality rules within a Python environment.
 
-For the first step, the input expression will be converted into an abstract syntax tree (AST). Given the complexity of the expression language used by Ataccama, employing a parser generator is deemed the most effective approach. The parser generator will utilize the predefined grammar of the language to generate a parser capable of translating input expressions into an AST. This facilitates the incorporation of custom logic in the subsequent steps, particularly during the semantic analysis phase.
+For the first step, the input expression will be converted into an \glsxtrfull{ast}. Given the complexity of the expression language used by Ataccama, employing a parser generator is deemed the most effective approach. The parser generator will utilize the predefined grammar of the language to generate a parser capable of translating input expressions into an \glsxtrshort{ast}. This facilitates the incorporation of custom logic in the subsequent steps, particularly during the semantic analysis phase.
 
-During semantic analysis, the AST will be traversed to construct executable code. This transformation is essential for preparing the expression for evaluation in a Python environment, from which the results can be dynamically generated and returned.
+During semantic analysis, the \glsxtrshort{ast} will be traversed to construct executable code. This transformation is essential for preparing the expression for evaluation in a Python environment, from which the results can be dynamically generated and returned.
 
 The final component of the architecture involves executing the generated code on the provided records. This step ensures that each record is evaluated according to the defined expressions, and the outcomes are systematically returned to the user.
 
@@ -60,11 +60,11 @@ For the parser generator, a specific approach is indicated. The Ataccama Express
 
 Having decided on the parser generator, the next step is to decide how to generate the code for the expression. There are two obvious approaches at hand: Represent the expression in an object tree with execution being a recursive descent through the tree. The second approach is to generate Python code directly. This can be done using Python standard module \texttt{ast}, which can be used build an abstract syntax tree of the expression, and then compile it into a Python function. Alternatively, the code can be generated as a string and then executed using Python's exec function, but this approach is less safe, more error-prone, harder to debug and introduces more overhead as it adds an additional step of parsing the code.
 
-The second approach is more efficient, as it avoids the overhead of traversing the AST, but it is also more complex, as it requires generating Python code. The first approach might appear simpler, but it is less efficient, as it requires traversing the AST and does not include the option to use compilation to Python bytecode.
+The second approach is more efficient, as it avoids the overhead of traversing the \glsxtrshort{ast}, but it is also more complex, as it requires generating Python code. The first approach might appear simpler, but it is less efficient, as it requires traversing the \glsxtrshort{ast} and does not include the option to use compilation to Python bytecode.
 
 Using Python as the runtime also comes with the benefit of being able to use Python's scope resolution and name hiding to implement the scoping rules of the Ataccama Expression Language, so a reimplementation can be avoided.
 
-For these reasons, the second approach is chosen. The code will be generated as Python code using the ast module, and then compiled into a Python module.
+For these reasons, the second approach is chosen. The code will be generated as Python code using the \texttt{ast} module, and then compiled into a Python module.
 
 \section{Compatibility with the Ataccama Expression language}
 
