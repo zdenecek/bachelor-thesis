@@ -205,26 +205,26 @@ For this project, a modern and efficient development environment is set up to fa
 
 \subsection{Poetry for Dependency Management and Package Publishing}
 
-Poetry is utilized as the primary tool for dependency management and package publishing. It offers a streamlined approach to manage libraries and dependencies, ensuring that the project environment is reproducible and consistent across different setups. Poetry simplifies the management of project dependencies, and its lock file ensures that the same versions are used in every environment, reducing "works on my machine" problems.
+Poetry\cite{poetry} is utilized as the primary tool for dependency management and package publishing. It offers a streamlined approach to manage libraries and dependencies, ensuring that the project environment is reproducible and consistent across different setups. Poetry simplifies the management of project dependencies, and its lock file ensures that the same versions are used in every environment, reducing "works on my machine" problems.
 
 \subsubsection{Configuration}
 
 The \texttt{pyproject.toml} file is configured to list all necessary libraries and their specific versions. This file also includes configurations for package metadata, making it easier to package and distribute the final software if needed.
 
-\subsection{Mypy for Type Checks}
+\subsection{Pypy for Type Checks}
 
-Given the dynamic nature of Python, Mypy is incorporated to provide optional static type checking. By annotating Python code with type hints, Mypy can catch many programming errors before they manifest at runtime. It enhances code quality and reliability, especially in large and complex projects where types play a crucial role in the correctness of the program.
+Given the dynamic nature of Python, mypy\cite{mypy} is incorporated to provide optional static type checking. Mypy is an optional static type checker for Python, designed to combine the benefits of dynamic typing and static typing. By annotating Python code with type hints, Mypy can catch many programming errors before they manifest at runtime. It enhances code quality and reliability, especially in large and complex projects where types play a crucial role in the correctness of the program.
 
 \subsubsection{Configuration}
 Mypy is configured to run as part of the continuous integration process, checking type annotations during development. Some leniencies are allowed in the configuration to strike a balance between strict type checking and development flexibility. For instance, certain third-party libraries without type hints and generated code like the lexer and parser might be excluded from these checks to prevent excessive false positives.
 
 \subsection{Pytest for Testing}
 
-Pytest has been selected as the preferred testing framework for this project also due to its support for parametrized testing and test fixtures.\cite{pytest}
+Pytest\cite{pytest} has been selected as the preferred testing framework for this project also due to its support for parametrized testing and test fixtures.
 
 \subsubsection{Configuration}
 
-Tests are written to cover various cases, from basic unit tests that validate each function's behavior with different inputs to integration tests that ensure that the system components work together as expected. Pytest fixtures are used to set up and teardown test environments, making it easy to manage test states and dependencies.\cite{pytest_fixtures}
+Tests are written to cover various cases, from basic unit tests that validate each function's behavior with different inputs to integration tests that ensure that the system components work together as expected. Pytest fixtures\cite{pytest_fixtures} are used to set up and teardown test environments, making it easy to manage test states and dependencies.
 
 \subsection{Additional Tools and Practices}
 
@@ -232,7 +232,7 @@ Tests are written to cover various cases, from basic unit tests that validate ea
 
 Git is used for version control, with a repository hosted on the company Gitlab, providing a robust framework for collaboration and version tracking.
 
-\subsubsection{Continuous Integration/Continuous Deployment (CI/CD) A}
+\subsubsection{Continuous Integration/Continuous Deployment (CI/CD)}
 
 CI/CD pipeline is set up using Gitlab CI/CD to automate the testing and deployment process. The pipeline is configured to run tests on every commit and deploy the application to a staging environment if the tests pass. This setup ensures that the software is continuously tested and can be deployed automatically to a production environment when ready.
 

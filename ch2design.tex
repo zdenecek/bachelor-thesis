@@ -5,7 +5,7 @@ In the design section, we will detail the process of translating Ataccama's expr
 
 \section{Context of data transformations}
 
-Data processing pipelines typically adhere to a structured pattern known as extract-transform-load (ETL)\cite{etl}\ref{fig:etl_process}, crucial in data management. These pipelines start by extracting data from various sources, which is then transformed through cleaning, enrichment, and aggregation processes before being loaded into a final storage destination.
+Data processing pipelines typically adhere to a structured pattern known as \glsxtrfull{etl}\cite{etl}\ref{fig:etl_process}, crucial in data management. These pipelines start by extracting data from various sources, which is then transformed through cleaning, enrichment, and aggregation processes before being loaded into a final storage destination.
 
 This thesis specifically concentrates on this transformation step, where data quality rules can be effectively implemented and integrated.
 
@@ -21,7 +21,7 @@ This thesis specifically concentrates on this transformation step, where data qu
         \draw[->, thick] (extract.east) -- (transform.west);
         \draw[->, thick] (transform.east) -- (load.west);
     \end{tikzpicture}
-    \caption{Diagram illustrating the ETL (Extract-Transform-Load) process.}
+    \caption{Diagram illustrating the \glsxtrfull{etl} process.}
     \label{fig:etl_process}
     \end{figure}
 

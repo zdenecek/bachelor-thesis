@@ -68,7 +68,7 @@ The most commonly used tools and technologies by data engineers are Python, Java
 
 In any software, a balance between ease of use and functionality complemented by the correctness of conceptual abstraction needs to be found. As the API surface of this solution is not going to be large, not a lot of decisions will have to be made on this front. However, it is important to keep in mind that the users of the solution are data engineers, some of whom work in a consultant background. Many of them are not used to advanced language features, and abstractions have limited experience with software engineering. For this reason, it is important to keep the solution simple and easy to use, avoiding any complex constructs and patterns.
 
-Furthermore, it should be taken into account that the library can be used outside of IDE and similar environments where code suggestion and documentation might not be available. For example, when writing integrations in the platforms discussed such as Azure Data Factory and Data Bricks, the user will not have access to the documentation or code suggestions. For this reason, the API should be designed to be self-explanatory, and should be designed to be easy to use without the need for extensive documentation.
+Furthermore, it should be taken into account that the library can be used outside of IDE and similar environments where code suggestion and documentation might not be available. For example, when writing integrations in the platforms discussed below such as Azure Data Factory and Data Bricks, the user will not have access to the documentation or code suggestions. For this reason, the API should be designed to be self-explanatory, and should be designed to be easy to use without the need for extensive documentation.
 
 \subsection{Data security}
 
@@ -92,7 +92,7 @@ Second, the pipeline needs to access the application over a network. This means 
 
 Data pipelines are a crucial part of any data engineering project. Data pipelines are used to move data from one place to another and to transform data from one format to another. 
 
-Many of the use cases for integrating data quality tools into data pipelines include the requirement to integrate with existing data pipeline or solutions. The data quality tools should support integration into commonly used data pipelines. It also follows that forcing a new data pipeline or ETL solution is not a valid requirement. 
+Many of the use cases for integrating data quality tools into data pipelines include the requirement to integrate with existing data pipeline or solutions. The data quality tools should support integration into commonly used data pipelines. It also follows that forcing a new data pipeline or \glsxtrfull{etl} solution is not a valid requirement. 
 
 For example, in Ataccama, the application is intended to be connected to all the data sources and data targets using its custom connectors. To access the Ataccama engine and run any sort of evaluation of data quality rules, the data must be loaded into Ataccama ONE using a connection setup within the application,  or Ataccama can pushdown processing directly into databases or the data needs to be sent into a service set up from within the application. Either way, there is no straightforward way to process the data directly in the data stream because Ataccama current solution is oriented more toward table processing. In summary, all of these approaches present a challenge for integrating Ataccama into existing data pipelines.
 
@@ -112,7 +112,7 @@ Python is well-supported in Snowflake through connectors like Snowflake Connecto
 
 AWS Glue\cite{aws_glue} supports Python and Scala. Python, being one of the main languages supported by AWS Glue, benefits from seamless integration with other AWS services.
 
-Python scripts in AWS Glue can perform extract, transform, and load (ETL) tasks effectively, which can be developed and debugged directly in Python using Glue’s development endpoints.
+Python scripts in AWS Glue can perform \glsxtrshort{etl} tasks effectively, which can be developed and debugged directly in Python using Glue’s development endpoints.
 
 \item Azure Data Factory
 
@@ -128,7 +128,7 @@ Python is extensively used in Databricks notebooks for data exploration, visuali
 
 \end{itemize}
 
-Given the need to operate within commonly used compute platforms such as the above-mentioned, it is imperative to consider the compatibility of programming languages supported by these environments. Each platform offers support for various technologies; however, Python stands out due to its universal acceptance and extensive integration capabilities across these systems. Whether it is executing complex data manipulation tasks in Snowflake, orchestrating ETL processes in AWS Glue, running custom activities in Azure Data Factory, or performing data analysis and machine learning in Databricks, Python is consistently supported. 
+Given the need to operate within commonly used compute platforms such as the above-mentioned, it is imperative to consider the compatibility of programming languages supported by these environments. Each platform offers support for various technologies; however, Python stands out due to its universal acceptance and extensive integration capabilities across these systems. Whether it is executing complex data manipulation tasks in Snowflake, orchestrating \glsxtrshort{etl} processes in AWS Glue, running custom activities in Azure Data Factory, or performing data analysis and machine learning in Databricks, Python is consistently supported. 
 
 Therefore, focusing on Python to implement data quality rules not only aligns with the operational capabilities of these platforms but also ensures that our solutions are versatile and adaptable across different technological ecosystems. This strategic choice maximizes the utility and reach of our \glsxtrshort{dqm} tools, making them accessible and functional within the predominant data processing frameworks employed by contemporary organizations.
 

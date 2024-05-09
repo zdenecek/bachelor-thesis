@@ -183,7 +183,7 @@ Table \ref{tab:time-continents} shows the execution time comparison for test cas
 \end{figure}
 
 
-More important than the absolute execution time is the relative performance compared to the similar solutions. Table \ref{tab:time-continents} shows the relative execution time comparison to Soda Core for test case n. 1: Continent Validation. The results are also visualized in Figure \ref{fig:time-comparison-continents-relative}.
+More important than the absolute execution time is the relative performance compared to the similar solutions. Table \ref{tab:time-continents} shows the relative execution times comparison of similar solution relative to our solution for test case n. 1: Continent Validation. The results are also visualized in Figure \ref{fig:time-comparison-continents-relative}.
 
 \begin{table}[h] 
   \centering 
@@ -195,7 +195,7 @@ More important than the absolute execution time is the relative performance comp
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=1.0\columnwidth]{result-analysis/plots/relative_speedup_comparison_continents.png}
-  \caption{Relative execution time comparison to Soda Core for test case n. 1. relative to Soda Core}
+  \caption{Execution times in test case n. 1 of similar solution relative to the Python implementation}
   \label{fig:time-comparison-continents-relative}
 \end{figure}
 
@@ -209,7 +209,7 @@ Table \ref{tab:time-customers} shows the execution time comparison for test case
 \begin{table}[h] 
     \footnotesize
     \centering 
-    \caption{Execution Time Comparison for test case n. 1: Continent Validation} 
+    \caption{Execution time comparison for test case n. 2: Customer Validation} 
     \label{tab:time-customers} 
     \input{result-analysis/plots/execution_time_comparison_customers}
 \end{table}
@@ -217,16 +217,16 @@ Table \ref{tab:time-customers} shows the execution time comparison for test case
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=1.0\columnwidth]{result-analysis/plots/execution_time_comparison_customers.png}
-  \caption{Execution Time Comparison for test case n. 2: Customer Validation}
+  \caption{Execution time comparison for test case n. 2: Customer Validation}
   \label{fig:time-comparison-customers}
 \end{figure}
 
 
-More important than the absolute execution time is the relative performance compared to similar solutions. Table \ref{tab:time-customers} shows the relative execution time comparison to Soda Core for test case n. 1: Continent Validation. The results are also visualized in Figure \ref{fig:time-comparison-customers-relative}.
+More important than the absolute execution time is the relative performance compared to similar solutions. Table \ref{tab:time-customers} shows the relative execution times of similar solutions in comparison to our solution for test case n. 2: Customer Validation. The results are also visualized in Figure \ref{fig:time-comparison-customers-relative}.
 
 \begin{table}[h] 
   \centering 
-  \caption{Relative execution time comparison to Soda Core for test case n. 2: Customer Validation} 
+  \caption{Execution times in test case n. 2. of similar solution relative to the Python implementation} 
   \label{tab:time-customers-relative} 
   \input{result-analysis/plots/relative_time_comparison_customers.tex}
 \end{table}
@@ -234,7 +234,7 @@ More important than the absolute execution time is the relative performance comp
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=1.0\columnwidth]{result-analysis/plots/relative_speedup_comparison_customers.png}
-  \caption{Relative execution time comparison to Soda Core for test case n. 2. relative to Soda Core}
+  \caption{Execution times in test case n. 2. of similar solution relative to the Python implementation}
   \label{fig:time-comparison-customers-relative}
 \end{figure}
 
@@ -246,7 +246,7 @@ The performance analysis of the Python implementation of the Ataccama Expression
 
 The performance gap is acceptable, especially considering the more comprehensive feature set it provides compared to the other two solutions and pluggability with data quality rules in Ataccama. 
 
-The Python implementation's performance is likely to improve further with optimizations and enhancements, such as parallel processing, caching, and JIT compilation, which could help narrow the gap with the similar solutions. These optimizations can be explored in the futher development of the Python implementation but could also come from further improvements in the Python interpreter itself.
+The Python implementation's performance is likely to improve further with optimizations and enhancements, such as parallel processing, caching, and JIT compilation, which could help narrow the gap with the similar solutions. These optimizations can be explored in the further development of the Python implementation but could also come from further improvements in the Python interpreter itself.
 
 
 
