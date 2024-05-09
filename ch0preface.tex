@@ -31,35 +31,35 @@ Poor data quality is a significant risk — it can skew analysis, leading to mis
 \end{itemize}
 
 
-\section{The need for programmatic access}
+\section*{The need for programmatic access}
 
-In the context of \glsxtrshort{dqm}, most commonly, the center point of the focus is on the persona of the so-called 'data steward.' This is because data stewards are crucial
+In the context of \glsxtrshort{dqm}, most commonly, the center point of the focus is on the persona of the so-called 'data steward.' \cite{data_stewards} This is because data stewards are crucial
 for any data quality initiative. Data stewards must be involved in setting up data quality processes to ensure success. This includes tasks such as defining data quality rules,
-profiling, and addressing data quality issues. [What is a data steward? https://www.ataccama.com/blog/what-is-a-data-steward]
+profiling, and addressing data quality issues. 
 
 In the world of \glsxtrshort{dqm}, there arises a need to consume data quality tools programmatically. This is where the persona of a data engineer comes into play. There are more reasons for this, in simple terms,
 the necessity is a corollary to the need to integrate data quality tools into data pipelines, which is what data engineers are responsible for.
 
  It follows that any solution aimed at pipeline integration should be designed to accommodate data engineers as they will be its users. In the following sections, we will discuss the needs of data engineers in the context of \glsxtrshort{dqm} tools.
 
- \section{Data Quality Management Tools at Ataccama}
+ \section*{Data Quality Management Tools at Ataccama}
 
  Ataccama stands out in the field of data quality management (DQM) due to its comprehensive suite of tools designed to enhance data quality across multiple dimensions. Ataccama ONE, the flagship product, is renowned for its robust data profiling, quality rule enforcement, monitoring, and issue resolution capabilities. This platform serves as a critical tool for enterprises looking to maintain high standards of data integrity.
  
  However, one of the primary limitations of Ataccama ONE is its primary reliance on a web interface, which poses challenges for seamless integration into automated data pipelines typically managed by data engineers. This limitation highlights the need for programmatic access to its powerful DQM features to fully leverage its capabilities in more dynamic, code-driven environments.
  
- \subsection{Data Quality Rules}
+ \subsection*{Data Quality Rules}
  
  Ataccama ONE's capacity to define complex data quality rules using its expression language is one of its most potent features. These expressions allow for precise specifications of data quality requirements that can dynamically adapt to varying data sets and conditions. This expression language supports an extensive range of functions and operators, enabling detailed data validation and cleansing processes that are crucial for reliable data analytics.
  
  Integrating these expression-based rules into typical data engineering workflows could significantly streamline processes involved in data validation and correction, providing a more robust framework for ensuring data quality at scale. Enabling programmatic access to these rules would allow data engineers to automate and integrate data quality checks directly into data ingestion and processing pipelines, thereby enhancing efficiency and reducing the likelihood of errors.
  
- \subsection{Personal Motivation and Practical Applications}
+ \subsection*{Personal Motivation and Practical Applications}
  
  The focus on Ataccama in this thesis is influenced by practical and personal considerations. As a developer relations employee at Ataccama, I have unique access to the platform and a vested interest in exploring its capabilities deeply. This position provides a unique opportunity to bridge the gap between Ataccama's current offerings and the needs of data engineers who require more flexibility and programmatic control over their data quality tools.
  
  By leveraging Ataccama's existing robust framework and extending its accessibility to data engineers through programmatic interfaces, this project aligns with industry best practices while pushing the boundaries of traditional data quality management. The goal is to transform Ataccama from a primarily UI-driven tool into a versatile backend service that can power complex data pipelines, making it an even more valuable asset in the data engineer's toolkit.
 
- \section{Objective of the thesis}
+ \section*{Objective of the thesis}
 
  This thesis aims to significantly enhance the accessibility of Ataccama's data quality management tools for data engineers by developing a programmatic interface that allows for direct execution and integration of Ataccama's robust expression language within automated data workflows. The expected outcome is to provide data engineers with the tools they need to enforce data quality seamlessly within their pipelines. By doing so, this work not only extends the usability of Ataccama ONE within modern data-driven environments but also contributes to the broader field of data quality management by bridging the gap between advanced data quality rules and operational data engineering practices.
