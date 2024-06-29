@@ -1,0 +1,225 @@
+
+% POSTER EXAMPLE
+%
+% This is an example of a relatively sane poster. The box structure (and the
+% narrative in general) is what I would expect, but it is completely
+% non-mandatory; you may include whatever you want. Preferably, erase the
+% existing box structure after you read it, and start from scratch.
+%
+% The main communication requirements for the poster that should be satisfied
+% are as such:
+%
+% - At the defense, it should help you talk for around 10 minutes about your
+%   thesis, and convince the committee that you did something interesting and
+%   sufficiently complicated. Prepare pictures that explain your main results.
+%
+% - It should quickly communicate the main idea of your thesis to a random
+%   educated by-walker. Ideally, a moderately-witted MFF graduate who has never
+%   heard about your thesis before should be able to get the main "rough idea"
+%   in less than 1 minute by just looking at the poster.
+
+% modify the fontscale parameter to make everything slighly bigger or smaller.
+\documentclass[portrait,a0paper,fontscale=0.25]{baposter}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+
+% FONT CHOICES
+% Posters do not need to be PDF/A; you can choose any relatable font from the
+% TeX font catalogue without much risk. Sans-serif fonts are suggested for the
+% posters; see https://tug.org/FontCatalogue/sansseriffonts.html
+\usepackage[sfdefault]{Fira Sans}
+%\usepackage[default]{droidsans}
+%\usepackage[math]{iwona}
+%\usepackage[defaultfam]{montserrat}
+%\usepackage{cmbright}
+%\usepackage{yfonts}\renewcommand{\familydefault}{\frakdefault}
+
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{amssymb,amsmath}
+\usepackage[export]{adjustbox} %allows using valign with \includegraphics
+\usepackage{multicol}
+\usepackage{svg}
+
+\renewcommand{\arraystretch}{1.5}
+
+\usetikzlibrary{positioning}
+
+% A WORD ABOUT COLORS
+%
+% This template is prepared with a relatively neutral gray background that
+% gives decent box borders (with white and darker gray), does not clash with
+% many colors (except for violet-brown and other mushroomish colors, perhaps)
+% and gives a lot of space for highlighting stuff.
+%
+% Generally, other color variations are good too; there are no strict rules on
+% the colors. Good choices include:
+%
+% - white backgrounds and differentiation of box headers by color (see
+%   headerFontColor)
+%
+% - various slightly tinted backgrounds (try red!10 instead of black!3)
+% 
+% - dark backgrounds
+%
+% Keep in mind:
+% - The normal "informative" text and figures should be DARK on LIGHT
+%   background, not the other way around.
+%
+% - If you want a dark background, soften (darken) the box backgrounds a bit so
+%   that they do not "shine" too much from the poster. Use \color{white} for
+%   the heading, and switch the UK/MFF logos to white (see contents of logos/).
+%
+% - Do not mix too many color hues together. Most hues have their widely
+%   accepted meaning (green: good result, red: problem, blue: information,
+%   yellow: highlighter, brown: serious problem, violet: something really
+%   weird/interesting/magic, depending on the shade).
+
+\begin{document}
+
+\color{black!80} % default font color
+\begin{poster}{grid=false,
+	eyecatcher=true,
+	background=plain,
+	bgColorOne=black!3, % background color
+	columns=2,
+	headerborder=none,
+	textborder=none,
+	headershape=rectangle,
+	headershade=plain,
+	boxshade=plain,
+	boxColorOne=white,
+	headershade=plain,
+	headerColorOne=black!15, % box header background color
+	headerFontColor=black,
+	}%
+	{\includegraphics[height=7em]{logos/mff-black.pdf}}
+	{\LARGE Streamlining Usability of Enterprise
+	Data Quality Management Tools for
+	Data Engineers}
+	{\vspace{1ex} Zdeněk Tomis}
+	{\includegraphics[height=7em]{logos/uk-red.pdf}}
+
+
+%
+% LEFT COLUMN
+%
+
+\begin{posterbox}[name=background,column=0]{Background}
+	\textbf{Data Quality Management (DQM)} ensures data accuracy, completeness, and reliability for decision-making, regulatory compliance, and operational efficiency. DQM processes are crucial for leveraging data effectively in organizations. \\
+
+    \vspace{0.5em}
+    \textbf{Data Quality Rules} validate and cleanse data by checking formats, ensuring uniqueness, consistency, completeness, and accuracy. Integrating these rules into workflows maintains high data quality and reliability.
+\end{posterbox}
+
+\begin{posterbox}[column=0, name=ata, below=background]{Ataccama Data Quality Rules}
+
+	\paragraph{Ataccama ONE} uses data quality rules to enforce standards on data. These rules can be integrated into automated workflows for continuous monitoring and enforcement. \\
+	\paragraph{Example Rule Expression:}
+	\begin{verbatim}
+	NOT (lower(continent) IN {"asia", "africa", 
+		"europe", "north america", "south america", 
+								"oceania", "antarctica"})
+	\end{verbatim}
+	This expression checks if the value of the "continent" field is valid by comparing it against a predefined list of continents.
+	
+	\end{posterbox}
+	
+
+\begin{posterbox}[column=0, name=goals, below=ata, headerColorOne=cyan!60, boxColorOne=cyan!20]{Thesis goals}
+ \textbf{Programmatic Access}: Reimplement Ataccama Expression Language in Python. Enable data engineers to execute Ataccama’s data quality rules directly within Python. \\
+
+ \textbf{Compatibility with Ataccama}: Ensure compatibility with Ataccama’s data quality rules and expressions. \\
+
+ \textbf{Performance Evaluation}: Test the viability of this implementation through performance comparisons with similar solutions, namely Great Expectations and Soda Core. Viable solution should be at most 10x-20x slower. \\
+
+\end{posterbox}
+
+
+\begin{posterbox}[column=0, name=summary, below=goals]{Summary}
+	I developed a transpiler for a grammar to Python code using ANTLR. This tool facilitates the conversion of Ataccama Expression Language into executable Python code.
+
+	\vspace{0.5em}
+
+    I implemented around 100 functions in Python to replicate the functionality of Ataccama's data quality rules. These implementation use the standard Python library along with various other dependecies.
+
+	\vspace{0.5em}
+
+    I created a comprehensive set of test suites containing over 1000 test cases in more than 200 test methods. These tests ensure compatibility with Ataccama's runtime.
+
+\end{posterbox}
+
+
+%
+% FOOTER
+%
+
+% \begin{posterbox}[column=0, span=2, name=footer, below=something2,
+% 	textborder=none, headerborder=none, boxheaderheight=0pt,
+% 	boxColorOne=black!3]{}
+% If some institute/grant/department sponsored the work, put an acknowledgement here.
+% \end{posterbox}
+
+%
+% RIGHT COLUMN
+%
+% It is usually best to fill most of the poster with your results and
+% conclusions. Again, use simple annotated pictures wherever possible. Plots
+% with measurements are perfect, tables are also good.
+%
+
+\begin{posterbox}[column=1, name=result1]{Performance analysis results}
+
+
+\begin{center}
+	\includesvg[width=0.68\linewidth]{plots/execution_time_comparison_continents.svg}
+\end{center}
+
+
+\begin{center}
+\includesvg[width=0.68\linewidth]{plots/relative_speedup_comparison_continents.svg}
+\end{center}
+
+
+\begin{center}
+	\includesvg[width=0.68\linewidth]{plots/execution_time_comparison_customers.svg}
+\end{center}
+
+
+\begin{center}
+\includesvg[width=0.68\linewidth]{plots/relative_speedup_comparison_customers.svg}
+\end{center}
+
+\end{posterbox}
+
+
+\begin{posterbox}[column=1, name=conclusion, below=result1, bottomaligned=summary]{Performance analysis conclusion}
+	The Python implementation's performance was within the target of being  \textbf{no more than 10-20 times slower} than existing solutions, meeting the viability criteria.
+\end{posterbox}
+
+
+
+\begin{posterbox}[column=0, name=footer, below=summary,span=2]{Information}
+	\begin{multicols}{2}
+		\raggedright
+		Contact: Zdeněk Tomis, \texttt{https://zdenektomis.eu} \\
+        Supervisor: doc. Ing. Lubomír Bulej, Ph.D. \\
+        Department of Distributed and Dependable Systems \\
+		\columnbreak
+		\centering
+
+
+			\raisebox{10em}{
+		
+				\includesvg[height=2em]{img/logo-dark.svg} 
+			}
+		
+
+	\end{multicols}
+
+\end{posterbox}
+
+\end{poster}
+\end{document}
